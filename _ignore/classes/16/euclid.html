@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Euclidean Rhythms (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="euclidean-rhythms">Euclidean Rhythms</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="oh-a-brief-diversion">Oh, A Brief Diversion</h3>
+
+  <p><strong>How did Euclid&#39;s algorithm work again? Let&#39;s try it with 90 and 36.</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+while a != b # as long as a and b aren't equal
+  if a &lt; b   # make sure we know which is larger
+    swap
+  else        # form a new pair (retain the smaller, b)
+    a = a - b # a becomes the difference of original a and b
+give back either a or b!
+
+ a | b
+--------------
+90 | 36
+54 | 36
+36 | 18
+18 | 18
+--------------
+Done: 18
+"""</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="same-but-different">Same But Different</h3>
+
+  <p>That was the <em>original</em> version of Euclid&#39;s algorithm. There are a couple of other variants. Here&#39;s one using the remainder (modulo).</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+while b != 0 # as long as b isn't 0
+  temp = a   
+  a = b      # a becomes b
+  b = a </span><span class="si">% </span><span class="s">b  # b is the remainder of original a / b
+return a     # a is the gcd
+
+ a | b
+--------------
+90 | 36
+36 | 18
+18 | 0
+--------------
+Done: 18
+"""</span></code></pre></figure>
+
+  </div>
+
+</section>
+
+<section>
+  <h3 id="one-more">One More</h3>
+
+  <p><strong>How about 8 and 5?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"> <span class="n">a</span> <span class="o">|</span> <span class="n">b</span>
+<span class="o">--------------</span>
+ <span class="mi">8</span> <span class="o">|</span> <span class="mi">5</span>
+ <span class="mi">5</span> <span class="o">|</span> <span class="mi">3</span>
+ <span class="mi">3</span> <span class="o">|</span> <span class="mi">2</span>
+ <span class="mi">2</span> <span class="o">|</span> <span class="mi">1</span>
+ <span class="mi">1</span> <span class="o">|</span> <span class="mi">0</span>
+<span class="o">--------------</span>
+<span class="n">Done</span><span class="p">:</span> <span class="mi">1</span></code></pre></figure>
+
+  </div>
+
+</section>
+
+<section>
+  <h3 id="distributing-items-evenly">Distributing Items Evenly</h3>
+
+  <p>Easy if 4 items in 8 slots.</p>
+
+  <ol>
+    <li>imagine that 1 represents a slot with something in it, 0 represents an empty slot</li>
+    <li>what would the resulting pattern look like for an even distribution?</li>
+    <li>(clearly it wouldn&#39;t be 11110000)</li>
+  </ol>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+1 1 1 1, 0 0 0 0
+10 10 10 10
+10101010
+(pretty evenly distributed, eh?)
+"""</span></code></pre></figure>
+
+  </div>
+
+</section>
+
+<section>
+  <h3 id="another-one">Another One?</h3>
+
+  <p><strong>What if we have 13 slots, and we want to distribute 5 items into those thirteen slots evenly?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ol>
+      <li>1 1 1 1 1, 0 0 0 0 0 0 0 0</li>
+      <li>10 10 10 10 10,  0 0 0</li>
+      <li>100 100 100, 10 10</li>
+      <li>10010 10010, 100</li>
+      <li>Done! 1001010010100</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h3 id="a-little-like-euclids-algorithm-right">A Little Like Euclid&#39;s Algorithm, Right?</h3>
+
+  <ul>
+    <li>We try to divide the right hand side into the left evenly.</li>
+    <li>We end up with a remainder</li>
+    <li>(We can even try to match up the numbers)</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="and-i-just-want-to-dance">And. I Just Want to Dance.</h3>
+
+  <p>What if we used that distribution method to place beats in a series of steps&#8230; to generate a rhythm?</p>
+
+  <div class="incremental">
+
+    <p>Apparently, the Euclidean Algorithm can be used to generate rhythms.  A paper by Godfried Toussaint explores the concept of Euclidean Rhythms. See <a href="http://cgm.cs.mcgill.ca/~godfried/publications/banff.pdf">http://cgm.cs.mcgill.ca/~godfried/publications/banff.pdf</a>.</p>
+
+    <ul>
+      <li>Euclid&#39;s Algorithm can be used to generate traditional music rhythms</li>
+      <li>The rhythms generated cover a large number of world music rhythms</li>
+      <li><strong>Let&#39;s take a listen!</strong> &#8594;</li>
+    </ul>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="functions--odds-and-ends-"><a href="functions.html">Functions / Odds and Ends </a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

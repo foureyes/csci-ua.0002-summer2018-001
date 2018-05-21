@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Exceptions (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="exceptions">Exceptions</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="exceptions-1">Exceptions</h3>
+
+  <p>Errors that occur during runtime are called <strong>exceptions</strong>.</p>
+</section>
+
+<section>
+  <h3 id="exceptions-in-the-wild">Exceptions in the Wild</h3>
+
+  <p><strong>What are some exceptions that we&#39;ve seen?  That is, what errors have occurred during runtime?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>using an out of range index on a list or string that&#39;s</li>
+      <li>dividing by zero</li>
+      <li>using an undefined variable</li>
+      <li>using an operator on incompatible types</li>
+      <li>converting a value to a type that it can&#39;t be converted to</li>
+      <li><strong>Let&#39;s try to cause some exceptions!</strong></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="exception-examples">Exception Examples</h3>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">Traceback (most recent call last):
+  File "/tmp/exceptions.py", line 1, in &lt;module&gt;
+    5 / 0
+ZeroDivisionError: integer division or modulo by zero
+
+Traceback (most recent call last):
+  File "/tmp/exceptions.py", line 1, in &lt;module&gt;
+    int("foo")
+ValueError: invalid literal for int() with base 10: 'foo'
+
+Traceback (most recent call last):
+  File "/tmp/exceptions.py", line 2, in &lt;module&gt;
+    print(a[3])
+IndexError: list index out of range
+
+Traceback (most recent call last):
+  File "/tmp/exceptions.py", line 1, in &lt;module&gt;
+    "foo" + 5
+TypeError: cannot concatenate 'str' and 'int' objects</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-closer-look-at-a-runtime-error">A Closer Look at a Runtime Error</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"/tmp/exceptions.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="s">"foo"</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="nb">TypeError</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">concatenate</span> <span class="s">'str'</span> <span class="ow">and</span> <span class="s">'int'</span> <span class="n">objects</span></code></pre></figure>
+
+  <p>We see the following details:</p>
+
+  <ul>
+    <li>which file caused the exception</li>
+    <li>the line number</li>
+    <li>the actual code that caused it</li>
+    <li>the kind of exception / error plus some additional details</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="types-of-exceptions">Types of Exceptions</h3>
+
+  <p>A list of <a href="http://docs.python.org/3.2/library/exceptions.html">all exception types</a> can be found at: <a href="http://docs.python.org/3.2/library/exceptions.html">http://docs.python.org/3.2/library/exceptions.html</a></p>
+
+  <p>The base exception is just Exception, but there are specific ones after that.  From the previous slides, and our past experience programming, some exceptions we&#39;ve seen include:</p>
+
+  <ul>
+    <li>ZeroDivisionError</li>
+    <li>IndexError</li>
+    <li>TypeError</li>
+    <li>NameError</li>
+    <li>ValueError</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="what-do-all-of-these-errors-mean">What do all of These Errors Mean!?</h3>
+
+  <ul>
+    <li>ZeroDivisionError</li>
+    <li>IndexError</li>
+    <li>TypeError</li>
+    <li>NameError</li>
+    <li>ValueError</li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li>ZeroDivisionError - divide by zero</li>
+      <li>IndexError - index out of range</li>
+      <li>TypeError - function or operation applied to inappropriate type</li>
+      <li>NameError - name (variable, function, etc) doesn&#39;t exist / not yet declared</li>
+      <li>ValueError - function or operation gets right type, but inappropriate value</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="so-many-exceptions">So Many Exceptions</h3>
+
+  <p>The root Exception, and the other exception types that follow from it is called an <strong>exception hierarchy</strong></p>
+</section>
+
+<section>
+  <h3 id="great-so-now-what">Great, so Now What?</h3>
+
+  <p>We can gracefully recover from exceptions!</p>
+
+  <p>For example, a common source of runtime errors is user input&#8230;</p>
+</section>
+
+<section>
+  <h3 id="a-short-program">A Short Program</h3>
+
+  <p>Let&#39;s write a simple  <strong>interactive program</strong> that converts inches to feet:</p>
+
+  <ul>
+    <li><strong>ask for numeric input</strong> - some number of inches</li>
+    <li><strong>accept decimal values as well</strong>, such as 1.5 inches</li>
+    <li><strong>divide that number by 12</strong> to get feet</li>
+    <li>print out the result</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">inches</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"inches</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">inches</span><span class="p">)</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="soooo-that-works-great">Soooo&#8230; That Works Great</h3>
+
+  <p>Let&#39;s try running the program&#8230;</p>
+
+  <p>Everything works fine until?  <strong>Is there a certain kind of input that will cause an error in this program?</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">inches</span>
+<span class="o">&gt;</span><span class="n">asdf</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"foo.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">inches</span><span class="p">)</span><span class="o">/</span><span class="mi">23</span><span class="p">)</span>
+<span class="nb">ValueError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s">'asdf'</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="can-we-prevent-this-error-from-happening">Can We Prevent This Error from Happening?</h3>
+
+  <p><strong>&#8230;Maybe!  Let&#39;s try a couple of things.</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>How about isdigit and isnumeric?</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">'asdf'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">isdigit</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">())</span></code></pre></figure>
+
+    <p>But they don&#39;t let legitimate input through!</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">'3.2'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">isdigit</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">())</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="defensive-programming-continued">&quot;Defensive Programming&quot; Continued</h3>
+
+  <p><strong>Any other ways to allow strings like 3.2 in, but still prevent strings that are not composed numbers and a decimal point?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>loop through every character, and make sure that it&#39;s only a number or a decimal point!?</li>
+      <li>use find to check for decimal; create another string without that and check if it&#39;s a digit</li>
+      <li><em>ughhhh</em> &#8230; nevermind, these all seem a bit clunky</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="eafp">EAFP</h3>
+
+  <p>Sometimes it&#39;s&#8230;</p>
+
+  <p><strong>E</strong>asier to <strong>A</strong>sk <strong>F</strong>orgiveness than <strong>P</strong>ermission</p>
+
+  <ul>
+    <li>instead of defensive programming&#8230;</li>
+    <li>let&#39;s just try it</li>
+    <li>and ask for forgiveness if we made a mistake</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="exception-handling">Exception Handling</h3>
+
+  <p>There&#39;s a construct in most programming languages that lets you handle exceptions.  In python, that construct is a <strong>try-except</strong> block.  It&#39;s similar to an if-else:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">try</span><span class="p">:</span>
+	<span class="c"># stuff that I want to do</span>
+<span class="k">except</span><span class="p">:</span>
+	<span class="c"># stuff to do if an error occurs</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="try-except">try-except</h3>
+
+  <ul>
+    <li>The <strong>try</strong> block watches out for any statements within that block that causes errors.</li>
+    <li>If there is an error, the code in the <strong>except</strong> block will be run.</li>
+    <li>Otherwise, the code will execute normally (ignoring the except block)</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="try-except-example-1">try-except Example 1</h3>
+
+  <p><strong>What is the output of this code?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="k">try</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">100</span><span class="p">])</span>
+<span class="k">except</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"sorry, try another!"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">sorry</span><span class="p">,</span> <span class="k">try</span> <span class="n">another</span><span class="err">!</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="try-except-example-2">try-except Example 2</h3>
+
+  <p><strong>What is the output of this code?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="k">try</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">except</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"sorry, try another!"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">1</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-take-another-look-at-our-conversion-program">Let&#39;s Take Another Look at Our Conversion Program</h3>
+
+  <p><strong>Let&#39;s modify our program so that it behaves in a similar way, but uses try-except instead of testing with an if statement first.</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">inches</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"inches</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">inches</span><span class="p">)</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">inches</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"inches</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">inches</span><span class="p">)</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"don't do that"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="other-exceptions">Other Exceptions</h3>
+
+  <p>We saw that we could handle a ValueError in our program.  <strong>Can that exception happen in the following program?  Are there any other exceptions (that we just talked about in an earlier slide) that can happen?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  of slices in a pie</span>
+<span class="n">people</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"how many people are eating pizza?</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Each person can have </span><span class="si">%</span><span class="s">s slices"</span> <span class="o">%</span> <span class="p">(</span><span class="mi">8</span><span class="o">/</span><span class="nb">int</span><span class="p">(</span><span class="n">people</span><span class="p">)))</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>ValueError - for non numeric input</li>
+      <li>ZeroDivisionError - for 0 as input</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="fixing-the-pizza-pie-problems">Fixing the Pizza Pie Problems</h3>
+
+  <p><strong>How do we fix it (original code below)?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  of slices in a pie</span>
+<span class="n">people</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"how many people are eating pizza?</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Each person can have </span><span class="si">%</span><span class="s">s slices"</span> <span class="o">%</span> <span class="p">(</span><span class="mi">8</span><span class="o">/</span><span class="nb">int</span><span class="p">(</span><span class="n">people</span><span class="p">)))</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  of slizes in a pie</span>
+<span class="n">people</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"how many people are eating pizza?</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Each person can have </span><span class="si">%</span><span class="s">s slices"</span> <span class="o">%</span> <span class="p">(</span><span class="mi">8</span><span class="o">/</span><span class="nb">int</span><span class="p">(</span><span class="n">people</span><span class="p">)))</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"No one's gettin' nuthin'"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="fixing-the-pizza-pie-problems-continued">Fixing the Pizza Pie Problems Continued</h3>
+
+  <p>What if we want to deal with ValueErrors and ZeroDivisionError differently?</p>
+
+  <p>Say either:</p>
+
+  <ol>
+    <li>That&#39;s not a number! (ValueError)</li>
+    <li>More for me! (ZeroDivisionError)</li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="specific-exceptions-multiple-except-blocks">Specific Exceptions, Multiple Except Blocks</h3>
+
+  <p>You can catch specific exception types, and add an arbitrary number of except blocks for every exception type that may occur.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">try</span><span class="p">:</span>
+	<span class="c"># some tricky stuff</span>
+<span class="k">except</span> <span class="n">NameOfErrorType1</span><span class="p">:</span>
+	<span class="c"># handle it gracefully</span>
+<span class="k">except</span> <span class="n">NameOfErrorType2</span><span class="p">:</span>
+	<span class="c"># handle it gracefully too</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="back-to-pizza">Back to Pizza</h3>
+
+  <p><strong>So&#8230; let&#39;s apply that to our pizza program</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">people</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"how many people are eating pizza?</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Each person can have </span><span class="si">%</span><span class="s">s slices"</span> <span class="o">%</span> <span class="p">(</span><span class="mi">8</span><span class="o">/</span><span class="nb">int</span><span class="p">(</span><span class="n">people</span><span class="p">)))</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"No one's gettin' nuthin'"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">people</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"how many people are eating pizza?</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Each person can have </span><span class="si">%</span><span class="s">s slices"</span> <span class="o">%</span> <span class="p">(</span><span class="mi">8</span><span class="o">/</span><span class="nb">int</span><span class="p">(</span><span class="n">people</span><span class="p">)))</span>
+<span class="k">except</span> <span class="nb">ZeroDivisionError</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"More for me!"</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"That's not a number!"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="implement-three-card-monte">Implement Three Card Monte</h3>
+
+  <p>Here&#39;s a text version of <a href="http://en.wikipedia.org/wiki/Three-card_Monte">three card monte</a>.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pick</span> <span class="n">a</span> <span class="n">cup</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">or</span> <span class="mi">2</span>
+<span class="o">&gt;</span><span class="mi">0</span>
+<span class="p">[</span><span class="s">'.'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">]</span>
+<span class="n">you</span> <span class="n">win</span>
+
+<span class="n">pick</span> <span class="n">a</span> <span class="n">cup</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">or</span> <span class="mi">2</span>
+<span class="o">&gt;</span><span class="mi">0</span>
+<span class="p">[</span><span class="s">'o'</span><span class="p">,</span> <span class="s">'.'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">]</span>
+<span class="n">you</span> <span class="n">lose</span>
+
+<span class="n">pick</span> <span class="n">a</span> <span class="n">cup</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">or</span> <span class="mi">2</span>
+<span class="o">&gt;</span><span class="n">asdf</span>
+<span class="p">[</span><span class="s">'.'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">]</span>
+<span class="ow">not</span> <span class="n">a</span> <span class="n">number</span>
+<span class="n">you</span> <span class="n">lose</span>
+
+<span class="n">pick</span> <span class="n">a</span> <span class="n">cup</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">or</span> <span class="mi">2</span>
+<span class="o">&gt;</span><span class="mi">400</span>
+<span class="p">[</span><span class="s">'o'</span><span class="p">,</span> <span class="s">'.'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">]</span>
+<span class="n">that</span> <span class="n">cup</span> <span class="n">doesn</span><span class="s">'t exist</span><span class="err">
+</span><span class="s">you lose</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="three-card-monte-requirements">Three Card Monte Requirements</h3>
+
+  <ul>
+    <li>in our version, we&#39;re using &quot;cups&quot;</li>
+    <li>keep a penny under 1 cup</li>
+    <li>represent the three cups as a list</li>
+    <li>&#39;o&#39; for empty &#39;.&#39; for a penny</li>
+    <li>&quot;shuffle&quot; the list</li>
+    <li>ask for input&#8230; a number that&#39;s 0, 1, or 2</li>
+    <li>if the program gets non-numeric input, say that it&#39;s not a number</li>
+    <li>if the number causes an IndexError, say that the cup doesn&#39;t exist</li>
+    <li>if either exception occurs, the player loses</li>
+    <li>if the user finds the penny, the player wins</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="a-potential-solution">A Potential Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">cups</span> <span class="o">=</span> <span class="p">[</span><span class="s">'o'</span><span class="p">,</span> <span class="s">'.'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">]</span>
+<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">cups</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"pick a cup: 0, 1, or 2</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">cups</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cups</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<span class="k">except</span> <span class="nb">IndexError</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"that cup doesn't exist"</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"not a number"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="s">"."</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"you win"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"you lose"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

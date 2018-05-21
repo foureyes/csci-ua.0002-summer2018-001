@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dictionaries (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="dictionaries">Dictionaries</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="dictionaries-1">Dictionaries</h3>
+
+  <p><strong>A dictionary maps values to names.  Is a dictionary mutable/immutable, ordered/unordered, compound/not compound?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>mutable</li>
+      <li>ordered</li>
+      <li>compound</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="dictionaries-syntax">Dictionaries Syntax</h3>
+
+  <p><strong>What&#39;s exact syntax for a dictionary?  What does an empty dictionary look like?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>a dictionary starts and ends with an opening and closing curly brace</li>
+      <li>an empty dictionary is {}</li>
+      <li>each key value pair in a dictionary is separated by a comma</li>
+      <li>keys and values are linked together by a colon, the key before and the value after</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">{</span><span class="s">'key1'</span><span class="p">:</span><span class="s">'value1'</span><span class="p">,</span> <span class="s">'key2'</span><span class="p">:</span><span class="s">'value2'</span><span class="p">}</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="retrieving-values-at-keys">Retrieving Values at Keys</h3>
+
+  <p><strong>Name two ways to retrieve a value at a key from a dictionary.  How are they different?</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">}</span>
+
+<span class="c">#  brackets and key</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pizza</span><span class="p">[</span><span class="s">"topping"</span><span class="p">])</span>
+
+<span class="c">#  get method</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pizza</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'topping'</span><span class="p">))</span>
+
+<span class="c">#  using brackets and the key will give a KeyError if the key doesn't exist!</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="the-get-method">The get Method</h3>
+
+  <p><strong>Describe what the get method does.  How many arguments does it take?  What does it return?  Does it change the original dictionary?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>2 arguments:
+        <ul>
+          <li>the key of the element you want to retrieve</li>
+          <li>an optional default value in case that key doesn&#39;t exist yet (None if no second argument)</li>
+        </ul>
+      </li>
+      <li>returns default value if key doesn&#39;t exist, otherwise returns value at specified key</li>
+      <li>the dictionary itself is not changed</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pizza</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'second topping'</span><span class="p">,</span> <span class="s">'more cheese'</span><span class="p">))</span>
+<span class="c">#  prints out more cheese</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="adding-a-new-key-and-value">Adding a New Key and Value</h3>
+
+  <p><strong>How do you add a new key and value to a dictionary?</strong></p>
+
+  <div class="incremental">
+    <p>Use the key that doesn&#39;t exist&#8230; and assign a value&#8230;</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">}</span>
+<span class="n">pizza</span><span class="p">[</span><span class="s">'size'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'medium</span><span class="err">
+</span><span class="s">print(pizza)</span><span class="err">
+</span><span class="s">#  shows that size:medium was added</span><span class="err">
+</span><span class="s">#  note that if size existed, its value would have been updated</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="dictionaries-and-iteration">Dictionaries and Iteration</h3>
+
+  <p><strong>What are some ways of looping over a dictionary?  What will the loop variable represent?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">,</span> <span class="s">'size'</span><span class="p">:</span><span class="s">'large'</span><span class="p">,</span> <span class="s">'sauce'</span><span class="p">:</span><span class="s">'tomato'</span><span class="p">}</span>
+<span class="c">#  keys only...</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">pizza</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+
+<span class="c">#  using items and tuple unpacking</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">pizza</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">pizza</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+
+<span class="c">#  using items and tuple unpacking</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pizza</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="deleting-keysvalues">Deleting Keys/Values</h3>
+
+  <p><strong>Name three ways to delete key/value pairs in a dictionary</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">,</span> <span class="s">'size'</span><span class="p">:</span><span class="s">'large'</span><span class="p">,</span> <span class="s">'sauce'</span><span class="p">:</span><span class="s">'tomato'</span><span class="p">}</span>
+<span class="c">#  del</span>
+<span class="k">del</span> <span class="n">pizza</span><span class="p">[</span><span class="s">'crust'</span><span class="p">]</span>
+
+<span class="c">#  pop method (removes key/value using key passed in, returns value)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pizza</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">'topping'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pizza</span><span class="p">)</span>
+
+<span class="c">#  popitem method (removes arbitrary key/value, returns two-element tuple)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pizza</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pizza</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="btw-in-and-len">BTW, in and len()</h3>
+
+  <p><strong>The in and not in operators work with dictionary keys; len() gives back the number of key/value pairs</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">,</span> <span class="s">'size'</span><span class="p">:</span><span class="s">'large'</span><span class="p">,</span> <span class="s">'sauce'</span><span class="p">:</span><span class="s">'tomato'</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pizza</span><span class="p">))</span>
+<span class="c">#  prints out 4</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="s">'crust'</span> <span class="ow">in</span> <span class="n">pizza</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c">#  prints out True</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="other-methods">Other Methods?</h3>
+
+  <p><strong>Are there any other dictionary methods that learned?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">,</span> <span class="s">'size'</span><span class="p">:</span><span class="s">'large'</span><span class="p">,</span> <span class="s">'sauce'</span><span class="p">:</span><span class="s">'tomato'</span><span class="p">}</span>
+
+<span class="c">#  update adds or updates key values based on dictionary passed in</span>
+<span class="n">pizza</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s">'price'</span><span class="p">:</span><span class="mi">18</span><span class="p">})</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pizza</span><span class="p">)</span>
+
+<span class="c">#  keys and values returns a list-like structure with only keys or only values</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pizza</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pizza</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></code></pre></figure>
+
+  </div>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

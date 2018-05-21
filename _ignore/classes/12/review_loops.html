@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>For Loops, For vs While (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="review-for-loops-for-vs-while">Review For Loops, For vs While</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="for-loops">For Loops</h3>
+
+  <p><strong>What&#39;s a for loop? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <p>A <strong>for loop</strong> is a statement that allows a chunk of code to be executed repeatedly.  This repetition is achieved by iterating over every item in an iterator / <strong>iterable object</strong>.</p>
+
+  </div>
+
+</section>
+
+<section>
+  <h3 id="iterable-objects">Iterable Objects</h3>
+
+  <p>An <em>iterable object</em>:</p>
+
+  <ul>
+    <li>is a <em>thing</em> (<em>object</em>) that contains other values / <em>members</em></li>
+    <li>is capable of returning each of its members <strong>one at a time</strong></li>
+    <li>examples of iterable objects include:
+      <ul>
+        <li>strings</li>
+        <li>lists</li>
+        <li><strong>range objects</strong></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="range-and-range-objects">Range and Range Objects</h3>
+
+  <p><strong>What&#39;s a range object and how is it created? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <ul>
+      <li>a <strong>range</strong> object a data type that represents an arithmetic sequence, such as 2, 4, 6, 8</li>
+      <li>range objects are created by using the built-in range() function.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="range-objects-continued">Range Objects Continued</h3>
+
+  <p>Range objects can take one to three arguments.  <strong>What happens when you call range with one, two, and three arguments? &#8594;</strong></p>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">stop</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">stop</span><span class="p">)</span>
+<span class="c">#  0, 1, 2, 3, 4, 5, 6, 7, 8, 9</span>
+
+<span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+<span class="c">#  5, 6, 7, 8, 9</span>
+
+<span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+<span class="c">#  5, 7, 9</span></code></pre></figure>
+
+</div>
+</section>
+
+<section>
+  <h3 id="some-things-to-remember">Some Things to Remember</h3>
+
+  <ul>
+    <li><em>stop</em> argument in all three forms specifies the value that the sequence goes up to but does not include</li>
+    <li><em>start</em> argument is the first element of the sequence</li>
+    <li>a negative <em>step</em> means count backwards</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="guess-the-sequence">Guess the Sequence</h3>
+
+  <p><strong>What is the start, stop, and step?  What is the resulting arithmetic sequence? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  start:50, stop:0, step:-10</span>
+<span class="c">#  50, 40, 30, 20, 10</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  start:0, stop:4, step: 1</span>
+<span class="c">#  0, 1, 2, 3</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="ladder-plz">Ladder Plz</h3>
+
+  <p><strong>Write a program that prints out an ascii art ladder.</strong></p>
+
+  <ul>
+    <li>ask for a height</li>
+    <li>print out a ladder with that many rungs
+      <ul>
+        <li>can you implement using a for loop and printing out on each iteration?</li>
+        <li>or how about just string multiplication?</li>
+      </ul>
+    </li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">height</span> <span class="n">plz</span> 
+<span class="o">&gt;</span> <span class="mi">3</span>
+ <span class="o">========</span>
+ <span class="o">|</span>      <span class="o">|</span>
+ <span class="o">========</span>
+ <span class="o">|</span>      <span class="o">|</span>
+ <span class="o">========</span>
+ <span class="o">|</span>      <span class="o">|</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="ladder-plz-1">Ladder Plz</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">rungs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'height plz</span><span class="se">\n</span><span class="s">&gt; '</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">rung</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rungs</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'========</span><span class="se">\n</span><span class="s">|      |'</span><span class="p">)</span>
+
+<span class="n">rungs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'height plz</span><span class="se">\n</span><span class="s">&gt; '</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'========</span><span class="se">\n</span><span class="s">|      |</span><span class="se">\n</span><span class="s">'</span> <span class="o">*</span> <span class="n">rungs</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="ladder-plz-added-twist">Ladder Plz, Added Twist</h3>
+
+  <p>Uh-oh.  Our ascii ladders are crummy.  Every rung has a 1 in three chance of being broken.  <strong>How would you draw a ladder where each rung could potentially be broken? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">height</span> <span class="n">plz</span>
+<span class="o">&gt;</span> <span class="mi">5</span>
+<span class="o">========</span>
+<span class="o">|</span>      <span class="o">|</span>
+<span class="o">========</span>
+<span class="o">|</span>      <span class="o">|</span>
+<span class="o">=~</span>   <span class="o">.~=</span>
+<span class="o">|</span>      <span class="o">|</span>
+<span class="o">========</span>
+<span class="o">|</span>      <span class="o">|</span>
+<span class="o">=~</span>   <span class="o">.~=</span>
+<span class="o">|</span>      <span class="o">|</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="ladder-plz-added-twist-1">Ladder Plz, Added Twist</h3>
+
+  <p>A potential solution&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">rungs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'height plz</span><span class="se">\n</span><span class="s">&gt; '</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">rung</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rungs</span><span class="p">):</span>
+    <span class="n">broken</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">broken</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'=~   .~=</span><span class="se">\n</span><span class="s">|      |'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'========</span><span class="se">\n</span><span class="s">|      |'</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="for-loops-1">For Loops&#8230;</h3>
+
+  <p><strong>When should you use them? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>you know ahead of time how many iterations you&#39;ll have to go through</li>
+      <li>you have to go through every element in an <em>iterable</em> object
+        <ul>
+          <li>every number in a sequence of numbers</li>
+          <li>every <em>item</em> in a list</li>
+          <li>every character in a string</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="while-loops">While Loops</h3>
+
+  <p><strong>When should you use them? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>when you don&#39;t know how many iterations you&#39;ll have to go through!</li>
+      <li>when you must repeat something until some condition is met</li>
+      <li>generally not a great option for counting (need to keep track of counter separately)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-try-using-both">Let&#39;s Try Using Both&#8230;</h3>
+  <ul>
+    <li>count to 0 to 25 by 5&#39;s
+      <ul>
+        <li>implement using while</li>
+        <li>implement using for</li>
+      </ul>
+    </li>
+    <li>print out a series of numbers, each randomly chosen from (1 through 10) that add up to 50 (you can go over)
+      <ul>
+        <li>implement using while</li>
+        <li>implement using for</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="nested-loops"><a href="nested.html">Nested Loops</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

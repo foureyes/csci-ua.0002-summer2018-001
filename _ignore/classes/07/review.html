@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Review - Conditionals (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="review-conditionals">Review Conditionals</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="operator-precedence">Operator Precedence</h3>
+
+  <p><strong>What are the types of operators that we learned about?  List them in order of precedence &#8594;</strong></p>
+
+  <div class="incremental">
+    <ol>
+      <li>Parentheses</li>
+      <li>Numerical/String operators</li>
+      <li>Comparison operators</li>
+      <li>Logical operators</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h3 id="logical-operators">Logical Operators</h3>
+
+  <p><strong>Name the three logical operators that we learned and order them by precedence &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>not</li>
+      <li>and</li>
+      <li>or</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="logical-operators-continued">Logical Operators Continued</h3>
+
+  <p><strong>What are the only two values that cause &quot;and&quot; to evaluate True? Under what conditions does &quot;or&quot; evaluate to True?  &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>and</strong> evaluates to True only when both operands are True</li>
+      <li><strong>or</strong> evaluates to True when either operand is True</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="surprise">Surprise!</h3>
+
+  <p><strong>Write a program that asks the user if they want a surprise: &#8594;</strong></p>
+
+  <ul>
+    <li>if the input is yes, Yes or YES, print out &#39;SURPRISE!&#39;</li>
+    <li>otherwise, print out &#39;&#8230;&#39;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">Do you want a surprise?
+<span class="gp">&gt; </span>yes
+SURPRISE!</code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">Do you want a surprise?
+<span class="gp">&gt; </span>YES
+SURPRISE!</code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">Do you want a surprise?
+<span class="gp">&gt; </span>nope
+...</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="surprise-solution">Surprise! Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Do you want a surprise?</span><span class="se">\n</span><span class="s">&gt; '</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span> <span class="ow">or</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'Yes'</span> <span class="ow">or</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'YES'</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">'SURPRISE!'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">'...'</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="speed-limit">Speed Limit</h3>
+
+  <p>Write a program that:</p>
+
+  <ul>
+    <li>asks the user for the speed limit</li>
+    <li>asks the user what their current speed is</li>
+    <li>depending on the speed that they&#39;re going, print out the following:
+      <ul>
+        <li>within 5 miles above or below speed limit
+          <ul>
+            <li>print out &quot;just right!&quot;</li>
+          </ul>
+        </li>
+        <li>more than 5 miles above speed limit
+          <ul>
+            <li>print out &quot;too fast!&quot;</li>
+          </ul>
+        </li>
+        <li>less than 5 miles below speed limit
+          <ul>
+            <li>print out &quot;too slow!&quot;</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="speed-limit---example-interaction">Speed Limit - Example Interaction</h3>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">What is the speed limit?
+<span class="gp">&gt; </span>55
+How fast are you goin<span class="s1">'?
+&gt; 60
+Your speed is just right!</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">What is the speed limit?
+<span class="gp">&gt; </span>55
+How fast are you goin<span class="s1">'?
+&gt; 61
+You'</span>re going too fast!</code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">What is the speed limit?
+<span class="gp">&gt; </span>55
+How fast are you goin<span class="s1">'?
+&gt; 49
+You'</span>re going too slow!</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="speed-limit-1">Speed Limit</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">speed_limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'What is the speed limit?</span><span class="se">\n</span><span class="s">&gt; '</span><span class="p">))</span>
+<span class="n">speed</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"How fast are you goin'?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">speed</span> <span class="o">&lt;</span> <span class="n">speed_limit</span> <span class="o">-</span> <span class="mi">5</span><span class="p">:</span>
+	<span class="n">message</span> <span class="o">=</span> <span class="s">"You're going too slow!"</span>
+<span class="k">elif</span> <span class="n">speed</span> <span class="o">&gt;=</span> <span class="n">speed_limit</span> <span class="o">-</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">speed</span> <span class="o">&lt;=</span> <span class="n">speed_limit</span> <span class="o">+</span> <span class="mi">5</span><span class="p">:</span>
+	<span class="n">message</span> <span class="o">=</span> <span class="s">"Your speed is just right!"</span>
+<span class="k">elif</span> <span class="n">speed</span> <span class="o">&gt;</span> <span class="n">speed_limit</span> <span class="o">+</span> <span class="mi">5</span><span class="p">:</span>
+	<span class="n">message</span> <span class="o">=</span> <span class="s">"You're going too fast!"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="elif">elif</h3>
+
+  <p><strong>elif</strong> chains together a series of conditions allowing multiple possible paths of execution.</p>
+
+  <ul>
+    <li>only one path will be executed</li>
+    <li>each condition is checked in order</li>
+    <li>if the first is false, the next condition is checked</li>
+    <li>this continues until the first true condition</li>
+    <li>the body of code associated with that condition is executed</li>
+    <li>the statement ends even if there are more conditions left</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="movie-ratings">Movie Ratings</h3>
+
+  <p>The following program asks for your age, and recommends which movie ratings you shouldn&#39;t see based on your age:</p>
+
+  <ul>
+    <li><strong>13 or over</strong>: don&#39;t watch movies that are rated R</li>
+    <li><strong>17 or over</strong>: watch anything you want!</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"How old are you?"</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">13</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"don't watch movies that are rated R!"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">17</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"watch anything you want!"</span><span class="p">)</span></code></pre></figure>
+
+  <p><strong>What is the output if someone enters 15&#8230; and 23??</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>15 &#8594; &quot;don&#39;t watch movies that are rated R!&quot;</li>
+      <li>23 &#8594; same&#8230; &quot;don&#39;t watch movies that are rated R!&quot;</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="movie-ratings-continued">Movie Ratings Continued</h3>
+
+  <p><strong>What are some ways of fixing this program?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"How old are you?"</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">13</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"don't watch movies that are rated R!"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">17</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"watch anything you want!"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="movie-ratings-implementations">Movie Ratings Implementations</h3>
+
+  <p>Reorder&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"How old are you?"</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">17</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"watch anything you want!"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">13</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"don't watch movies that are rated R!"</span><span class="p">)</span></code></pre></figure>
+
+  <p>Tighten up conditions&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"How old are you?"</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">13</span> <span class="ow">and</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"don't watch movies that are rated R!"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">17</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"watch anything you want!"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="im-late">I&#39;m Late!</h3>
+
+  <p><strong>What is the output of this program if the user enters: yes and 10&#8230; or just no</strong>? &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">late</span> <span class="o">=</span> <span class="s">"Are you late?</span><span class="se">\n</span><span class="s">&gt; "</span>
+<span class="k">if</span> <span class="n">late</span> <span class="o">==</span> <span class="s">"yes"</span><span class="p">:</span>
+	<span class="n">minutes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"How late are you (in minutes)?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+	<span class="k">if</span> <span class="n">minutes</span> <span class="o">&lt;=</span> <span class="mi">15</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"run!"</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"take the subway!"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"take your time..."</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>yes and 10 &#8594; run!</li>
+      <li>no &#8594; take your time</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="nesting">Nesting</h3>
+
+  <ul>
+    <li>in the previous example, we saw an if-else statement nested within another if-else</li>
+    <li>we can nest if, if-else, and if-elif statements within each other
+      <ul>
+        <li>sometimes nesting statements may make logic flow more comprehensible</li>
+        <li>but nesting too deeply may make code uneccessarily complex</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="aaaand-were-talking-about-cake-again">Aaaand&#8230; We&#39;re Talking About Cake Again</h2>
+</section>
+
+<section>
+  <h3 id="cake-three-ways">Cake Three Ways</h3>
+
+  <p>We went through a few different implementations of the following program:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+Do you want cake?
+&gt; yes
+Here, have some cake.
+
+Do you want cake?
+&gt; no
+No cake for you.
+
+Do you want cake?
+&gt; blearghhh
+I do not understand.
+"""</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="cake-with-consecutive-if-statements">Cake With Consecutive if Statements</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'yes'</span> <span class="ow">and</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'no'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="cake-with-nested-if-statements">Cake With Nested if Statements</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="cake-with-elif">Cake With elif</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""Ask me if I want cake, I *dare* you to."""</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+  <!--_ -->
+</section>
+
+<section>
+  <h3 id="old-enough-to-vote">Old Enough to Vote</h3>
+
+  <p><strong>Rewrite the condition in the following program so that it doesn&#39;t need the not operator</strong>: &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"How old are you?"</span><span class="p">))</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">21</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"you can vote!"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"How old are you?"</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">21</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"you can vote!"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="logical-opposites">Logical Opposites</h3>
+
+  <p>Sometimes there are multiple ways to write equivalent conditions.  For example, a way to get rid of not operators is to use the opposite logical operator and drop the not&#8230;</p>
+
+  <ul>
+    <li>the logical opposite of &gt; is &lt;=</li>
+    <li>the logical opposite of &lt; is &gt;=</li>
+  </ul>
+
+  <p>The following conditions are equivalent:</p>
+
+  <ul>
+    <li>age &gt;= 21, not age &lt; 21</li>
+    <li>not score &gt; 5, score &lt;= 5</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="string-formatting"><a href="string-formatting.html">String Formatting</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

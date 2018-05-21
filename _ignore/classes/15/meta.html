@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>About Class (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="about-class-17">About Class #17</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="topics">Topics</h3>
+
+  <p>In Depth&#8230;</p>
+
+  <ul>
+    <li>Strings as Compound Data Types
+      <ul>
+        <li>Every character in a string</li>
+        <li>Slices</li>
+        <li>In and Not In</li>
+      </ul>
+    </li>
+    <li>Strings as Objects
+      <ul>
+        <li>String Methods</li>
+        <li>String Functions</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="about-the-second-midterm">About the <em>Second</em> Midterm</h3>
+
+  <ul>
+    <li><strong>midterm #2</strong> is in just over two weeks - <strong>Thursday, 4/16</strong>
+      <ul>
+        <li>again, it takes place in class, so come on time!</li>
+        <li>there are <strong>no make up exams if you miss it!</strong></li>
+        <li>if you cannot make it on the scheduled date because of religious observances, please let me know in advance</li>
+      </ul>
+    </li>
+    <li>we&#39;ll discuss the 2nd midterm in further detail next week</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="homework">Homework</h3>
+
+  <ul>
+    <li><strong>Homework #5</strong> grades to be posted by end of this week</li>
+    <li><strong>Homework #7</strong> is due Friday, April 3rd, no grace period</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="selected-homework-solutions">Selected Homework Solutions</h3>
+
+  <p>For homework #5 (nested loops):</p>
+
+  <ul>
+    <li><a href="../../resources/code/hw5/slashes.py">slashes.py</a></li>
+    <li><a href="../../resources/code/hw5/slashes_2.py">another version of slashes.py</a></li>
+    <li><a href="../../resources/code/hw5/snake_eyes.py">snake_eyes.py</a></li>
+    <li><a href="../../resources/code/hw5/stars.py">stars.py</a></li>
+    <li><a href="../../resources/code/hw5/lots_of_stars.py">lots_of_stars.py</a></li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="reviewing-types-conditionals-loops-and-functions">Reviewing Types, Conditionals, Loops, and Functions</h3>
+
+  <p>Want a <strong>refresher</strong> on some earlier topics? Need help <strong>catching up</strong>? Loved the earlier material so much, you want to hear about it again?</p>
+
+  <ul>
+    <li>Email me today or tomorrow&#8230;</li>
+    <li>And if I have enough interest, I&#39;ll try to have something set up for Thursday evening or Friday morning.</li>
+    <li><a href="../../">Of course, I&#39;m still holding regular office hours</a></li>
+  </ul>
+
+</section>
+
+<section>
+
+  <h2 id="scope-recap"><a href="review_scope.html">Scope Recap</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

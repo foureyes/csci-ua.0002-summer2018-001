@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Operations and Variables (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="operations-and-variables">Operations and Variables</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="operations-on-strings-and-numeric-types">Operations on Strings and Numeric Types</h2>
+</section>
+
+<section>
+  <h3 id="int-operations">int operations</h3>
+  <aside>The Usual...</aside>
+
+  <p>As you&#39;d expect: addition, subtraction and multiplication &#8594;</p>
+
+  <ul>
+    <li>add - <strong>+</strong></li>
+    <li>subtract - <strong>-</strong></li>
+    <li>multiply <strong>*</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="division-is-special">Division is Special</h3>
+
+  <ul>
+    <li>the division operator is <strong>/</strong></li>
+    <li><strong>what do you think 5/2 gives</strong> &#8594;</li>
+    <li><strong>what type is the result?</strong> &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; 5/2
+2.5
+&gt;&gt;&gt; type(5/2)
+&lt;class 'float'&gt;
+&gt;&gt;&gt; </code></pre></figure>
+
+    <ul>
+      <li><strong>note that even if numbers divide evenly, you still get back a float</strong>: &#8594;</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; 12/4
+3.0
+&gt;&gt;&gt; type(12/4)
+&lt;class 'float'&gt;
+&gt;&gt;&gt; </code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="we-dont-need-no-decimal-points">We Don&#39;t Need No Decimal Points</h3>
+  <aside>Integer Division</aside>
+
+  <ul>
+    <li>the <strong>integer division</strong> operator is <strong>//</strong> (double forward slash)</li>
+    <li>it will always give back an integer: 21//10 &#8594; 2</li>
+    <li>if the result is a float, it will go to the nearest integer to the left on the number line (or&#8230; more simply put, just round down)!</li>
+    <li><strong>what will 5//2 give back?</strong></li>
+    <li><strong>what will -5//2 give back?</strong></li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; 5//2
+2
+&gt;&gt;&gt; -5//2
+-3</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="modulo-operator-remainder">Modulo Operator (Remainder)</h3>
+  <aside>What's Left Over?</aside>
+  <ul>
+    <li>the remainder operator is % (the percent symbol)</li>
+    <li><strong>what would 5%2 give back?</strong> &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; 5%2
+1</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="exponentiation">Exponentiation</h3>
+  <aside>We NEED MORE STARS</aside>
+  <ul>
+    <li>the exponentiation operator is <strong>**</strong> (two asterisks)</li>
+    <li><strong>what do we get for 2**2</strong>? &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; 2**2
+4</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="order-of-operations">Order of Operations</h3>
+  <aside>Too Many Operators!  What To Do First?</aside>
+
+  <ul>
+    <li>as you would expect (remember PEMDAS?)</li>
+    <li><strong>what does 12 + 10 / 5  give?</strong> &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; 12 + 10 / 5
+14.0</code></pre></figure>
+
+    <p><strong>BTW, what type did we get back?</strong></p>
+
+    <p>float! (division, even with integers, gives back floats)</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="parentheses">(Parentheses)</h3>
+  <aside>(I Use Them A Lot)</aside>
+  <ul>
+    <li>you can use parentheses to group expressions&#8230;</li>
+    <li>this will affect odrer of operations</li>
+    <li><strong>what will (6 + 4) * 5 return?</strong> &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; (6 + 4) * 5
+50</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="you-could-always-use-it-as-a-calculator">You Could Always Use It As a Calculator</h3>
+  <aside>A Quick Activity</aside>
+
+  <p><strong>Translate this formula into Python code</strong> &#8594;</p>
+
+  <ul>
+    <li>take the fraction 9 over 5 and multiply it by 37&#8230; then add 32</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">(</span><span class="mi">9</span> <span class="o">/</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">37</span> <span class="o">+</span> <span class="mi">32</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="str-operations">str Operations</h2>
+</section>
+
+<section>
+  <h3 id="multiplication">Multiplication!?</h3>
+  <ul>
+    <li>the multiplication operator is <strong>*</strong></li>
+    <li>it returns a new string with the original string duplicated the number of times specified by the operand on the right side</li>
+    <li><strong>what would &quot;hey&quot; * 3 return?</strong> &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; "hey" * 3
+'heyheyhey'</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="string-concatenation">String Concatenation</h3>
+  <ul>
+    <li>use the <strong>+</strong> to stitch together strings</li>
+    <li>it&#39;s basically just adding strings together</li>
+    <li>example: print(&quot;knocked &quot; + &quot;my&quot; + &quot;socks&quot; + &quot;off&quot;) &#8594;</li>
+    <li>why are the words all smashed together?</li>
+    <li>how would we fix it?</li>
+    <li><strong>let&#39;s try different types! - does it work?</strong> &#8594;
+      <ul>
+        <li>with an int? try: 3 + &quot; blind mice&quot; &#8594;</li>
+        <li>with a float?</li>
+        <li>what kind of error are we getting?</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="incremental">
+
+    <ul>
+      <li>string concatenation only works <strong>when both operands are strings</strong></li>
+    </ul>
+
+  </div>
+
+</section>
+
+<section>
+  <h2 id="lets-repeat-string-concatenation-requires-both-operands-to-be-strings">Let&#39;s repeat: string concatenation requires both operands to be strings</h2>
+
+  <aside>Otherwise you get an error!</aside>
+</section>
+
+<section>
+  <h3 id="lets-fix-it">Let&#39;s Fix It!</h3>
+  <aside>Type Conversion...</aside>
+
+  <p>You can change from one type to another using <strong>functions</strong> of the same name as the <strong>type</strong> you are trying to convert to.  Let&#39;s look at what autocomplete says about the following functions and demo them.  &#8594;</p>
+
+  <ul>
+    <li><strong>int</strong>(), <strong>str</strong>(), and <strong>float</strong>()</li>
+    <li>unlike print, these functions <strong>return a value</strong> to your program!</li>
+    <li>this is called <strong>type conversion</strong> or <strong>casting</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="and-this-helps-how">And This Helps&#8230; How?</h3>
+  <p><strong>Let&#39;s fix our previous string concatenation</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">3 + " blind mice"</code></pre></figure>
+
+  <p>(of course, this is contrived, since we know that 3 is an int, and we could have just wrapped it in quotes: &#39;3&#39;&#8230; but imagine if we didn&#39;t know the type beforehand!)</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; str(3) + " blind mice"
+'3 blind mice'</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="review">Review</h3>
+  <ul>
+    <li>what operators do we use for exponentiation and integer division?</li>
+    <li>what does -10//3 give back?</li>
+    <li>what&#39;s an easy way of creating a string that has 100 exclamation points in it?</li>
+    <li>what&#39;s string concatenation?</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="a-quick-summary-of-operators-for-numeric-types">A Quick Summary of Operators for Numeric Types</h3>
+
+  <p><strong>Name as many operators that work on numeric types as you can:</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>+</strong> - addition</li>
+      <li><strong>-</strong> - subtraction</li>
+      <li><strong>*</strong> - multiplication</li>
+      <li><strong>/</strong> - division (always gives back float)</li>
+      <li><strong>//</strong> - integer division</li>
+      <li><strong>%</strong> - modulo (remainder)</li>
+      <li><strong>**</strong> - exponentiation</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="a-quick-summary-of-string-operators">A Quick Summary of String Operators</h3>
+
+  <p><strong>Name as many operators that work on strings as you can:</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>+</strong> - concatenation (addition), only works when <strong>both operands are strings</strong></li>
+      <li><strong>*</strong> - repetition (multiplication), only works when one operand is a <strong>str</strong> and the other is an <strong>int</strong></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2 id="variables">Variables</h2>
+</section>
+
+<section>
+  <h3 id="whats-a-variable">What&#39;s a Variable?</h3>
+  <ul>
+    <li><strong>variable</strong> - name that refers to a value</li>
+    <li>this terminology is important; very specific&#8230; <strong>name</strong> and <strong>value</strong></li>
+    <li>we can now use that name instead of the explicit value</li>
+    <li>sometimes you&#39;ll hear me say the string &quot;literal&quot; - representation of a value within a program&#8230; i mean&#8230; the thing in quotes</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="so-how-do-variables-actually-work">So How Do Variables Actually Work?</h3>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">some_variable_name = "a value"</code></pre></figure>
+
+  <ul>
+    <li>this is an <strong>assignment statement</strong> - binds a value to a name</li>
+    <li>the equals sign <strong>assignment token</strong> - the &quot;operator&quot; that we use to bind a name to a value
+      <ul>
+        <li>name on left</li>
+        <li>value on right</li>
+        <li>eeezy&#8230;. just like maths</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="another-aside---interactive-shell">Another Aside - Interactive Shell</h3>
+  <p>Whenever you type something in the interactive shell, it will always return a value. &#8594;</p>
+
+  <ul>
+    <li>a value returns a value</li>
+    <li>a variable returns a value</li>
+    <li>a function can return a value</li>
+    <li>if a function doesn&#39;t actually return a value, like print, the resulting value will be None (NoneType)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="some-more-miscellaneous-comments">Some More Miscellaneous Comments</h3>
+  <ul>
+    <li>how can I tell if something is printed vs a value is returned?
+      <ul>
+        <li>returning a string shows the string in quotes, while printing displays the string without quotes</li>
+        <li>confusing for other types, just know that each line <em>gives back a value</em> to your program, and consequently that value gets shown after each line is entered</li>
+      </ul>
+    </li>
+    <li>another btw, <strong>metasyntactic variables</strong>:
+      <ul>
+        <li>typical to use nonsense names such as foo, bar, baz as variable names in examples</li>
+        <li>don&#39;t use these names, though; use more meaningful names when you write programs!</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="variables-that-arent-defined-yet">Variables That Aren&#39;t Defined Yet</h3>
+  <ul>
+    <li><strong>what happens when you use a variable that doesn&#39;t exist?</strong> &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; foo
+Traceback (most recent call last):
+  File "&lt;pyshell#0&gt;", line 1, in &lt;module&gt;
+    foo
+NameError: name 'foo' is not defined
+&gt;&gt;&gt; </code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="more-about-reassignment">More About Reassignment</h3>
+
+  <ul>
+    <li>you can reassign or rebind</li>
+    <li><strong>let&#39;s see that in action</strong> &#8594;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; a = 23
+&gt;&gt;&gt; a
+23
+&gt;&gt;&gt; a = "foo"</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="naming-variables">Naming Variables</h3>
+  <ul>
+    <li>you can make them as long as you want&#8230; though I suppose it could crash your computer
+      <ul>
+        <li><strong>what&#39;s an easy way to create a long variable name?</strong> &#8594;</li>
+        <li><strong>btw, you can autocomplete in the shell by using tab</strong> &#8594;</li>
+      </ul>
+    </li>
+    <li>names can only consist of <strong>alphanumeric</strong> (numbers and letters) characters and the <strong>underscore</strong></li>
+    <li>the <strong>first character</strong> has to be a <strong>letter or an underscore</strong></li>
+    <li><strong>case sensitive</strong> - case matters</li>
+    <li>the name can&#39;t be a keyword or reserved word</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="am-i-a-valid-name">Am I a Valid Name?</h3>
+
+  <p><strong>Which of the following are valid variable names in Python?</strong></p>
+
+  <ol>
+    <li>_foo</li>
+    <li>1_foo</li>
+    <li>foo</li>
+    <li>1foo</li>
+    <li>$foo</li>
+  </ol>
+
+  <div class="incremental">
+    <p>1 and 3 are valid variable names.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-actually-use-some-variables">Let&#39;s Actually Use Some Variables</h3>
+
+  <p><strong>Try the following on your own:</strong> &#8594;</p>
+
+  <ul>
+    <li>create a variable called <strong>exclaim</strong>, set it eqaul to <strong>&quot;!!!&quot;</strong> and <strong>print out the variable</strong></li>
+    <li>create 2 variables, <strong>length</strong> and <strong>width</strong>&#8230;
+      <ul>
+        <li>set them both equal <strong>25</strong> and <strong>8</strong> respectively</li>
+        <li>multiply both variables and and store the result in a variable called <strong>area</strong></li>
+        <li><strong>print out the result</strong></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="user-input"><a href="user-input.html">User Input</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

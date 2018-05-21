@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Homework Solutions (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="selected-homework-solutions">Selected Homework Solutions</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="selected-homework-solutions-1">Selected Homework Solutions</h3>
+
+  <!-- 1. battleship.py -->
+  <ol>
+    <li>unique.py</li>
+    <li>translate.py</li>
+  </ol>
+
+</section>
+
+<!--
+<section markdown="block">
+##  [battleship.py](../../../homework/hw9/battleship.py)
+</section>
+
+<section markdown="block">
+###  How Do We "Model" This Game? 
+
+__What kind of data do we need, how is it represented?__ &rarr;
+
+<div class="incremental" markdown="block">
+1. the board - a list of lists of strings!
+2. ...perhaps the dimension of the board? - an int
+3. the location of the ship - maybe two ints, or a list of length 2
+4. user input - a comma separated string
+5. the actual coordinates - maybe two ints, or a list of length 2
+</div>
+</section>
+
+<section markdown="block">
+###  Breaking Down the Problem
+
+__What are the major pieces or components of the game?__ &rarr;
+
+<div class="incremental" markdown="block">
+1. setup - creating and printing the board, hiding the ship
+2. the main game loop...
+	* getting user input and changing it to coordinates
+	* checking if the coordinates hit and ending the game
+</div>
+</section>
+
+<section markdown="block">
+###  Setup
+
+__Maybe we'll create a couple of functions for this.__ &rarr;
+
+<div class="incremental" markdown="block">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">create_board</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+	<span class="n">board</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+		<span class="n">board</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s">'o'</span><span class="p">]</span> <span class="o">*</span> <span class="n">size</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">board</span>
+		
+<span class="k">def</span> <span class="nf">print_board</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">board</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+
+<span class="n">board_size</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">board</span> <span class="o">=</span> <span class="n">create_board</span><span class="p">(</span><span class="n">board_size</span><span class="p">)</span>
+<span class="n">boat_row</span><span class="p">,</span> <span class="n">boat_col</span>  <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">board_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">board_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">player_move</span> <span class="o">=</span> <span class="bp">None</span></code></pre></figure>
+
+</div>
+</section>
+
+<section markdown="block">
+###  Main Game Loop Pseudocode
+
+__Write a pseudocode version of the main game loop__ &rarr;
+
+<div class="incremental" markdown="block">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+while the player hasn't quit
+	print out the board
+	ask for coordinates
+	check if coordinates hit the boat
+	if they did... mark boat with, end the game and print out the board again
+"""</span></code></pre></figure>
+
+</div>
+</section>
+
+<section markdown="block">
+###  Main Game Loop
+
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">boat_row</span><span class="p">,</span> <span class="n">boat_col</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="n">player_move</span> <span class="o">!=</span> <span class="s">'q'</span><span class="p">:</span>
+    <span class="n">print_board</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s">'Enter row and col (each 0-</span><span class="si">%</span><span class="s">s) separated by a comma  </span><span class="se">\n</span><span class="s">&gt; '</span> <span class="o">%</span> <span class="p">(</span><span class="n">board_size</span><span class="p">)</span>
+    <span class="n">player_move</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">player_move</span> <span class="o">!=</span> <span class="s">'q'</span><span class="p">:</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="n">player_move</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">','</span><span class="p">)</span>
+        <span class="n">row</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">board</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="s">' '</span>
+        <span class="k">if</span> <span class="n">row</span> <span class="o">==</span> <span class="n">boat_row</span> <span class="ow">and</span> <span class="n">col</span> <span class="o">==</span> <span class="n">boat_col</span><span class="p">:</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="s">"x"</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">The boat was at row </span><span class="si">%</span><span class="s">s and column </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">boat_row</span><span class="p">,</span> <span class="n">boat_col</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"YOU WON!!!!</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+            <span class="k">break</span>
+<span class="n">print_board</span><span class="p">(</span><span class="n">board</span><span class="p">)</span></code></pre></figure>
+
+</section>
+-->
+
+<section>
+  <h2 id="uniquepy"><a href="../../../homework/hw9/unique.py">unique.py</a></h2>
+</section>
+
+<section>
+  <h3 id="a-plan-to-get-unique-values">A Plan to Get Unique Values</h3>
+
+  <p><strong>We&#39;re writing a function.  Assertions please!</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">get_unique_values</span><span class="p">([</span><span class="s">'foo'</span><span class="p">,</span> <span class="s">'foo'</span><span class="p">,</span> <span class="s">'bar'</span><span class="p">,</span> <span class="s">'baz'</span><span class="p">,</span> <span class="s">'bar'</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">get_unique_values</span><span class="p">([</span><span class="s">"just me"</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">get_unique_values</span><span class="p">([]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">get_unique_values</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="unique---pseudocode">Unique - Pseudocode</h3>
+
+  <p><strong>Let&#39;s sketch out how this function should work using pseudocode</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+create a new list called unique; it'll be our list with no duplicates
+it'll be empty to start
+go through every element in the list that's passed in
+	if the element isn't already in the unique list...
+		add it
+	otherwise... don't do anything with it
+give back the unique list
+"""</span></code></pre></figure>
+
+    <p><strong>Let&#39;s try implementing this!</strong></p>
+  </div>
+</section>
+
+<section>
+  <h2 id="translatepassagepy"><a href="../../../homework/hw8/translate_passage.py">translate_passage.py</a></h2>
+</section>
+
+<section>
+  <h3 id="translate-passage">Translate Passage</h3>
+
+  <p>We can break this down into two components:</p>
+
+  <ol>
+    <li>a function that takes a word and translates it to <a href="../../../homework/hw8/pig_latin.py">pig latin</a></li>
+    <li>a function that takes a passage and calls our first function on every word in the passage</li>
+  </ol>
+
+  <p><strong>Let&#39;s write both functions&#8230; starting with assertions and pseudocode, and finally actual implementation</strong> &#8594;</p>
+</section>
+
+<section>
+  <h3 id="pig-latin">Pig Latin</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">to_pig_latin</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
+	<span class="s">"""translates word to pig latin"""</span>
+
+	<span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+	<span class="k">if</span> <span class="ow">not</span> <span class="n">w</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+		<span class="k">return</span> <span class="n">w</span>
+
+	<span class="k">if</span> <span class="n">w</span> <span class="o">==</span> <span class="s">""</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">w</span>
+	
+	<span class="k">if</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="s">'aeiou'</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">w</span> <span class="o">+</span> <span class="s">'way'</span>
+
+	<span class="n">first_two</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+	<span class="k">if</span> <span class="n">first_two</span> <span class="o">==</span> <span class="s">'qu'</span> <span class="ow">or</span> <span class="n">first_two</span> <span class="o">==</span> <span class="s">'ch'</span> <span class="ow">or</span> <span class="n">first_two</span> <span class="o">==</span> <span class="s">'sh'</span> <span class="ow">or</span> <span class="n">first_two</span> <span class="o">==</span> <span class="s">'th'</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">+</span> <span class="n">first_two</span> <span class="o">+</span> <span class="s">"ay"</span>
+
+	<span class="k">return</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s">"ay"</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="translate-passage-1">Translate Passage</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">translate_passage</span><span class="p">(</span><span class="n">passage</span><span class="p">):</span>
+	<span class="s">"""translates text into pig latin"""</span>
+	<span class="n">translation</span> <span class="o">=</span> <span class="s">""</span>
+	<span class="n">word</span> <span class="o">=</span> <span class="s">""</span>
+	<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">passage</span><span class="p">:</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="n">c</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+			<span class="n">translation</span> <span class="o">+=</span> <span class="n">to_pig_latin</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+			<span class="n">translation</span> <span class="o">+=</span> <span class="n">c</span>
+			<span class="n">word</span> <span class="o">=</span> <span class="s">""</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">word</span> <span class="o">+=</span> <span class="n">c</span>
+	<span class="k">return</span> <span class="n">translation</span>
+
+<span class="k">assert</span> <span class="s">"ethay estbay imetay!</span><span class="se">\n</span><span class="s">everway!"</span> <span class="o">==</span> <span class="n">translate_passage</span><span class="p">(</span><span class="s">"the best time!</span><span class="se">\n</span><span class="s">EVER!"</span><span class="p">),</span> <span class="s">"translation works"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">translate_passage</span><span class="p">(</span><span class="n">passage</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="additional-solutions">Additional Solutions</h3>
+
+  <p>Solutions from homeworks 5 through 9 are on <a href="../..//schedule.html#midterm2hw">the materials page for this class</a>.</p>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

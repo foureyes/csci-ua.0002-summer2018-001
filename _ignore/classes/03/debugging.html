@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Errors and Debugging (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="errors-and-debugging">Errors and Debugging</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="ugh-my-program-doesnt-work">Ugh. My Program Doesn&#39;t Work</h2>
+  <aside>What do I do?</aside>
+</section>
+
+<section>
+  <h3 id="types-of-errors">Types of Errors</h3>
+
+  <p>Let&#39;s take a look at some things that may prevent your program from <em>working</em>.</p>
+
+  <p>Based on what we&#39;ve seen in the previous classes, the online module, and (hopefully) homework #1, what are some mistakes / errors that you can make while programming?</p>
+
+  <p><strong>Can we categorize these errors?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>syntax errors</li>
+      <li>runtime errors</li>
+      <li>logic errors</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="syntax-errors">Syntax Errors</h3>
+
+  <p>A <strong>syntax error</strong> is an error caused when your program does not follow the rules that define the allowable combinations of characters/symbols for a correctly written program in a particular language.</p>
+
+  <p>If you have a syntax error, your program cannot even be executed because the Python interpreter can&#39;t understand your program! <strong>What are some examples of syntax errors?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>unbalanced quotation marks: <code>print("hello world)</code></li>
+      <li>an invalid variable name: <code>$my_var = "foo"</code></li>
+      <li>etc.</li>
+    </ul>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="runtime-errors">Runtime Errors</h3>
+
+  <p>A <strong>runtime error</strong> is an error that occurs while a syntactically correct program is running. Runtime errors will cause your program to stop (<em>crash</em>) if you do not have special code to handle them.</p>
+
+  <p><strong>What are some examples of runtime errors?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>adding a string to an int: <code>print(5 + "foo")</code></li>
+      <li>dividing by 0: <code>print(5 / 0)</code></li>
+      <li>etc.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="logic-errors">Logic Errors</h3>
+
+  <p>A <strong>logic error</strong> is in an error that occurs in program that is syntactically correct, does not contain runtime errors&#8230; but behaves in a way that is unintended or unanticipated. That is, it does not achieve the goals of what the program is meant to do.</p>
+
+  <p><strong>Find the logic error below.</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  ask the user for three integers</span>
+<span class="c">#  print out the sum of all three integers</span>
+<span class="n">num1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Give me the first integer</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Give me the second integer</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+<span class="n">num3</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Give me the third integer</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span> 
+
+<span class="k">print</span><span class="p">(</span><span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span> <span class="o">+</span> <span class="n">num2</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="ok-so-how-do-we-fix-errors">Ok. So How Do We Fix Errors?</h3>
+
+  <ol>
+    <li>don&#39;t make mistakes in the first place :P (obvs&#8230; but how?)</li>
+    <li>debugging</li>
+  </ol>
+</section>
+<section>
+  <h3 id="how-to-avoid-bugs">How to Avoid Bugs</h3>
+
+  <p><strong>What are some ways of avoiding bugs?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>careful planning and design</li>
+      <li>set small, incremental goals for your program (don&#39;t try and write large
+programs all at once)</li>
+      <li>stop and test your work <strong>often</strong> as you go</li>
+      <li>use comments to ignore lines that are giving you trouble, but you want to save for later (<strong>let&#39;s see this in action based on our previous code</strong> &#8594;)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="debugging-overview">Debugging Overview</h3>
+
+  <p><strong>What are some ways that you can isolate and find the root cause of errors (we know a couple, we&#39;ll introduce a few more)?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ol>
+      <li>go through your code line-by-line</li>
+      <li>want to know what&#39;s going on? print it out?</li>
+      <li>use the debugger</li>
+      <li>use the interactive shell</li>
+      <li>use python tutor</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h3 id="working-through-code-line-by-line">Working Through Code Line-by-Line</h3>
+
+  <p>This is the simplest, and most important way of finding bugs. <strong>Just read your code!</strong> &#8594;</p>
+
+  <p>Reading through this code carefully would reveal the error!</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  ask the user for three integers</span>
+<span class="c">#  print out the sum</span>
+<span class="n">num1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Give me the first integer</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Give me the second integer</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+<span class="n">num3</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Give me the third integer</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span> 
+
+<span class="k">print</span><span class="p">(</span><span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span> <span class="o">+</span> <span class="n">num2</span><span class="p">)</span></code></pre></figure>
+
+  <p>This is the most important method of debugging because <strong>this helps increase your code comprehension skills</strong>. Also, you won&#39;t have a computer with you during the exam.</p>
+
+</section>
+
+<section>
+  <h3 id="print-stuff-out">Print Stuff Out!</h3>
+
+  <p>Print out the values of variables to help you isolate where the issue is:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span> <span class="n">data</span><span class="o">-</span><span class="n">trim</span> <span class="n">contenteditable</span><span class="o">&gt;</span>
+<span class="n">num1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Give me the first integer</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Give me the second integer</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+<span class="n">num3</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Give me the third integer</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span> 
+
+<span class="o">//</span> <span class="n">let</span><span class="s">'s see what'</span><span class="n">s</span> <span class="ow">in</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">that</span> <span class="n">we</span> <span class="n">asked</span> <span class="k">for</span><span class="err">!</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">,</span> <span class="n">num3</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span> <span class="o">+</span> <span class="n">num2</span><span class="p">)</span>
+<span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span></code></pre></figure>
+
+  <p>We&#39;ll see that the input looks correct&#8230; so clearly, the issue is in the calculation</p>
+</section>
+
+<section>
+  <h3 id="use-the-debugger">Use the Debugger</h3>
+
+  <p>A <strong>debugger</strong> is software that lets you step through your code line by line&#8230; and it allows you to inspect the values of variables that exist up to a specific line.</p>
+
+  <ul>
+    <li>enable the debugger window by clicking on the interactive shell window first</li>
+    <li>Debug &#8594; debugger</li>
+    <li>make sure that all four checkboxes are checked: stack, locals, source and globals</li>
+    <li>run your program (your program will pause immediately)</li>
+    <li>then, continually click on &quot;Over&quot; to step through our program line-by-line (we won&#39;t be using step or out yet)</li>
+    <li>note the values of the variables on the bottom (and the line of code on the top)</li>
+    <li>(Go and quit stop your debugging session)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="python-tutor">Python Tutor</h3>
+
+  <p><a href="pythontutor.com">Python Tutor</a> is similar to IDLE&#39;s debugger, but you access it online.</p>
+
+  <ul>
+    <li>go to <a href="http://pythontutor.com/">pythontutor.com</a></li>
+    <li>click on &quot;Start writing and visualizing now&quot;&#8230;</li>
+    <li>make sure that you choose Python 3.x from the dropdown</li>
+    <li>step through your program line-by-line!</li>
+  </ul>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

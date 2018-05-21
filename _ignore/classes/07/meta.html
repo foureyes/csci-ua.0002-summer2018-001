@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>About Class (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="about-class-7">About Class #7</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="homework">Homework</h3>
+
+  <ul>
+    <li>homework #1 grades posted</li>
+    <li><a href="../../schedule.html#homework3">homework #3</a> is due on Wednesday!</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="todays-topics">Today&#39;s Topics</h3>
+
+  <ul>
+    <li>while loops (that&#39;s it!)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="midterm-1">Midterm #1</h3>
+
+  <p>Midterm #1 is in <strong>two weeks:</strong> - <strong>TUE 2/28</strong> &#8594;</p>
+
+  <ul>
+    <li>it takes place <strong>in class</strong>, so come on time</li>
+    <li><strong>review questions will be posted</strong> in the next day or two</li>
+    <li><strong>class before midterm will be for dedicated review</strong></li>
+    <li>there are <strong>no make up exams</strong> if you miss it!</li>
+    <li>if you cannot make it on the scheduled date because of religious observances, please let me know in advance</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="a-reminder-we-have-tutors">A Reminder: We Have Tutors!</h3>
+
+  <p>Again, <a href="../../tutoring.html">the &quot;tutoring&quot;</a> page has info regarding tutors and their schedule.</p>
+
+  <p>(and there&#39;s an email tutor as well!)</p>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

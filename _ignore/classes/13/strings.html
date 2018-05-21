@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Strings (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="strings">Strings</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="string-delimiters">String Delimiters</h3>
+  <p><strong>How do we know we have a string?  What are the ways we can create a <em>string literal</em>? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>&#39;single quotes&#39;</li>
+      <li>&quot;double quotes&quot;</li>
+      <li>&quot;"&quot;triple double quotes!!!&quot;&quot;&quot;</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="strings-vs-variables">Strings vs Variables</h3>
+
+  <p><strong>What&#39;s the difference between lines two and three of the following code? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">foo</span> <span class="o">=</span> <span class="s">"bar"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>   <span class="c"># line 2</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"foo"</span><span class="p">)</span> <span class="c"># line 3</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>the first line prints the variable foo, resulting output is &quot;bar&quot;</li>
+      <li>the second line prints the string &quot;foo&quot;, resulting output is &quot;foo&quot;</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="string-operations">String Operations</h3>
+  <p><strong>Name some operations that we can perform on strings &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>addition / concatenation: <strong>+</strong></li>
+      <li>multiplication: <strong>*</strong></li>
+      <li>string formatting: <strong>%</strong></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="strings-revisited">Strings Revisited</h3>
+  <ul>
+    <li>we&#39;ve been looking at strings as single things (single objects)</li>
+    <li>but really, they&#39;re made of a bunch of smaller pieces</li>
+    <li><strong>what are strings made of?&#8594;</strong></li>
+  </ul>
+
+  <div class="incremental">
+    <p>zero or more characters!</p>
+
+    <p><strong>what&#39;s special about the characters in a string?  are they jumbled or in a specific order? &#8594;</strong></p>
+
+    <ul>
+      <li>strings are specifically a <strong>sequence</strong> of characters</li>
+      <li>that is, they&#39;re ordered - &quot;cat&quot;&#8230; c is first, a is second, t is third</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="strings-revisited-continued">Strings Revisited Continued</h3>
+  <ul>
+    <li>a string is a <strong>compound data type</strong></li>
+    <li>a <strong>compound data type</strong> is a type in which the values are composed of zero or more other values.</li>
+    <li>strings are the first data type that we&#39;ll see that&#39;s made of other types&#8230;</li>
+    <li>(we&#39;ll see lists in the next class)</li>
+    <li>we&#39;ve been using strings as a whole&#8230; (and we&#39;ll explore that further)</li>
+    <li>but, next we&#39;ll treat strings as a collection of characters&#8230;</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="strings-as-a-list-of-characters"><a href="strings_as_list.html">Strings as a List of Characters</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

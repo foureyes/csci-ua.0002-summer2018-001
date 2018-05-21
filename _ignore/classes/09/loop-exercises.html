@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Loop Exercises (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="loop-exercises">Loop Exercises</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="fours-and-roots">Fours and Roots</h3>
+
+  <p><strong>Print out the square root of every multiple of 4 that&#39;s less than 65, but greater than 3</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>    </code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="an-atm-program">An ATM Program</h3>
+
+  <p><strong>Create a program that simulates an ATM</strong> &#8594;</p>
+
+  <ul>
+    <li>the program displays your current balance, which starts at 5</li>
+    <li>it repeatedly asks for one of three commands: deposit, withdraw or quit
+      <ul>
+        <li>d or D for deposit</li>
+        <li>w or W for withdraw</li>
+        <li>q or Q to quit</li>
+      </ul>
+    </li>
+    <li>if the command is withdraw or deposit, the program asks for an amount (that will be added/subtracted)</li>
+    <li>if the command is q, the program stops running</li>
+    <li>if the command is not recognized, print &quot;huh?&quot;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="example-output">Example Output</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Your</span> <span class="n">current</span> <span class="n">balance</span> <span class="ow">is</span> <span class="mi">5</span>
+<span class="p">(</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span><span class="n">eposit</span><span class="p">,</span> <span class="p">(</span><span class="n">W</span><span class="o">/</span><span class="n">w</span><span class="p">)</span><span class="n">ithdraw</span> <span class="ow">or</span> <span class="p">(</span><span class="n">Q</span><span class="o">/</span><span class="n">q</span><span class="p">)</span><span class="n">uit</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">D</span>
+<span class="n">how</span> <span class="n">much</span> <span class="n">would</span> <span class="n">you</span> <span class="n">like</span> <span class="n">to</span> <span class="n">deposit</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">10</span>
+<span class="n">Your</span> <span class="n">current</span> <span class="n">balance</span> <span class="ow">is</span> <span class="mi">15</span>
+<span class="p">(</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span><span class="n">eposit</span><span class="p">,</span> <span class="p">(</span><span class="n">W</span><span class="o">/</span><span class="n">w</span><span class="p">)</span><span class="n">ithdraw</span> <span class="ow">or</span> <span class="p">(</span><span class="n">Q</span><span class="o">/</span><span class="n">q</span><span class="p">)</span><span class="n">uit</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">d</span>
+<span class="n">how</span> <span class="n">much</span> <span class="n">would</span> <span class="n">you</span> <span class="n">like</span> <span class="n">to</span> <span class="n">deposit</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">2</span>
+<span class="n">Your</span> <span class="n">current</span> <span class="n">balance</span> <span class="ow">is</span> <span class="mi">17</span>
+<span class="p">(</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span><span class="n">eposit</span><span class="p">,</span> <span class="p">(</span><span class="n">W</span><span class="o">/</span><span class="n">w</span><span class="p">)</span><span class="n">ithdraw</span> <span class="ow">or</span> <span class="p">(</span><span class="n">Q</span><span class="o">/</span><span class="n">q</span><span class="p">)</span><span class="n">uit</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">w</span>
+<span class="n">how</span> <span class="n">much</span> <span class="n">would</span> <span class="n">you</span> <span class="n">like</span> <span class="n">to</span> <span class="n">withdraw</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">8</span>
+<span class="n">Your</span> <span class="n">current</span> <span class="n">balance</span> <span class="ow">is</span> <span class="mi">9</span>
+<span class="p">(</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span><span class="n">eposit</span><span class="p">,</span> <span class="p">(</span><span class="n">W</span><span class="o">/</span><span class="n">w</span><span class="p">)</span><span class="n">ithdraw</span> <span class="ow">or</span> <span class="p">(</span><span class="n">Q</span><span class="o">/</span><span class="n">q</span><span class="p">)</span><span class="n">uit</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">blah</span>
+<span class="n">huh</span><span class="err">?</span>
+<span class="n">Your</span> <span class="n">current</span> <span class="n">balance</span> <span class="ow">is</span> <span class="mi">9</span>
+<span class="p">(</span><span class="n">D</span><span class="o">/</span><span class="n">d</span><span class="p">)</span><span class="n">eposit</span><span class="p">,</span> <span class="p">(</span><span class="n">W</span><span class="o">/</span><span class="n">w</span><span class="p">)</span><span class="n">ithdraw</span> <span class="ow">or</span> <span class="p">(</span><span class="n">Q</span><span class="o">/</span><span class="n">q</span><span class="p">)</span><span class="n">uit</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">q</span>
+<span class="n">k</span><span class="p">,</span> <span class="n">thx</span> <span class="n">bye</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="example-implementation">Example Implementation</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">balance</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">command</span> <span class="o">=</span> <span class="s">''</span>
+<span class="k">while</span> <span class="n">command</span> <span class="o">!=</span> <span class="s">'q'</span> <span class="ow">and</span> <span class="n">command</span> <span class="o">!=</span> <span class="s">'Q'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Your current balance is </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">balance</span><span class="p">))</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"(D/d)eposit, (W/w)ithdraw or (Q/q)uit?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="s">'d'</span> <span class="ow">or</span> <span class="n">command</span> <span class="o">==</span> <span class="s">'D'</span><span class="p">:</span>
+        <span class="n">amt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'how much would you like to deposit?</span><span class="se">\n</span><span class="s">&gt; '</span><span class="p">))</span>
+        <span class="n">balance</span> <span class="o">+=</span> <span class="n">amt</span>
+    <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s">'w'</span> <span class="ow">or</span> <span class="n">command</span> <span class="o">==</span> <span class="s">'W'</span><span class="p">:</span>
+        <span class="n">amt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'how much would you like to withdraw?</span><span class="se">\n</span><span class="s">&gt; '</span><span class="p">))</span>
+        <span class="n">balance</span> <span class="o">-=</span> <span class="n">amt</span>
+    <span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s">'q'</span> <span class="ow">or</span> <span class="n">command</span> <span class="o">==</span> <span class="s">'Q'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'k, thx bye'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'huh?'</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="generate-random-bits">Generate Random Bits</h3>
+
+  <p><strong>Write the following program</strong> &#8594;</p>
+
+  <ul>
+    <li>ask the user for a number between 4 and 8 inclusive</li>
+    <li>if the number is not between 4 and 8, ask again (continually)</li>
+    <li>use the number to create a series of randomly generated bits (4 means 4 bits will be generated)</li>
+    <li>print out the bits and their decimal value</li>
+    <li>for example, if the program generates 0011, then the resulting base 10 number is 3</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">how</span> <span class="n">many</span> <span class="n">bits</span> <span class="p">(</span><span class="n">between</span> <span class="mi">4</span> <span class="ow">and</span> <span class="mi">8</span><span class="p">)</span><span class="err">?</span>
+<span class="o">&gt;</span><span class="mi">4</span>
+<span class="mo">0011</span> <span class="ow">in</span> <span class="n">binary</span> <span class="ow">is</span> <span class="mi">3</span> <span class="ow">in</span> <span class="n">decimal</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="random-bits-solution">Random Bits Solution!</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">bit_length</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">bit_length</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="ow">or</span> <span class="n">bit_length</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span> 
+    <span class="n">bit_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'how many bits (between 4 and 8)?</span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">))</span>
+<span class="n">bits</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">exponent</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">bit_length</span><span class="p">):</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">bits</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="n">bits</span>
+    <span class="n">num</span> <span class="o">+=</span> <span class="n">b</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">exponent</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">s in binary is </span><span class="si">%</span><span class="s">s in decimal'</span> <span class="o">%</span> <span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">num</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

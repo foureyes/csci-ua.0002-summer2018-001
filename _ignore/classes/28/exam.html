@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Final Exam (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="final-exam">Final Exam</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section class="title-slide">
+  <h3 id="when-and-where">When and Where</h3>
+
+  <ul>
+    <li><strong>date:</strong> { site.final_date }}</li>
+    <li><strong>time:</strong> 9:00AM - 11:05AM</li>
+    <li><strong>room:</strong> WWH 101</li>
+  </ul>
+</section>
+
+<section class="title-slide">
+  <h3 id="topics">Topics</h3>
+
+  <ul>
+    <li>Topics up to and including nested loops and lists
+      <ul>
+        <li>(that&#39;s class 22 in the schedule)</li>
+        <li>Does not include exceptions, tuples, dictionaries, etc.</li>
+      </ul>
+    </li>
+    <li>See <a href="../../../schedule#class26">readings section in schedule</a></li>
+  </ul>
+</section>
+
+<section class="title-slide">
+  <h3 id="this-class">This Class</h3>
+
+  <ul>
+    <li>First half - will review lists, nested lists and nested loops</li>
+    <li>Second half - either open discussion&#8230; or continue structured review:
+      <ul>
+        <li>strings</li>
+        <li>booleans and conditionals</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

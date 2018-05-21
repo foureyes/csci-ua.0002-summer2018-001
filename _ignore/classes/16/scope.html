@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Namespaces and Scope (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="namespaces-and-scope">Namespaces and Scope</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="namespaces">Namespaces</h3>
+
+  <ul>
+    <li>a <strong>namespace</strong> is a mapping of names to objects</li>
+    <li>How to Think Like a Computer Scientist refers to <strong>namespaces</strong> as a collection of <em>identifiers</em> (variable names, function names, etc.) that belong to a module or a function</li>
+    <li>for example, all of the variables and function names that are built-in or that you create are part of a <strong>namespace</strong>
+      <ul>
+        <li>the name print identifies a function named print()</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="scope">Scope</h3>
+
+  <p>What&#39;s <strong>scope</strong> again?</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>scope</strong>: the part of the program where a variable can be accessed
+        <ul>
+          <li>a variable is only visible to statements in the variable&#39;s scope</li>
+          <li>the scope of a variable defined within a function is the body of the function itself</li>
+        </ul>
+      </li>
+      <li>in the context of namespaces, a  <strong>scope</strong> is the textual region of a program where names in a namespace are <strong>directly</strong> accessible</li>
+    </ul>
+
+    <p>(<a href="http://www.openbookproject.net/thinkcs/archive/python/thinkcspy3e_abandoned/ch09.html">See Chapter 9, Section 9.6 in How to Think Like a Computer Scientist</a>)</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="three-scopes-in-python">Three Scopes in Python</h3>
+
+  <p>There are three important scopes in Python:</p>
+
+  <ul>
+    <li><strong>local scope</strong> - identifiers (variables, function names, etc.) declared within a function
+      <ul>
+        <li>these identifiers are kept in the namespace that belongs to the function</li>
+        <li>each function has its own namespace.</li>
+      </ul>
+    </li>
+    <li><strong>global scope</strong> - all identifiers (variables, function, names, etc.) declared within the current module, or file</li>
+    <li><strong>built-in scope</strong> - all identifiers built into Python
+      <ul>
+        <li>identifiers that can be used without having to import anything (range, print, etc.)</li>
+        <li>(almost) always available</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="scope-1">Scope</h3>
+
+  <ul>
+    <li>identifiers in the <strong>global scope</strong> (that is, the file), are available everywhere, <strong>even in functions</strong></li>
+    <li>however, within a function, identifiers in the <strong>local scope</strong> take precedence</li>
+    <li>identifiers within a function&#39;s <strong>local scope</strong> are not available outside of the function</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="accessing-a-variable-outside-of-a-function">Accessing a Variable Outside of a Function</h3>
+
+  <p><strong>What do you think will happen here?  Will something be printed out?  Nothing?  Or an error?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">"hello"</span>
+
+<span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">greet</span><span class="p">()</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>Oddly&#8230; it&#39;s fine.  Something is printed out.  It seems like the function has access to s, which was declared outside of the function.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="how-about-variables-declared-inside-a-function">How About Variables Declared Inside a Function?</h3>
+
+  <p><strong>What do you think will happen here?  Will something be printed out?  Nothing?  Or an error?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="s">"hello"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>Uh-oh.  Looks like you can&#39;t access variables that are inside a function.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="how-about-parameters">How About Parameters?</h3>
+
+  <p><strong>What do you think will happen here?  Will something be printed out?  Nothing?  Or an error?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="s">"!"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">greet</span><span class="p">(</span><span class="s">"foo"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>This is the same as the previous slide.  You can&#39;t access the parameters (by their name) that you passed in to the function from outside of the function.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="and-lastly">And Lastly&#8230;</h3>
+
+  <p><strong>What do you think will happen here?  Will something be printed out?  Nothing?  Or an error?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">"hello"</span>
+
+<span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="s">"something else"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+
+<span class="n">greet</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>Hmmm&#8230; it looks like names created within a function are <em>local</em> to that function.  They don&#39;t override names in the global space.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="what-does-this-all-mean">What Does This All Mean?</h3>
+
+  <p>A <strong>scope</strong> holds the current set of available names (<em>identifiers</em>) and the values that they refer to.</p>
+
+  <ul>
+    <li>anything that we define in the top level of indentation in our program is said to be in the <strong>global scope</strong></li>
+    <li>in the following example, the variables <em>a</em> and <em>b</em> are in the <strong>global scope</strong></li>
+    <li>they can be accessed from anywhere, even within the function</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="s">"something"</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+	<span class="n">c</span> <span class="o">=</span> <span class="s">"bar"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="c">#  what will this print out?</span>
+<span class="n">foo</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="scope-2">Scope</h3>
+
+  <p>Variables that are defined in your function (one indentation level in), however, are only available within your function.  They are <em>local</em> to that function.  The example below won&#39;t work.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+	<span class="n">c</span> <span class="o">=</span> <span class="s">"bar"</span>
+	<span class="k">return</span> <span class="n">c</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="scope-continued">Scope Continued</h3>
+
+  <p>Furthermore, variables that are declared within a function that have the same name as a global variable are totally different variables/values!  They don&#39;t overwrite the outer, global variable (there&#39;s a way to do this, though).  What will this print?</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">c</span> <span class="o">=</span> <span class="s">"on toast"</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+	<span class="n">c</span> <span class="o">=</span> <span class="s">"grape jelly"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">foo</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">grape</span> <span class="n">jelly</span>
+<span class="n">on</span> <span class="n">toast</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="scope-summary">Scope Summary</h3>
+
+  <ul>
+    <li>variables and function definitions declared outside of a function (in the <strong>global scope</strong>) can be accessed within a function</li>
+    <li>variables declared inside of a function (<strong>local</strong>) cannot be accessed outside of a function (they&#39;re <strong>out of scope</strong>)</li>
+    <li>parameters in a function cannot be accessed outside of a function either (again <strong>local</strong>)</li>
+    <li>variables declared within a function don&#39;t override those declared outside of a function</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="a-quick-look-at-turtle">A Quick Look At Turtle</h3>
+
+  <p>There&#39;s a small difference between these two functions.  <strong>What is it?  Do both functions <em>work</em>?</strong></p>
+
+  <p>Program 1:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  other setup code implied</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">draw_blue_line</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+	<span class="n">t</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s">'blue'</span><span class="p">)</span>
+	<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">length</span><span class="p">)</span></code></pre></figure>
+
+  <p>Program 2:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  other setup code implied</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">draw_blue_line</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+	<span class="n">t</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s">'blue'</span><span class="p">)</span>
+	<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">length</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="turtle-continued">Turtle Continued</h3>
+
+  <ul>
+    <li>both functions work fine</li>
+    <li>the first snippet of code relies on a turtle named t to exist outside of a function definition</li>
+    <li>what if we had two turtles that we wanted to use the function on?</li>
+    <li>we&#39;d have to pass the turtle in, otherwise the function would only be good for one turtle</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="two-turtles">Two Turtles</h3>
+
+  <p><strong>(btw, what would happen if I didn&#39;t pass in t?  let&#39;s try it&#8230;)&#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="k">def</span> <span class="nf">draw_blue_line</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+	<span class="n">t</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s">'blue'</span><span class="p">)</span>
+	<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">don</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="n">leo</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+
+<span class="n">don</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+<span class="n">don</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">don</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+
+<span class="n">draw_blue_line</span><span class="p">(</span><span class="n">don</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">draw_blue_line</span><span class="p">(</span><span class="n">leo</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="a-very-brief-foray-into-recursion"><a href="recursion.html">A (Very) Brief Foray Into Recursion</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

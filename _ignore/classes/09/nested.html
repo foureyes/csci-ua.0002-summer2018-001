@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Nested Loops (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="you-can-loop-within-a-loop">You Can Loop Within a Loop!</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="nested-loops">Nested Loops</h3>
+
+  <p>A <strong>nested loop</strong> is just a loop inside the body of another loop.</p>
+
+  <p>It&#39;s loops <a href="http://en.wikipedia.org/wiki/Turtles_all_the_way_down">all the way down</a>.</p>
+
+</section>
+
+<section>
+  <h3 id="nested-loops-example">Nested Loops Example</h3>
+
+  <p><strong>What does this print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="nb">max</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+	<span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">while</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+		<span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">'--'</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">1</span>
+<span class="o">--</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="o">--</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="o">--</span></code></pre></figure>
+
+</div>
+</section>
+
+<section>
+  <h3 id="make-me-a-passowrd-plz">Make Me a Passowrd, Plz</h3>
+
+  <p><strong>Let&#39;s create a password generator:&#8594;</strong></p>
+
+  <ul>
+    <li>the program will ask the user for a password length</li>
+    <li>if the user enters a number greater than 0, it will generate a password:
+      <ul>
+        <li>the password will be the length that the user specified</li>
+        <li>each character will be a digit from 0 through 9</li>
+        <li>the new password will be generated</li>
+      </ul>
+    </li>
+    <li>the program will continue to ask the user for a password length</li>
+    <li>&#8230; and loop until the user enters 0 for the password length</li>
+    <li>(that is, exit if the user enters 0)</li>
+    <li>implement with a for loop nested inside a while loop</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="password-generator-example-output">Password Generator Example Output</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">password</span> <span class="n">length</span> <span class="p">(</span><span class="mi">0</span> <span class="n">to</span> <span class="nb">exit</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="mi">10</span>
+<span class="mi">2402991612</span>
+<span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">password</span> <span class="n">length</span> <span class="p">(</span><span class="mi">0</span> <span class="n">to</span> <span class="nb">exit</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="mi">5</span>
+<span class="mi">60773</span>
+<span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">password</span> <span class="n">length</span> <span class="p">(</span><span class="mi">0</span> <span class="n">to</span> <span class="nb">exit</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="mi">2</span>
+<span class="mi">72</span>
+<span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">password</span> <span class="n">length</span> <span class="p">(</span><span class="mi">0</span> <span class="n">to</span> <span class="nb">exit</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="mi">0</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="password-generator-solution">Password Generator Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">password_length</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">password_length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+	<span class="n">password_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'Please enter a pasword length (0 to exit)</span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">))</span>
+	<span class="n">password</span> <span class="o">=</span> <span class="s">''</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">password_length</span><span class="p">):</span>
+		<span class="n">password</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">password</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="nested-for-loops">Nested for Loops</h3>
+
+  <p><strong>What does this code output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">'i j</span><span class="se">\n</span><span class="s">-----'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+		<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">))</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">i</span> <span class="n">j</span>
+<span class="o">-----</span>
+<span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">1</span>
+<span class="mi">0</span> <span class="mi">2</span>
+<span class="mi">0</span> <span class="mi">3</span>
+<span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">1</span> <span class="mi">1</span>
+<span class="mi">1</span> <span class="mi">2</span>
+<span class="mi">1</span> <span class="mi">3</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="breaking-down-nested-loops">Breaking Down Nested Loops</h3>
+
+  <ul>
+    <li>the inner most loop must finish iterating before the outer loop goes on to its next iteration</li>
+    <li>both loop variables are accessible in the body of the innermost loop</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="triangle">Triangle</h3>
+
+  <p><strong>Try to draw this shape by using nested for loops: &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+*
+**
+***
+****
+*****
+"""</span></code></pre></figure>
+
+  <ul>
+    <li>note that the first row has 1 star, the second has 2 stars, etc.</li>
+    <li>try accumulating strings into a row using the inner loop</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="potential-solution-for-triangle">Potential Solution for Triangle</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># create an empty  string to hold the triangle</span>
+<span class="n">triangle</span> <span class="o">=</span> <span class="s">''</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+
+	<span class="c"># create a string to hold the current row</span>
+	<span class="n">row_of_stars</span> <span class="o">=</span> <span class="s">''</span>
+
+	<span class="c"># keep on adding stars based on the current row</span>
+	<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+		<span class="n">row_of_stars</span> <span class="o">+=</span> <span class="s">'*'</span>
+
+	<span class="c"># add the row to the triangle with a new line</span>
+	<span class="n">triangle</span> <span class="o">+=</span> <span class="n">row_of_stars</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">triangle</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

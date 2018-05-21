@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Installing Tools Slides (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="installing-python">Installing Python</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="so-youve-decided-to-install-python">So You&#39;ve Decided to Install Python</h2>
+  <aside>Yes!  You've made a good choice.</aside>
+</section>
+
+<section>
+  <h3 id="you-probably-already-have-a-version-installed">You Probably Already Have a Version Installed</h3>
+  <aside>It's probably the wrong one</aside>
+  <p>If you&#39;re on OSX or Ubuntu&#8230;</p>
+
+  <ul>
+    <li>Python is already installed on OSX or Ubuntu</li>
+    <li>But it&#39;s probably 2.x</li>
+  </ul>
+
+  <p><strong>What version were we using? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>We&#39;re using 3.x for this class</li>
+      <li>So&#8230; you&#39;ll probably have to install a new version side-by-side with the existing default Python on OSX and Ubuntu</li>
+    </ul>
+  </div>
+  <details>
+QUESTION - What version are we using in class?
+</details>
+</section>
+
+<section>
+  <h2 id="btw-if-you-have-your-laptop-feel-free-to-follow-along">(BTW, If You Have Your Laptop, Feel Free to Follow Along!)</h2>
+</section>
+
+<section>
+  <h3 id="how-to-determine-what-version-youre-on">How To Determine What Version You&#39;re On</h3>
+  <aside>
+    <p>This requires using the <em>commandline</em></p>
+  </aside>
+  <ol>
+    <li>Open up:
+      <ul>
+        <li><strong>cmd.exe</strong> on <strong>Windows</strong> (start &#8594; run &#8594; type &quot;cmd.exe&quot; and run)</li>
+        <li><strong>terminal</strong> on <strong>OSX</strong> (&#8984;-space to search spotlight &#8594; type &quot;terminal&quot;)</li>
+        <li><strong>terminal</strong> on <strong>Ubuntu</strong> (you probably know how to do this on if you&#39;re on Linux!)</li>
+      </ul>
+    </li>
+    <li>Type in the following command (this should output the version of Python that you have):</li>
+  </ol>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">python --version</code></pre></figure>
+
+  <details>
+DEMO - starting terminal
+DEMO - show Python version
+</details>
+</section>
+
+<section>
+  <h3 id="installation">Installation</h3>
+  <aside>If you don't have Python 3, you can install it...</aside>
+  <ul>
+    <li>on OSX and Windows:
+      <ul>
+        <li>go to the Download section on python.org: <a href="http://python.org/download/">http://python.org/download/</a></li>
+        <li>scroll down to the list of files for <strong>Python 3.x</strong>  (the version is in the file name, just get the latest)</li>
+        <li><strong>make sure you&#39;re looking at the 3.x files, not 2.x</strong></li>
+        <li>save the installer and run it</li>
+      </ul>
+    </li>
+    <li>on Ubuntu:
+      <ul>
+        <li>sudo apt-get install python3</li>
+        <li>sudo apt-get install idle3</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="installation-continued">Installation Continued</h3>
+  <ul>
+    <li>you can test your installation by opening terminal or cmd.exe (see the <a href="installing-tools.html#4.0">previous slide</a> on <a href="installing-tools.html#4.0">checking Python version</a>)</li>
+    <li>except, this time, you should have python 3 available, so <strong>use &quot;python3&quot; instead of the regular python interpreter</strong>: python3 &#8211;version</li>
+    <li>you can also try running IDLE
+      <ul>
+        <li>OSX - &#8984;-space &#8594; start typing idle &#8594; choose <strong>IDLE - Python 3.x</strong></li>
+        <li>Windows &#8594; Start &#8594; All Programs &#8594; <strong>Python 3.x &#8594; IDLE</strong></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="lets-see-what-idle-can-do"><a href="reading-writing-programs.html">Let&#39;s See What IDLE Can Do</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

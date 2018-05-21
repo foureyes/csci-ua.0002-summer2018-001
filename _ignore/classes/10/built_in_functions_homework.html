@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Material from Homework (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="material-from-homework-homework-solutions">Material from Homework, Homework Solutions</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+<section>
+  <h2 id="built-in-functions-from-homework">Built-In Functions (from Homework)</h2>
+
+</section>
+
+<section>
+  <h3 id="built-in-functions">Built-In Functions</h3>
+
+  <p>Python has a bunch of built in functions that are available for you to use with importing a module. We&#39;ve seen some of these before:</p>
+
+  <ul>
+    <li><strong>print</strong></li>
+    <li><strong>bool</strong></li>
+    <li><strong>str</strong></li>
+    <li><strong>range</strong></li>
+    <li>&#8230;etc</li>
+  </ul>
+
+  <p><strong>In the homework, you were asked to do research on some additional functions.</strong> In case you were unable to do this, the following slides will give a quick overview of how they work.</p>
+</section>
+
+<section>
+  <h3 id="built-in-functions-continued">Built-In Functions Continued</h3>
+
+  <p>Finding the length of a string and formatting a number:</p>
+
+  <ul>
+    <li><strong>len(sequence)</strong> - return the length of a sequence (for now, think of it as giving back the number of characters in a string)
+      <ul>
+        <li>len(&quot;a str&quot;) &#8594; 5</li>
+        <li>len(&quot;&quot;) &#8594; 0</li>
+      </ul>
+    </li>
+    <li><strong>format(number, specification)</strong> - formats a number based on a specification, which is the second argument. It can be used to indicate the number of places:
+      <ul>
+        <li>format(5.378, &#39;.2f&#39;) &#8594; 5.38</li>
+        <li>format(5.378, &#39;.4f&#39;) &#8594; 5.3780</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="built-in-functions-continued-some-more">Built-In Functions Continued Some More</h3>
+
+  <p>Rounding and absolute value&#8230;</p>
+
+  <ul>
+    <li><strong>round(number, [precision])</strong> - round a number to a given precision in decimal digits (default is 0 digits). can have one or two arguments (the second representing precision):
+      <ul>
+        <li>round(5.32) &#8594; 5</li>
+        <li>round(5.32, 1) &#8594; 5</li>
+      </ul>
+    </li>
+    <li><strong>abs(number)</strong> - returns the absolute value of an argument
+      <ul>
+        <li>abs(-2) &#8594; 2</li>
+        <li>abs(2) &#8594; 2</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="selected-homework-solutions">Selected Homework Solutions</h2>
+
+</section>
+
+<section>
+  <h3 id="homework-solutions">Homework Solutions</h3>
+
+  <p><strong>hw1</strong></p>
+
+  <ul>
+    <li><a href="../../resources/code/hw1/tree.py">tree.py</a></li>
+    <li><a href="../../resources/code/hw1/miles.py">miles.py</a></li>
+    <li><a href="../../resources/code/hw1/mad_libs_lyrics.py">mad_lib_lyrics.py</a></li>
+  </ul>
+
+  <p><strong>hw2</strong></p>
+
+  <ul>
+    <li><a href="../../resources/code/hw2/days.py">days.py</a></li>
+    <li><a href="../../resources/code/hw2/candy_bars.py">candy_bars.py</a></li>
+    <li><a href="../../resources/code/hw2/numbers.py">numbers.py</a></li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="homework-solutions-continued">Homework Solutions Continued</h3>
+
+  <p><strong>hw3</strong></p>
+
+  <ul>
+    <li><a href="../../resources/code/hw3/distance.py">distance.py</a></li>
+    <li><a href="../../resources/code/hw3/fortune.py">fortune.py</a></li>
+    <li><a href="../../resources/code/hw3/tip.py">tip.py</a></li>
+  </ul>
+
+  <p><strong>hw4</strong></p>
+
+  <ul>
+    <li><a href="../../resources/code/hw4/dice.py">dice.py</a></li>
+    <li><a href="../../resources/code/hw4/guess.py">guess.py</a></li>
+    <li><a href="../../resources/code/hw4/average_word.py">average_word.py</a></li>
+  </ul>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

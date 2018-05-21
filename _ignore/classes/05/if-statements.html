@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>If Statements (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="if-statements--conditionals">If Statements / Conditionals</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="back-to-the-lecture-at-hand">Back to the Lecture at Hand?</h2>
+</section>
+
+<section>
+  <h3 id="anatomy-of-an-if-statement-again">Anatomy of an If Statement (Again)</h3>
+
+  <p><strong>Write an if statement testing if a and b are <em>not</em> equal.  If they&#39;re not equal, print the value of a and b twice.</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>begin with keyword <strong>if</strong></li>
+      <li>condition</li>
+      <li>colon - ends the condition / marks that a block of code is about to come up</li>
+      <li>if + condition + colon usually is considered the <em>if-statement header</em></li>
+      <li>body of if statement ends when indentation goes back one level</li>
+      <li>blank lines don&#39;t count as ending a block of code!</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-see-that-again">Let&#39;s See That Again</h3>
+  <aside>Now With More Blank Lines</aside>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">:</span>
+	<span class="c"># totally ok?  yes!</span>
+	<span class="c"># but why?</span>
+	<span class="c"># perhaps when done more reasonably, readability</span>
+	<span class="k">print</span> <span class="n">a</span>
+	<span class="k">print</span> <span class="n">a</span>
+
+
+	<span class="k">print</span> <span class="n">b</span>
+
+	<span class="k">print</span> <span class="n">b</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="oh-yeah-else-what">Oh Yeah, Else What?</h3>
+
+  <p>We can use <strong>else</strong> to execute code if the original condition was not met</p>
+
+  <ul>
+    <li>go back one level of indentation to mark that the previous code block has ended</li>
+    <li>keyword <strong>else</strong></li>
+    <li>body - indented, body ends when indentation goes back one level</li>
+    <li>not required, obvs</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="what-about-multiple-chained-conditions">What About Multiple Chained Conditions?</h3>
+  <p>What if <strong>else</strong> is not fine-grained enough?  For example, how about a program that asks for cake and handles a yes, no, or anything other than&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+Do you want cake?
+&gt; yes
+Here, have some cake.
+
+Do you want cake?
+&gt; no
+No cake for you.
+
+Do you want cake?
+&gt; blearghhh
+I do not understand.
+"""</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="consecutive-ifs">Consecutive Ifs</h3>
+  <p><strong>One way to do it is consecutive if statements&#8230;</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'yes'</span> <span class="ow">and</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="else-if-elif">Else If (elif)</h3>
+
+  <p>We can use <strong>elif</strong> to chain a series of conditions, where only one path of code will be executed</p>
+
+  <ul>
+    <li>if statement like usual</li>
+    <li>go back one level of indentation to mark that the previous code block has ended</li>
+    <li>keyword <strong>elif</strong></li>
+    <li>condition</li>
+    <li>colon</li>
+    <li>body - indented, body ends when indentation goes back one level</li>
+    <li>not required obv</li>
+    <li>even if more than one true, only the first true executes!</li>
+    <li>can add an else at the end</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="elif-example">elif Example</h3>
+  <aside>Let's have some more cake...</aside>
+  <p><strong>How would we redo the cake exercise with elif?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="nesting-if-statements">Nesting If Statements</h3>
+
+  <ul>
+    <li>it behaves as you&#39;d expect</li>
+    <li>remember to get indentation right</li>
+    <li>if there are multiple elif&#39;s or else&#39;s,  you can use indentation to see which initial if statement they belong to</li>
+    <li>this works for any combination of if, elif and else</li>
+    <li>note that sometimes nested if statements are equivalent to and</li>
+    <li>best to simplify - that is, less nesting, better</li>
+  </ul>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

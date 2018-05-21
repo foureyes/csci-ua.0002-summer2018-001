@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Conditionals (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="conditionals">Conditionals</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="controlling-program-flow-w-conditionals">Controlling Program Flow w/ Conditionals</h3>
+  <p>A <strong>conditional</strong> allows a decision to be made about which code path to take.</p>
+
+  <ul>
+    <li>allows for <strong>conditional</strong> execution of code.</li>
+    <li>it uses <strong>boolean values</strong> and <strong>boolean expressions</strong> to evaluate a condition</li>
+  </ul>
+
+  <p>What do you think the two possible values are for <strong>boolean values</strong>?</p>
+
+  <div class="incremental">
+    <ul>
+      <li>true</li>
+      <li>false</li>
+    </ul>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="the-bool-type">The bool Type</h3>
+  <p>Python represents these boolean values using the <strong>bool type</strong>.  The <strong>bool type</strong> has two possible values:</p>
+
+  <ul>
+    <li>True</li>
+    <li>False</li>
+  </ul>
+
+  <p>Some things to pay attention to&#8230;</p>
+
+  <ul>
+    <li>both values start with an uppercase letter (you&#39;ll know you&#39;re doing it right in IDLE when they&#39;re highlighted appropriately &#8594;)</li>
+    <li>these values are reserved words (keywords); they can&#39;t be used as variable names</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="boolean-expressions--the-equality-operator">Boolean Expressions / The Equality Operator</h3>
+  <p>A <strong>boolean expression</strong> is just an expression that eventually evaluates to a boolean value.</p>
+
+  <ul>
+    <li>True evaluates to True</li>
+    <li>False evaluates to False</li>
+  </ul>
+
+  <p>The <strong>equality operator</strong>, <strong>==</strong> (double equals), will test the left and right hand sides for equality and evaluate to the appropriate boolean value</p>
+
+  <ul>
+    <li>1 == 1 evaluate to True</li>
+    <li>&quot;foo&quot; == &quot;foo&quot; evaluates to True</li>
+    <li>&quot;foo&quot; == &quot;bar&quot; evaluates to False</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="if-statements">if Statements</h3>
+  <p>We use <strong>if</strong> statements to conditionally execute code.</p>
+
+  <ul>
+    <li>they start with the <strong>keyword</strong> <strong>if</strong></li>
+    <li>&#8230;followed by a <strong>boolean expression</strong> and a colon</li>
+    <li>the code that is to be executed if the condition is met is placed in an <strong>indented code block</strong>.</li>
+  </ul>
+
+  <p>For example:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="bp">True</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"this is"</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"true"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="if-statements-continued">if Statements continued</h3>
+  <p>This will also work with equality operators and variables</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"x and y are equal"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-make-a-game">Let&#39;s Make a Game!</h3>
+  <p>Let&#39;s try making a number guessing game.  Here&#39;s the expected output:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Guess</span> <span class="n">the</span> <span class="n">number</span> <span class="n">that</span> <span class="n">I</span><span class="s">'m thinking of</span><span class="err">
+</span><span class="s">&gt;5</span><span class="err">
+</span><span class="s">you got it!</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="review">Review</h3>
+  <ul>
+    <li>What&#39;s the equality operator in Python?</li>
+    <li>What are the two possible values for the bool type?</li>
+    <li>How do we write an if statement?</li>
+  </ul>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

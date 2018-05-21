@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tuples Review (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="tuples-review">Tuples Review</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="whats-a-tuple">What&#39;s a Tuple?</h3>
+
+  <p><strong>What&#39;s a tuple and how is it different from a list?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>a <strong>tuple</strong> is an immutable grouping of data</li>
+      <li>a <strong>tuple</strong> is a sequence type</li>
+      <li>it can be considered as an immutable list.
+        <ul>
+          <li>you can&#39;t add items (no extend or append)</li>
+          <li>you can&#39;t remove items (no remove; del doesn&#39;t work)</li>
+          <li>you can&#39;t change items (assignment doesn&#39;t work)</li>
+        </ul>
+      </li>
+      <li>consequently, tuples can&#39;t be changed, unlike lists</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="tuple-attributes">Tuple Attributes</h3>
+
+  <p>Tuples are:</p>
+
+  <ul>
+    <li><strong>ordered</strong> - elements are in a sequence</li>
+    <li><strong>immutable</strong> - cannot be changed</li>
+    <li>a <strong>compound type</strong></li>
+    <li>a <strong>sequence type</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="tuple-syntax">Tuple Syntax</h3>
+
+  <p>A tuple is a group of <strong>comma separated values</strong>.  A tuple literal is <em>just</em> values and commas.</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; dogs = "chihuahua", "pug", "chug"
+&gt;&gt;&gt; print(dogs)
+('chihuahua', 'pug', 'chug')</code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; birds = ("pelican", "owl", "pigeon")
+&gt;&gt;&gt; print(birds)
+('pelican', 'owl', 'pigeon')</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="tuples-in-string-formatting-and-multiple-assignment">Tuples in String Formatting and Multiple Assignment</h3>
+
+  <p>String formatting</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"I've </span><span class="si">%</span><span class="s">s this </span><span class="si">%</span><span class="s">s before!"</span> <span class="o">%</span> <span class="p">(</span><span class="s">"seen"</span><span class="p">,</span> <span class="s">"this"</span><span class="p">)</span></code></pre></figure>
+
+  <p>Multiple assignment</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="tuple-syntax-and-function-parameters">Tuple Syntax and Function Parameters?</h3>
+
+  <ul>
+    <li>Function parameters (both in definitions and when calling functions) are not tuples, even though they&#39;re comma separated</li>
+    <li>To <strong>pass a tuple literal to a function use parentheses</strong> to prevent ambiguity</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; print(1, 2)
+1 2
+&gt;&gt;&gt; print((1, 2))
+(1, 2)</code></pre></figure>
+
+  <p>Even though parentheses are not required for tuples (again, it&#39;s the commas that matter), they are necessary in certain situations, such as passing a tuple to a function.  The extra parentheses help avoid ambiguity.</p>
+</section>
+
+<section>
+  <h3 id="tuple-operations-functions-and-methods">Tuple Operations, Functions and Methods</h3>
+
+  <p><strong>What are some valid operations and functions that can be used with tuples?</strong></p>
+
+  <div class="incremental">
+    <p>Tuples support sequence operators and functions such as:</p>
+
+    <ul>
+      <li>concatenation (<strong>+</strong>), multiplication (<strong>*</strong>) - both return a tuple</li>
+      <li>indexing (<strong>[index]</strong>) - returns value</li>
+      <li>slicing (<strong>[m:n]</strong>) - returns a tuple</li>
+      <li>iteration - you can loop over elements in a tuple</li>
+      <li>length (<strong>len</strong>()) - returns length of tuple</li>
+      <li>membership (<strong>in</strong> and <strong>not in</strong>) - tests for membership in&#8230;</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="tuple-operations-functions-and-methods-continued">Tuple Operations, Functions and Methods Continued</h3>
+
+  <p><strong>What are some operations, functions or methods that do not work with tuples?</strong></p>
+
+  <div class="incremental">
+    <p>Because tuples are immutable the following are not allowed or are not available:</p>
+
+    <ul>
+      <li>assignment</li>
+      <li>append</li>
+      <li>extend</li>
+      <li>sort</li>
+      <li>etc.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="tuple-operations-and-functions-examples">Tuple Operations and Functions Examples</h3>
+
+  <p>Some operations:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="mi">5</span> <span class="ow">in</span> <span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c"># note that slicing a tuple returns a tuple!</span>
+<span class="mi">3</span>
+<span class="bp">False</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="iteration">Iteration</h3>
+
+  <p>Just like iterating over strings or lists.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="multiple-assignment--unpacking">Multiple Assignment / Unpacking</h3>
+
+  <p>We&#39;ve seen tuples before in multiple assignment</p>
+
+  <ul>
+    <li>if there is a tuple of variables on the left side</li>
+    <li>and equal number of values in a tuple on the right side</li>
+    <li>each value is bound to each variable in order</li>
+    <li>this is also called <strong>tuple unpacking</strong></li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span> <span class="o">=</span> <span class="p">(</span><span class="s">"Timothy"</span><span class="p">,</span> <span class="s">"Tupleton"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="tuple-unpacking-examples">Tuple Unpacking Examples</h3>
+
+  <p><strong>What does this code output?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">values</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">values</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">c</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">values</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">2</span>
+<span class="mi">3</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="more-info-about-multiple-assignment">More Info About Multiple Assignment</h3>
+
+  <p>Tuple unpacking is the most common way of performing multiple assignment&#8230; but the assignment operator is actually super flexible:</p>
+
+  <p><a href="http://docs.python.org/3.2/reference/simple_stmts.html#assignment-statements">More than you ever wanted to know about the assignment operator</a></p>
+</section>
+
+<section>
+  <h3 id="list-of-tuples">List of Tuples</h3>
+
+  <p>A tuple within a list is retrieved as a single object, as with every other element in a list, when using our regular <em>for loop_variable in some_list</em> syntax:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">characters</span> <span class="o">=</span> <span class="p">[(</span><span class="s">"Hiro"</span><span class="p">,</span> <span class="s">"Protagonist"</span><span class="p">),</span> <span class="p">(</span><span class="s">"Yours"</span><span class="p">,</span> <span class="s">"Truly"</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">characters</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">character</span><span class="p">)</span></code></pre></figure>
+
+  <p>You get each actual tuple, so this prints out:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">(</span><span class="s">'Hiro'</span><span class="p">,</span> <span class="s">'Protagonist'</span><span class="p">)</span>
+<span class="p">(</span><span class="s">'Yours'</span><span class="p">,</span> <span class="s">'Truly'</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lists-of-tuples-continued">Lists of Tuples Continued</h3>
+
+  <p>Again&#8230; <strong>What&#39;s the type of person in every iteration?  How many iterations are there?  What does this print out?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">smarties</span> <span class="o">=</span> <span class="p">[(</span><span class="s">"Mr"</span><span class="p">,</span> <span class="s">"Smartypants"</span><span class="p">),</span> <span class="p">(</span><span class="s">"Ms"</span><span class="p">,</span> <span class="s">"Knowitall"</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">smarties</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>it&#39;s a tuple</li>
+      <li>this loops twice</li>
+      <li>it outputs:</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">(</span><span class="s">'Mr'</span><span class="p">,</span> <span class="s">'Smartypants'</span><span class="p">)</span>
+<span class="p">(</span><span class="s">'Ms'</span><span class="p">,</span> <span class="s">'Knowitall'</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="list-of-tuples-continued-even-more">List of Tuples Continued Even More</h3>
+
+  <p>Unpacking works in for loops as well!  Imagine that each element is retrieved from the outer list.  Each element is a tuple which can be unpacked into multiple loop variables.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">characters</span> <span class="o">=</span> <span class="p">[(</span><span class="s">"Hiro"</span><span class="p">,</span> <span class="s">"Protagonist"</span><span class="p">),</span> <span class="p">(</span><span class="s">"Yours"</span><span class="p">,</span> <span class="s">"Truly"</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">first</span><span class="p">,</span> <span class="n">last</span> <span class="ow">in</span> <span class="n">characters</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"first name is "</span> <span class="o">+</span> <span class="n">first</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"last name is "</span> <span class="o">+</span> <span class="n">last</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="one-last-list-of-tuples-example">One Last List of Tuples Example</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pairs_of_numbers</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">pairs_of_numbers</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">3</span>
+<span class="mi">5</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="returning-tuples">Returning Tuples</h3>
+
+  <p>Tuples and tuple unpacking can provide a method of returning multiple values from a function. <strong>What do you think this prints out?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">calculate_3d_point</span><span class="p">():</span>
+	<span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">result</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">calculate_3d_point</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"the z coordinate is </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">z</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"the x coordinate is </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span><span class="p">))</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">the</span> <span class="n">z</span> <span class="n">coordinate</span> <span class="ow">is</span> <span class="mi">0</span>
+<span class="n">the</span> <span class="n">x</span> <span class="n">coordinate</span> <span class="ow">is</span> <span class="mi">2</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="when-to-use-tuples">When To Use Tuples</h3>
+
+  <ul>
+    <li>some Python constructs use tuples (string formatting, multiple assignment)</li>
+    <li>tuples are <em>write protected</em>
+      <ul>
+        <li>prevent an object from being changed</li>
+        <li>example: constants - values that never change&#8230; like origin = (0, 0)</li>
+      </ul>
+    </li>
+    <li>tuples are <em>faster</em> than lists for some operations</li>
+    <li>returning multiple values from a function</li>
+    <li>semantics
+      <ul>
+        <li>treat related data as a whole</li>
+        <li>example: points in a 2-dimensional plane</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="some-tuple-exercises">Some Tuple Exercises</h2>
+</section>
+
+<section>
+  <h3 id="squares-again">Squares (Again)</h3>
+
+  <ul>
+    <li><strong>What are two ways of programmatically drawing a square in turtle?</strong></li>
+    <li><strong>What are some ways of representing a series of four x, y coordinates?</strong></li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li>there are a couple of ways to draw a square with turtle:
+        <ul>
+          <li>for loop and a combination of either left or right and forward or back</li>
+          <li>goto</li>
+        </ul>
+      </li>
+      <li>as literals, as separate variables&#8230; or as a tuple of tuples!</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="drawing-a-square-tuples-as-points">Drawing a Square, Tuples as Points</h3>
+
+  <ol>
+    <li>create a list of tuples that represent x, y coordinates of corners of a square</li>
+    <li>assume that the bottom left corner is at (0, 0), the upper right is (0, 50)</li>
+    <li>use a for loop and tuple unpacking to get each x, y value</li>
+    <li>within the for loop, use goto with your loop variables to draw the square</li>
+  </ol>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="c">#  your code here!</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="turtles-using-tuples-solution">Turtles Using Tuples Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">),(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">),(</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)]:</span>
+	<span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="greetings">Greetings</h3>
+
+  <p>This exercise involves creating a list of tuples.  <strong>Write a function called hello&#8230;</strong></p>
+
+  <ul>
+    <li>it should take a list of tuples as an argument</li>
+    <li>assume that every tuple is three elements, with an honorific and a first and last name</li>
+    <li>it should take each tuple and convert it into a string by:
+      <ul>
+        <li>starting with hello, and adding the first element with a period</li>
+        <li>adding the third element with an exclamation point</li>
+        <li>(&quot;Mr&quot;, &quot;Sam&quot;, &quot;Smartypants&quot;) &#8594; Hello Mr. Smartypants</li>
+        <li>note that the first name is ignored</li>
+      </ul>
+    </li>
+    <li>the function should just print out each resulting string (no return value)</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">smarties</span> <span class="o">=</span> <span class="p">[(</span><span class="s">"Mr"</span><span class="p">,</span> <span class="s">"Sam"</span><span class="p">,</span> <span class="s">"Smartypants"</span><span class="p">),</span> <span class="p">(</span><span class="s">"Ms"</span><span class="p">,</span> <span class="s">"Nelly"</span><span class="p">,</span> <span class="s">"Knowitall"</span><span class="p">)]</span>
+<span class="n">hello</span><span class="p">(</span><span class="n">smarties</span><span class="p">)</span>
+
+<span class="n">Hello</span> <span class="n">Mr</span><span class="o">.</span> <span class="n">Smartypants</span><span class="err">!</span>
+<span class="n">Hello</span> <span class="n">Ms</span><span class="o">.</span> <span class="n">Knowitall</span><span class="err">!</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="greetings-solutions">Greetings Solutions</h3>
+
+  <p><strong>We can do this a couple of ways&#8230;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">smarties</span> <span class="o">=</span> <span class="p">[(</span><span class="s">"Mr"</span><span class="p">,</span> <span class="s">"Sam"</span><span class="p">,</span> <span class="s">"Smartypants"</span><span class="p">),</span> <span class="p">(</span><span class="s">"Ms"</span><span class="p">,</span> <span class="s">"Nelly"</span><span class="p">,</span> <span class="s">"Knowitall"</span><span class="p">)]</span>
+
+<span class="k">def</span> <span class="nf">hello_v1</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Hello </span><span class="si">%</span><span class="s">s. </span><span class="si">%</span><span class="s">s!"</span> <span class="o">%</span> <span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">person</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+
+<span class="k">def</span> <span class="nf">hello_v2</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">last</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Hello </span><span class="si">%</span><span class="s">s. </span><span class="si">%</span><span class="s">s!"</span> <span class="o">%</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">last</span><span class="p">))</span>
+
+
+<span class="n">hello_v1</span><span class="p">(</span><span class="n">smarties</span><span class="p">)</span>
+<span class="n">hello_v2</span><span class="p">(</span><span class="n">smarties</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="lists-of-tuples-exercise-solutions">Lists of Tuples Exercise Solutions</h3>
+
+  <p>If we wanted to include the first name&#8230; we could use the code below because the operand to the right of a strim formatting operator is <em>actually</em> <strong>a tuple</strong>!</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  tuples can be used in string formatting as is!</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Hello </span><span class="si">%</span><span class="s">s. </span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s!"</span> <span class="o">%</span> <span class="p">(</span><span class="n">person</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="run-length-encoding">Run Length Encoding</h3>
+
+  <p><strong>Run length encoding</strong> is a simple method of compressing data by:</p>
+
+  <ol>
+    <li>Finding sequences of the same element in the data</li>
+    <li>And converting those sequences to a number and a single element</li>
+    <li>For example, &quot;loook!!&quot; would be encoded as &quot;1l3o1k2!&quot;</li>
+    <li><a href="http://en.wikipedia.org/wiki/Run-length_encoding#Example">The wikipedia article shows some examples</a></li>
+  </ol>
+
+  <p><strong>What&#39;s the run length encoded version of &quot;cccaaabbb&quot;?</strong></p>
+
+  <div class="incremental">
+    <p>3c3a3b</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="encode">Encode!</h3>
+
+  <p><strong>Let&#39;s write some pseudocode.  What are some ways to solve this?</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  keep track of the current letter</span>
+<span class="c">#  keep track of the current letter count</span>
+<span class="c">#  keep track of all previous letters and counts (what's a good data structure for this?)</span>
+<span class="c">#  go through every letter in the string</span>
+<span class="c">#  when we first see a letter, count it as 1, if we see it again, increment that count</span>
+<span class="c">#  stop incrementing when we see another letter (reset values)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="a-possible-solution">A Possible Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+	<span class="n">cur_letter</span> <span class="o">=</span> <span class="bp">None</span>
+	<span class="n">cur_letter_count</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">letter_list</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+		<span class="c"># print(letter, cur_letter, cur_letter_count)</span>
+		<span class="c"># if there's a change in letter... count it</span>
+		<span class="k">if</span> <span class="n">letter</span> <span class="o">!=</span> <span class="n">cur_letter</span><span class="p">:</span>
+			<span class="c"># guard against the initial case </span>
+			<span class="k">if</span> <span class="n">cur_letter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+				<span class="n">letter_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cur_letter</span><span class="p">,</span> <span class="n">cur_letter_count</span><span class="p">))</span>
+			<span class="c"># otherwise, we'll always reset</span>
+			<span class="n">cur_letter</span> <span class="o">=</span> <span class="n">letter</span>
+			<span class="n">cur_letter_count</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">cur_letter_count</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="n">letter_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cur_letter</span><span class="p">,</span> <span class="n">cur_letter_count</span><span class="p">))</span>
+	<span class="n">encoded</span> <span class="o">=</span> <span class="s">""</span>
+	<span class="k">for</span> <span class="n">letter</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">letter_list</span><span class="p">:</span>
+		<span class="n">encoded</span> <span class="o">=</span> <span class="n">encoded</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">+</span> <span class="n">letter</span>
+	<span class="k">return</span> <span class="n">encoded</span>
+
+<span class="n">word</span> <span class="o">=</span> <span class="s">"tutt"</span>
+<span class="c"># print("%s encoded is %s" % (word, encode(word)))</span>
+<span class="k">assert</span> <span class="s">"1t1u2t"</span> <span class="o">==</span> <span class="n">encode</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+<span class="n">word</span> <span class="o">=</span> <span class="s">"whaaaaat the what???"</span>
+<span class="c"># print("%s encoded is %s" % (word, encode(word)))</span>
+<span class="k">assert</span> <span class="s">"1w1h5a1t1 1t1h1e1 1w1h1a1t3?"</span> <span class="o">==</span> <span class="n">encode</span><span class="p">(</span><span class="n">word</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="review-end">Review End</h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>About Class (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="about-class-19">About Class #19</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="class-19-topics">Class #19 Topics</h3>
+
+  <p><strong>More About Lists!</strong></p>
+
+</section>
+
+<section>
+  <h3 id="midterm-2">Midterm #2</h3>
+
+  <ul>
+    <li>4/16!</li>
+    <li>functions (especially returning values and scope), strings, and lists</li>
+    <li>though&#8230;it&#39;s cumulative</li>
+    <li>slightly more difficult than midterm #1</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="review-sessions">Review Sessions</h3>
+
+  <p><strong>Please contact me if you&#39;d like an out-of-class review session</strong>. Some potential times are:</p>
+
+  <ul>
+    <li>04/10/2015 (this Friday&#8230; maybe focusing on material from the 1st midterm)</li>
+    <li>6:00PM- 7:00PM</li>
+    <li>in WWH 1314</li>
+  </ul>
+
+  <p>Or&#8230;</p>
+
+  <ul>
+    <li>04/15/2015 (next Wednesday&#8230; maybe focusing on strings, lists, etc.)</li>
+    <li>6:15PM- 7:15PM</li>
+    <li>in WWH 905</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="homework">Homework</h3>
+
+  <ul>
+    <li>Homework #8 due Saturday</li>
+    <li>A shorter assignment, Homework #9, will be posted slightly early, and will be due a couple of days before the exam</li>
+    <li>(Will serve as good practice for lists)</li>
+  </ul>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

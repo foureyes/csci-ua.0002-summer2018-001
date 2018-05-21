@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Modules (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="modules">Modules</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="built-in-modules">Built-in Modules</h3>
+
+  <p><strong>What are some modules we&#39;ve used, and what do they do? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>math</li>
+      <li>random</li>
+      <li>sys</li>
+      <li>turtle</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="the-math-module">The math Module</h3>
+
+  <ul>
+    <li>math
+      <ul>
+        <li><strong>pi</strong> - a constant that contains the value of pi&#8594;</li>
+        <li><strong>floor</strong>(x) - returns the smallest integer less than or equal to x&#8594;</li>
+        <li><strong>ceil</strong>(x) - returns the smallest integer greater than or equal to x&#8594;</li>
+        <li><strong>sqrt</strong>(x) - returns the square root of x&#8594;</li>
+        <li><strong>cos</strong>(x) - returns the cosine of x radians &#8594;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="the-random-module">The random Module</h3>
+  <ul>
+    <li>random
+      <ul>
+        <li><strong>random</strong>() - return a random float that&#39;s between 0 and 1&#8594;</li>
+        <li><strong>randint</strong>(a, b) - returns a random int that&#39;s a &lt;= n &lt;= b&#8594;</li>
+        <li><strong>choice</strong>(list) - chooses a random element from a list</li>
+        <li><strong>shuffle</strong>(list) - shuffles a list in place</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <ul>
+    <li>sys
+      <ul>
+        <li><strong>exit</strong>([arg])_ - exits form python&#8594;</li>
+        <li><strong>version</strong> - a constant that contains the version of Python&#8594;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+<section>
+  <ul>
+    <li>turtle
+      <ul>
+        <li><strong>Turtle</strong>() - constructor that creates a turtle object
+          <ul>
+            <li><strong>forward</strong>(n)</li>
+            <li><strong>up</strong>()</li>
+            <li><strong>goto</strong>()</li>
+            <li>etc</li>
+          </ul>
+        </li>
+        <li><strong>Screen</strong>() - constructor that creates a screen object</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="creating-a-module">Creating a Module</h3>
+
+  <p>We can actually create our own modules.</p>
+
+  <ul>
+    <li>a <strong>module</strong> is just a file!</li>
+    <li>we can import everything that we&#39;ve written</li>
+    <li>you can import functions and variables from an existing file
+      <ul>
+        <li><strong>make sure that both files are in the same directory</strong></li>
+        <li>use the <strong>import</strong> statement</li>
+        <li>the module name is the <strong>file name without the .py</strong> extension</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="creating-a-module-example">Creating a Module Example</h3>
+
+  <p><strong>Create 2 files: greetings.py and using_a_module.py &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># greetings.py</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+	<span class="k">return</span> <span class="s">"hi there"</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># using_a_module.py</span>
+<span class="kn">import</span> <span class="nn">greetings</span>
+<span class="k">print</span><span class="p">(</span><span class="n">greetings</span><span class="o">.</span><span class="n">hello</span><span class="p">())</span></code></pre></figure>
+
+  <p>Run it!</p>
+</section>
+
+<section>
+  <h3 id="some-questions">Some Questions</h3>
+
+  <p><strong>What would happen if you didn&#39;t have an import? &#8594;</strong>
+<strong>What would happen if you put in the extension of your file name? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"/tmp/using_a_module.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">greetings</span><span class="o">.</span><span class="n">hello</span><span class="p">())</span>
+<span class="nb">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s">'greetings'</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"/tmp/using_a_module.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">import</span> <span class="nn">greetings.py</span>
+<span class="nb">ImportError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="n">py</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="why-create-your-own-modules">Why Create Your Own Modules?</h3>
+
+  <p>What&#39;s the motivation for creating your own modules?</p>
+
+  <div class="incremental">
+    <ul>
+      <li>organizing your code
+        <ul>
+          <li>keep related code together</li>
+          <li>prevent source code from being long and unwieldy</li>
+        </ul>
+      </li>
+      <li>code reuse
+        <ul>
+          <li>use your module in other programs</li>
+          <li>share your module with others!</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

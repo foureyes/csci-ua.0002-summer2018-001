@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lists, List Operators and Built-in Functions (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="lists-lists-operators-and-built-in-functions">Lists, Lists Operators and Built-in Functions</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="types">Types</h3>
+
+  <p>What&#39;s a <strong>type</strong>?  <strong>What are the types that we&#39;ve seen so far? &#8594;</strong></p>
+
+  <div class="incremental">
+    <p>A <strong>type</strong> is a set of values.  It&#39;s a way of classifying them.  <strong>Some examples of types that we&#39;ve learned include&#8230; &#8594;</strong></p>
+
+    <ul>
+      <li>strings (str)</li>
+      <li>integers (int)</li>
+      <li>floating point numbers (float)</li>
+      <li>complex numbers (complex)</li>
+      <li>booleans (bool)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="types-of-types">Types of Types</h3>
+
+  <p>Types can actually be classified as well.  Like types of types!  <strong>How are the following types related, and what do they have in common?</strong></p>
+
+  <ul>
+    <li>int</li>
+    <li>float</li>
+    <li>complex</li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li>all of these types are <strong>numeric</strong></li>
+      <li>they support similar operations&#8230;</li>
+      <li>for example addition, multiplication, subtraction, division</li>
+    </ul>
+
+  </div>
+</section>
+
+<section>
+
+  <h3 id="sequences">Sequences</h3>
+
+  <p>We&#39;ve seen <strong>numeric</strong> types, like int, float and complex.  Another kind/classification of type is a <strong>sequence</strong>. A <strong>sequence</strong>:</p>
+
+  <ul>
+    <li>consists of an ordered collection of elements</li>
+    <li>with each element identified by an index</li>
+  </ul>
+
+  <p>Sequences support operations like:</p>
+
+  <ul>
+    <li><strong>indexing</strong> to retrieve an element</li>
+    <li><strong>slicing</strong> to retrieve a subset of elements</li>
+    <li><strong>concatenation</strong> and <strong>multiplication</strong></li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="weve-seen-this-before">We&#39;ve Seen This Before</h3>
+
+  <p><strong>What data type have we seen that supports these operations?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>A <strong>string</strong> is an ordered sequence of characters.  It is a <strong>sequence</strong> type.  It supports:</p>
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">"blubbins?"[0] #index, first element -&gt; "b" 
+"blubbins?"[-1] #index, last element -&gt; "?"
+"blubbins?"[1:4] #slices -&gt; "lub"
+"blubbins?"[4:] #slices -&gt; "bins?"
+"what the " + "blubbins?" # concatenates -&gt; "what the blubbins?"
+"blubbins?" * 2 # repeats -&gt; "blubbins?blubbins?"</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="lists">Lists</h3>
+
+  <p>A <strong>list</strong> is another sequence type.</p>
+
+  <ul>
+    <li>instead of characters, it&#39;s an ordered collection of <strong>values</strong></li>
+    <li><em>any</em> values!</li>
+    <li>the following is a list that consists of  ints and strings</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  a list of ints</span>
+<span class="n">stuff</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">"one"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"two"</span><span class="p">]</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="list-literals">List Literals</h3>
+
+  <p>Constructing a list using a list literal looks like this:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="s">"some"</span><span class="p">,</span> <span class="s">"stuff"</span><span class="p">,</span> <span class="s">"between"</span><span class="p">,</span> <span class="s">"brackets"</span><span class="p">]</span></code></pre></figure>
+
+  <ul>
+    <li>delimited by brackets&#8230; [1, 2, 3]</li>
+    <li>each value is separated by a comma</li>
+    <li>a list with no elements is an <strong>empty list</strong></li>
+    <li>an empty list is []</li>
+    <li>again, mixed types are allowed (even other lists) - [&#39;pie&#39;, 3, 3.14, [&#39;apple&#39;, [&#39;cherry&#39;]]]</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="printing-lists">Printing Lists</h3>
+
+  <p>You can pass lists directly to the built-in print function.  It will output the list as if it were a string literal:</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; a = [2, 3, 5, 7]
+&gt;&gt;&gt; print(a)
+[2, 3, 5, 7]</code></pre></figure>
+
+  <p>You can also use str() or string formatting to create a string representation of a list:</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; a = [2, 3, 5, 7]
+&gt;&gt;&gt; print("Some numbers in a list: %s" % a)
+Some numbers in a list: [2, 3, 5, 7]</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="built-in-list-operators-and-functions">Built-in List Operators and Functions</h3>
+
+  <p>Because a <strong>list</strong> is just another <strong>sequence type</strong> many of the built-in operators and functions that work with strings behave similarly with lists.</p>
+
+  <ul>
+    <li>indexing operators</li>
+    <li>iteration</li>
+    <li>slicing</li>
+    <li>comparison operators</li>
+    <li>multiplication/addition</li>
+    <li>len</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="indexing-operations">Indexing Operations</h3>
+
+  <p><strong>What will the following code output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">land_of_ooo</span> <span class="o">=</span> <span class="p">[</span><span class="s">"jake"</span><span class="p">,</span> <span class="s">"finn"</span><span class="p">,</span> <span class="s">"pb"</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">land_of_ooo</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">land_of_ooo</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">land_of_ooo</span><span class="p">[</span><span class="n">a</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">land_of_ooo</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="p">))])</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">jake</span>
+<span class="n">pb</span>
+<span class="n">pb</span>
+<span class="n">finn</span></code></pre></figure>
+
+  </div>
+
+</section>
+
+<section>
+  <h3 id="indexing-operations-continued">Indexing Operations Continued</h3>
+
+  <p><strong>What will the following code output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">land_of_ooo</span> <span class="o">=</span> <span class="p">[</span><span class="s">"jake"</span><span class="p">,</span> <span class="s">"finn"</span><span class="p">,</span> <span class="s">"pb"</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">land_of_ooo</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">land_of_ooo</span><span class="p">[</span><span class="mf">1.0</span><span class="p">])</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">IndexError</span><span class="p">:</span> <span class="nb">list</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span>
+
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">TypeError</span><span class="p">:</span> <span class="nb">list</span> <span class="n">indices</span> <span class="n">must</span> <span class="n">be</span> <span class="n">integers</span><span class="p">,</span> <span class="ow">not</span> <span class="nb">float</span></code></pre></figure>
+
+  </div>
+
+</section>
+
+<section>
+  <h3 id="indexing-operations-continued-some-more">Indexing Operations Continued Some More!</h3>
+
+  <p>Using the list below, <strong>How would you retrieve &quot;homer&quot;&#8230; once using a positive index, and another time using a negative index? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">simpsons</span> <span class="o">=</span> <span class="p">[</span><span class="s">"marge"</span><span class="p">,</span> <span class="s">"homer"</span><span class="p">,</span> <span class="s">"lisa"</span><span class="p">]</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">simpsons</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">simpsons</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="indexing-operations-summary">Indexing Operations Summary</h3>
+
+  <ul>
+    <li>just like characters in a string, elements in a list can be accessed by their index (place)</li>
+    <li>indexes start at 0</li>
+    <li>use the value (a variable, a list literial, etc) followed by the square brackets</li>
+    <li>&#8230; with the index enclosed: [1, 2, 3][0] &#8594; 1</li>
+    <li>negative indexes start at the end of the list: [1, 2, 3][-1] &#8594; 3</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="mutability">Mutability</h3>
+
+  <p>Unlike strings, however, lists are <strong>mutable</strong>.  That means that you can reassign a value at an index!  <strong>What will the following code print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">"surprise"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="s">'surprise'</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="indexing-into-a-list-of-lists">Indexing Into a List of Lists</h3>
+
+  <p>Lists can be composed of any objects, including <strong>other lists</strong>:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">stuff</span> <span class="o">=</span> <span class="p">[[</span><span class="s">'foo'</span><span class="p">,</span> <span class="s">'bar'</span><span class="p">,</span> <span class="s">'baz'</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]]</span></code></pre></figure>
+
+  <ul>
+    <li>you can index into the outside list as usual&#8230;
+      <ul>
+        <li>stuff[0] gives back [&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;] &#8594;</li>
+      </ul>
+    </li>
+    <li>to get into an element in the inner list, you can index again&#8230;
+      <ul>
+        <li>stuff[0][1] gives back &#39;bar&#39;! &#8594;</li>
+      </ul>
+    </li>
+    <li>you can even change an element in the inner list&#8230;
+      <ul>
+        <li>stuff[0][1] = &quot;I&#39;m in your list&quot; &#8594;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="list-of-lists-exercises">List of Lists Exercises</h3>
+
+  <p>Using the same list:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">stuff</span> <span class="o">=</span> <span class="p">[[</span><span class="s">'foo'</span><span class="p">,</span> <span class="s">'bar'</span><span class="p">,</span> <span class="s">'baz'</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]]</span></code></pre></figure>
+
+  <ul>
+    <li>what indexing syntax would I use to get the number 3?</li>
+    <li>what line of code would I use to change 0.25 to 0?</li>
+  </ul>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">stuff</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">stuff</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span></code></pre></figure>
+
+</div>
+</section>
+
+<section>
+  <h3 id="iterating-over-a-list">Iterating Over a List</h3>
+
+  <p>Just like iterating over a sequence of characters&#8230;</p>
+
+  <ul>
+    <li>you can <strong>use a for loop to iterate over a sequence of values in a list</strong></li>
+    <li>your <strong>loop variable</strong> contains the <strong>value of a list element</strong></li>
+    <li>that changes to the next element after each iteration</li>
+    <li>loop continues until every element of list is exhausted</li>
+    <li>if list is empty, there will be no iterations</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="iterating-over-a-list-example">Iterating Over a List Example</h3>
+
+  <p><strong>What will the following for loop print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">some_boolean_values</span> <span class="o">=</span> <span class="p">[</span><span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">some_boolean_values</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">True</span>
+<span class="bp">True</span>
+<span class="bp">False</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="iterating-over-a-list-of-lists">Iterating Over a List of Lists</h3>
+
+  <p>How do you think we can print out every element in a line of its own in this list of lists?</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">stuff</span> <span class="o">=</span> <span class="p">[[</span><span class="s">'foo'</span><span class="p">,</span> <span class="s">'bar'</span><span class="p">,</span> <span class="s">'baz'</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]]</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""NESTED LOOPS!"""</span>
+<span class="n">stuff</span> <span class="o">=</span> <span class="p">[[</span><span class="s">'foo'</span><span class="p">,</span> <span class="s">'bar'</span><span class="p">,</span> <span class="s">'baz'</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]]</span>
+<span class="k">for</span> <span class="n">inner_list</span> <span class="ow">in</span> <span class="n">stuff</span><span class="p">:</span>
+	<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">inner_list</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="slicing">Slicing</h3>
+
+  <p>Slicing also works on lists.  <strong>What will the following code output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s">"red"</span><span class="p">,</span> <span class="s">"green"</span><span class="p">,</span> <span class="s">"blue"</span><span class="p">,</span> <span class="s">"taupe"</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">colors</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">])</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="s">'red'</span><span class="p">,</span> <span class="s">'green'</span><span class="p">]</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="s">'blue'</span><span class="p">,</span> <span class="s">'taupe'</span><span class="p">]</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="s">'red'</span><span class="p">,</span> <span class="s">'green'</span><span class="p">,</span> <span class="s">'blue'</span><span class="p">]</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="s">'red'</span><span class="p">,</span> <span class="s">'green'</span><span class="p">,</span> <span class="s">'blue'</span><span class="p">,</span> <span class="s">'taupe'</span><span class="p">]</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="slicing-summary">Slicing Summary</h3>
+
+  <p>Again&#8230; like slicing strings.</p>
+
+  <ul>
+    <li>use square brackets</li>
+    <li>&#8230;with start index and end index separated by a colon: [2, 3, 5, 7][1:3] &#8594; [3, 5]</li>
+    <li>start and end can be omitted: [2, 3, 5, 7][:2] &#8594; [2, 3]</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="equality-operators">Equality Operators</h3>
+
+  <ul>
+    <li>lists are compared lexicographically using comparison of corresponding elements</li>
+    <li>to be equal, each element must compare equal and the two sequences must be of the <strong>same type</strong> and have the <strong>same length</strong>.</li>
+  </ul>
+
+  <p><strong>Equal or not equal?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">([</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">([</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">]</span> <span class="o">!=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">True</span>
+<span class="bp">False</span>
+<span class="bp">True</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="greater-than-less-than">Greater Than, Less Than</h3>
+
+  <ul>
+    <li>sequences are ordered the same as their <strong>first differing elements</strong>.</li>
+    <li>comparing [1,2,&#39;x&#39;] and [1,2,&#39;y&#39;] is essentially just comparing &#39;x&#39; and &#39;y&#39;).
+      <ul>
+        <li>example: [1, 2, 3] &gt; [1, 2, 1] &#8594; True</li>
+      </ul>
+    </li>
+    <li>if the corresponding element does not exist, the shorter sequence is ordered first
+      <ul>
+        <li>example: [1,2] &lt; [1,2,3] &#8594; True</li>
+      </ul>
+    </li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">""" What boolean values do these statements return?"""</span>
+<span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="p">[</span><span class="s">'b'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span><span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="s">'z'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="p">[</span><span class="s">'x'</span><span class="p">,</span> <span class="s">'a'</span><span class="p">,</span> <span class="s">'z'</span><span class="p">]</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">False</span>
+<span class="bp">True</span>
+<span class="bp">False</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="addition-and-multiplication">Addition and Multiplication</h3>
+
+  <p>Multiplication and addition of lists are similar to the same operations on strings.  <strong>What will the following code output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">toppings</span> <span class="o">=</span> <span class="p">[</span><span class="s">"mushrooms"</span><span class="p">,</span> <span class="s">"peppers"</span><span class="p">,</span> <span class="s">"onions"</span><span class="p">]</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">toppings</span> <span class="o">+</span> <span class="n">numbers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">toppings</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">numbers</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="s">"mushrooms"</span><span class="p">,</span> <span class="s">"peppers"</span><span class="p">,</span> <span class="s">"onions"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="p">[</span><span class="s">"mushrooms"</span><span class="p">,</span> <span class="s">"peppers"</span><span class="p">,</span> <span class="s">"onions"</span><span class="p">,</span> <span class="s">"mushrooms"</span><span class="p">,</span> <span class="s">"peppers"</span><span class="p">,</span> <span class="s">"onions"</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="addition-and-multiplication-summary">Addition and Multiplication Summary</h3>
+
+  <ul>
+    <li>list concatenation
+      <ul>
+        <li><strong>+</strong></li>
+        <li>adds the elements of one list to another list</li>
+        <li>[1, 2] + [3, 4] &#8594; [1, 2, 3, 4]</li>
+      </ul>
+    </li>
+    <li>list multiplication
+      <ul>
+        <li><strong>*</strong></li>
+        <li>repeats a list the given number of times</li>
+        <li>[1, 2] * 3 &#8594; [1, 2, 1, 2, 1, 2]</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="len">len()</h3>
+
+  <p>You can still use the built-in function, len, on lists. <strong>What do you think the following code will output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="s">"baz"</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="s">"baz"</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">))</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">3</span>
+<span class="mi">0</span>
+<span class="mi">4</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="looking-for-something">Looking for something?</h3>
+
+  <p>Testing for membership within a list is similar to testing for a character in a string.  Use the <strong>in</strong> operator.  It returns True if the operand on the left is an element in the list on right.  <strong>What does the following code print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">'c'</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'c'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">])</span>
+
+<span class="n">breakfast</span> <span class="o">=</span> <span class="p">[</span><span class="s">"oatmeal"</span><span class="p">,</span> <span class="s">"tofu scramble"</span><span class="p">,</span> <span class="s">"ramen"</span><span class="p">]</span>
+<span class="k">if</span> <span class="s">"ramen"</span> <span class="ow">in</span> <span class="n">breakfast</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"ramen for breakfast"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"wise decision"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">True</span>
+<span class="bp">False</span>
+<span class="n">ramen</span> <span class="k">for</span> <span class="n">breakfast</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="deleting-list-items">Deleting List Items</h3>
+
+  <p>You can delete list items using <strong>del</strong> statement:</p>
+
+  <ul>
+    <li>the <strong>del</strong> statement is immediately followed by an indexed list or a list slice</li>
+    <li>the value or values of the indexed list or list slice are removed from the original list</li>
+  </ul>
+
+  <p><strong>What does the following code print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">vegetables</span> <span class="o">=</span> <span class="p">[</span><span class="s">"broccoli"</span><span class="p">,</span> <span class="s">"cauliflower"</span><span class="p">,</span> <span class="s">"brownie sundae"</span><span class="p">,</span> <span class="s">"carrot"</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">vegetables</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">vegetables</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="s">'broccoli'</span><span class="p">,</span> <span class="s">'cauliflower'</span><span class="p">,</span> <span class="s">'carrot'</span><span class="p">]</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="some-exercises">Some Exercises</h3>
+
+  <ul>
+    <li>using this list: numbers = [1, 2, 3, 4, 11, 12, 13, 14]
+      <ul>
+        <li>Part 1: <strong>print</strong> out number with an exclamation point (no need to define a function)</li>
+        <li>Part 2: only do this for every other element starting with the 2nd element:</li>
+        <li>2!</li>
+        <li>4!</li>
+        <li>12!</li>
+        <li>14!</li>
+      </ul>
+    </li>
+    <li>write a function that takes a list and returns the first half of the elements (it&#39;s ok to round down)
+      <ul>
+        <li>half_a_list([1, 2, 3, 4, 11, 12, 13, 14])</li>
+        <li>&#8594; [1, 2, 3, 4]</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="potential-solutions">Potential Solutions</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
+<span class="n">print_out_number</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">print_out_number</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">s!'</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span><span class="p">))</span>
+	<span class="n">print_out_number</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">print_out_number</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
+<span class="k">def</span> <span class="nf">half_a_list</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+	<span class="n">half_index</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">items</span><span class="p">[:</span><span class="n">half_index</span><span class="p">]</span></code></pre></figure>
+
+</section>
+
+<!--
+<section markdown="block">
+##  [List Methods](list_methods.html)
+</section>
+-->
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Computers and How They Store Data (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="computers-and-how-they-store-data">Computers and How They Store Data</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="hardware-and-software">Hardware and Software</h3>
+
+  <p><strong>So&#8230; um, what&#39;s the difference between hardware and software?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>hardware</strong> - the physical device(s) that a computer is made of</li>
+      <li><strong>software</strong> - the programs that run on a computer</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="hardware">Hardware</h3>
+
+  <ul>
+    <li><strong>hardware</strong> refers to all of the actual parts that a computer is made of</li>
+    <li>computers are composed of several specialized components</li>
+    <li><strong>what do you think the main components of a computer are?</strong> &#8594;</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="major-components-of-a-computer-system">Major Components of a Computer System</h3>
+
+  <ol>
+    <li><strong>the CPU</strong> (Central Processing Unit)</li>
+    <li><strong>main memory</strong> (also called RAM or Random Access Memory)</li>
+    <li><strong>secondary storage</strong></li>
+    <li><strong>input devices</strong></li>
+    <li><strong>output devices</strong></li>
+  </ol>
+
+</section>
+
+<section>
+  <h3 id="the-cpu-central-processing-unit">The CPU (Central Processing Unit)</h3>
+
+  <p><strong>What does it do?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <ul>
+      <li>the part of the computer responsible for <em>actually</em> running programs</li>
+      <li>modern CPUs are also called <strong>microprocessors</strong></li>
+      <li>they&#39;re tiny computer chips</li>
+    </ul>
+
+    <p><strong>This may just be for the hardware geeks, but what are some examples of microprocessors?</strong> &#8594;</p>
+
+    <ul>
+      <li>the Intel Core i3 in your laptop</li>
+      <li>the Apple A6 in your iPhone or iPad</li>
+      <li>the Atmel chip on an Arduino (neeerrrrd!)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="main-memory">Main Memory</h3>
+
+  <p><strong>What does it do?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <ul>
+      <li><strong>main memory or RAM</strong> (Random Access Memory) is the computer&#39;s work area</li>
+      <li>it&#39;s where the computer stores a running program and the data related to that program</li>
+      <li><strong>RAM</strong> is <em>volatile</em>; it needs continuous power to store data</li>
+      <li>consequently, RAM is temporary storage</li>
+      <li>when your computer is turned off, the content that&#39;s stored in main memory is wiped out</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="secondary-storage">Secondary Storage</h3>
+
+  <p><strong>What does it do?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>secondary storage devices</strong> - devices meant to store data for long periods of time</li>
+      <li>unlike <strong>RAM</strong>, these storage devices are <em>non-volatile</em> - they do not require power to retain data</li>
+    </ul>
+
+    <p><strong>What are some examples of non-volatile data stores?</strong> &#8594;</p>
+
+    <ul>
+      <li>your hard drive or SSD</li>
+      <li>CDs, DVDs, etc.</li>
+      <li><strong>floppy disks</strong> (!?)</li>
+    </ul>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="you-know">You Know&#8230;</h3>
+
+  <div class="img-container">
+
+    <p><img style="border:0px" src="http://media.giphy.com/media/B2MvAVY5c1Uv6/giphy.gif" /></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="input-and-output-devices">Input and Output Devices</h3>
+
+  <p>These devices allow:</p>
+
+  <ul>
+    <li>a user to send data to the computer</li>
+    <li>or allow the computer to present data or feedback to a user</li>
+  </ul>
+
+  <p><strong>What are some examples of input and output devices?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>input - your desktop computer&#39;s keyboard and mouse</li>
+      <li>input - the camera on your laptop</li>
+      <li>input and output - the touch screen on your phone</li>
+      <li>output - the speaker on your laptop</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="software">Software</h3>
+
+  <p>Hardware is nice and all, but&#8230;</p>
+
+  <ul>
+    <li>a computer by itself is pretty inert</li>
+    <li>in order to do anything with it, you&#39;ll need some software
+      <ul>
+        <li>that is, you&#39;ll need a program or two</li>
+        <li>(or&#8230; I guess you can call them <em>apps</em> as well, if you <em>really</em> want to)</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="types-of-software">Types of Software</h3>
+
+  <ul>
+    <li><strong>operating systems</strong> (and other <em>system</em> software)
+      <ul>
+        <li>the most fundamental set of programs on a computer</li>
+        <li>allows interaction with the underlying hardware</li>
+      </ul>
+    </li>
+    <li><strong>application software</strong>
+      <ul>
+        <li>programs that are actually <em>useful</em> for everyday tasks</li>
+      </ul>
+    </li>
+    <li><strong>what are some examples of operating systems and applications</strong>? &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li>operating systems - Windows, Linux, Android, iOS</li>
+      <li>applications - Chrome, mail.app, Excel, ProTools, Avid</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2 id="storing-data">Storing Data</h2>
+</section>
+
+<section>
+  <h3 id="its-all-0s-and-1s">It&#39;s All 0&#39;s and 1&#39;s</h3>
+
+  <ul>
+    <li>computers deal with data as a series of <strong>bits</strong> or <em>binary digits</em></li>
+    <li>a <strong>bit</strong> (binary digit) can hold only one of two values, a <strong>0</strong> or <strong>1</strong></li>
+    <li>turns out, storing 0&#39;s and 1&#39;s is convenient for computers. <strong>why?</strong> &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li>easily represented by electronics!</li>
+      <li>0 and 1 are essentially analogous to off and on</li>
+      <li>(or in actuality the presence or absence of a specific charge or voltage)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="bits">Bits</h3>
+
+  <p><strong>How many pieces of information can be encoded into 1 bit?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>2 pieces of information:
+        <ul>
+          <li>0 and 1</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p><strong>How about 2 sequential bits?</strong> &#8594;</p>
+
+    <ul>
+      <li>4 (2 x 2) pieces of information (or 4 different combinations of 0&#39;s and 1&#39;s):
+        <ul>
+          <li>00, 01, 10, 11</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="bytes">Bytes</h3>
+
+  <p>A <strong>byte</strong> is 8 bits.  <strong>How many possible combinations of 0&#39;s and 1&#39;s are there in 8 bits?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>256 possible combinations (2 x 2 x 2 x 2 x 2 x 2 x 2 x 2)!</li>
+      <li>computers can use a <strong>byte</strong> to encode different kinds of data!
+        <ul>
+          <li>numbers</li>
+          <li>letters</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="storing-numbers">Storing Numbers</h3>
+
+  <p>Using a binary numbering system, a computer can store the numbers 0 through 255 in a single <em>byte</em>.</p>
+
+  <ul>
+    <li>a series of 8 bits represents numbers 0 to 255</li>
+    <li>each bit is in a place: _ _ _ _ _ _ _ _</li>
+    <li>each place represents the presence or absence of a power of 2:</li>
+    <li>summing all of the places gives the decimal version&#8230;</li>
+    <li>an example: 00101000</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">2</span><span class="o">^</span><span class="mi">7</span> <span class="o">|</span> <span class="mi">2</span><span class="o">^</span><span class="mi">6</span> <span class="o">|</span> <span class="mi">2</span><span class="o">^</span><span class="mi">5</span> <span class="o">|</span> <span class="mi">2</span><span class="o">^</span><span class="mi">4</span> <span class="o">|</span> <span class="mi">2</span><span class="o">^</span><span class="mi">3</span> <span class="o">|</span> <span class="mi">2</span><span class="o">^</span><span class="mi">2</span> <span class="o">|</span> <span class="mi">2</span><span class="o">^</span><span class="mi">1</span> <span class="o">|</span> <span class="mi">2</span><span class="o">^</span><span class="mi">0</span>
+<span class="o">----+-----+-----+-----+-----+-----+-----+-----</span>
+<span class="mi">128</span> <span class="o">|</span> <span class="mi">64</span>  <span class="o">|</span> <span class="mi">32</span>  <span class="o">|</span> <span class="mi">16</span>  <span class="o">|</span>  <span class="mi">8</span>  <span class="o">|</span>  <span class="mi">4</span>  <span class="o">|</span>  <span class="mi">2</span>  <span class="o">|</span>  <span class="mi">1</span> 
+<span class="o">----+-----+-----+-----+-----+-----+-----+-----</span>
+ <span class="mi">0</span>  <span class="o">|</span>  <span class="mi">0</span>  <span class="o">|</span>  <span class="mi">1</span>  <span class="o">|</span>  <span class="mi">0</span>  <span class="o">|</span>  <span class="mi">1</span>  <span class="o">|</span>  <span class="mi">0</span>  <span class="o">|</span>  <span class="mi">0</span>  <span class="o">|</span>  <span class="mi">0</span>   <span class="o">=</span> <span class="mi">40</span>
+<span class="o">----+-----+-----+-----+-----+-----+-----+-----</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="storing-numbers-continued">Storing Numbers Continued</h3>
+
+  <ul>
+    <li>the first bit represents either 0 or 1 &#8230;  <strong>1</strong>&#39;s</li>
+    <li>the second bit represents either 0 or 1 &#8230;  <strong>2</strong>&#39;s</li>
+    <li>the third bit represents either 0 or 1 &#8230; <strong>4</strong>&#39;s</li>
+    <li>the fourth bit represents either 0 or 1 &#8230; <strong>8</strong>&#39;s</li>
+    <li>&#8230;. and so on through the 8th bit, or 2 to the 7th, which represents 128 (notice that each place is just a power of 2, starting at 2 to the 0th power!)</li>
+    <li>all of these added together give a number between 0 and 255</li>
+    <li>sometimes this is called a base-2 numeral system</li>
+    <li><strong>how does a base-10 numeral system work?</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="storing-numbers---examples">Storing Numbers - Examples</h3>
+
+  <ul>
+    <li><strong>00011100</strong>
+      <ul>
+        <li>(0 x 128) + (0 x 64) + (0 x 32) + (1 x 16) + (1 x 8) +  (1 x 4) + (0 x 2) + (0 x 1)</li>
+        <li>&#8594; 28</li>
+      </ul>
+    </li>
+    <li><strong>01000010</strong>
+      <ul>
+        <li>(0 x 128) + (1 x 64) + (0 x 32) + (0 x 16) + (0 x 8) +  (0 x 4) + (1 x 2) + (0 x 1)</li>
+        <li>&#8594; 66</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="storing-numbers---questions">Storing Numbers - Questions</h3>
+
+  <div class="incremental">
+    <p><strong>00000001</strong> &#8594;</p>
+
+    <p>1</p>
+
+    <p><strong>00000010</strong> &#8594;</p>
+
+    <p>2</p>
+
+    <p><strong>00000011</strong> &#8594;</p>
+
+    <p>3</p>
+
+    <p><strong>00000100</strong> &#8594;</p>
+
+    <p>4</p>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="storing-numbers---questions-continued">Storing Numbers - Questions Continued</h3>
+
+  <div class="incremental">
+    <p><strong>10000101</strong> &#8594;</p>
+
+    <p>133</p>
+
+    <p><strong>10000001</strong> &#8594;</p>
+
+    <p>129</p>
+
+    <p><strong>00100000</strong> &#8594;</p>
+
+    <p>32</p>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="an-addendum-to-storing-numbers">An Addendum to Storing Numbers</h3>
+
+  <ul>
+    <li>note that this works well for integers&#8230;</li>
+    <li>specifically 0 through 255</li>
+    <li>to work with more numbers, use more bits!</li>
+    <li>there are also other encoding schemes</li>
+    <li><strong>what are some other characteristics of numbers that can be encoded?</strong> &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li>sign (negative or positive numbers)</li>
+      <li>decimal point (real / floating point numbers)</li>
+    </ul>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="storing-letters-and-other-characters">Storing Letters and Other Characters</h3>
+
+  <p>Storing numbers is a breeze - using bits to represent binary numbers works well.  <strong>How do you think letters and punctuation are stored using bits?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>Since it&#39;s easy to store numbers, use some sort of encoding scheme that translates numeric values into characters.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="ascii">ASCII</h3>
+
+  <p>One encoding scheme is called <strong>ASCII</strong>.</p>
+
+  <ul>
+    <li><strong>ASCII</strong> defines a set of numeric codes that can be translated to English letters, punctuation marks and other characters</li>
+    <li>the first version of <strong>ASCII</strong> stored characters in 7 bits</li>
+  </ul>
+
+  <p><strong>How many different characters can be stored in 7 bits?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>128 characters&#8230; <a href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">see the table on wikipedia</a></p>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="ascii-continued">ASCII Continued</h3>
+
+  <p>ASCII is an older encoding scheme that has some flaws.  <strong>What do you think ASCII&#39;s major shortcoming is?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>it can only store 128 <em>English</em> characters!</li>
+      <li>what about additional alphabets and writing systems?</li>
+      <li>(for example Chinese characters number in the tens of thousands)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="unicode">Unicode</h3>
+
+  <p>The current <strong>standard</strong> for consistently representing text through different character sets and encodings is called <strong>unicode</strong>.</p>
+
+  <ul>
+    <li>in <strong>unicode</strong>, <strong>code points</strong> are numbers (specifically integers) that represents a <em>character</em> or <em>glyph</em></li>
+    <li>the most current version of unicode supports 110,000 characters</li>
+    <li>here&#39;s a table of <a href="http://www.utf8-chartable.de/unicode-utf8-table.pl?utf8=dec">code points</a>
+      <ul>
+        <li>note that 65-90 are uppercase latin letters; 97-122 are lowercase</li>
+        <li>this matches the older, but limited encoding scheme, ASCII</li>
+      </ul>
+    </li>
+    <li>here&#39;s a <a href="http://unicodesnowmanforyou.com">unicode snowman</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="ok-so-how-does-a-program-actually-run">OK&#8230; So, How Does a Program Actually Run?</h2>
+
+  <aside>We already know the physical devices that make up a computer and we know how computers store data.</aside>
+</section>
+
+<section>
+  <h3 id="how-is-a-program-executed">How is a Program Executed?</h3>
+
+  <p><strong>What part/component of your computer is responsible for executing a program?</strong></p>
+
+  <div class="incremental">
+    <p>The CPU!</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="the-cpu-revisited">The CPU Revisited</h3>
+
+  <p>The CPU can perform some very basic tasks and operations:</p>
+
+  <ul>
+    <li>add, subtract, divide and multiply</li>
+    <li>read a piece of data from memory</li>
+    <li>move data around from one place in memory to another</li>
+    <li>&#8230;and others</li>
+  </ul>
+
+  <p>These operations vary from processor to processor by design.</p>
+
+</section>
+
+<section>
+  <h3 id="machine-language">Machine Language</h3>
+
+  <p>The CPU executes its operations based on instructions specified by a program.  However, computers really only understand 0&#39;s and 1&#39;s</p>
+
+  <ul>
+    <li>these instructions are written in <strong>machine language</strong>, or <strong>machine code</strong></li>
+    <li>every kind of processor has its own machine code <strong>instruction set</strong></li>
+    <li><strong>machine code</strong> instructions are patterns of bits that correspond to different commands/operations on the processor</li>
+    <li>for example, 00000101 may mean <em>subtract one from the data that&#39;s in this location</em></li>
+  </ul>
+
+</section>
+
+<section>
+  <h2 id="dont-panic--we-wont-be-programming-in-machine-language">Don&#39;t Panic.  We Won&#39;t be Programming in Machine Language!</h2>
+
+  <aside>What will we be programming in, then?</aside>
+</section>
+
+<section>
+  <h1 id="lets-talk-programming-languages"><a href="programming-languages.html">Let&#39;s Talk Programming Languages</a></h1>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

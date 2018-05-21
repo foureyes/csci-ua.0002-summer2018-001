@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Functions (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="functions-assertions-and-testing">Functions: Assertions and Testing</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="a-quick-review">A Quick Review</h2>
+</section>
+
+<section>
+  <h3 id="write-a-function">Write a Function&#8230;</h3>
+
+  <ul>
+    <li>call it join_three_strings</li>
+    <li>it should take three arguments: a, b, c</li>
+    <li>it should return a single string composed of a, b, and c <strong>separated</strong> by a space</li>
+    <li>handle non-string arguments (see last example)</li>
+  </ul>
+
+  <p>Example Usage:</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; print(join_three_strings('one', 'two', 'three'))
+one two three
+&gt;&gt;&gt; print(join_three_strings('1', '2', '3'))
+1 2 3
+&gt;&gt;&gt; print(join_three_strings(1, 2, 3))
+1 2 3</code></pre></figure>
+
+  <p><strong>Let&#39;s write this function together &#8594;</strong></p>
+</section>
+
+<section>
+  <h3 id="join-three-strings-solution">Join Three Strings Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">join_three_strings</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+	<span class="k">return</span> <span class="s">"</span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="syntax">Syntax</h3>
+  <p>A quick summary on syntax:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="err">&lt;</span><span class="nf">function_name</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">zero_or_more_parameters</span><span class="o">&gt;</span><span class="p">):</span>
+	<span class="o">&lt;</span><span class="n">statement</span> <span class="c">#1&gt;</span>
+	<span class="o">&lt;</span><span class="n">statement</span> <span class="c">#2&gt;</span>
+	<span class="o">.</span>
+	<span class="o">.</span>
+	<span class="o">&lt;</span><span class="n">etc</span><span class="o">.&gt;</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="parameters">Parameters</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">join_three_strings</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+	<span class="k">return</span> <span class="s">"</span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span></code></pre></figure>
+
+  <p><strong>What are the values of a, b and c in the above function when called as below:&#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">join_three_strings</span><span class="p">(</span><span class="s">'one'</span><span class="p">,</span> <span class="s">'two'</span><span class="p">,</span> <span class="s">'three'</span><span class="p">)</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">join_three_strings</span><span class="p">(</span><span class="s">'three'</span><span class="p">,</span> <span class="s">'one'</span><span class="p">,</span> <span class="s">'two'</span><span class="p">)</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="s">'three'</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s">'two'</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s">'one'</span>
+<span class="n">join_three_strings</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>a = &#39;one&#39;, b = &#39;two&#39;, c = &#39;three&#39;</li>
+      <li>a = &#39;three&#39;, b = &#39;one&#39;, c = &#39;two&#39;</li>
+      <li>a = &#39;three&#39;, b = &#39;two&#39;, c = &#39;one&#39;</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="parameters-summary">Parameters Summary</h3>
+  <ul>
+    <li><strong>parameters</strong>
+      <ul>
+        <li>variable names used within a function</li>
+        <li>reference the values passed in as arguments</li>
+      </ul>
+    </li>
+    <li>parameters are positional; order determines what names match to what variables
+      <ul>
+        <li>def f(p1, p2, p3):</li>
+        <li>p1 will refer to the first value passed in</li>
+        <li>p2 to the second</li>
+        <li>etc.</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="return-values">Return Values</h3>
+  <p><strong>What&#39;s the difference between these two definitions of our function?  What gets printed out for each code sample? &#8594;</strong></p>
+
+  <p>Version #1</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">join_three_strings</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+	<span class="k">return</span> <span class="s">"</span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">join_three_strings</span><span class="p">(</span><span class="s">'one'</span><span class="p">,</span> <span class="s">'two'</span><span class="p">,</span> <span class="s">'three'</span><span class="p">))</span></code></pre></figure>
+
+  <p>Version #2</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">join_three_strings</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">join_three_strings</span><span class="p">(</span><span class="s">'one'</span><span class="p">,</span> <span class="s">'two'</span><span class="p">,</span> <span class="s">'three'</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="return-values-continued">Return Values Continued</h3>
+  <p>The first definition (#1) returns a string, while the other (#2) doesn&#39;t return a value.</p>
+
+  <p>Printing out the <strong>results</strong> of both functions gives:</p>
+
+  <ol>
+    <li>Version #1
+      <ul>
+        <li><code class="inline">one two three</code></li>
+        <li>(this function returns a string, and the caller prints)</li>
+      </ul>
+    </li>
+    <li>Version #2
+      <ul>
+        <li><code class="inline">one two three</code></li>
+        <li><code class="inline">None</code></li>
+        <li>(this function prints out the string itself, and then returns no value, or <code class="highlighter-rouge">None</code>)</li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="the-return-statement">The Return Statement</h3>
+  <ul>
+    <li>a function can return a value after it is called</li>
+    <li>this is done by using the <strong>return</strong> statement</li>
+    <li>the <strong>return</strong> statement immediately stops the execution of a function</li>
+    <li>&#8230;and returns the value that follows it
+      <ul>
+        <li>the value can be any value! (return True)</li>
+        <li>it can even be an expression (return 1 + 1)</li>
+      </ul>
+    </li>
+    <li>if a function doesn&#39;t explicitly return a value, it gives back <strong>None</strong>, a special value that means the absence of a value</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="defining-vs-calling">Defining vs Calling</h3>
+  <p><strong>What gets printed out for each version of code?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  version 1</span>
+<span class="k">def</span> <span class="nf">join_three_strings</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+	<span class="k">return</span> <span class="s">"</span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  version 2</span>
+<span class="k">def</span> <span class="nf">join_three_strings</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+	<span class="k">return</span> <span class="s">"</span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="n">join_three_strings</span><span class="p">(</span><span class="s">'one'</span><span class="p">,</span> <span class="s">'two'</span><span class="p">,</span> <span class="s">'three'</span><span class="p">)</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  version 3</span>
+<span class="k">def</span> <span class="nf">join_three_strings</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+	<span class="k">return</span> <span class="s">"</span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">join_three_strings</span><span class="p">(</span><span class="s">'one'</span><span class="p">,</span> <span class="s">'two'</span><span class="p">,</span> <span class="s">'three'</span><span class="p">))</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>1: nothing, 2: nothing, 3: <code class="highlighter-rouge">one two three</code></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="testing-programs--functions">Testing Programs / Functions</h3>
+  <p><strong>So far, we&#39;ve tested our programs by:</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <ul>
+      <li>printing things out to the screen</li>
+      <li>manually inspecting the output</li>
+      <li>&#8230;for every test case that we have</li>
+    </ul>
+  </div>
+
+  <div class="incremental">
+    <p><strong>Some shortcomings of manual testing</strong> &#8594;</p>
+  </div>
+
+  <div class="incremental">
+
+    <ul>
+      <li>it&#39;s tedious!</li>
+      <li>it&#39;s error prone!</li>
+    </ul>
+  </div>
+
+  <div class="incremental">
+    <p><strong>What can we do to make testing less tedious and error prone? &#8594;</strong></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="assertions-for-testing">Assertions for Testing</h3>
+
+  <p>Let&#39;s get the computer to test it for us!  Assertions are a way to systematically check the state of our program.</p>
+
+  <ul>
+    <li>we can test <em>expected</em> values against the <em>actual</em> values by using an <strong>assert</strong> statement</li>
+    <li>the <strong>assert</strong> statement will stop program execution if if a specified condition is <strong>not True</strong></li>
+    <li>for testing, that condition is <em>expected</em> value == <em>actual</em> value</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="assertions-as-sanity-checks">Assertions as &quot;Sanity Checks&quot;</h3>
+
+  <ul>
+    <li>note that assertions are not limited to this type of testing</li>
+    <li>they&#39;re usually used to check for conditions that <em>shouldn&#39;t</em> happen</li>
+    <li>such as the return value of a function not being an expected type</li>
+    <li>or the parameters of a function adhering to certain bounds</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="assert-syntax">Assert Syntax</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">assert</span> <span class="o">&lt;</span><span class="n">some</span> <span class="n">condition</span><span class="o">&gt;</span><span class="p">,</span> <span class="s">"a string representing a test"</span></code></pre></figure>
+
+  <ol>
+    <li>the keyword <strong>assert</strong></li>
+    <li>followed by any condition - an expression that returns True or False (usually expected == observed)</li>
+    <li>followed by a comma</li>
+    <li>followed by a string that represents the test</li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="an-assertion-example">An Assertion Example</h3>
+
+  <p><strong>Let&#39;s use assertions to test an incorrect implementation of our function - one that doesn&#39;t have spaces between the strings. &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">join_three_strings</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+	<span class="k">return</span> <span class="s">"</span><span class="si">%</span><span class="s">s</span><span class="si">%</span><span class="s">s</span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="s">"ha ha ha"</span> <span class="o">==</span> <span class="n">join_three_strings</span><span class="p">(</span><span class="s">"ha"</span><span class="p">,</span> <span class="s">"ha"</span><span class="p">,</span> <span class="s">"ha"</span><span class="p">),</span> <span class="s">"should have spaces"</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  output shows line number and error...</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"foo.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">4</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="k">assert</span> <span class="s">"ha ha ha"</span> <span class="o">==</span> <span class="n">join_three_strings</span><span class="p">(</span><span class="s">"ha"</span><span class="p">,</span> <span class="s">"ha"</span><span class="p">,</span> <span class="s">"ha"</span><span class="p">),</span> <span class="s">"should have spaces"</span>
+<span class="nb">AssertionError</span><span class="p">:</span> <span class="n">joined</span> <span class="n">string</span> <span class="n">should</span> <span class="n">have</span> <span class="n">spaces</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="an-assertion-example-that-actually-passes">An Assertion Example That Actually Passes</h3>
+
+  <p><strong>Let&#39;s fix the program&#8230; and see what happens. &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">join_three_strings</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+	<span class="k">return</span> <span class="s">"</span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="s">"ha ha ha"</span> <span class="o">==</span> <span class="n">join_three_strings</span><span class="p">(</span><span class="s">"ha"</span><span class="p">,</span> <span class="s">"ha"</span><span class="p">,</span> <span class="s">"ha"</span><span class="p">),</span> <span class="s">"should have spaces"</span>
+
+<span class="c">#  results in no output</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="another-assertion-example">Another Assertion Example</h3>
+
+  <p><strong>Let&#39;s use assertions to test an incorrect implementation of an absolute_value function &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">absolute_value</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">x</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">absolute_value</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="s">"absolute value of negative # is positive"</span>
+<span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">absolute_value</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s">"absolute value of positive # is same #"</span>
+<span class="k">assert</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">absolute_value</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="s">"absolute value of 0 is 0"</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="questions-about-assertions">Questions About Assertions</h3>
+  <ul>
+    <li>why use assertions
+      <ul>
+        <li>to test specific portions of your program</li>
+        <li>to cut down on manual testing</li>
+        <li>they&#39;re almost like inline documentation for your functions</li>
+      </ul>
+    </li>
+    <li>why use assertions over if statements
+      <ul>
+        <li>you can actually <em>turn off</em> assertions when you run your program</li>
+        <li>more concise than if statements</li>
+        <li>specifically meant for checking the internal state of your program</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="documentation">Documentation</h3>
+
+  <ul>
+    <li>what if someone else is reading your code, but your code is kind of <em>complex</em>?</li>
+    <li>what if you <em>forgot</em> what your code does!?</li>
+    <li>you can write comments to give you a hint</li>
+    <li>or you can write <strong>docstrings</strong> that will show up in Python&#39;s documentation tools</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="docstrings">Docstrings</h3>
+
+  <ul>
+    <li>we can document our functions using a <strong>docstring</strong></li>
+    <li>it&#39;s a string that immediately follows the head of a function definition</li>
+    <li>it&#39;s in triple quotes</li>
+    <li>it describes the function</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">join_three_strings</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+	<span class="s">"""returns a string composed of the values passed in separated by spaces""""</span><span class="err">
+</span><span class="s">	return "</span><span class="o">%</span><span class="n">s</span> <span class="o">%</span><span class="n">s</span> <span class="o">%</span><span class="n">s</span><span class="s">" </span><span class="si">% </span><span class="s">(a, b, c)</span></code></pre></figure>
+
+  <p>In later classes, we&#39;ll see where this string shows up, but for now just use it as inline documentation for your code.</p>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

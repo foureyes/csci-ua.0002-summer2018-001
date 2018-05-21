@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>List Exercises (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="list-exercises">List Exercises</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="about-list-exercises">About List Exercises</h3>
+
+  <ul>
+    <li>note that the following exercises create and return new lists!</li>
+    <li>there are built-in functions and constructs in Python that make these exercises easier
+      <ul>
+        <li>for now, we&#39;ll do it the difficult way</li>
+        <li>we&#39;ll go over some of these constructs in-depth in later classes</li>
+      </ul>
+    </li>
+    <li>these exercises will map, filter or reduce a list&#8230;</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="pluralize-all-map">Pluralize All (Map)</h3>
+
+  <p><strong>Implement a function called pluralize_all: &#8594;</strong></p>
+
+  <ul>
+    <li>it will take a list of strings called <strong>words</strong></li>
+    <li>it should return a list of strings</li>
+    <li>the resulting list will have plural versions of every string passed in</li>
+    <li>assume that each element in the list is a string that&#39;s a singular word</li>
+    <li>you can use a naive method of pluralization (just add an &#39;s&#39;!)</li>
+    <li>it will return an empty list if an empty list is inputted</li>
+    <li>remember to use assertions</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="pluralize-all--output">Pluralize All &#8230; Output</h3>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">print(pluralize_all(["zebra", "cow", "tiger"]))
+['zebras', 'cows', 'tigers']</code></pre></figure>
+
+  <!--_-->
+</section>
+
+<section>
+  <h3 id="pluralize-all-potential-solution">Pluralize All Potential Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">pluralize_all</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+	<span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+		<span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span> <span class="o">+</span> <span class="s">'s'</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">new_list</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="more-characters-than-filter">More Characters Than (Filter)</h3>
+
+  <p><strong>Implement a function called more_characters_than: &#8594;</strong></p>
+
+  <ul>
+    <li>it will take a list of strings, called <em>words</em>, and an integer, called <em>min</em>, as an input</li>
+    <li>it should return a list of strings</li>
+    <li>the resulting list will only have strings with more than <em>min</em> characters</li>
+    <li>it will return an empty list if an empty list is inputted</li>
+    <li>ignore the case where a list has non-string types or if min is not an integer</li>
+    <li>remember to use assertions</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="more-characters-than-example">More Characters Than Example</h3>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">print(more_characters_than(["zebra", "cow", "tiger"], 4))
+['zebra', 'tiger']</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="more-characters-than-potential-solution">More Characters Than Potential Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">more_characters_than</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="nb">min</span><span class="p">):</span>
+	<span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">min</span><span class="p">:</span>
+			<span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">new_list</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="s">'zebra'</span><span class="p">,</span> <span class="s">'tiger'</span><span class="p">]</span> <span class="o">==</span> <span class="n">more_characters_than</span><span class="p">([</span><span class="s">"zebra"</span><span class="p">,</span> <span class="s">"cow"</span><span class="p">,</span> <span class="s">"tiger"</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span> <span class="s">"only strings with more than 4 characters"</span>
+<span class="k">assert</span> <span class="p">[]</span> <span class="o">==</span> <span class="n">more_characters_than</span><span class="p">([],</span> <span class="mi">4</span><span class="p">),</span> <span class="s">"an empty list returns an empty list"</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="average-reduce">Average (Reduce)</h3>
+
+  <ul>
+    <li>define a function called average</li>
+    <li>it should take a list of numbers as an argument</li>
+    <li>it will return the average of the numbers in the list</li>
+    <li>empty list will have an average of 0</li>
+    <li>remember to use assertions</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="implementing-average">Implementing Average</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+	<span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+		<span class="nb">sum</span> <span class="o">+=</span> <span class="n">n</span>
+	<span class="k">return</span> <span class="nb">sum</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="mi">9</span> <span class="o">==</span> <span class="n">average</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]),</span> <span class="s">"takes a list of integers and returns the average value"</span></code></pre></figure>
+
+  <p>Using the built-in sum:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+	<span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="notes">Notes</h3>
+
+  <p>Interested in other ways to do this?  <strong>Check out&#8230;</strong> &#8594;</p>
+
+  <ul>
+    <li><a href="https://docs.python.org/3.1/tutorial/datastructures.html#list-comprehensions">List Comprehensions</a> (we&#39;ll check this out in a later class)</li>
+    <li><a href="https://docs.python.org/3/library/functions.html#map">map()</a></li>
+    <li><a href="https://docs.python.org/3/library/functions.html#filter">filter()</a></li>
+  </ul>
+
+</section>
+
+<section>
+  <h2 id="lists-and-mutability"><a href="mutability.html">Lists and Mutability</a></h2>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

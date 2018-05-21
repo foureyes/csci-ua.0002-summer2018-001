@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Nested Loops (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="nested-loops">Nested Loops</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<!--
+<section markdown="block">
+###  You Can Loop Within a Loop!
+
+__What does this code output? &rarr;__
+
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">s</span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span></code></pre></figure>
+
+<div class="incremental" markdown="block">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mo">00</span>
+<span class="mo">01</span>
+<span class="mi">10</span>
+<span class="mi">11</span></code></pre></figure>
+
+</div>
+</section>
+
+<section markdown="block">
+###  Breaking Down Nested Loops
+
+* the inner most loop must finish iterating before the outer loop goes on to its next iteration
+* both loop variables are accessible in the body of the innermost loop
+</section>
+
+<section markdown="block">
+###  Chess Board Squares
+
+__Print out the names of each square on a chess board using nested loops &rarr;__  See [this article on chess notation](http://www.chessstrategiesblog.com/chess-notation/):
+
+* columns are a through h
+* rows are 1 through 8
+* letter comes first
+
+
+<figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">a8 b8 c8 d8 e8 f8 g8 h8 
+a7 b7 c7 d7 e7 f7 g7 h7 
+a6 b6 c6 d6 e6 f6 g6 h6 
+a5 b5 c5 d5 e5 f5 g5 h5 
+a4 b4 c4 d4 e4 f4 g4 h4 
+a3 b3 c3 d3 e3 f3 g3 h3 
+a2 b2 c2 d2 e2 f2 g2 h2 
+a1 b1 c1 d1 e1 f1 g1 h1 </code></pre></figure>
+
+
+</section>
+
+<section markdown="block">
+###  Chess Board Squares Solution
+
+<div class="incremental" markdown="block">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="s">""</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s">"abcdefgh"</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">+=</span> <span class="s">"</span><span class="si">%</span><span class="s">s</span><span class="si">%</span><span class="s">s "</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></pre></figure>
+
+</div>
+</section>
+
+
+<section markdown="block">
+###  Sieve
+
+[Sieve of Eratosthenes](http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes#Algorithm_complexity)
+
+__Let's try to figure out a few different ways of doing this &rarr;__
+</section>
+
+<section markdown="block">
+###  Sieve Version 1
+
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">all_primes_below</span><span class="p">(</span><span class="n">upper_bound</span><span class="p">):</span>
+
+	<span class="n">primes</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="n">non_primes</span> <span class="o">=</span> <span class="p">[]</span>
+
+	<span class="c"># starting with 2, populate list of non_primes by counting by p</span>
+	<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">):</span>
+		
+		<span class="c"># don't both populating non_primes with non_prime multiples </span>
+		<span class="k">if</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">non_primes</span><span class="p">:</span>
+			<span class="n">primes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+			
+			<span class="c"># drop all multiples into non_prime list</span>
+			<span class="k">for</span> <span class="n">multiple</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">p</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+				<span class="n">non_primes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">multiple</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">primes</span>
+<span class="k">print</span><span class="p">(</span><span class="n">all_primes_below</span><span class="p">(</span><span class="mi">121</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section markdown="block">
+###  Sieve Version 2
+
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">all_primes_below</span><span class="p">(</span><span class="n">upper_bound</span><span class="p">):</span>
+	<span class="n">prime_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="bp">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">upper_bound</span> 
+	<span class="n">p</span> <span class="o">=</span> <span class="mi">2</span>
+	<span class="k">while</span> <span class="n">p</span> <span class="o">*</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="n">upper_bound</span><span class="p">:</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+			<span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">p</span><span class="p">:</span>
+				<span class="n">prime_numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+		<span class="n">p</span> <span class="o">+=</span> <span class="mi">1</span>
+		<span class="k">while</span> <span class="n">prime_numbers</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+			<span class="n">p</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">upper_bound</span><span class="p">):</span>
+		<span class="k">if</span> <span class="n">prime_numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+			<span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">new_list</span>
+		 
+<span class="k">print</span><span class="p">(</span><span class="n">all_primes_below</span><span class="p">(</span><span class="mi">121</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section markdown="block">
+###  Sieve Version 3
+
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">all_primes_below</span><span class="p">(</span><span class="n">upper_bound</span><span class="p">):</span>
+	<span class="n">prime_numbers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">))</span>
+	<span class="n">min_index</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">p</span> <span class="o">=</span> <span class="n">prime_numbers</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span>
+	<span class="k">while</span> <span class="n">p</span> <span class="o">*</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="n">upper_bound</span><span class="p">:</span>
+		<span class="n">i</span> <span class="o">=</span> <span class="n">min_index</span>
+		<span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">prime_numbers</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+			<span class="k">if</span> <span class="n">prime_numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">prime_numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">p</span><span class="p">:</span>
+				<span class="k">del</span> <span class="n">prime_numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+			<span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+		<span class="n">min_index</span> <span class="o">+=</span> <span class="mi">1</span>
+		<span class="n">p</span> <span class="o">=</span> <span class="n">prime_numbers</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">s - </span><span class="si">%</span><span class="s">s"</span>  <span class="o">%</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">prime_numbers</span><span class="p">))</span>
+		 
+<span class="k">print</span><span class="p">(</span><span class="n">all_primes_below</span><span class="p">(</span><span class="mi">121</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+-->
+
+<section>
+  <h3 id="lists-in-lists">Lists in Lists</h3>
+
+  <p>You can access an element within a list that&#39;s within a list by indexing <strong>twice</strong>!  The first index is the place in the outer list, the second index is the place in the inner list.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="s">'foo'</span><span class="p">,</span> <span class="s">'bar'</span><span class="p">],[</span><span class="s">'baz'</span><span class="p">,</span> <span class="s">'qux'</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="c">#  gives back bar</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lists-in-lists-example">Lists in Lists Example</h3>
+
+  <p><strong>What does this code output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">4</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="looping-over-lists-in-lists">Looping Over Lists in Lists</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="k">for</span> <span class="n">inner_list</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+	<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">inner_list</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+		<span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">10</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="list-comprehensions"><a href="list_comprehensions.html">List Comprehensions</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

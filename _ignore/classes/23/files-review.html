@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>File I/O (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="file-io">File I/O</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="storing-data">Storing Data</h3>
+
+  <p><strong>What&#39;s the difference between volatile and non-volatile memory, and what are some examples of each?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>volatile memory</strong> - memory that requires an electrical current to maintain state; for example, your computer&#39;s main memory/RAM</li>
+      <li><strong>non-volatile memory</strong> - memory that can maintain state without power; for example, SSDs, hard drives, DVDs, etc.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="storing-data-in-main-memory">Storing Data in Main Memory</h3>
+
+  <p><strong>What are the consequences of your data being stored in your computer&#39;s main memory?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>data may go away at the end of the program, or when the computer gets turned off</li>
+      <li>if you&#39;re working with large amounts of data, you may run out of RAM (which is typically less than the amount of non-volatile memory that you have)!</li>
+    </ul>
+
+    <p><strong>So, if you want to persist data beyond the lifetime of your running program or through on-off cycles&#8230;</strong> &#8594;</p>
+
+    <p>Store data as a file on non-volatile memory.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="open">open</h3>
+
+  <p><strong>In Python, what built-in function do we use to interact with files?  How many parameters does it have, and what does it return?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <ul>
+      <li><strong>open</strong> opens a file for reading or writing</li>
+      <li>it takes two arguments: a <strong>filename</strong> and a <strong>mode</strong>
+        <ul>
+          <li><strong>filename</strong> - the <em>absolute</em> or <em>relative</em> path from your program to the file you&#39;re opening</li>
+          <li><strong>mode</strong> - can be one of the following:
+            <ul>
+              <li><strong>&#39;w&#39;</strong> - write</li>
+              <li><strong>&#39;r&#39;</strong> - read</li>
+              <li><strong>&#39;a&#39;</strong> - append</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>it returns a <strong>file</strong> object</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="a-file-object-">A File Object &#8230;</h3>
+
+  <ul>
+    <li>is an object that allows your program to manipulate/read/write to an actual file on disk</li>
+    <li>to create a file object and open a file, use the built-in function, <strong>open</strong>()</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  my_input_file is a file object</span>
+<span class="n">my_output_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"myfile.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="putting-data-into-a-file">Putting Data Into a File</h3>
+
+  <p><strong>What are the steps for opening a file and putting data into it?  What file object method is used for putting data into a file?</strong> &#8594;</p>
+</section>
+
+<section>
+  <h3 id="writing-to-a-file">Writing to a File</h3>
+
+  <ol>
+    <li>Get a file object using open with write mode: <strong>open(&#39;filename&#39;, &#39;w&#39;)</strong>
+      <ul>
+        <li>filename is the file to be opened</li>
+        <li><strong>&#39;w&#39;</strong> means that the file will be opened for writing</li>
+        <li>if the file doesn&#39;t exist, <strong>&#39;w&#39;</strong> will <strong>create</strong> it</li>
+        <li>if the file exists, <strong>&#39;w&#39;</strong> will <strong>overwrite</strong> it!</li>
+      </ul>
+    </li>
+    <li>Use the <strong>write</strong> method on the file object to write data to the file
+      <ul>
+        <li>takes a string as an argument (non-string will give a TypeError)</li>
+        <li>does not automatically add new lines</li>
+      </ul>
+    </li>
+    <li>Use the <strong>close</strong> method on the file object when you&#39;re done</li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="writing-to-a-file-code">Writing to a File Code</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  open using mode 'w'</span>
+<span class="n">my_output_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"myfile.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span>
+
+<span class="c">#  use the write method</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Monday</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Tuesday</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Wednesday</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c">#  close when you're done</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="retrieving-data-from-a-file">Retrieving Data From a File</h3>
+
+  <p><strong>What are the steps for opening a file and retrieving data from it?  What file object methods can be used for reading data from a file?</strong> &#8594;</p>
+</section>
+
+<section>
+  <h3 id="reading-a-file">Reading a File</h3>
+
+  <ol>
+    <li>Get a file object using open with read mode: <strong>open(&#39;filename&#39;, &#39;r&#39;)</strong>
+      <ul>
+        <li>filename is the file to be opened</li>
+        <li><strong>&#39;r&#39;</strong> means that the file will be opened for reading</li>
+      </ul>
+    </li>
+    <li>To read data&#8230;
+      <ul>
+        <li>iterate over the file object itself (reads one line at a time)</li>
+        <li>use one of the following methods:
+          <ul>
+            <li><strong>iterate</strong> over the <strong>file object</strong> itself (use a for loop with the file object)</li>
+            <li><strong>readline()</strong></li>
+            <li><strong>read()</strong></li>
+            <li><strong>readlines()</strong></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Use the <strong>close</strong> method on the file object when you&#39;re done</li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="methods-for-reading-a-file">Methods for Reading a File</h3>
+
+  <p>All of the following methods do not have any parameters.</p>
+
+  <ul>
+    <li><strong>readline()</strong> - reads in a single line (with newline at the end of each line)</li>
+    <li><strong>read()</strong> - reads in entire contents of a file as a string</li>
+    <li><strong>readlines()</strong> - reads in <strong>entire contents</strong> of a file as a list of lines</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="examples">Examples</h3>
+
+  <p>The following examples assume the presence of a file called <strong>ingredients.txt</strong> (<a href="ingredients.txt">download here</a> - right-click and save as) in the same folder/directory as your program.</p>
+
+  <p>The contents of the file is:</p>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">3:tomatoes
+1:garlic cloves
+2:green peppers</code></pre></figure>
+
+  <p>(<a href="ingredients.txt">Download</a> or recreate to follow along)</p>
+</section>
+
+<section>
+  <h3 id="reading-a-file-with-iteration">Reading a File With Iteration</h3>
+
+  <p><strong>A file object is actually iterable!</strong> &#8594;</p>
+
+  <ul>
+    <li>it gives you one line at a time as a string</li>
+    <li>each line has a new line at the end</li>
+    <li>iteration ends automatically when there are no more lines to read</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">my_input_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'ingredients.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">my_input_file</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="n">my_input_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="output-of-reading-a-file-with-iteration">Output of Reading a File With Iteration</h3>
+
+  <p>Notice the extra new lines&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">3:tomatoes
+
+1:garlic cloves
+
+2:green peppers</code></pre></figure>
+
+  <p>You can use the string method, strip(), to get rid of them.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="reading-a-file-with-readline">Reading a File With readline()</h3>
+
+  <p><strong>The readline() method also reads in one line at a time</strong> &#8594;</p>
+
+  <ul>
+    <li>it always returns a string, even if it&#39;s just a new line character (&quot;\n&quot;)</li>
+    <li>if it returns an empty string, then we&#39;ve reached the end of the file</li>
+    <li>you&#39;ll have to loop forever and break on empty string</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">my_input_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'ingredients.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">my_input_file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="n">my_input_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="output-of-reading-a-file-with-readline">Output of Reading a File With readline()</h3>
+
+  <p>As with iteration, there are extra new lines:</p>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">3:tomatoes
+
+1:garlic cloves
+
+2:green peppers</code></pre></figure>
+
+  <p>Again, you can use the string method, strip(), to get rid of them.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="reading-a-file-with-readlines">Reading a File With readlines()</h3>
+
+  <p><strong>You can also call readlines (with an s) to just read the the entire contents of a file as a list</strong> &#8594;</p>
+
+  <ul>
+    <li>returns a list (see the 2nd line in the example code)</li>
+    <li>each line is an element in a list</li>
+    <li>each line still has a newline character at the end</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">my_input_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'ingredients.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">my_input_file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+<span class="n">my_input_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="output-of-reading-a-file-with-readlines">Output of Reading a File With readlines()</h3>
+
+  <p>The list is printed out.  Notice the newlines (as usual!).</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="s">'3:tomatoes</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="s">'1:garlic cloves</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="s">'2:green peppers</span><span class="se">\n</span><span class="s">'</span><span class="p">]</span></code></pre></figure>
+
+  <p>Of course&#8230; you can then iterate over every item in the list:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="finally-reading-a-file-with-read">Finally, Reading a File with read()</h3>
+
+  <p><strong>Use the read() method on your file handle object to read the file in all at once.</strong></p>
+
+  <p><strong>read</strong>() returns the entire contents of a file (including newlines) as a string.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">my_input_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"ingredients.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span>
+<span class="n">contents</span> <span class="o">=</span> <span class="n">my_input_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="output-of-reading-a-file-with-read">Output of Reading a File With read()</h3>
+
+  <p>Contents contains a string representing all of the data in the file.</p>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">3:tomatoes
+1:garlic cloves
+2:green peppers</code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="some-exercises">Some Exercises</h2>
+</section>
+
+<section>
+  <h3 id="double-the-ingredients">Double the Ingredients</h3>
+
+  <ul>
+    <li>using the original <a href="ingredients.txt">ingredients.txt</a> file&#8230;</li>
+    <li>open the file</li>
+    <li>read every line</li>
+    <li>double the number in the beginning of each line</li>
+    <li>write out the new number and the ingredient in a new file called ingredients2.txt</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="lets-do-this-step-by-step">Let&#39;s Do This Step By Step</h2>
+</section>
+
+<section>
+  <h3 id="reading-the-ingredients">Reading the Ingredients</h3>
+
+  <p><strong>Let&#39;s try printing out every line in the ingredients file first:</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">my_input_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'ingredients.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">my_input_file</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="n">my_input_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'ingredients.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="n">my_input_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="extracting-meaningful-information">Extracting Meaningful Information</h3>
+
+  <p><strong>Let&#39;s add code to get the number out of each line, double it, and print it out along with the ingredient:</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  there's a problem with this solution...</span>
+<span class="n">my_input_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'ingredients.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">my_input_file</span><span class="p">:</span>
+	<span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+	<span class="c"># notice that we're using strip to get rid of the excess new line</span>
+	<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">number</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<span class="n">my_input_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+    <p><strong>This solution works for the data that&#39;s currently in the file, but&#8230;</strong></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="extracting-meaningful-information-part-2">Extracting Meaningful Information Part 2</h3>
+
+  <p><strong>What if the number in the beginnin of the line had 2 digits? &#8230;like 10:cloves of garlic.</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  use split on the string...</span>
+<span class="n">my_input_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'ingredients.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">my_input_file</span><span class="p">:</span>
+	<span class="n">clean_line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+	<span class="n">parts</span> <span class="o">=</span> <span class="n">clean_line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">":"</span><span class="p">)</span>
+	<span class="n">number</span><span class="p">,</span> <span class="n">ingredient</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">s:</span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">number</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ingredient</span><span class="p">))</span>
+<span class="n">my_input_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="extracting-meaningful-information-part-2-1">Extracting Meaningful Information Part 2</h3>
+
+  <p><strong>Now&#8230; let&#39;s write out the ingredients rather than printing out to the screen.</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">my_input_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'ingredients.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="c">#  add a file to write to</span>
+<span class="n">my_output_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'ingredients.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">my_input_file</span><span class="p">:</span>
+	<span class="n">clean_line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+	<span class="n">parts</span> <span class="o">=</span> <span class="n">clean_line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">":"</span><span class="p">)</span>
+	<span class="n">number</span><span class="p">,</span> <span class="n">ingredient</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+	<span class="c"># write to file instead of print</span>
+	<span class="n">my_output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">s:</span><span class="si">%</span><span class="s">s</span><span class="se">\n</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">number</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ingredient</span><span class="p">))</span>
+<span class="n">my_input_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">my_output_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="jane-austen">Jane Austen</h3>
+
+  <p>You can download a text version of <a href="http://www.gutenberg.org/cache/epub/1342/pg1342.txt">Pride and Prejudice</a> from Project Gutenberg</p>
+
+  <p><strong>Using that file with our pig_latin and translate_passage functions&#8230; can you write out a pig latin version of Pride and Prejudice?</strong></p>
+
+  <p>Also&#8230; these are <a href="http://en.wikipedia.org/wiki/Sense_and_Sensibility_and_Sea_Monsters">sort</a> <a href="http://en.wikipedia.org/wiki/Pride_and_Prejudice_and_Zombies">of</a> from Jane Austen&#8230;.</p>
+
+</section>
+
+<section>
+  <h3 id="downloading-the-file">Downloading the File</h3>
+
+  <p>Save the text version of <a href="http://www.gutenberg.org/cache/epub/1342/pg1342.txt">Pride and Prejudice</a> in the same folder that your program is in.</p>
+
+</section>
+
+<section>
+  <h3 id="pig-latin">Pig Latin</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">to_pig_latin</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
+    <span class="s">"""translates word to pig latin"""</span>
+
+    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">w</span>
+
+    <span class="k">if</span> <span class="n">w</span> <span class="o">==</span> <span class="s">''</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">w</span>
+
+    <span class="k">if</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="s">'aeiou'</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">w</span> <span class="o">+</span> <span class="s">'way'</span>
+
+    <span class="n">first_two</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">first_two</span> <span class="o">==</span> <span class="s">'qu'</span> <span class="ow">or</span> <span class="n">first_two</span> <span class="o">==</span> <span class="s">'ch'</span> <span class="ow">or</span> <span class="n">first_two</span> <span class="o">==</span> <span class="s">'sh'</span> <span class="ow">or</span> <span class="n">first_two</span> <span class="o">==</span> <span class="s">'th'</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">+</span> <span class="n">first_two</span> <span class="o">+</span> <span class="s">'ay'</span>
+
+    <span class="k">return</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s">'ay'</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="translate-passage">Translate Passage</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">translate_passage</span><span class="p">(</span><span class="n">passage</span><span class="p">):</span>
+    <span class="s">"""translates text into pig latin"""</span>
+    <span class="n">translation</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="n">word</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">passage</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">c</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+            <span class="n">translation</span> <span class="o">+=</span> <span class="n">to_pig_latin</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+            <span class="n">translation</span> <span class="o">+=</span> <span class="n">c</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="s">""</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">word</span> <span class="o">+=</span> <span class="n">c</span>
+    <span class="k">return</span> <span class="n">translation</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="putting-it-all-together">Putting it All Together</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  open file for reading</span>
+<span class="n">fh_in</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'pg1342.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">fh_in</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">fh_in</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c">#  translate and write</span>
+<span class="n">fh_out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'pg1342_translated.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span>
+<span class="n">fh_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">translate_passage</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+<span class="n">fh_out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

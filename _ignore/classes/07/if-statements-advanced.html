@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>More If Statements (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="more-if-statements">More If Statements</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="nesting-if-statements">Nesting If Statements</h3>
+
+  <ul>
+    <li>we saw nested ifs in the cake example</li>
+    <li>it behaves as you&#39;d expect</li>
+    <li>remember to get indentation right</li>
+    <li>if there are multiple elif&#39;s or else&#39;s,  you can use indentation to see which initial if statement they belong to</li>
+    <li>this works for any combination of if, elif and else</li>
+    <li>note that sometimes nested if statements are equivalent to and</li>
+    <li>best to simplify - that is, less nesting, better</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="nesting-if-statements-example">Nesting If Statements Example</h3>
+
+  <p>The coffee shop has a special for half price pastries on Fridays after 4 (16:00&#8230; or 16).  <strong>Ask for day and time, and make a recommendation (buy now, wait x hours or don&#39;t buy).</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">What</span> <span class="n">day</span> <span class="ow">is</span> <span class="n">it</span> <span class="p">(</span><span class="n">ex</span> <span class="n">Thursday</span><span class="p">,</span> <span class="n">Friday</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span><span class="p">)</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">Friday</span>
+<span class="n">What</span> <span class="n">time</span> <span class="ow">is</span> <span class="n">it</span> <span class="p">(</span><span class="ow">in</span> <span class="mi">24</span> <span class="n">hour</span> <span class="n">time</span><span class="p">)</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">17</span>
+<span class="n">Go</span> <span class="n">ahead</span><span class="p">,</span> <span class="n">you</span> <span class="n">deserve</span> <span class="n">a</span> <span class="n">treat</span>
+
+<span class="n">Press</span> <span class="n">ENTER</span> <span class="ow">or</span> <span class="nb">type</span> <span class="n">command</span> <span class="n">to</span> <span class="k">continue</span>
+<span class="n">What</span> <span class="n">day</span> <span class="ow">is</span> <span class="n">it</span> <span class="p">(</span><span class="n">ex</span> <span class="n">Thursday</span><span class="p">,</span> <span class="n">Friday</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span><span class="p">)</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">Friday</span>
+<span class="n">What</span> <span class="n">time</span> <span class="ow">is</span> <span class="n">it</span> <span class="p">(</span><span class="ow">in</span> <span class="mi">24</span> <span class="n">hour</span> <span class="n">time</span><span class="p">)</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">12</span>
+<span class="n">Just</span> <span class="n">wait</span> <span class="mi">4</span> <span class="n">more</span> <span class="n">hours</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="pastry-buying-guide">Pastry Buying Guide</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">""" pastry buying guide """</span>
+
+<span class="n">day</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"What day is it (ex Thursday, Friday, etc.)?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="n">time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"What time is it (in 24 hour time)?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span> <span class="c"># not adventure</span>
+<span class="n">delicious_time</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="k">if</span> <span class="n">day</span> <span class="o">==</span> <span class="s">'Friday'</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">time</span> <span class="o">&gt;=</span> <span class="n">delicious_time</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Go ahead, you deserve a treat"</span><span class="p">)</span> 
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Just wait </span><span class="si">%</span><span class="s">s more hours"</span> <span class="o">%</span> <span class="p">(</span><span class="n">delicious_time</span> <span class="o">-</span> <span class="n">time</span><span class="p">))</span> 
+<span class="k">else</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"Don't do it!  Just don't."</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="how-to-order-conditions">How to Order Conditions</h3>
+
+  <ul>
+    <li>if more than one condition in a series of elif&#39;s is true
+      <ul>
+        <li>only the first true condition is executed!</li>
+        <li>other are skipped, including else</li>
+      </ul>
+    </li>
+    <li>be careful of conditions that never get evaluated
+      <ul>
+        <li>an above condition may already account for it</li>
+        <li>here&#39;s an example&#8230;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="ordering-conditions-continued">Ordering Conditions Continued!</h3>
+
+  <p>The intention of the following code is to:</p>
+
+  <ul>
+    <li>determine if a number is 101 or greater than 100</li>
+    <li>if it&#39;s 101, it should only print out &quot;exactly 101&quot; (it should not print out greater than 100)</li>
+  </ul>
+
+  <p><strong>What gets printed if n = 200?  What if n = 101?</strong>   &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"more than 100"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">101</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"exactly 101"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>200 &#8594; more than 100, 101 &#8594; more than 100</p>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="how-to-order-conditions-continued-some-more">How to Order Conditions Continued Some More!</h3>
+
+  <p><strong>Of course, we could fix this.  There are a few ways&#8230;</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>reordering</li>
+      <li>using and</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">101</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"exactly 101"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"more than 100"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">101</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"more than 100"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">101</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"exactly 101"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="equivalent-conditions">Equivalent Conditions</h2>
+</section>
+
+<section>
+  <h3 id="logical-opposites">Logical Opposites</h3>
+  <p>A way to get rid of not operators is to use the opposite logical operator:</p>
+
+  <p><a href="http://openbookproject.net/thinkcs/python/english3e/conditionals.html">Logical Opposites from How to Think Like a Computer Scientist </a></p>
+
+  <ul>
+    <li>for example&#8230; the logical opposite of &gt; is &lt;=</li>
+    <li>the logical opposite of &lt; is &gt;=</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="logical-opposites-continued">Logical Opposites Continued</h3>
+  <p><strong>How can we rewrite this without the not?</strong>&#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  Example from How to Think Like a Computer Scientist</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">17</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Hey, you're too young to get a driving licence!"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Hey, you're too young to get a driving licence!"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="de-morgans-law">De Morgan&#39;s Law</h3>
+  <ul>
+    <li>not (x and y)  ==  (not x) or (not y)</li>
+    <li>not (x or y)   ==  (not x) and (not y)</li>
+    <li>How to Think Like a Computer Scientist example
+      <ul>
+        <li>uses combination of logical opposites and De Morgan&#39;s Law</li>
+        <li>clarity / closeness to original</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="de-morgans-law-1">De Morgan&#39;s Law</h3>
+
+  <p><strong>Let&#39;s try truth tables for these!</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">x | y | not <span class="o">(</span>x and y<span class="o">)</span>   x | y | <span class="o">(</span>not x<span class="o">)</span> or <span class="o">(</span>not y<span class="o">)</span>
+<span class="o">=====================</span>   <span class="o">=========================</span>
+  |   |                   |   |  
+  |   |                   |   |  
+  |   |                   |   |  
+  |   |                   |   |  
+
+x | y | not <span class="o">(</span>x or y<span class="o">)</span>   x | y | <span class="o">(</span>not x<span class="o">)</span> and <span class="o">(</span>not y<span class="o">)</span>
+<span class="o">====================</span>   <span class="o">===========================</span>
+  |   |                  |   |  
+  |   |                  |   |  
+  |   |                  |   |  
+  |   |                  |   |  </code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="de-morgans-law-truth-tables">De Morgan&#39;s Law Truth Tables</h3>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">x | y | not <span class="o">(</span>x and y<span class="o">)</span>   x | y | <span class="o">(</span>not x<span class="o">)</span> or <span class="o">(</span>not y<span class="o">)</span>
+<span class="o">=====================</span>   <span class="o">=========================</span>
+t | t | f               t | t | f
+t | f | t               t | f | t
+f | t | t               f | t | t
+f | f | t               f | f | t
+
+x | y | not <span class="o">(</span>x or y<span class="o">)</span>   x | y | <span class="o">(</span>not x<span class="o">)</span> and <span class="o">(</span>not y<span class="o">)</span>
+<span class="o">====================</span>   <span class="o">===========================</span>
+t | t | f              t | t | f
+t | f | t              t | f | t
+f | t | t              f | t | t
+f | f | t              f | f | t</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="de-morgans-law-2">De Morgan&#39;s Law</h3>
+  <p><strong>How can we rewrite this fragment of code from How to Think Like a Computer Scientist?</strong>&#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  "suppose we can slay the dragon only if our magic lightsabre sword </span>
+<span class="c">#  is charged to 90% or higher, and we have 100 or more energy units </span>
+<span class="c">#  in our protective shield." </span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="p">((</span><span class="n">sword_charge</span> <span class="o">&gt;=</span> <span class="mf">0.90</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">shield_energy</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">)):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Your attack has no effect, the dragon fries you to a crisp!"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"The dragon crumples in a heap. You rescue the gorgeous princess!"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  first... demorgan's: </span>
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">sword_charge</span> <span class="o">&gt;=</span> <span class="mf">0.90</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span><span class="n">shield_energy</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">):</span>
+	<span class="c"># ...</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  next... logical opposites:</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">sword_charge</span> <span class="o">&lt;</span> <span class="mf">0.90</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">shield_energy</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">):</span>
+	<span class="c"># ...</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="truthiness-and-style">Truthiness and Style</h2>
+</section>
+
+<section>
+  <h3 id="truthiness">Truthiness</h3>
+
+  <p>See this <a href="http://docs.python.org/py3k/library/stdtypes.html#truth-value-testing">crazy chart</a> on the <em>intrinsic</em> boolean value of various types.  The following values are considered false:</p>
+
+  <ul>
+    <li>None</li>
+    <li>False</li>
+    <li>0 of any numeric type (0.0, 0)</li>
+    <li>empty mapping or sequence type (We&#39;ll look at these later) - this includes the empty string &#39;&#39;, &quot;&quot;, etc.</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="truthiness-examples">Truthiness Examples</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="s">""</span>
+<span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"true!"</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"true!"</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s">"foo"</span>
+<span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"true!"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="built-in-modules-are-up-next"><a href="modules.html">Built-In Modules Are Up Next!</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

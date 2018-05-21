@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Functions (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="a-quick-peek-at-making-our-own-functions">A Quick Peek at Making Our Own Functions</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="functions">Functions</h3>
+
+  <p><strong>What&#39;s a function (again)?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>A <strong>function</strong> is a named sequence of statements that performs a specific task or useful operation</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="built-in-functions">Built-In Functions</h3>
+
+  <p><strong>What are some built-in function that we just learned about?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>print</li>
+      <li>type</li>
+      <li>int</li>
+      <li>str</li>
+      <li>float</li>
+      <li>input</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="our-very-own-functions">Our Very Own Functions!</h3>
+
+  <ul>
+    <li>we can actually create our own functions</li>
+    <li>that means:
+      <ul>
+        <li>we can group a bunch of statements together</li>
+        <li>name that group of statements</li>
+        <li><strong>execute that group of statements simply by calling its name!</strong></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="motivation-for-creating-functions">Motivation for Creating Functions</h3>
+
+  <p><strong>Why would the ability to create our own functions be useful?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>reduce repetitive code (instead of typing in the group of statements multiple times, just call function)</li>
+      <li>break down programming problem into discrete tasks
+        <ul>
+          <li>complexity of each sub-task or function is more manageable than dealing with program in its entirity</li>
+          <li>easier to test each individual function or component</li>
+        </ul>
+      </li>
+      <li>create your own tools for solving a problem
+        <ul>
+          <li>it&#39;s almost like defining your own <strong>problem domain</strong> specific language</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="defining-a-function">Defining a Function</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">the_name_of_your_function</span><span class="p">(</span><span class="n">parameter_1</span><span class="p">,</span> <span class="n">paramter_2</span><span class="p">):</span>
+	<span class="s">""" some code """</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"I'm doing something useful!"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="defining-a-function-continued">Defining a Function Continued</h3>
+
+  <ol>
+    <li>a function definition always starts with the <strong>reserved</strong> word, <strong>def</strong> (<strong>the function header</strong>)</li>
+    <li>&#8230; followed by the name of your function
+      <ul>
+        <li>(function names adhere to the same rules as variable names)</li>
+      </ul>
+    </li>
+    <li>&#8230; followed by parentheses</li>
+    <li>with an <strong>optional</strong>, comma separated list of inputs enclosed in parentheses (depends on function)
+      <ul>
+        <li>if the <strong>parentheses are empty, then the function is being called without arguments</strong>
+          <ul>
+            <li>no_inputs_needed()</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>lastly, an indented block of code (<strong>the function body</strong>)
+      <ul>
+        <li>this is just one level of indentation in &#8594;</li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="whats-this-about-an-indented-block">What&#39;s This About an Indented Block?</h3>
+
+  <ul>
+    <li>remember - in Python, <strong>whitespace characters</strong> (such as space, tabs, newlines, etc.) are <strong>significant</strong></li>
+    <li><strong>consecutive lines of code</strong> can be grouped together based on <strong>indentation</strong></li>
+    <li>you can tell the start and end of a function body by its level of indentation</li>
+    <li>it is indented one level in from the function header</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">the_name_of_your_function</span><span class="p">(</span><span class="n">parameter_1</span><span class="p">,</span> <span class="n">paramter_2</span><span class="p">):</span>
+	<span class="s">""" inside the function """</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"something"</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"another thing"</span><span class="p">)</span>
+
+<span class="s">""" outside of the function """</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"and another thing"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-try-creating-a-function">Let&#39;s Try Creating a Function!</h3>
+
+  <p><strong>Write a function called say_multilingual_meow:</strong> &#8594;</p>
+
+  <ul>
+    <li>it&#39;ll <a href="http://www.eleceng.adelaide.edu.au/personal/dabbott/animal.html">say meow in two different languages</a></li>
+    <li>it should print out two lines</li>
+    <li>one line with &quot;meow&quot;, the other line with &quot;nyan&quot;</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">say_multilingual_meow</span><span class="p">():</span>
+	<span class="n">japanese_meow</span> <span class="o">=</span> <span class="s">"nyan"</span>
+	<span class="n">english_meow</span> <span class="o">=</span> <span class="s">"meow"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">japanese_meow</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">english_meow</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="calling-your-function">Calling Your Function</h3>
+
+  <p>So&#8230; now that you have a shiny new function, <strong>how would you call it?  How many arguments would it take?  0, 1, or 2?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">say_multilingual_meow</span><span class="p">():</span>
+	<span class="n">japanese_meow</span> <span class="o">=</span> <span class="s">"nyan"</span>
+	<span class="n">english_meow</span> <span class="o">=</span> <span class="s">"meow"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">japanese_meow</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">english_meow</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+Once the function is defined in your file, you can call it!
+"""</span>
+
+<span class="n">say_multilingual_meow</span><span class="p">()</span></code></pre></figure>
+
+    <p>It takes 0 arguments.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-see-how-this-all-works">Let&#39;s See How This All Works!</h3>
+
+  <p>In one file, write the function definition and function call from the previous slides.</p>
+
+  <ul>
+    <li>try running it!</li>
+    <li>print out &quot;done&quot; after your function call</li>
+    <li><strong>what do you think the output will be?</strong> &#8594;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">say_multilingual_meow</span><span class="p">():</span>
+	<span class="n">japanese_meow</span> <span class="o">=</span> <span class="s">"nyan"</span>
+	<span class="n">english_meow</span> <span class="o">=</span> <span class="s">"meow"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">japanese_meow</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">english_meow</span><span class="p">)</span>
+
+<span class="n">say_multilingual_meow</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"done!"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">nyan</span>
+<span class="n">meow</span>
+<span class="n">done</span><span class="err">!</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="calling-your-function-continued">Calling Your Function Continued</h3>
+
+  <p>So&#8230; <a href="http://www.pythontutor.com/visualize.html#code=def+say_multilingual_meow()%3A%0A%09japanese_meow+%3D+%22nyan%22%0A%09english_meow+%3D+%22meow%22%0A%09print(japanese_meow)%0A%09print(english_meow)%0A%0Asay_multilingual_meow()%0Aprint(%22done!%22)&amp;mode=display&amp;cumulative=false&amp;heapPrimitives=false&amp;drawParentPointers=false&amp;textReferences=false&amp;showOnlyOutputs=false&amp;py=3&amp;curInstr=0">what actually happened there</a>? &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">say_multilingual_meow</span><span class="p">():</span>
+	<span class="n">japanese_meow</span> <span class="o">=</span> <span class="s">"nyan"</span>
+	<span class="n">english_meow</span> <span class="o">=</span> <span class="s">"meow"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">japanese_meow</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">english_meow</span><span class="p">)</span>
+
+<span class="n">say_multilingual_meow</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"done!"</span><span class="p">)</span></code></pre></figure>
+
+  <ul>
+    <li>when you call your function&#8230;</li>
+    <li>imagine that you&#39;re jumping back to your function definition</li>
+    <li>&#8230;and then executing the body of your function</li>
+    <li>once it&#39;s done, execution goes back to where you called your function (printed done for clarity)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="just-the-definitions-please">Just the Definitions, Please!</h3>
+
+  <p>Let&#39;s look at the same program, but without the function <strong>call</strong>.  <strong>What do you think the output of this program will be?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">say_multilingual_meow</span><span class="p">():</span>
+	<span class="n">japanese_meow</span> <span class="o">=</span> <span class="s">"nyan"</span>
+	<span class="n">english_meow</span> <span class="o">=</span> <span class="s">"meow"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">japanese_meow</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">english_meow</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <p>(That&#39;s supposed to be nothing!  A function definition alone won&#39;t execute the code in a function.)</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="just-the-calls-please">Just the Calls, Please!</h3>
+
+  <p>What about this version of the program? <strong>What do you think the output will be?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">say_multilingual_meow</span><span class="p">()</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>We get a NameError!</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"/tmp/foo.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">say_multilingual_meow</span><span class="p">()</span>
+<span class="nb">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s">'say_multilingual_meow'</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span></code></pre></figure>
+
+    <p>This may be obvious, but <strong>a function has to be defined before it can be used</strong>.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="multiple-function-definitions">Multiple Function Definitions</h3>
+
+  <p>You can define more than one function in your program!</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">my_first_function</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"first"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">my_second_function</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"second"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="functions-in-functions">Functions in Functions</h3>
+
+  <p>In fact, you can use a function that you&#39;ve already defined in another function that you&#39;re creating.  <strong>What do you think the output of this program will be?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">say_moo</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"moo"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+	<span class="n">say_moo</span><span class="p">()</span>
+	<span class="n">say_moo</span><span class="p">()</span>
+
+<span class="n">main</span><span class="p">()</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">moo</span>
+<span class="n">moo</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="functions-in-functions-continued">Functions in Functions Continued</h3>
+
+  <p>Notice that in the previous code&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">say_moo</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"moo"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+	<span class="n">say_moo</span><span class="p">()</span>
+	<span class="n">say_moo</span><span class="p">()</span>
+
+<span class="n">main</span><span class="p">()</span></code></pre></figure>
+
+  <ul>
+    <li>we defined a function called <strong>say_moo</strong></li>
+    <li>we defined another function called main that uses <strong>say_moo</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="local-variables">&quot;Local&quot; Variables</h3>
+
+  <ul>
+    <li>variables defined in your function are available only to that function</li>
+    <li>the variables in your function are <strong>local</strong> to that function</li>
+    <li>they cannot be used in another function or outside of the current function definition</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="local-variables-continued">&quot;Local&quot; Variables Continued</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">my_first_function</span><span class="p">():</span>
+	<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">my_second_function</span><span class="p">():</span>
+	<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+  <p>The variables <strong>a</strong> and <strong>b</strong> are local to <strong>my_first_function</strong> and <strong>my_second_function</strong> respectively.</p>
+
+</section>
+
+<section>
+  <h3 id="local-variables-continued-some-more">&quot;Local&quot; Variables Continued Some More</h3>
+
+  <p>Because variables defined within a function are <strong>local</strong></p>
+
+  <ul>
+    <li>using the same variable name in two different functions doesn&#39;t cause any errors</li>
+    <li>nothing gets overwritten</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">my_first_function</span><span class="p">():</span>
+	<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">my_second_function</span><span class="p">():</span>
+	<span class="n">a</span> <span class="o">=</span> <span class="mi">200</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+  <p>(calling both functions consecutively prints out 1, then 200)</p>
+</section>
+
+<section>
+  <h3 id="defining-a-main-function">Defining a Main Function</h3>
+
+  <ul>
+    <li>it is common practice to have the entirity of your program in a single function called main</li>
+    <li>main is usually defined at the end of the file</li>
+    <li>with other additional functions defined outside as well</li>
+    <li>the examples in Starting Out with Python use this pattern often</li>
+    <li>here&#39;s a template:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"in main function"</span><span class="p">)</span>
+
+<span class="n">main</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="main-function-continued">Main Function Continued</h3>
+
+  <p>For example, these two programs are equivalent:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"About to do stuff"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Doing stuff"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Done"</span><span class="p">)</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"About to do stuff"</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"Doing stuff"</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"Done"</span><span class="p">)</span>
+
+<span class="n">main</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<!--
+<section markdown="block">
+###  
+
+* Global Scope
+* Main convention
+* Passing in Parameters?
+
+<div class="incremental" markdown="block">
+
+</div>
+</section>
+-->
+
+<section>
+  <h2 id="totally-optional-a-whirlwind-tour-of-conditionals"><a href="conditionals.html">(Totally Optional) A Whirlwind Tour of Conditionals</a></h2>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

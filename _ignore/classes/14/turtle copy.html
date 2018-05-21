@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Turtle Graphics (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="turtle-graphics">Turtle Graphics</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="turtle">Turtle</h3>
+
+  <p><strong>turtle</strong> is a Python module&#8230;</p>
+
+  <ul>
+    <li>that allows you to draw programmatically
+      <ul>
+        <li>think of a virtual <a href="http://blog.makezine.com/2011/05/06/sharpie-pen-plotter/">pen plotter</a></li>
+        <li>commands are given to a movable pen</li>
+        <li>that pen can move and draw on a two dimensional plane</li>
+        <li>the pen is called a turtle!</li>
+      </ul>
+    </li>
+    <li>it&#39;s essentially a Python implementation of another language called <a href="http://en.wikipedia.org/wiki/Logo_(programming_language)">Logo</a></li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="some-history">Some History</h3>
+
+  <p>So, what&#39;s this <strong>Logo</strong> thing about?</p>
+
+  <ul>
+    <li>Logo is an <strong>educational</strong> language</li>
+    <li>one of its most well-known features is turtle graphics</li>
+    <li>built on theory of constructionist learning
+      <ul>
+        <li>learning by experimentation</li>
+        <li>learning by making tangible things!</li>
+      </ul>
+    </li>
+    <li>created in the mid 60&#39;s(!) by a group of computer scientists: Daniel G. Bobrow, Wally Feurzeig, Seymour Papert and Cynthia Solomon</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="seymour-papert">Seymour Papert</h3>
+
+  <ul>
+    <li>Papert, in particular, is well known for his work in education and computing</li>
+    <li>developed an influential theory on learning called <em><a href="http://en.wikipedia.org/wiki/Constructionist_learning">constructionism</a></em></li>
+    <li>was the director of the MIT Artificial Intelligence Laboratory</li>
+    <li>besides inventing Logo, also collaborated with Lego (it&#39;s not confusing that that&#39;s one vowel away from Logo) on a robotics kit called <a href="http://en.wikipedia.org/wiki/Lego_Mindstorms">Mindstorms</a></li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="and-like-many-great-computer-scientists-he-has-a-beard">(And Like Many Great Computer Scientists, He Has a Beard)</h3>
+
+  <div class="img-container">
+    <p><img src="../../resources/img/papert.jpg" alt="Seymour Papert" /></p>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="great-so-why-turtle">Great, So&#8230; Why Turtle?</h3>
+
+  <p>Imagine you have turtle hanging out on the beach&#8230;</p>
+
+  <div class="img-container">
+    <p><img src="../../resources/img/turtle.jpg" alt="Turtle" /></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="turtles-drawing-stuff">Turtles Drawing Stuff</h3>
+
+  <ul>
+    <li>imagine further that it&#39;s a robotic turtle (<strong>AWESOME!</strong>)</li>
+    <li>&#8230;that you can give commands to
+      <ul>
+        <li>move forward</li>
+        <li>turn around</li>
+      </ul>
+    </li>
+    <li>as it moves, it leaves tracks on the ground</li>
+    <li>turtle graphics <em>simulates this</em> (seriously)
+      <ul>
+        <li>your window is a sandy beach</li>
+        <li>the turtle, is&#8230; well&#8230; um&#8230; a turtle (a virtual robotic one)</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="what-does-that-mean-for-us">What Does That Mean for Us?</h3>
+
+  <p>So&#8230; in Python, we now have access to our own drawing turtle</p>
+
+  <ul>
+    <li>we can draw by writing code</li>
+    <li>that code is analogous to the commands that we would give the turtle (or pen, or pointer, or <em>whatever</em>)
+      <ul>
+        <li>move forward</li>
+        <li>turn around</li>
+      </ul>
+    </li>
+    <li>but in addition, we can also
+      <ul>
+        <li>change colors</li>
+        <li>ask for user input</li>
+        <li>etc.</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="hello-turtle">Hello Turtle</h3>
+  <aside>Enough Talk.  What Does This Code Actually Look Like?</aside>
+
+  <p>This draws a line (that&#39;s exactly 200 pixels).  (exciting).  Let&#39;s try running it.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">leo</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+
+<span class="n">leo</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="about-the-drawing-environment">About the Drawing Environment</h3>
+
+  <ul>
+    <li>obviously, we&#39;re drawing on a two-dimensional plane</li>
+    <li>the turtle starts at the center</li>
+    <li>the turtle is facing right (imagine that it&#39;s looking east)</li>
+    <li><strong>can you guess what the coordinates (x and y values) are at the center</strong>?</li>
+    <li><strong>where are the positive x values&#8230; and the positive y values</strong>?</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="about-the-drawing-environment-continued">About the Drawing Environment Continued</h3>
+
+  <ul>
+    <li>you can use <strong>leo.forward(200)</strong> as a clue!</li>
+    <li>if that drew a 200 pixel line, then, maybe</li>
+    <li>the center is at (0, 0)</li>
+    <li>positive x values are to the right of the origin, positive y, above</li>
+    <li>(yeah, maybe that&#39;s obvious, but some graphics packages have a different coordinate plane)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="a-few-tips-for-running-programs">A Few Tips for Running Programs</h3>
+
+  <p>Running these programs (from IDLE or from Terminal!) cause a new window to pop up.  You may encounter some minor annoyances:</p>
+
+  <ul>
+    <li>the window usually opens up behind the interactive shell (or Terminal)</li>
+    <li>if there&#39;s an error, the window of your program may hang
+      <ul>
+        <li>close the interactive shell to get rid of it</li>
+        <li>&#8230;or force quit the window</li>
+      </ul>
+    </li>
+    <li>your prints still show up in the shell, but you&#39;ll have to juggle two windows</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="lets-dissect-that-code">Let&#39;s Dissect That Code</h3>
+
+  <p>bring in the turtle module</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span></code></pre></figure>
+
+  <p>create a Screen object (this provides a canvas to draw on, and some window related commands)</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span></code></pre></figure>
+
+  <p>create a Turtle object to draw with</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">leo</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-dissect-that-code-continued">Let&#39;s Dissect That Code Continued</h3>
+  <p>tell the turtle to move forward 200 pixels</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">leo</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span></code></pre></figure>
+
+  <p>start the program!</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="objects">Objects</h3>
+
+  <p>So&#8230; I used the word <strong>object</strong> there a few times.  What does that actually mean?</p>
+
+  <ul>
+    <li><strong>object</strong> - a <em>thing</em> that a variable name can refer to, like a screen or a turtle</li>
+    <li>&#8230;in fact, all of the values in Python are things</li>
+    <li>they&#39;re objects too: &quot;hello&quot; is a str object, 42 is an int object</li>
+    <li>an <strong>object</strong> can have <strong>attributes</strong> &#8230;data associated with an object</li>
+    <li>an <strong>object</strong> can have <strong>methods</strong> &#8230;which are basically things that the object can do</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="methods">Methods</h3>
+
+  <ul>
+    <li>a <strong>method</strong> is essentially a function that&#39;s associated with a particular object</li>
+    <li>you can <em>call</em> a method just like a function&#8230; but you have to use the dot operator</li>
+    <li>object.method() - it&#39;s similar to using a method in a module!</li>
+    <li>for example: leo.forward(200)</li>
+    <li>&#8230;means I&#39;m calling the forward() function on the turtle object called leo</li>
+    <li>in fact&#8230; we can see some methods on objects that we&#39;ve used before!</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">dir</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-look-at-that-code-again">Let&#39;s Look at That Code Again&#8230;</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">leo</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+
+<span class="n">leo</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="the-basic-steps-are">The Basic Steps Are&#8230;</h3>
+
+  <p>What did we have to do?</p>
+
+  <ol>
+    <li>bring in the turtle module</li>
+    <li>create a Screen object</li>
+    <li>create at least one Turtle object</li>
+    <li>tell the Screen object to start the program</li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="so-thats-some-boilerplate-stuff">So, That&#39;s Some Boilerplate Stuff</h3>
+
+  <p>We should probably convert our hello program into a template.  You&#39;ll need to write this stuff every time you create a program with turtle:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># bring in the turtle module</span>
+<span class="kn">import</span> <span class="nn">turtle</span>
+
+<span class="c"># create a Screen object</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+
+<span class="c"># create at least one Turtle object </span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+
+<span class="c"># tell your turtle to do stuff here, like...  t.forward(200)</span>
+
+<span class="c"># tell the Screen object to start the program</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-note-on-names">A Note On Names</h3>
+
+  <ul>
+    <li>in the template, I use <strong>t</strong> as the variable name for my turtle.</li>
+    <li>it&#39;s just a variable name; it can be anything you want (same with <strong>wn</strong>, but you have to change wn everywhere you see it)</li>
+    <li>in fact, in my previous programs, I called the turtle leo, in honor of one of these guys</li>
+  </ul>
+
+  <div class="img-container">
+    <p><img src="../../resources/img/tmnt.gif" alt="Turtle" /></p>
+  </div>
+
+</section>
+
+<section>
+  <h2 id="btw-i-definitely-encourage-you-to-follow-along-when-i-code-up-examples">BTW, I Definitely Encourage You to Follow Along When I Code Up Examples!</h2>
+</section>
+
+<section>
+  <h3 id="basic-turtle-methods">Basic Turtle Methods</h3>
+
+  <p>These are all methods that you can call on your <strong>Turtle</strong> object.</p>
+
+  <ul>
+    <li><strong>forward</strong>(<em>distance</em>) - move the turtle forward by the specified <em>distance</em></li>
+    <li><strong>right</strong>(<em>angle</em>) - turn the turtle right by <em>angle</em> degrees</li>
+    <li><strong>left</strong>(<em>angle</em>) - turn the turtle left by <em>angle</em> degrees</li>
+    <li><strong>back</strong>(<em>distance</em>) - move the turtle back by the specified <em>distance</em></li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="forward-right-left-back---code">Forward, Right, Left, Back - Code</h3>
+
+  <p><strong>BTW&#8230; what do you think this draws? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">back</span><span class="p">(</span><span class="mi">75</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="screen-and-pen-drawing-attributes">Screen and Pen Drawing Attributes</h3>
+
+  <p>Methods you can call on your <strong>Turtle</strong> object:</p>
+
+  <ul>
+    <li><strong>color</strong>(<em>colorstring</em>) - change the color of your <em>pen</em> to <em>colorstring</em>, which can be &quot;red&quot;, &quot;green&quot;, etc.</li>
+    <li><strong>pensize</strong>(<em>size</em>) - change the size of your pen to <em>size</em></li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s">"blue"</span><span class="p">)</span></code></pre></figure>
+
+  <p>Methods you can call on your <strong>Screen</strong> object</p>
+
+  <ul>
+    <li><strong>bgcolor</strong>(<em>colorstring</em>) - change the background color of your window to <em>colorstring</em></li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">wn</span><span class="o">.</span><span class="n">bgcolor</span><span class="p">(</span><span class="s">"pink"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="color-background-and-pen-size">Color, Background and Pen Size</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+
+<span class="n">wn</span><span class="o">.</span><span class="n">bgcolor</span><span class="p">(</span><span class="s">"green"</span><span class="p">)</span> <span class="c"># change the background color to green</span>
+<span class="n">t</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s">"yellow"</span><span class="p">)</span> <span class="c"># change the color of the pen</span>
+<span class="n">t</span><span class="o">.</span><span class="n">back</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">pensize</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="c"># change the size of the pen</span>
+<span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s">"blue"</span><span class="p">)</span> <span class="c"># change the color of the pen again</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
+
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="moving-without-drawing">Moving Without Drawing</h3>
+
+  <p>Methods you can call on your <strong>Turtle</strong> object:</p>
+
+  <ul>
+    <li><strong>up</strong>() - pick the pen up so that the turtle object doesn&#39;t draw when it moves</li>
+    <li><strong>down</strong>() - put the pen down so that the turtle object draws when it moves</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>  <span class="c"># picks the pen up, doesn't draw when the turtle moves</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="pen-up-pen-down">Pen Up, Pen Down</h3>
+
+  <p><strong>BTW&#8230; what do you think this draws? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="n">t</span><span class="o">.</span><span class="n">pensize</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>             <span class="c"># don't draw</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>           <span class="c"># draw</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>             <span class="c"># don't draw</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>           <span class="c"># draw</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="going-somewhere">Going Somewhere?</h3>
+
+  <p>A methods you can call on your <strong>Turtle</strong> object:</p>
+
+  <p><strong>goto</strong>(<em>x</em>, <em>y</em>) - move the turtle to the specified coordinates &#8230;<em>x</em> and <em>y</em>.  Note that if the pen is down, it will draw up to that coordinate.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>  <span class="c"># picks the pen up, doesn't draw when the turtle moves</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="goto">Goto</h3>
+
+  <p><strong>BTW&#8230; what do you think this draws? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+
+<span class="c"># go to the following coordinates... (while drawing!)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-use-what-we-know-to-create-a-square">Let&#39;s Use What We Know to Create a Square!</h3>
+
+  <p><strong>How would we tell the turtle to create a square with the upper left corner at the origin? Each side should be 200px long.  We just learned goto, so let&#39;s try that.&#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="another-square">Another Square!</h3>
+
+  <p><strong>Same thing, but this time, just use forward or back and either left or right.  &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="one-last-square">One Last Square!</h3>
+
+  <p><strong>How can we simplify the previous version?  There was a lot of repeated code! &#8594;</strong></p>
+
+  <div class="incremental">
+    <p>Let&#39;s try it with loops!</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+	<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+	<span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="a-confused-turtle">A Confused Turtle</h3>
+
+  <p><strong>Let&#39;s try incorporating random &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s">"blue"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+	<span class="n">t</span><span class="o">.</span><span class="n">pensize</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+	<span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+	<span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">25</span><span class="p">:</span>
+		<span class="c"># change the color once to green</span>
+		<span class="n">t</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s">"purple"</span><span class="p">)</span> 
+
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="reviewing-objects-and-methods">Reviewing Objects and Methods</h3>
+
+  <p><strong>What&#39;s an object and what&#39;s a method? &#8594;</strong></p>
+
+  <ul>
+    <li><strong>object</strong> - a <em>thing</em> that a variable name can refer to, like a Screen, Turtle, int or str</li>
+    <li>an <strong>object</strong> can have <strong>methods</strong> &#8230; things that the object can do</li>
+    <li>a <strong>method</strong> is a function that you can call from a particular object</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="again-a-few-tips-for-running-programs">Again a Few Tips for Running Programs</h3>
+
+  <p>Running these programs (from IDLE or from Terminal!) cause a new window to pop up.</p>
+
+  <ul>
+    <li>the window usually opens up behind the interactive shell (or Terminal)</li>
+    <li>if there&#39;s an error, the window of your program may hang. <strong>demo &#8594;</strong>
+      <ul>
+        <li>close the interactive shell to get rid of it</li>
+        <li>&#8230;or force quit the window</li>
+      </ul>
+    </li>
+    <li>your prints still show up in the shell, but you&#39;ll have to juggle two windows. <strong>demo &#8594;</strong></li>
+  </ul>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

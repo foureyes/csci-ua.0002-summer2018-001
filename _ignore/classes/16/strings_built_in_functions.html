@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Built-in String Functions (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="built-in-string-functions">Built-in String Functions</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="a-few-string-related-built-in-functions">A Few String Related Built-In Functions</h3>
+
+  <p>Strings have methods that you can call on them.  However, there are also <strong>built-in</strong> functions that are relevant to strings.  A few that we&#39;ll use include:</p>
+
+  <ul>
+    <li><strong>len</strong>(s) - the length of a string</li>
+    <li><strong>ord</strong>(s) - the <em>code point</em> of the character supplied</li>
+    <li><strong>chr</strong>(i) - the character represented by the supplied <em>code point</em></li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="the-built-in-len-function">The Built-In len() Function</h3>
+
+  <p><strong>len</strong> is a built-in function that returns the length of a <strong>sequence</strong></p>
+
+  <ul>
+    <li>it is <strong>not a method</strong>, so you do not call it on an object</li>
+    <li>however, you can pass a value to it, and it will return its length</li>
+    <li>for strings, it will return the number of characters</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">"cat"</span>
+
+<span class="c">#  returns 3</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="index-of-the-last-character-in-a-string">Index of the Last Character in a String</h3>
+
+  <p><strong>What&#39;s the formula for getting the last character in a string?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>length of string - 1</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="index-of-the-last-character-in-a-string-continued">Index of the Last Character in a String Continued</h3>
+
+  <p><strong>What values / expressions would you use if you wanted to index into the string below to get the last character?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">"cat"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="err">?</span><span class="p">])</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="representing-strings">Representing Strings</h3>
+
+  <p>There&#39;s a <strong>standard</strong> for consistently representing text through different character sets and encodings.</p>
+
+  <ul>
+    <li>this system is called <strong>unicode</strong></li>
+    <li>in <strong>unicode</strong>, <strong>code points</strong> are numbers (specifically integers) that represents a <em>character</em> or <em>glyph</em></li>
+    <li>here&#39;s a table of <a href="http://www.utf8-chartable.de/unicode-utf8-table.pl?utf8=dec">code points</a></li>
+    <li>here&#39;s a <a href="http://unicodesnowmanforyou.com">unicode snowman</a></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="unicode-table">Unicode Table</h3>
+
+  <p><a href="http://www.utf8-chartable.de/unicode-utf8-table.pl?utf8=dec">Let&#39;s see that table again.</a></p>
+
+  <ul>
+    <li>note that 65-90 are uppercase latin letters; 97-122 are lowercase</li>
+    <li>this matches an older method of encoding characters called ASCII
+      <ul>
+        <li>ASCII accomodated 128 characters</li>
+        <li>what are some shortcomings of this? &#8594;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="chr-and-ord">chr() and ord()</h3>
+
+  <p>Python has a couple of functions that translate code points to characters and characters back to code points.</p>
+
+  <ul>
+    <li><strong>ord</strong>(c) - gives back the integer value of the code point of the supplied character</li>
+    <li><strong>chr</strong>(i) - gives back the character corresponding to the supplied integer (code point)</li>
+  </ul>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

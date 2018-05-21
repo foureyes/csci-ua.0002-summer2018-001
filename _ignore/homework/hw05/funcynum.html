@@ -1,0 +1,413 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+		<title>Introduction to Computer Programming - CSCI-UA.0002 - Summer 2018 funcynum.py</title> 
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	<!-- <link rel="stylesheet" type="text/css" href="../../resources/fonts/cmun-serif.css"> -->
+	<link rel="stylesheet" type="text/css" href="../../../../resources/css/screen.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<script src="../../resources/js/jquery-2.1.3.min.js"></script>
+	<script src="../../resources/js/persistent-nav.js"></script>
+
+</head>
+<body>
+<div id="hd">
+<h1> Introduction to Computer Programming - CSCI-UA.0002 - Summer 2018</h1>
+</div>
+<div id="bd">
+<div id="content">
+	<h1 id="funcynumpy-20-points--3-extra-credit">funcynum.py (20 points + 3 extra credit)</h1>
+
+<p>This file will contain functions that you&#39;ll use in feeling_quizzy.py. There
+are 4 parts to this file, and they all depend on one another, so they must be 
+done in order. The functions in this file will ultimately produce &#39;ASCII&#39; art 
+numbers. For example, the number 5:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">*****</span>
+<span class="o">*</span>
+<span class="o">*****</span>
+    <span class="o">*</span>
+<span class="o">*****</span></code></pre></figure>
+
+<h2 id="part-1---create-functions-that-make-horizontal-and-vertical-line-strings">Part 1 - Create functions that make horizontal and vertical line strings</h2>
+<p>Create three functions:</p>
+
+<ol>
+  <li><strong><code class="highlighter-rouge">horizontal_line(char, width, left_padding)</code></strong>:
+    <ul>
+      <li><strong>input</strong>:
+        <ul>
+          <li>the character to make the line out of (<code class="highlighter-rouge">*</code> for example)</li>
+          <li>the total width of the line</li>
+          <li>the number of spaces before the line (left padding)</li>
+        </ul>
+      </li>
+      <li><strong>processing</strong>:
+        <ul>
+          <li>creates a &lt;width&gt; wide string composed of the characters specified, 
+starting with an &lt;left_padding&gt; number of spaces</li>
+        </ul>
+      </li>
+      <li><strong>output</strong>:
+        <ul>
+          <li><strong>returns a string</strong> representing a horizontal line</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong><code class="highlighter-rouge">vertical_lines(char, height, left_padding, number, interior_offset)</code></strong>:
+    <ul>
+      <li><strong>input</strong>:
+        <ul>
+          <li>the character to make the line out of (<code class="highlighter-rouge">*</code> for example)</li>
+          <li>the total height of the line</li>
+          <li>the number of spaces before the line (left padding)</li>
+          <li>the number of vertical lines to draw</li>
+          <li>the space between each line (an interior offset)</li>
+        </ul>
+      </li>
+      <li><strong>processing</strong>:
+        <ul>
+          <li>creates a string that represents the specified number of vertical
+lines</li>
+          <li>each line is &lt;height&gt; tall</li>
+          <li>and is composed of the characters specified</li>
+          <li>there are &lt;interior offset&gt; number of spaces between each vertical
+line</li>
+          <li>there is an &lt;left_padding&gt; number of spaces before the lines begin</li>
+          <li>for example, the string, <code class="highlighter-rouge">'* *\n* *\n* *\n* *'</code>, is a set of two vertical lines, 
+each 4 characters tall, with one space character between the lines, with no left padding. <strong>NOTICE THAT THERE IS 
+NO NEW LINE</strong> at the end, and there <strong>ARE NO TRAILING SPACES</strong></li>
+          <li><strong>YOU MUST USE NESTED LOOPS TO CONSTRUCT THIS STRING</strong></li>
+          <li>hint: the outer loop can represent row, the inner loop can represent
+column&#8230; and you can use the col_num or row_num to determine if an
+interior offset or newline should be added</li>
+        </ul>
+      </li>
+      <li><strong>output</strong>:
+        <ul>
+          <li><strong>returns a string</strong> representing a series of vertical lines</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong><code class="highlighter-rouge">vertical_line(char, height, left_padding)</code></strong>:
+    <ul>
+      <li><strong>input</strong>:
+        <ul>
+          <li>the character to make the line out of (<code class="highlighter-rouge">*</code> for example)</li>
+          <li>the total height of the line</li>
+          <li>the number of spaces before the line (left padding)</li>
+        </ul>
+      </li>
+      <li><strong>processing</strong>:
+        <ul>
+          <li>creates a &lt;height&gt; tall string composed of the characters specified, 
+starting with an &lt;left_padding&gt; number of spaces</li>
+          <li>hint: imply call your vertical_lines function so that only 1 line is
+printed (remember to pass along the left_padding and character, though!)</li>
+        </ul>
+      </li>
+      <li><strong>output</strong>:
+        <ul>
+          <li><strong>returns a string</strong> representing a single vertical line</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>Examples:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">horizontal_line</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="o">*****</span></code></pre></figure>
+
+<p><br /></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">horizontal_line</span><span class="p">(</span><span class="s">'+'</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="o">++</span></code></pre></figure>
+
+<p><br /></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">vertical_line</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+     <span class="o">*</span>
+     <span class="o">*</span></code></pre></figure>
+
+<p><br /></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">vertical_lines</span><span class="p">(</span><span class="s">'+'</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="o">+</span>   <span class="o">+</span>   <span class="o">+</span>   <span class="o">+</span>   <span class="o">+</span>
+<span class="o">+</span>   <span class="o">+</span>   <span class="o">+</span>   <span class="o">+</span>   <span class="o">+</span>
+<span class="o">+</span>   <span class="o">+</span>   <span class="o">+</span>   <span class="o">+</span>   <span class="o">+</span>
+<span class="o">+</span>   <span class="o">+</span>   <span class="o">+</span>   <span class="o">+</span>   <span class="o">+</span></code></pre></figure>
+
+<h2 id="part-2---create-functions-that-print-out-the-number-0---9--and--">Part 2 - Create functions that print out the number 0 - 9, +, and -</h2>
+<p>Create 12 additional functions that print out the numbers 0 - 9, +, and -. All
+numbers will have a flexible width, but you can <strong>assume that the HEIGHT OF THE
+NUMBERS WILL ALWAYS BE 5</strong>. Use the horizontal and vertical line drawing 
+functions to write these functions.</p>
+
+<p>The functions will be called print_one, print_two &#8230; print_minus. The general 
+input/output/processing chart will looks similar for each functions. Here&#39;s an
+example input/output/processing chart, an actual function definition for the
+function that prints out the number one, and some examples of usage:</p>
+
+<p><strong><code class="highlighter-rouge">print_one(char, width)</code></strong></p>
+
+<ul>
+  <li><strong>input</strong>:
+    <ul>
+      <li>a character to create the number with</li>
+      <li>the width of the number</li>
+    </ul>
+  </li>
+  <li><strong>processing</strong>:
+    <ul>
+      <li><strong>prints</strong> an &#39;ASCII&#39; art number that&#39;s 5 characters tall and as wide as the
+argument passed in (<width> characters wide)</width></li>
+      <li>if a width is less than 3, default to 3</li>
+    </ul>
+  </li>
+  <li><strong>output</strong>:
+    <ul>
+      <li><strong>returns nothing (no return statement!)</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">print_one</span><span class="p">(</span><span class="n">char</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">width</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">vertical_line</span><span class="p">(</span><span class="n">char</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span></code></pre></figure>
+
+<p>Example Output (note the relationship between the number of leading spaces and
+the total width):</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">print_one</span><span class="p">(</span><span class="s">'v'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">v</span>
+    <span class="n">v</span>
+    <span class="n">v</span>
+    <span class="n">v</span>
+    <span class="n">v</span></code></pre></figure>
+
+<p><br /></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">print_one</span><span class="p">(</span><span class="s">'X'</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+  <span class="n">X</span>
+  <span class="n">X</span>
+  <span class="n">X</span>
+  <span class="n">X</span>
+  <span class="n">X</span></code></pre></figure>
+
+<p><br /></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">print_one</span><span class="p">(</span><span class="s">'o'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c"># default to 3 width</span>
+  <span class="n">o</span>
+  <span class="n">o</span>
+  <span class="n">o</span>
+  <span class="n">o</span>
+  <span class="n">o</span></code></pre></figure>
+
+<p>Here&#39;s an example of running all of the functions and the resulting output:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">print_zero</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="n">print_one</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="n">print_two</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="n">print_three</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="n">print_four</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="n">print_five</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="n">print_six</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="n">print_seven</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="n">print_eight</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="n">print_nine</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="n">print_plus</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="n">print_minus</span><span class="p">(</span><span class="s">'*'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="o">*****</span>
+<span class="o">*</span>   <span class="o">*</span>
+<span class="o">*</span>   <span class="o">*</span>
+<span class="o">*</span>   <span class="o">*</span>
+<span class="o">*****</span>
+
+    <span class="o">*</span>
+    <span class="o">*</span>
+    <span class="o">*</span>
+    <span class="o">*</span>
+    <span class="o">*</span>
+
+<span class="o">*****</span>
+    <span class="o">*</span>
+<span class="o">*****</span>
+<span class="o">*</span>
+<span class="o">*****</span>
+
+<span class="o">*****</span>
+    <span class="o">*</span>
+<span class="o">*****</span>
+    <span class="o">*</span>
+<span class="o">*****</span>
+
+<span class="o">*</span>   <span class="o">*</span>
+<span class="o">*</span>   <span class="o">*</span>
+<span class="o">*****</span>
+    <span class="o">*</span>
+    <span class="o">*</span>
+
+<span class="o">*****</span>
+<span class="o">*</span>
+<span class="o">*****</span>
+    <span class="o">*</span>
+<span class="o">*****</span>
+
+<span class="o">*****</span>
+<span class="o">*</span>
+<span class="o">*****</span>
+<span class="o">*</span>   <span class="o">*</span>
+<span class="o">*****</span>
+
+<span class="o">*****</span>
+    <span class="o">*</span>
+    <span class="o">*</span>
+    <span class="o">*</span>
+    <span class="o">*</span>
+
+<span class="o">*****</span>
+<span class="o">*</span>   <span class="o">*</span>
+<span class="o">*****</span>
+<span class="o">*</span>   <span class="o">*</span>
+<span class="o">*****</span>
+
+<span class="o">*****</span>
+<span class="o">*</span>   <span class="o">*</span>
+<span class="o">*****</span>
+    <span class="o">*</span>
+    <span class="o">*</span>
+
+  <span class="o">*</span>
+  <span class="o">*</span>
+<span class="o">*****</span>
+  <span class="o">*</span>
+  <span class="o">*</span>
+
+
+
+<span class="o">*****</span></code></pre></figure>
+
+<h2 id="part-3---create-a-function-that-checks-an-addition-and-subtraction-operation">Part 3 - Create a function that checks an addition and subtraction operation</h2>
+<p>Create a function called check_answer. It will will determine if a given 
+addition or subtraction problem was solved correctly based on the operands, answer
+and operator passed in.</p>
+
+<p><strong><code class="highlighter-rouge">check_answer</code></strong></p>
+
+<ul>
+  <li><strong>input</strong>:
+    <ul>
+      <li>the 1st (or left) operand</li>
+      <li>the 2nd (or right) operand</li>
+      <li>the proposed answer</li>
+      <li>the operator&#8230; either + or -</li>
+    </ul>
+  </li>
+  <li><strong>processing</strong>:
+    <ul>
+      <li>runs the operator on the operands</li>
+      <li>checks against the proposed answer</li>
+      <li>if the operator isn&#39;t + or -, default to +</li>
+    </ul>
+  </li>
+  <li><strong>output</strong>:
+    <ul>
+      <li><strong>returns a boolean</strong> - <code class="highlighter-rouge">True</code> if the answer matches the actual result of the calculation
+&#8230;returns <code class="highlighter-rouge">False</code> otherwise</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Example usage and output:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer1</span> <span class="o">=</span> <span class="n">check_answer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"+"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">answer1</span><span class="p">)</span>
+<span class="n">answer2</span> <span class="o">=</span> <span class="n">check_answer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s">"-"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">answer2</span><span class="p">)</span>
+<span class="n">answer3</span> <span class="o">=</span> <span class="n">check_answer</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"+"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">answer3</span><span class="p">)</span>
+<span class="n">answer4</span> <span class="o">=</span> <span class="n">check_answer</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"-"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">answer4</span><span class="p">)</span>
+<span class="n">answer3</span> <span class="o">=</span> <span class="n">check_answer</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"*"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">answer3</span><span class="p">)</span>
+
+<span class="bp">True</span>
+<span class="bp">True</span>
+<span class="bp">False</span>
+<span class="bp">False</span>
+<span class="bp">False</span></code></pre></figure>
+
+<h2 id="part-4---clean-up">Part 4 - Clean Up</h2>
+<p>Clean up your finished file by doing the following:</p>
+
+<ul>
+  <li>once you&#39;re certain that your functions are working the way you expect&#8230;</li>
+  <li><strong>COMMENT OUT ALL OF YOUR TEST CODE!</strong> (so that running your file does not
+produce any output - we&#39;ll see better ways of doing this later)</li>
+  <li>ensure that your file and functions are all named properly</li>
+  <li>add comments to your file (including your name, section and date at the 
+beginning)</li>
+</ul>
+
+<p>This will prep the file for the next file in the homework, feeling_quizzy.py,
+and it will help with grading.</p>
+
+<h2 id="extra-credit">Extra Credit</h2>
+
+<p>1 point - move your test code so that it runs when you run the file, but
+not when you import this as a module (relevant for feeling_quizzy.py)</p>
+
+<ul>
+  <li>at the end of this file&#8230; add:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  this means... if this file is the actual file being run...</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span></code></pre></figure>
+
+<ul>
+  <li>&#8230; within that if statement, add all of your test code</li>
+  <li>when you run the file (funcynum.py), your test code will run</li>
+  <li>however, if you import this as a module in another file, your test 
+code will not run</li>
+</ul>
+
+<p>2 points - implement multiplication</p>
+
+<ul>
+  <li>add the multiplication sign (can be something that resembles an X or <code class="highlighter-rouge">*</code>)</li>
+  <li>amend your check_answer so that <code class="highlighter-rouge">*</code> doesn&#39;t cause addition, but instead
+checks for multiplication</li>
+</ul>
+
+
+</div>
+</div>
+
+<div id="ft">
+	<p>CSCI-UA.0002 - Introduction to Computer Programming - Summer 2018</p>
+</div>
+</div>
+</body>
+</html>

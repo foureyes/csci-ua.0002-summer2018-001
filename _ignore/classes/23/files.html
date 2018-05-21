@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>File I/O (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="file-io">File I/O</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="wheres-my-stuff">Where&#39;s My Stuff?</h3>
+
+  <p>When our programs are run, we usually have a bunch of variables that store numbers, lists, strings and all sorts of other data.  <strong>But where do you think this data is actually stored?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>Our program and the data that our programs have been using is stored in your computer&#39;s main memory (really!  I mean, where <em>else</em> would you put values that need to be <em>remembered</em>)</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="ram">RAM!?</h3>
+
+  <p>Your computer&#39;s <strong>main memory</strong> or <strong>RAM</strong> (random access memory) is an example of <strong>volatile memory</strong>.</p>
+
+  <ul>
+    <li><strong>volatile memory</strong> - memory that requires an electrical current to maintain state</li>
+    <li><strong>non-volatile memory</strong> - memory that can maintain state without power</li>
+  </ul>
+
+  <p><strong>What are some examples of non-volatile memory</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>Hard drives, flash drives, CDs and DVDs</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="storing-data-in-main-memory">Storing Data in Main Memory</h3>
+
+  <p><strong>What are the consequences of your data being stored in your computer&#39;s main memory?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>data may go away at the end of the program, or when the computer gets turned off</li>
+      <li>if you&#39;re working with large amounts of data, you may run out of RAM (which is typically less than the amount of non-volatile memory that you have)!</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="i-want-data-to-last-longer-than-that">I Want Data to Last Longer Than That</h3>
+
+  <p><strong>What if we want to persist our data beyond the lifetime of the running program&#8230; or through on-off cycles?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>let&#39;s store data on non-volatile media!</li>
+      <li>&#8230; maybe as a file on your hard drive or SSD&#8230;</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="file-input-and-output">File Input and Output</h3>
+
+  <ul>
+    <li>we can store data in files!</li>
+    <li>Python can handle file input and output - <strong>file I/O</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="open">open</h3>
+
+  <p>Python has a <strong>built-in</strong> function called <strong>open</strong>.</p>
+
+  <ul>
+    <li><strong>open</strong> opens a file!</li>
+    <li>it can be used for <strong>reading</strong> or <strong>writing</strong></li>
+    <li>it takes two arguments: a <strong>filename</strong> and a <strong>mode</strong>
+      <ul>
+        <li><strong>filename</strong>
+          <ul>
+            <li>the absolute path&#8230;</li>
+            <li>or relative (to the script that your writing) path</li>
+          </ul>
+        </li>
+        <li><strong>mode</strong> &#8230; for now, we only care about:
+          <ul>
+            <li><strong>&#39;w&#39;</strong> - write</li>
+            <li><strong>&#39;r&#39;</strong> - read</li>
+            <li><strong>&#39;a&#39;</strong> - append</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>it returns a <strong>file object</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="a-file-object-">A File Object &#8230;</h3>
+
+  <ul>
+    <li>is an object that allows your program to manipulate/read/write to an actual file on disk</li>
+    <li>to create a file object and open a file, use the built-in function, <strong>open</strong>()</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="writing-to-a-file">Writing to a File</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"test.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"I'm in yr filez!</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Writin' some bits!</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"...</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+  <ul>
+    <li>call <strong>open</strong> &#8230;
+      <ul>
+        <li>with the name of the file to open, &#39;test.txt&#39;</li>
+        <li>and the mode, &#39;w&#39; to specify that we&#39;re writing to it</li>
+      </ul>
+    </li>
+    <li>use the <strong>write</strong>() method to write strings to a file</li>
+    <li>you must always call <strong>close</strong>() on  file when you&#39;re done with it</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="using-open-to-write-to-a-file">Using open to Write to a File</h3>
+
+  <p>Let&#39;s look at <strong>open</strong> and <strong>write</strong> in more detail:</p>
+
+  <p><strong>open(filename, mode)</strong></p>
+
+  <ul>
+    <li>filename is the file to be opened</li>
+    <li>a mode of &#39;w&#39; means that the file will be opened for writing</li>
+    <li>if the file doesn&#39;t exist, &#39;w&#39; will <strong>create</strong> it</li>
+    <li>if the file exists, &#39;w&#39; will <strong>overwrite</strong> it!</li>
+  </ul>
+
+  <p><strong>write(s)</strong></p>
+
+  <ul>
+    <li>does not automatically add new lines</li>
+    <li>takes a string as an argument (non-string arguments result in an error)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="lottery-ticket">Lottery Ticket</h3>
+
+  <p>Write a program that creates a lottery ticket.  The lottery ticket should:</p>
+
+  <ul>
+    <li>have the words &quot;Lucky Numbers&quot; on the first line</li>
+    <li>contain 5 <strong>unique</strong> numbers between 1 through 59</li>
+    <li>each number printed from <strong>lowest to highest</strong></li>
+    <li>each number printed on its own line</li>
+    <li>be saved to a file named lotto.txt</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">Lucky Number
+3
+28
+33
+50
+51</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="pseudocode-1">Pseudocode #1</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+create a list of numbers
+mix up the numbers
+open a file
+write out 'lucky numbers' to file
+get the last 5 numbers from list
+sort them
+for each number in list
+	write it the number
+"""</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="pseudocode-2">Pseudocode #2</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+create an empty list to store numbers
+while length of list &lt; 5
+	generate a random number
+	if the number isn't in the list of stored numbers
+		add it
+sort numbers
+open a file
+write out 'lucky numbers' to file
+for every number in the list
+	write it to the file
+"""</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="potential-solution">Potential Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="c">#  generate list of sorted unique random numbers</span>
+<span class="n">random_number_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">random_number_list</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">59</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">random_number_list</span><span class="p">:</span>
+        <span class="n">random_number_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">random_number_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+<span class="c">#  write out the list of numbers to a file</span>
+<span class="n">file_handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'lotto.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span>        
+<span class="n">file_handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'Lucky Numbers</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">random_number_list</span><span class="p">:</span>
+    <span class="n">file_handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">s</span><span class="se">\n</span><span class="s">'</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="how-about-some-tidying-up">How About Some Tidying Up</h3>
+
+  <p><strong>Can we abstract out some of this code into a reusable function?</strong> &#8594;</p>
+</section>
+
+<section>
+  <h3 id="another-version">Another Version</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="k">def</span> <span class="nf">unique_random_list</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="s">""" 
+    sample_size is the number of random numbers to return
+    a is the start of the pool of numbers to choose from
+    b is the end of the pool of numbers to choose from
+    """</span>
+    <span class="n">numbers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">sample_size</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+            <span class="n">numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">numbers</span> 
+
+<span class="n">observed</span> <span class="o">=</span> <span class="n">unique_random_list</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">assert</span> <span class="mi">3</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">observed</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">observed</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">observed</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="another-version-continued">Another Version Continued</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">random_number_list</span> <span class="o">=</span> <span class="n">unique_random_list</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">59</span><span class="p">)</span>
+<span class="n">random_number_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">file_handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'lotto.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span>
+<span class="n">file_handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'Lucky Numbers</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">random_number_list</span><span class="p">:</span>
+    <span class="n">file_handle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">s</span><span class="se">\n</span><span class="s">'</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="btdubz-re-random">BTDubz (re random)</h3>
+
+  <p>By the way&#8230; (of course) there&#39;s already a function in the random module that does this:</p>
+
+  <ul>
+    <li>random.<strong>sample</strong>(population, k)
+      <ul>
+        <li><strong>population</strong> - a sequence or set (think list) containing the elements to sample from</li>
+        <li><strong>k</strong> - the number of elements to retrieve</li>
+      </ul>
+    </li>
+    <li>example output:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; print(random.sample([1, 2, 3, 4, 5, 6, 7], 4))
+[7, 3, 1, 6]
+&gt;&gt;&gt; print(random.sample([1, 2, 3, 4, 5, 6, 7], 4))
+[7, 5, 4, 6]
+&gt;&gt;&gt; print(random.sample([1, 2, 3, 4, 5, 6, 7], 4))
+[5, 6, 3, 4]</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="reading-a-file">Reading a File</h3>
+
+  <p>To open a file in read mode, use &quot;r&quot; as the second argument:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"test.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="reading-a-file-1">Reading a File</h3>
+
+  <p>Once you have a <strong>file object</strong> (sometimes called a file handle), you can read the contents of a file by: using one of the following methods on your <strong>file handle object</strong>:</p>
+
+  <ul>
+    <li><strong>iterating</strong> over the <strong>file object</strong> itself (use a for loop with the file object)</li>
+    <li>using one of the following <strong>methods</strong> on the <strong>file object</strong>
+      <ul>
+        <li><strong>readline</strong>() - read one line at a time</li>
+        <li><strong>readlines</strong>() - reads entire contents of a file into memory as a list (each element is a line)</li>
+        <li><strong>read</strong>() - reads the entire contents of a file into memory as a string</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="the-easiest-way-to-read-a-file">The Easiest Way to Read a File</h3>
+
+  <p>Once you have a file object, you can actually <em>iterate</em> over the file object itself. That is, you can use a <strong>for loop</strong> to loop over every line in the <strong>file object</strong>:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"test.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="using-readline">Using readline</h3>
+
+  <p><strong>readline</strong>() takes no arguments, and it returns a string.</p>
+
+  <ul>
+    <li>it always returns a string, even if it&#39;s just a new line character (&quot;\n&quot;)</li>
+    <li>if it returns an empty string, then we&#39;ve reached the end of the file</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="using-readline-continued">Using readline Continued</h3>
+
+  <p><strong>To use readline to read the contents of a file, loop forever (or at least until we know that we&#39;re at the end of a file! &#8230;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"test.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+	<span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">break</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="using-readline-continued-more">Using readline() Continued More!</h3>
+
+  <p>Using the test.txt file we&#39;ve used in previous examples:</p>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">I<span class="s1">'m in yr filez!
+Writin'</span> some bits!<span class="se">\n</span>
+...</code></pre></figure>
+
+  <p><strong>What is the first line that will be printed?  What is the actual string representation? How many times will the loop run?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"test.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+	<span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">break</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>I&#39;m in yr filez!</li>
+      <li>&quot;I&#39;m in yr filez!\n&quot;</li>
+      <li>3 times</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="reading-a-file-in-all-at-once">Reading a File in All At Once</h3>
+
+  <p>Use the <strong>read</strong>() method on your file handle object to read the file in all at once.  <strong>read</strong>() returns the entire contents of a file (including newlines) as a string.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"test.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span>
+<span class="n">contents</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="reading-a-file-in-all-at-once-1">Reading a File in All At Once</h3>
+
+  <p>Use the <strong>readlines</strong>() method on your file handle object to read the file in all at once as a list, with each line being a single element in the list.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"test.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="memory-efficiency">Memory Efficiency</h3>
+
+  <p><strong>Which function uses more main memory, readline or read/readlines? Why?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>read/readlines consumes more memory because it reads the entire file at once!</li>
+      <li>similarly, in our previous exercises&#8230; we had solutions that either used up a lot of memory&#8230; or were expensive computationally</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2 id="some-notes">Some Notes&#8230;</h2>
+</section>
+
+<section>
+  <h3 id="a-file-object-and-for-loops">A File Object and For Loops</h3>
+
+  <p><strong>Again, a file object is itself an iterable (you can loop over it using a for loop)&#8230; and it reads in chunks of the file as you go along</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'my_file.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="c">#  read chunks at a time</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="creating-text-files-with-idle">Creating Text Files with IDLE</h3>
+
+  <p>Some of these exercises require you to work with existing text files. So, <strong>how do you create these files</strong>? &#8594;</p>
+
+  <p>IDLE can be used to work on files that <em>aren&#39;t</em> Python programs. <strong>To save a <em>plain text</em> file</strong> &#8594;</p>
+
+  <ul>
+    <li>go to <strong>new file</strong> as usual</li>
+    <li>&#8230;and <strong>save as</strong> &#8230; but add <strong>.txt</strong> as your extension</li>
+  </ul>
+
+  <p>(You can also open file that aren&#39;t .py or .txt in IDLE, as long as they&#39;re just <em>plain text</em>)</p>
+
+</section>
+
+<section>
+  <h3 id="multiple-file-objects">Multiple File Objects</h3>
+
+  <p><strong>You can have more than one file object open at a time. The following example:</strong> &#8594;</p>
+
+  <ul>
+    <li>reads every line from readme.txt</li>
+    <li>writes each line with an exclamation point at the end to a file called writeme.txt</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">input_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'readme.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="n">output_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'writeme.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">input_file</span><span class="p">:</span>
+    <span class="n">output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">"{}!</span><span class="se">\n</span><span class="s">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">line</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="file-system-and-paths">File System and Paths</h3>
+
+  <p>Oh&#8230; make sure you know about your <a href="paths.html">file system and how paths work (see these slides!)</a> &#8594;</p>
+</section>
+
+<section>
+  <h2 id="an-exercise">An Exercise</h2>
+</section>
+
+<section>
+  <h3 id="reading-and-writing">Reading and Writing</h3>
+
+  <ul>
+    <li>read the contents of a file called names.txt</li>
+    <li>the file will have first names in it</li>
+    <li>sort the names by alphabetical order</li>
+    <li>write the newly sorted names to another file</li>
+    <li>the original file should remain unchanged</li>
+  </ul>
+
+  <p>The contents of <a href="names.txt">names.txt (download and save to where your program is)</a> will be:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Erin</span>
+<span class="n">Charles</span> 
+<span class="n">Bob</span>
+<span class="n">David</span>
+<span class="n">Alice</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-potential-solution">A Potential Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">file_in</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"names.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">file_in</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="c">#  or alternatively...</span>
+<span class="c">#  contents = file_in.read()</span>
+<span class="c">#  names = contents.split("\n")</span>
+<span class="n">names</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">file_in</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">file_out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"names_sorted.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+        <span class="n">file_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="n">file_out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

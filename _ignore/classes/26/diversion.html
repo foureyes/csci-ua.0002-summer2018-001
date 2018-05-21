@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Turtle Animation (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="turtle-animation">Turtle Animation</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="additional-turtle-methods">Additional Turtle Methods</h3>
+
+  <ul>
+    <li><strong>clear</strong>() - removes drawing from screen</li>
+    <li><strong>hideturtle</strong>() - does not show turtle (triangle)</li>
+    <li><strong>circle</strong>(int) - draws a circle using supplied radius</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>
+<span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="additional-screen-methods">Additional Screen Methods</h3>
+
+  <ul>
+    <li><strong>tracer</strong>(int) - when called with 0, turns off animation of turtle movement</li>
+    <li><strong>update</strong>() - when tracer is 0, use this to refresh the screen (show drawing)</li>
+    <li><strong>ontimer</strong>(function, int) - automatically call a function after some interval of time</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">wn</span><span class="o">.</span><span class="n">tracer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">ontimer</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="turtleno-turtle-example">Turtle/No Turtle Example</h3>
+
+  <p>Hide turtle, no trace&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+
+<span class="n">t</span><span class="p">,</span> <span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">(),</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+
+<span class="c">#  turn animation of turtles off</span>
+<span class="c">#  t.hideturtle()</span>
+<span class="c">#  wn.tracer(0)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+
+<span class="c">#  wn.update()</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="timer">Timer</h3>
+
+  <p>Create a draw function, call it every 50 milliseconds.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">(),</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">tracer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">draw</span><span class="p">():</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+    <span class="c"># update screen</span>
+    <span class="n">wn</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    
+    <span class="c"># call again in 50 milliseconds</span>
+    <span class="n">wn</span><span class="o">.</span><span class="n">ontimer</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">()</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="uh--why">Uh.  Why?</h3>
+
+  <p>We can sort of see where this is going.  To animate we&#39;ll need to:</p>
+
+  <ul>
+    <li>hide the turtle</li>
+    <li>remove the animation for turtle movement</li>
+    <li>continuously draw a new screen</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="animation">Animation</h3>
+
+  <p>Drawing a new screen at a set interval allows us to mimic frame by frame animation.  A flip book example:</p>
+
+  <p><a href="http://www.youtube.com/watch?v=GTAhvKoF948">kind of ridiculous</a></p>
+
+</section>
+
+<section>
+  <h3 id="draw-a-screen">Draw a Screen</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+
+<span class="k">def</span> <span class="nf">draw</span><span class="p">():</span>
+
+    <span class="c"># clear all drawings</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">sprite</span><span class="p">[</span><span class="s">'x'</span><span class="p">],</span> <span class="n">sprite</span><span class="p">[</span><span class="s">'y'</span><span class="p">])</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+    <span class="n">sprite</span><span class="p">[</span><span class="s">'y'</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+
+    <span class="c"># update the screen because trace is off</span>
+    <span class="n">wn</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="c"># call this function again to redraw entire screen</span>
+    <span class="n">wn</span><span class="o">.</span><span class="n">ontimer</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="setup-code">Setup Code</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="p">,</span> <span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">(),</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+
+<span class="c">#  don't show the turtle</span>
+<span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>
+
+<span class="c">#  turn animation of turtles off</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">tracer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c">#  store x and y values in a mutable global variable</span>
+<span class="c">#  so that they can be changed from draw function</span>
+<span class="c">#  (rather than use globals keyword)</span>
+<span class="n">sprite</span> <span class="o">=</span> <span class="p">{</span><span class="s">'x'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s">'y'</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+
+<span class="c">#  start off our draw function!</span>
+<span class="n">draw</span><span class="p">()</span>
+
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="and-another-with-acceleration">And Another (with Acceleration!)</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">draw</span><span class="p">():</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">sprite</span><span class="p">[</span><span class="s">'x'</span><span class="p">],</span> <span class="n">sprite</span><span class="p">[</span><span class="s">'y'</span><span class="p">])</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+    <span class="n">sprite</span><span class="p">[</span><span class="s">'y'</span><span class="p">]</span> <span class="o">+=</span> <span class="n">sprite</span><span class="p">[</span><span class="s">'dy'</span><span class="p">]</span>
+
+    <span class="c"># change velocity based on acceleration</span>
+    <span class="n">sprite</span><span class="p">[</span><span class="s">'dy'</span><span class="p">]</span> <span class="o">+=</span> <span class="n">sprite</span><span class="p">[</span><span class="s">'acc_y'</span><span class="p">]</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+
+    <span class="n">wn</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="n">wn</span><span class="o">.</span><span class="n">ontimer</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+    
+    <span class="c"># bounce!</span>
+    <span class="k">if</span> <span class="n">sprite</span><span class="p">[</span><span class="s">'y'</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">250</span><span class="p">:</span>
+        <span class="n">sprite</span><span class="p">[</span><span class="s">'dy'</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="the-setup-for-acceleration">The Setup for Acceleration</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python">        
+<span class="n">t</span><span class="p">,</span> <span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">(),</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+
+<span class="c">#  don't show the turtle</span>
+<span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>
+
+<span class="c">#  turn animation of turtles off</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">tracer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c">#  store x and y values in a mutable global variable</span>
+<span class="c">#  so that they can be changed from draw function</span>
+<span class="c">#  (rather than use globals keyword)</span>
+<span class="n">sprite</span> <span class="o">=</span> <span class="p">{</span><span class="s">'x'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s">'y'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s">'dy'</span><span class="p">:</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="s">'acc_y'</span><span class="p">:</span><span class="o">-</span><span class="mf">0.5</span><span class="p">}</span>
+
+<span class="c">#  start off our draw function!</span>
+<span class="n">draw</span><span class="p">()</span>
+
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

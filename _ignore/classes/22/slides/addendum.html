@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Addendum to List Methods (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="addendum-to-list-methods">Addendum to List Methods</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="questions">Questions</h3>
+
+  <ol>
+    <li>can <strong>remove</strong>() remove the last occurrence?</li>
+    <li>can <strong>pop</strong>() take an argument?</li>
+    <li>is there a way to <strong>pop</strong>() the first element from a list?</li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="remove-the-last-occurrence">Remove the Last Occurrence</h3>
+
+  <p>Unfortunately, there&#39;s no way to do it with remove().</p>
+
+  <p>With the features and types that we know, how can we do this?</p>
+
+  <ul>
+    <li>iterate over the list in reverse order (we&#39;ll see this later)</li>
+    <li>reverse the list and then use remove (but that changes the list ordering permanently)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="remove-the-last-occurrence-1">Remove the Last Occurrence</h3>
+
+  <p><strong>pop()</strong> can actually take an optional argument - the index that you want removed!  <strong>What does this print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="by-the-way">By the Way&#8230;</h3>
+
+  <p>There are a few other list <a href="http://docs.python.org/3.2/library/stdtypes.html#mutable-sequence-types">methods in the documentation</a>.</p>
+
+  <ul>
+    <li>reverse - reverses list in place</li>
+    <li>index(value) - returns index of value</li>
+    <li>insert(index, value) - inserts value at index</li>
+  </ul>
+
+  <p>I won&#39;t cover these in the exam or homework; you can use them if you like&#8230;</p>
+</section>
+
+<section>
+  <h2 id="iteration-over-sequences-using-indexes"><a href="iteration-indexes.html">Iteration Over Sequences Using Indexes</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

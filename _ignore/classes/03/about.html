@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>About Class (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="about-class-3">About Class #3</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="todays-class">Today&#39;s Class&#8230;</h3>
+  <ul>
+    <li>some <strong>administrative stuff</strong>
+      <ul>
+        <li>homework</li>
+        <li>tutors</li>
+        <li>labs</li>
+        <li>using IDLE</li>
+      </ul>
+    </li>
+    <li><strong>idioms and style</strong></li>
+    <li><strong>review</strong> user values, types, user input, and function calls</li>
+    <li><strong>variables</strong> (multiple assignment, swapping variables)</li>
+    <li><strong>creating our own functions!</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="homework">Homework</h3>
+
+  <ul>
+    <li><a href="../../schedule.html#homework1">homework is due on Thursday, February 5th at 11PM</a></li>
+    <li>turn in homework (all files) via NYU Classes</li>
+    <li>make sure to write your code outside of the comments for the <strong>coding exercises</strong>!</li>
+    <li>remember: <strong>work in the text editor</strong>, not the shell/console</li>
+    <li>(you&#39;d don&#39;t need to turn in your program&#39;s output, just your program)</li>
+    <li>to turn in your homework, use the original files, and <strong>add your code beneath the comments</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="idle">IDLE</h3>
+
+  <ul>
+    <li>IDLE is bundled with Python 3.4</li>
+    <li>it is automatically installed when you install Python</li>
+    <li>if you&#39;re having stability issues with IDLE on OSX
+      <ul>
+        <li>check out the <a href="../../resources.html#IDLE">resources page (under the section called &quot;troubleshooting IDLE&quot;)</a></li>
+        <li>as a last resort, try an <a href="../../resources.html#alternate">alternate editor</a></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="tutors">Tutors</h3>
+
+  <ul>
+    <li>tutors will be available to help you with your work (for free!)
+      <ul>
+        <li>the schedule should be posted by the end of this week</li>
+        <li>the tutors will be at the labs on <a href="http://www.nyu.edu/its/labs/wash/">14 Washington place</a></li>
+        <li>or via email - csciua02 [-at-] gmail.com</li>
+      </ul>
+    </li>
+    <li>the tutors are incredibly helpful, and I highly suggest going if you&#39;re stuck on a problem / concept</li>
+    <li>however, I still expect you to <strong>write your own code</strong>!</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="even-more-help">Even More Help!</h3>
+
+  <ul>
+    <li>the readings are <em>legit</em>!
+      <ul>
+        <li>Starting Out with Python</li>
+        <li><a href="http://openbookproject.net/thinkcs/python/english3e/">How to Think Like a Computer Scientist</a></li>
+      </ul>
+    </li>
+    <li>check out the <a href="../../resources.html">resources page</a></li>
+    <li>stop by my <a href="../../index.html#contact-info">office hours</a>! (no one ever seems to drop by unless it&#39;s before or after an exam)</li>
+    <li>get in touch with me <a href="../../index.html#contact-info">via email</a>
+      <ul>
+        <li>it may take one to three days for me to respond</li>
+        <li>(so email me early!)</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="now-a-quick-note-on-idioms-and-style"><a href="idioms-style.html">Now: A Quick Note on <em>Idioms and Style</em></a></h2>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

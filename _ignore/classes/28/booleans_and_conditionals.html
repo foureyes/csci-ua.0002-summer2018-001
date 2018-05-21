@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Booleans and Comparison Operators (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="booleans-and-comparison-operators">Booleans and Comparison Operators</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="comparison-operators">Comparison Operators</h3>
+
+  <p><strong>Name six comparison operators?&#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>==</strong> - equals (can be called logical equivalence or equality operator)</li>
+      <li><strong>!=</strong> - not equal</li>
+      <li><strong>&gt;</strong> - greater than</li>
+      <li><strong>&lt;</strong> - less than</li>
+      <li><strong>&gt;=</strong> - greater than / equal</li>
+      <li><strong>&lt;=</strong> - less than / equal</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="comparison-operators-continued">Comparison Operators Continued</h3>
+  <ul>
+    <li>again - these operators always return a bool</li>
+    <li>these operators do what you would expect
+      <ul>
+        <li><strong>==</strong> - returns True if both sides are equal &#8594;</li>
+        <li><strong>!=</strong> - returns True if both sides are not equal &#8594;</li>
+        <li><strong>&gt;</strong>, <strong>&lt;</strong>, <strong>&gt;=</strong>, <strong>&lt;=</strong> - returns True if value on the left is greater than, less than, greater than / equal, or less than equal to the value on the right &#8594;</li>
+      </ul>
+    </li>
+    <li>never put equals first on &gt;=, &lt;=</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="comparison-operators-and-different-types">Comparison Operators and Different Types</h3>
+  <ul>
+    <li>objects of different types, except different numeric types, are never equal
+      <ul>
+        <li>equals (<strong>==</strong>) will always return False for different types &#8594;</li>
+        <li>not equals (<strong>!=</strong>) will always return True for different types &#8594;</li>
+      </ul>
+    </li>
+    <li>the &lt;, &lt;=, &gt; and &gt;= operators&#8230;
+      <ul>
+        <li>will raise a TypeError if the objects are of different types that cannot be compared &#8594;</li>
+        <li>will happily compare numeric types (for example comparing floats and ints works as you&#39;d expect)! &#8594;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="what-are-logical-operators">What are Logical Operators?</h3>
+
+  <p><strong>Logical Operators are operators that combine Boolean values.</strong></p>
+
+  <ul>
+    <li>these operators always return another Boolean value.</li>
+    <li>furthermore, these operators can be used to create more complex Boolean expressions.</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="three-logical-operators">Three Logical Operators:</h3>
+  <ol>
+    <li><strong>and</strong> -
+      <ul>
+        <li>takes two operands, one on each side</li>
+        <li>to return True, both sides of the operator must be True &#8594;</li>
+      </ul>
+    </li>
+    <li><strong>or</strong> -
+      <ul>
+        <li>takes two operands, one on each side</li>
+        <li>to return True,at least one side of the operator must be True &#8594;</li>
+      </ul>
+    </li>
+    <li><strong>not</strong> -
+      <ul>
+        <li>only takes one operand to the right</li>
+        <li>to return True, the original value on the right must evaluate to False &#8594;</li>
+        <li>two nots cancel eachother out (fun!) &#8594;</li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="logical-operators-in-action">Logical Operators <em>in Action</em></h3>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; True and False
+False
+&gt;&gt;&gt; True and True
+True
+&gt;&gt;&gt; True or False
+True
+&gt;&gt;&gt; not True
+False
+&gt;&gt;&gt; not not True
+True</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="truth-table---and">Truth Table - AND</h3>
+
+  <p><strong>and</strong> takes two operands.  Each operand can be True or False (or will evaluate to True or False!).</p>
+
+  <p><strong>Can you guess how many possible combinations ther are for these two operands?</strong>  <strong>What will the Truth Table look like?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+(using p and q to represent the operands
+...and t and f for true and false)
+ p | q | p and q
+----------------
+ f | f | f
+ f | t | f
+ t | f | f
+ t | t | t
+"""</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="truth-table---or">Truth Table - OR</h3>
+
+  <p>Let&#39;s fill out a truth table for <strong>or</strong>! &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+(using p and q to represent the operands
+...and t and f for true and false)
+ p | q | p and q
+----------------
+ f | f | f
+ f | t | t
+ t | f | t
+ t | t | t
+"""</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="how-about-something-more-complicated">How About Something More Complicated?</h3>
+
+  <p>Let&#39;s fill out a truth table for <strong>p and not q and r</strong>! &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+(using p and q to represent the operands
+...and t and f for true and false)
+ p | q | r | p and not q and r
+-----------------------------
+ t | t | t | f
+ t | t | f | f
+ t | f | t | t
+ t | f | f | f
+ f | t | t | f
+ f | t | f | f
+ f | f | t | f
+ f | f | f | f
+"""</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-evaluate-some-simple-boolean-expressions">Let&#39;s Evaluate Some Simple Boolean Expressions</h3>
+
+  <ul>
+    <li>True and False &#8594;</li>
+    <li>True and not False &#8594;</li>
+    <li>True or False &#8594;</li>
+    <li>True or not False &#8594;</li>
+    <li>False or False &#8594;</li>
+    <li>not False and not False &#8594;</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="chaining-boolean-comparison-and-other-operators">Chaining Boolean, Comparison, and Other Operators</h3>
+  <p>You can chain together operators to make complex Boolean expressions!</p>
+
+  <ul>
+    <li>Boolean expressions can involve Boolean, comparison, and other operators</li>
+    <li>they can be arbitrarily complex!  (don&#39;t do that)</li>
+  </ul>
+
+  <p><strong>What do you think this evaluates to?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">-</span><span class="mi">10</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">100</span> <span class="ow">or</span> <span class="s">"foo"</span> <span class="o">==</span> <span class="s">"bar"</span> <span class="ow">and</span> <span class="mi">100</span> <span class="o">&gt;=</span> <span class="mi">100</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">True</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="order-of-operations--operator-precedence">Order of Operations / Operator Precedence</h3>
+
+  <p><a href="http://docs.python.org/py3k/reference/expressions.html#summary">A summary can be found in the official documentation for Python 3</a>, but here&#39;s the short version:</p>
+
+  <ul>
+    <li>parentheses are evaluated first (obv)</li>
+    <li>numeric / string operations (in turn, are also ordered)</li>
+    <li>comparison operations (==, !=, &gt;, &lt;, &gt;=, &gt;=)</li>
+    <li>not</li>
+    <li>and</li>
+    <li>or</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="conditionals">Conditionals</h2>
+</section>
+
+<section>
+  <h3 id="anatomy-of-an-if-statement">Anatomy of an If Statement</h3>
+
+  <p><strong>Write an if statement testing if a and b are <em>not</em> equal.  If they&#39;re not equal, print the value of a and b twice.</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>begin with keyword <strong>if</strong></li>
+      <li>condition</li>
+      <li>colon - ends the condition / marks that a block of code is about to come up</li>
+      <li>if + condition + colon usually is considered the <em>if-statement header</em></li>
+      <li>body of if statement ends when indentation goes back one level</li>
+      <li>blank lines don&#39;t count as ending a block of code!</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-see-that-again">Let&#39;s See That Again</h3>
+  <aside>Now With More Blank Lines</aside>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">:</span>
+	<span class="c"># totally ok?  yes!</span>
+	<span class="c"># but why?</span>
+	<span class="c"># perhaps when done more reasonably, readability</span>
+	<span class="k">print</span> <span class="n">a</span>
+	<span class="k">print</span> <span class="n">a</span>
+
+
+	<span class="k">print</span> <span class="n">b</span>
+
+	<span class="k">print</span> <span class="n">b</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="oh-yeah-else-what">Oh Yeah, Else What?</h3>
+
+  <p>We can use <strong>else</strong> to execute code if the original condition was not met</p>
+
+  <ul>
+    <li>go back one level of indentation to mark that the previous code block has ended</li>
+    <li>keyword <strong>else</strong></li>
+    <li>body - indented, body ends when indentation goes back one level</li>
+    <li>not required, obvs</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="what-about-multiple-chained-conditions">What About Multiple Chained Conditions?</h3>
+  <p>What if <strong>else</strong> is not fine-grained enough?  For example, how about a program that asks for cake and handles a yes, no, or anything other than&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+Do you want cake?
+&gt; yes
+Here, have some cake.
+
+Do you want cake?
+&gt; no
+No cake for you.
+
+Do you want cake?
+&gt; blearghhh
+I do not understand.
+"""</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="consecutive-ifs">Consecutive Ifs</h3>
+  <p><strong>One way to do it is consecutive if statements&#8230;</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'yes'</span> <span class="ow">and</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="else-if-elif">Else If (elif)</h3>
+
+  <p>We can use <strong>elif</strong> to chain a series of conditions, where only one path of code will be executed</p>
+
+  <ul>
+    <li>if statement like usual</li>
+    <li>go back one level of indentation to mark that the previous code block has ended</li>
+    <li>keyword <strong>elif</strong></li>
+    <li>condition</li>
+    <li>colon</li>
+    <li>body - indented, body ends when indentation goes back one level</li>
+    <li>not required obv</li>
+    <li>even if more than one true, only the first true executes!</li>
+    <li>can add an else at the end</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="elif-example">elif Example</h3>
+  <aside>Let's have some more cake...</aside>
+  <p><strong>How would we redo the cake exercise with elif?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="how-to-order-conditions">How to Order Conditions</h3>
+
+  <ul>
+    <li>if more than one condition in a series of elif&#39;s is true
+      <ul>
+        <li>only the first true condition is executed!</li>
+        <li>other are skipped, including else</li>
+      </ul>
+    </li>
+    <li>ordering conditions so that the broadest ones are evaluated last may help avoid this issue</li>
+    <li>be careful of conditions that never get evaluated
+      <ul>
+        <li>an above condition may already account for it</li>
+        <li>here&#39;s an example&#8230;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="how-to-order-conditions-continued">How to Order Conditions Continued!</h3>
+
+  <p>Here&#39;s a contrived exercise:</p>
+
+  <ul>
+    <li>determine whether a number is 101 or if it&#39;s greater than 100</li>
+    <li>if it&#39;s 101, it should only print out that it&#39;s &quot;exactly 101&quot; (it shouldn&#39;t print out greater than 100)</li>
+  </ul>
+
+  <p>Here&#39;s an implementation.  <strong>What gets printed if n = 200?  What gets printed if n = 101?</strong>   &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"more than 100"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">101</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"exactly 101"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="another-gotcha">Another Gotcha!</h3>
+  <aside>And Back to That Cake Thing</aside>
+
+  <p><strong>Will this code work??</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>It does something unexpected!  If the user enters yes, we get both &quot;Here, have some cake&quot; <strong>and</strong> &quot;I do not understand.&quot;  Be careful when using consecutive <strong>ifs</strong></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="nesting-if-statements">Nesting If Statements</h3>
+
+  <ul>
+    <li>it behaves as you&#39;d expect</li>
+    <li>remember to get indentation right</li>
+    <li>if there are multiple elif&#39;s or else&#39;s,  you can use indentation to see which initial if statement they belong to</li>
+    <li>this works for any combination of if, elif and else</li>
+    <li>note that sometimes nested if statements are equivalent to and</li>
+    <li>best to simplify - that is, less nesting, better</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="nested-if-statements-and-and">Nested If Statements and And</h3>
+
+  <p><strong>How would you simplify this? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"I'm in here"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"We're out there"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">25</span> <span class="ow">and</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"I'm in here"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"We're out there"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="nested-if-statements-example">Nested If Statements Example</h3>
+
+  <p><strong>We could have impemented the cake exercise  using nested if statements.</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="modules">Modules</h2>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>User Input (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="user-input">User Input</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="getting-input-from-the-shell">Getting Input From the Shell</h3>
+
+  <ul>
+    <li>we can prompt the user through the console / terminal / shell / command prompt</li>
+    <li>the user enters input through the same mechanism</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="the-input-function">The input() Function</h3>
+
+  <p>There&#39;s a built-in function in Python called <strong>input</strong> &#8230;</p>
+
+  <ul>
+    <li><strong>what does it do? does it have parameter(s)?</strong> &#8594;</li>
+    <li><strong>(how can we find out through IDLE?)</strong> &#8594;</li>
+    <li><strong>what does it return?</strong> &#8594;</li>
+    <li><strong>what if the user input is a number?</strong> &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>input</strong> takes one parameter - the prompt that is displayed (think of it as print plus retrieving user input!)</li>
+      <li>use <strong>help</strong>! or check the docs&#8230;</li>
+      <li>it returns a string representing the user&#39;s input</li>
+      <li>it will <strong>always return a string</strong> - even if the user inputs a number</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-try-some-examples-of-input">Let&#39;s Try Some Examples of input()</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"&gt;"</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="n">foo</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">str</span><span class="s">'&gt;</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; x = input("&gt;")</span><span class="err">
+</span><span class="s">&gt;5</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; type(x)</span><span class="err">
+</span><span class="s">&lt;class '</span><span class="nb">str</span><span class="s">'&gt;</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; x = int(input("&gt;"))</span><span class="err">
+</span><span class="s">&gt;5</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; type(x)</span><span class="err">
+</span><span class="s">&lt;class '</span><span class="nb">int</span><span class="s">'&gt;</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="the-input-function-does-two-things">The input function does two things:</h2>
+
+  <ul>
+    <li><strong>prints</strong> out the prompt</li>
+    <li><strong>returns</strong> the value typed in by the user back to your program</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="write-a-program-that-asks-for-a-name">Write a Program That Asks For a Name</h3>
+  <p>&#8230; and then says &quot;hi&quot;.  Here&#39;s the sample output; the text after the &gt; is user input.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">What</span><span class="s">'s your name?</span><span class="err">
+</span><span class="s">&gt;Joe</span><span class="err">
+</span><span class="s">Hi Joe</span></code></pre></figure>
+
+  <div class="incremental">
+    <p><strong>A potential solution&#8230;</strong> &#8594;</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"What's your name?"</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"&gt;</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Hi "</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span></code></pre></figure>
+
+    <p>(note that we used <strong>newline</strong>, <strong>\n</strong>, to create a line break for the prompt that&#39;s printed out)</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="write-a-program-that-adds-exclamation-points">Write a Program That Adds Exclamation Points</h3>
+  <p>Here&#39;s the sample output; the text after the &gt; is user input.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">How</span> <span class="n">loudly</span><span class="err">?</span>
+<span class="o">&gt;</span><span class="mi">4</span>
+<span class="n">This</span> <span class="ow">is</span> <span class="n">really</span> <span class="n">loud</span><span class="err">!!!!</span></code></pre></figure>
+
+  <div class="incremental">
+    <p><strong>A potential solution&#8230;</strong> &#8594;</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">loudly</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"How loudly?</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"This is really loud"</span> <span class="o">+</span> <span class="s">"!"</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">loudly</span><span class="p">))</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="review">Review</h3>
+  <ul>
+    <li>how do we get user input?</li>
+    <li>when we get input, what&#39;s the type of the value that&#39;s returned?</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="design-input-processing-and-output"><a href="design-input-output.html">Design, Input, Processing, and Output</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

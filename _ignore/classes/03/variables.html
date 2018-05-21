@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Variables (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="variables">Variables</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="variables-1">Variables</h3>
+
+  <ul>
+    <li>a <strong>variable</strong> is a <em>name</em> that refers to a <em>value</em>:</li>
+    <li>once a variable is declared and assigned a value, <strong>you can use that variable where you would use any other values &#8594;</strong>
+      <ul>
+        <li>my_variable + &quot;!&quot;</li>
+        <li>print(my_variable)</li>
+        <li>(a + b) / c</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="assignment">Assignment</h3>
+
+  <aside>Assigning values to a variable</aside>
+
+  <ul>
+    <li>use the assignment operator: <strong>=</strong>
+      <ul>
+        <li>a single equals sign</li>
+        <li>note - does not test for equality, performs <strong>assignment</strong>!</li>
+      </ul>
+    </li>
+    <li>variable name goes on the left</li>
+    <li>value goes on the right</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="using-variables">Using Variables</h3>
+
+  <p>When do you use variables?</p>
+
+  <ul>
+    <li>when you want your program to <em>remember</em> a value</li>
+    <li>if you have a value that will <em>vary</em></li>
+    <li>some examples include:
+      <ul>
+        <li>a player&#39;s score</li>
+        <li>a count of repetitions</li>
+        <li>user input</li>
+        <li>sensor input</li>
+      </ul>
+    </li>
+    <li>additionally, using variables will help make your code more maintainable / less brittle
+      <ul>
+        <li>(let&#39;s talk about this&#8230;)</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="heres-an-example-of-improving-maintainability">Here&#39;s an Example of Improving Maintainability</h3>
+
+  <p><strong>Let&#39;s say you have a program that adds x number of exclamation points to some words.  &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"foo"</span> <span class="o">+</span> <span class="s">"!"</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"bar"</span> <span class="o">+</span> <span class="s">"!"</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span></code></pre></figure>
+
+    <p><strong>OR&#8230;</strong></p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">my_exclamation_constant</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"foo"</span> <span class="o">+</span> <span class="s">"!"</span> <span class="o">*</span> <span class="n">my_exclamation_constant</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"bar"</span> <span class="o">+</span> <span class="s">"!"</span> <span class="o">*</span> <span class="n">my_exclamation_constant</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="hardcoding">&quot;Hardcoding&quot;</h3>
+  <ul>
+    <li>assume everything will vary / change</li>
+    <li>avoid using a bare <strong>literal</strong>
+      <ul>
+        <li>you remember what that is, right?</li>
+        <li>&quot;a string&quot;, 58.3</li>
+      </ul>
+    </li>
+    <li>sometimes this is called <strong>hardcoding</strong></li>
+    <li>cleaning this stuff up helps code reuse / <strong>DRY</strong>
+      <ul>
+        <li>not having to write the same thing multiple times</li>
+        <li>don&#39;t repeat yourself</li>
+      </ul>
+    </li>
+    <li>we saw that in the previous slide</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="multiple-assignment">Multiple Assignment</h3>
+
+  <p>You can also assign <strong>multiple values to multiple variable names simultaneously</strong>.  &#8594;</p>
+
+  <p>This is done by:</p>
+
+  <ul>
+    <li>using the assignment operator: <strong>=</strong></li>
+    <li>a comma separated group of variables on the left-hand side</li>
+    <li>a comma separated group of values on the right hand side</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">7</span></code></pre></figure>
+
+  <p>Each variable/value is bound in the order that they appear.</p>
+</section>
+
+<section>
+  <h3 id="multiple-assignment-continued">Multiple Assignment Continued</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">7</span></code></pre></figure>
+
+  <p><strong>What values are referred to by a, b, and c? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">-&gt;</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">-&gt;</span> <span class="mi">21</span>
+<span class="n">c</span> <span class="o">-&gt;</span> <span class="mi">7</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="heres-a-quick-exercise-on-a-tiny-algorithm">Here&#39;s a Quick Exercise on a Tiny Algorithm</h3>
+  <aside>And Idioms, as Well!</aside>
+  <p><strong>If I have two variables, a and b, and they are set to 3 and 21 respectively, how would I swap their values in code? (Try this on your own!) &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"a:"</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s">"b:"</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">b</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">c</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"a:"</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s">"b:"</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+    <p><a href="http://www.pythontutor.com/visualize.html#code=a+%3D+3%0Ab+%3D+21%0Aprint(%22a%3A%22,+a,+%22b%3A%22,+b)%0Ac+%3D+b%0Ab+%3D+a%0Aa+%3D+c%0Aprint(%22a%3A%22,+a,+%22b%3A%22,+b)&amp;mode=display&amp;cumulative=false&amp;heapPrimitives=false&amp;drawParentPointers=false&amp;textReferences=false&amp;showOnlyOutputs=false&amp;py=3&amp;curInstr=0">See the Python Tutor version</a></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="an-idiomatic-way-to-do-it">An Idiomatic Way to Do It</h3>
+  <aside>(read: easier)</aside>
+  <p>Here&#39;s another, more <em>idiomatic</em> way to do it</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="and-some-btws">&#8230;And, Some BTWs</h3>
+
+  <ul>
+    <li>in Python, if something is <em>idiomatic</em>, it&#39;s called <em>Pythonic</em></li>
+    <li>someone that codes in Python is sometimes called a <em>Pythonista</em></li>
+    <li>(yes, <em>really</em>)</li>
+  </ul>
+
+</section>
+
+<section>
+  <h2 id="greeaaat--maybe-we-can-use-them-to-help-us-create-our-own-functions"><a href="functions.html">Greeaaat.  Maybe we can use them to help us create our own functions!</a></h2>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

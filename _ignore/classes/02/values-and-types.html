@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Values and Types (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="values-types-and-comments">Values, Types, and Comments</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="values">Values</h2>
+</section>
+
+<section>
+  <h3 id="what-are-values">What are Values?</h3>
+  <ul>
+    <li><strong>values</strong> are just data
+      <ul>
+        <li>for now, a <strong>value</strong> is a number or a string (we&#39;ll see more <strong>types</strong> of values later)</li>
+        <li>it can be stored in a variable</li>
+        <li>it can be part of an <strong>expression</strong> (a combination of values, operators, functions, etc &#8230; that can be evaluated)</li>
+        <li>but it can&#39;t be <em>evaluated</em> any further on its own (2 + 3 is not a value, because it can be evaluated further)</li>
+      </ul>
+    </li>
+    <li>some examples of values:
+      <ul>
+        <li>-123456</li>
+        <li>&quot;a string is a value&quot;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="a-note-on-values-in-code">A Note on Values in Code</h3>
+  <p>The representation of a bare value in code is called a <strong>literal</strong>.</p>
+
+  <ul>
+    <li>&quot;a string &quot; a <strong>string literal</strong></li>
+    <li>254 - an <strong>integer literal</strong></li>
+    <li>we&#39;ll go over these types in the next few slides</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="data-types">Data Types</h2>
+</section>
+
+<section>
+  <h3 id="values-can-be-classified-by-data-type">Values can be Classified by Data Type</h3>
+  <p>A <strong>data type</strong> is a set of values.  The type of a value determines how it can be used in expressions.  Sometimes <strong>data type</strong> is also referred to as just <strong>type</strong>&#8230; or <strong>class</strong>.</p>
+
+  <p><strong>Today, we&#39;ll go over the following 4 types</strong></p>
+
+  <ol>
+    <li><strong>str</strong> (string)</li>
+    <li><strong>int</strong> (integer)</li>
+    <li><strong>float</strong> (floating point)</li>
+    <li><strong>complex</strong> (complex numbers)</li>
+  </ol>
+
+  <p>The last 3 are  <strong>numeric types</strong>.</p>
+</section>
+
+<section>
+  <h2 id="strings">Strings</h2>
+</section>
+
+<section>
+  <h3 id="whats-a-string-again">What&#39;s a String Again?</h3>
+  <div class="incremental">
+    <p>A <strong>string</strong> is a sequence of characters.</p>
+
+    <ul>
+      <li>any characters</li>
+      <li>including spaces and punctuation</li>
+      <li>must <strong>start and end</strong> with quotes!</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="unbalanced-quotes">Unbalanced Quotes</h3>
+  <p><strong>What do you think will happen if you have an extra quote?</strong></p>
+
+  <p>Let&#39;s give it a try: &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; "oops " I quoted again"
+SyntaxError: invalid syntax</code></pre></figure>
+
+    <p>If you don&#39;t have matching start and end quotes (<strong>unbalanced quotes</strong>) you&#39;ll get a syntax error.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="alternate-string-syntax">Alternate String Syntax</h3>
+  <aside>You Don't Have to Stick to Double Quotes...</aside>
+  <p>You can use three different types of quotation marks:</p>
+
+  <ul>
+    <li>double quotes</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"double quoted string"</span></code></pre></figure>
+
+  <ul>
+    <li>single quotes</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">'single quoted string'</span></code></pre></figure>
+
+  <ul>
+    <li>triple double quotes <strong>for multiline strings</strong></li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""more than
+one line.  omg!"""</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="multiline-strings">Multiline Strings?</h3>
+  <ul>
+    <li>triple double quotes allow you to span multiple lines</li>
+    <li>single or double quotes do not</li>
+  </ul>
+
+  <p><strong>What do you think will happen if you try spanning multiple lines with single or double quotes?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; "spanning multiple
+SyntaxError: EOL while scanning string literal</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="a-quick-aside-on-comments">A Quick Aside on Comments</h3>
+  <p>A <strong>comment</strong> is text in a program that is meant for the human reader; it isn&#39;t used by the interpreter.  A comment can be:</p>
+
+  <ul>
+    <li>prefixed with the # token</li>
+    <li><strong>or</strong> surrounded by triple double quotes as a bare string literal</li>
+  </ul>
+
+  <p>These are both comments: &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#   this is a comment</span>
+<span class="s">"""
+so
+is
+this
+"""</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-hasty-escape">A Hasty Escape</h3>
+  <p>What if I want to put in a character that has special meaning in a string?  Say, for example&#8230; a single or double quote?</p>
+
+  <ul>
+    <li>you can use the backslash character before the special character</li>
+    <li>for quotes, you can use mixed quotes (embed single quotes in a double quoted string)!</li>
+    <li>let&#39;s give it a try&#8230; &#8594;</li>
+  </ul>
+
+  <div>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"escaping using </span><span class="se">\"</span><span class="s">backslash</span><span class="se">\"</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"single  quotes ''''"</span><span class="p">)</span> 
+<span class="k">print</span><span class="p">(</span><span class="s">"""some "double quotes"""")</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="i-heard-you-like-backslashes">I Heard You Like Backslashes</h3>
+  <aside>So I...</aside>
+
+  <p><strong>What if you want an <em>actual</em> backslash in your string?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>You can use backslashes to escape backslashes</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"I heard you like </span><span class="se">\\</span><span class="s">'s, So I put a </span><span class="se">\\</span><span class="s"> before your </span><span class="se">\\</span><span class="s">"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="new-lines-again">New Lines (Again)</h3>
+
+  <p>You can actually represent a new line as a character by using:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python">\<span class="n">n</span></code></pre></figure>
+
+  <ul>
+    <li>that&#39;s <strong>backslash</strong>, then <strong>n</strong>, or the <strong>newline character</strong></li>
+    <li>so&#8230; a multiline string can also be created by using <strong>newline characters</strong>:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">'two</span><span class="se">\n</span><span class="s">lines</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="on-a-tropical-island">On a Tropical Island</h3>
+  <aside>A Quick Activity</aside>
+
+  <p><img src="../../resources/img/jake.jpeg" alt="jake" /></p>
+</section>
+<section>
+  <h3 id="on-a-tropical-island-lyrics">On a Tropical Island Lyrics</h3>
+
+  <p>These are lyrics to a song called <a href="http://www.youtube.com/watch?v=E6-HjFQ_Jtg#t=14">&quot;On a Tropical Island&quot;</a>&#8230; from a <em>fine</em> cartoon named Adventure Time.  It has a bunch of new lines in it, as well as single quotes.</p>
+
+  <p><strong>How would you get Python to print out these lyrics?  Let&#39;s find 2 different ways to print this out.</strong>&#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">On a tropical island,
+Underneath a molten lava moon.
+Hangin' with the hula dancers,
+Askin' questions cause' they got all the answers.</code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="numeric-types">Numeric Types</h2>
+  <aside>Integers, Floating Point Numbers and Complex Numbers</aside>
+</section>
+
+<section>
+  <h3 id="three-numeric-types">Three Numeric Types</h3>
+  <p>The following types are all closely related; most of the same operations can be applied to all of them:</p>
+
+  <ol>
+    <li><strong>int</strong> (integer)</li>
+    <li><strong>float</strong> (floating point)</li>
+    <li><strong>complex</strong> (complex numbers)</li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="int-integer">int (integer)</h3>
+
+  <p><strong>What&#39;s an integer?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>integer</strong> - whole number, can be negative</li>
+      <li><strong>int</strong> is the actual name of the integer type</li>
+      <li>24, -25 &#8594;</li>
+      <li>no size limit (well, as much as your computer can handle)!</li>
+      <li>for example: 1337 ** 20 &#8594;</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="float-floating-point"><strong>float</strong> (floating point)</h3>
+
+  <p><strong>What&#39;s a floating point number?</strong></p>
+
+  <div class="incremental">
+    <p><strong>A floating point number</strong> represents real numbers</p>
+
+    <p><strong>&#8230;but what&#39;s a real number?</strong> &#8594;</p>
+
+    <ul>
+      <li>a quantity across a continuous line, like fractions or irrational numbers like pi or the square root of two</li>
+      <li>floating point numbers are <strong>indicated by a decimal point</strong>: 5.55555, 5.0 &#8594;</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="really-big-or-really-small-numbers">Really Big or Really Small Numbers</h3>
+  <p>Very <strong>large</strong> or <strong>small</strong> floating point numbers are expressed in scientific notation</p>
+
+  <ul>
+    <li>5555 ** 5.0 gives back 5.289569361832972e+18 (that is 5.2389 &#8230; times 10 to the 18th power) &#8594;</li>
+    <li>the exponent can be + or -</li>
+    <li>a few more examples:
+      <ul>
+        <li>52e+3 = 52 * 10 ^ 3 = 52000</li>
+        <li>52e-3 = 52 * 10 ^ -3 = 0.052</li>
+      </ul>
+    </li>
+    <li><strong>What is the result of 2e+2?</strong> &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li>200.0</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="uh-oh---thats-too-much">Uh-oh - That&#39;s Too Much</h3>
+  <aside>Overflow</aside>
+
+  <ul>
+    <li>unlike integers, floats have min and max values&#8230; if you have a value that&#39;s too big or too small</li>
+    <li>sys.float_info.max &#8594;</li>
+    <li>5555**55555.0 &#8594;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; 5555**55555.0
+Traceback (most recent call last):
+  File "&lt;pyshell#93&gt;", line 1, in &lt;module&gt;
+    5555**55555.0
+OverflowError: (34, 'Result too large')
+&gt;&gt;&gt; </code></pre></figure>
+
+  <!-- _nomd -->
+</section>
+
+<section>
+  <h3 id="complex-numbers">Complex Numbers</h3>
+  <aside>Um - Does anyone remember these?  I don't</aside>
+
+  <p>For completeness&#8230; <strong>Python supports complex numbers</strong></p>
+
+  <ul>
+    <li>numbers with square root of -1 / imaginary numbers</li>
+    <li>1j * 1j &#8594;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="dont-use-that-comma">Don&#39;t, Use, That, Comma</h3>
+  <p>Clearly, symbols have special meanings in numeric types</p>
+
+  <ul>
+    <li>a decimal point signifies a floating point number</li>
+    <li>scientific notation is represented by e and a plus or minus</li>
+    <li>j is the imaginary part of a complex number</li>
+  </ul>
+
+  <p><strong>However - Don&#39;t use commas!  They don&#39;t mean what you expect.</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; 3,000
+(3, 0)
+&gt;&gt;&gt; # huh???
+&gt;&gt;&gt; # it's something called a tuple</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="so-you-dont-know-what-type-you-have">So You Don&#39;t Know What Type You Have</h3>
+  <ul>
+    <li>There&#39;s a function called <strong>type</strong></li>
+    <li>Let&#39;s look at it in the interactive shell &#8594;</li>
+    <li>Notice the arrow&#8230; it says it returns the &quot;type&quot; of the parameter passed in&#8230;</li>
+    <li>Here&#39;s how you would use it: &#8594;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">type(1.0)</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-guessing-game">A Guessing Game</h3>
+  <aside>What type is it?</aside>
+
+  <ol>
+    <li><strong>1</strong></li>
+    <li><strong>1.0</strong></li>
+    <li><strong>&quot;1&quot;</strong></li>
+    <li><strong>&quot;"&quot;1.0&quot;"&quot;</strong></li>
+    <li><strong>1.111</strong></li>
+    <li><strong>&#39;1,111&#39;</strong></li>
+  </ol>
+
+  <div class="incremental">
+    <p>1 is an <strong>int</strong>. 2 and 5 are <strong>floats</strong>.  Everything else is a string.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="reeeeeewind">Reeeeeewind</h3>
+  <aside>A Quick Recap</aside>
+  <ul>
+    <li>What do we call a bare value in code&#8230; like &quot;foo&quot; or 5?</li>
+    <li>Name three ways to represent a syntactically correct string in Python</li>
+    <li>Name two ways to put a double quote in a string</li>
+    <li>How about a backslash, or newline?</li>
+    <li>Which type can be affected by really large or small numbers - float or int?</li>
+    <li>How can I tell if a number is a float?</li>
+    <li>What function could I use to determine the type of a value or variable?</li>
+    <li>What are two ways of representing comments?</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="next-operations-and-variables"><a href="operations-and-variables.html">Next: Operations and Variables</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

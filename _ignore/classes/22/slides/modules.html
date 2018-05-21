@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Making Modules (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="making-modules">Making Modules</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="modules">Modules</h3>
+
+  <ul>
+    <li>a <strong>module</strong> is just a file!</li>
+    <li>&#8230;a file with Python code in it</li>
+    <li><strong>what are some modules that we&#39;ve used? &#8594;</strong></li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li>random</li>
+      <li>math</li>
+      <li>turtle</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="creating-a-module">Creating a Module</h3>
+
+  <p>We can actually create our own modules.</p>
+
+  <ul>
+    <li>again, it&#39;s just a file&#8230;</li>
+    <li>we can actually import everything that we&#39;ve written!</li>
+    <li>so&#8230; you can import functions and variables from a file that you&#39;ve written
+      <ul>
+        <li>make sure that both files are in the same directory</li>
+        <li>use the import statement</li>
+        <li>the module name is the file name without the .py extension</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="creating-a-module-example">Creating a Module Example</h3>
+
+  <p><strong>Try this on your own&#8230; create 2 files: greetings.py and using_a_module.py &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># greetings.py</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+	<span class="k">return</span> <span class="s">"hi there"</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># using_a_module.py</span>
+<span class="kn">import</span> <span class="nn">greetings</span>
+<span class="k">print</span><span class="p">(</span><span class="n">greetings</span><span class="o">.</span><span class="n">hello</span><span class="p">())</span></code></pre></figure>
+
+  <p>Run it!</p>
+</section>
+
+<section>
+  <h3 id="some-questions">Some Questions</h3>
+
+  <p><strong>What would happen if you didn&#39;t have an import? &#8594;</strong>
+<strong>What would happen if you put in the extension of your file name? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"/tmp/using_a_module.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">greetings</span><span class="o">.</span><span class="n">hello</span><span class="p">())</span>
+<span class="nb">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s">'greetings'</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"/tmp/using_a_module.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">import</span> <span class="nn">greetings.py</span>
+<span class="nb">ImportError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="n">py</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="why-create-your-own-modules">Why Create Your Own Modules?</h3>
+
+  <ul>
+    <li>organizing your code
+      <ul>
+        <li>keep related code together</li>
+        <li>prevent source code from being long and unwieldy</li>
+      </ul>
+    </li>
+    <li>code reuse
+      <ul>
+        <li>use your module in other programs</li>
+        <li>share your module with others!</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="exercises"><a href="exercises.html">Exercises</a></h2>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

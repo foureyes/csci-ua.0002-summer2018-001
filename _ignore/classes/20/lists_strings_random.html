@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lists, Strings, and Random (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="lists-strings-and-random">Lists, Strings, and Random</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3>Strings to Lists and Back</h3>
+
+  <p>There are two useful <strong>string methods</strong> that are often used with lists:</p>
+
+  <ul>
+    <li><strong>split</strong> turns a string into a list based on a separator string</li>
+    <li><strong>join</strong> turns a list into a string based on the string it&#39;s called on</li>
+    <li><strong>what would the following code output? &#8594;</strong></li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">comics</span> <span class="o">=</span> <span class="s">"ranma,maison ikkoku,scott pilgrim"</span>
+<span class="n">awesome_comics_list</span> <span class="o">=</span> <span class="n">comics</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">","</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">awesome_comics_list</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">" and "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">awesome_comics_list</span><span class="p">))</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="s">'ranma'</span><span class="p">,</span> <span class="s">'maison ikkoku'</span><span class="p">,</span> <span class="s">'scott pilgrim'</span><span class="p">]</span>
+<span class="n">ranma</span> <span class="ow">and</span> <span class="n">maison</span> <span class="n">ikkoku</span> <span class="ow">and</span> <span class="n">scott</span> <span class="n">pilgrim</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="split-and-join">Split and Join</h3>
+
+  <p><strong>If I have the following list, how do I put together each element with an exclamation point and space between each element? How do I turn the resulting string back to a list? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">hello</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Bill"</span><span class="p">,</span> <span class="s">"Phil"</span><span class="p">,</span> <span class="s">"Gil"</span><span class="p">,</span> <span class="s">"Jill"</span><span class="p">]</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">names</span> <span class="o">=</span> <span class="s">"! "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hello</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">names</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">"! "</span><span class="p">))</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="random---choice-shuffle">Random - Choice, Shuffle</h3>
+
+  <p>The random module offers some methods that can be used on lists:</p>
+
+  <ul>
+    <li><strong>choice</strong>(my_list): retrieves a random item from the supplied list</li>
+    <li><strong>shuffle</strong>(my_list): randomly changes the order of the elements in the list passed in (<em>in place</em>)</li>
+  </ul>
+
+  <p><strong>Let&#39;s try using a couple of these methods &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">numbers</span><span class="p">))</span>
+<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="one-hand-of-blackjack">One Hand of Blackjack</h3>
+
+  <ul>
+    <li>try implementing a single hand of blackjack
+      <ul>
+        <li>sum of cards is closest or equal to 21 without going over</li>
+        <li>dealt a hand of two cards, can either keep drawing or stop</li>
+      </ul>
+    </li>
+    <li>use a commandline interface:
+      <ul>
+        <li>&#39;h&#39; for hit / draw more cards</li>
+        <li>&#39;s&#39; for stay / stop drawing cards</li>
+      </ul>
+    </li>
+    <li>create a computer opponent that determines whether or not to keep getting cards</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="break-down-the-problem">Break Down the Problem</h3>
+
+  <ul>
+    <li>what data do we want to store, and how do we represent it?</li>
+    <li>shuffling and distributing cards</li>
+    <li>calculating a blackjack hand</li>
+    <li>dealing with user input</li>
+    <li>playing as the computer</li>
+    <li>determining who won</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="representing-data">Representing Data</h3>
+
+  <p><strong>What data do we want to store, and how do we represent it?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>the card deck</li>
+      <li>the player&#39;s hand, the computer&#39;s hand</li>
+      <li>how about a list of strings to represent each card in a deck?</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="shuffling-and-distributing-cards">Shuffling and Distributing Cards</h3>
+
+  <p><strong>Write a short program that:</strong> &#8594;</p>
+
+  <ul>
+    <li>creates a deck of cards as a list of strings: 2-9, A, K, Q, J (4 x for hearts, clubs, spades, clovers)</li>
+    <li>mix up the deck</li>
+    <li>distribute two cards to both the player and the computer</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  create deck and deal</span>
+<span class="n">deck</span> <span class="o">=</span> <span class="p">[</span><span class="s">'2'</span><span class="p">,</span> <span class="s">'3'</span><span class="p">,</span> <span class="s">'4'</span><span class="p">,</span> <span class="s">'5'</span><span class="p">,</span> <span class="s">'6'</span><span class="p">,</span> <span class="s">'7'</span><span class="p">,</span> <span class="s">'8'</span><span class="p">,</span> <span class="s">'9'</span><span class="p">,</span> <span class="s">'10'</span><span class="p">,</span> <span class="s">'J'</span><span class="p">,</span> <span class="s">'Q'</span><span class="p">,</span> <span class="s">'K'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
+<span class="n">player_hand</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">computer_hand</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+	<span class="n">player_hand</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">deck</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+	<span class="n">computer_hand</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">deck</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="calculating-a-blackjack-hand">Calculating a Blackjack Hand</h3>
+
+  <p><strong>Implement a function that takes a list of strings representing cards.  It should calculate the sum of the cards</strong></p>
+
+  <ul>
+    <li>represent cards as a list of strings: 1-9, A, K, Q, J</li>
+    <li>face cards count as 10</li>
+    <li>aces count as either 1 or 11&#8230; choose the value that brings the sum closest to 21</li>
+    <li>implement a function that takes a list of strings</li>
+    <li>it should return an integer that represents the total of the cards</li>
+    <li>write pseudocode to determine how your function would choose 1 or 11</li>
+    <li>write assertions (try multiple aces)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="some-assertions">Some Assertions</h3>
+
+  <p>We can check out all possible combinations of 1&#39;s and 11&#39;s to see which is the closest combination to 21.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">assert</span> <span class="mi">21</span> <span class="o">==</span> <span class="n">current_total</span><span class="p">([</span><span class="s">'A'</span><span class="p">,</span> <span class="s">'9'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">]),</span> <span class="s">"two aces, one 11 and one 1"</span>
+<span class="k">assert</span> <span class="mi">12</span> <span class="o">==</span> <span class="n">current_total</span><span class="p">([</span><span class="s">'A'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">,</span> <span class="s">'10'</span><span class="p">]),</span> <span class="s">"two aces, both 1"</span>
+<span class="k">assert</span> <span class="mi">21</span> <span class="o">==</span> <span class="n">current_total</span><span class="p">([</span><span class="s">'A'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">,</span> <span class="s">'8'</span><span class="p">]),</span> <span class="s">"three aces, one 11 and two 1"</span>
+<span class="k">assert</span> <span class="mi">12</span> <span class="o">==</span> <span class="n">current_total</span><span class="p">([</span><span class="s">'A'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">,</span> <span class="s">'9'</span><span class="p">]),</span> <span class="s">"three aces, three 1"</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-think-of-some-algorithms">Let&#39;s Think of Some Algorithms</h3>
+
+  <p><strong>How about this one?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>if it&#39;s a digit, just add it</li>
+      <li>if it&#39;s a face card, add 10</li>
+      <li>if it&#39;s an ace, add 11</li>
+      <li>&#8230; but keep track of the number of aces</li>
+      <li>as long as there are aces and the hand is over 21, subtract 10</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="calculating-a-blackjack-hand-1">Calculating a Blackjack Hand</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">current_total</span><span class="p">(</span><span class="n">hand</span><span class="p">):</span>
+	<span class="s">""" Sums the cards in hand.  Aces count as 1 or 11.  Will optimize for 
+	highest total without going over 21. """</span>
+	<span class="n">total</span><span class="p">,</span> <span class="n">aces</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="n">card</span> <span class="ow">in</span> <span class="n">hand</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">card</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+			<span class="n">total</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="n">card</span> <span class="ow">in</span> <span class="s">'JQK'</span><span class="p">:</span>
+			<span class="n">total</span> <span class="o">+=</span> <span class="mi">10</span>
+		<span class="k">elif</span> <span class="n">card</span> <span class="o">==</span> <span class="s">'A'</span><span class="p">:</span>
+			<span class="n">aces</span> <span class="o">+=</span> <span class="mi">1</span>
+			<span class="n">total</span> <span class="o">+=</span> <span class="mi">11</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">aces</span><span class="p">):</span>
+		<span class="k">if</span> <span class="n">total</span> <span class="o">&gt;</span> <span class="mi">21</span><span class="p">:</span>
+			<span class="n">total</span> <span class="o">-=</span> <span class="mi">10</span>
+	<span class="k">return</span> <span class="n">total</span>
+
+<span class="k">assert</span> <span class="mi">21</span> <span class="o">==</span> <span class="n">current_total</span><span class="p">([</span><span class="s">'A'</span><span class="p">,</span> <span class="s">'9'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">]),</span> <span class="s">"two aces, one 11 and one 1"</span>
+<span class="k">assert</span> <span class="mi">12</span> <span class="o">==</span> <span class="n">current_total</span><span class="p">([</span><span class="s">'A'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">,</span> <span class="s">'10'</span><span class="p">]),</span> <span class="s">"two aces, both 1"</span>
+<span class="k">assert</span> <span class="mi">21</span> <span class="o">==</span> <span class="n">current_total</span><span class="p">([</span><span class="s">'A'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">,</span> <span class="s">'8'</span><span class="p">]),</span> <span class="s">"three aces, one 11 and two 1"</span>
+<span class="k">assert</span> <span class="mi">12</span> <span class="o">==</span> <span class="n">current_total</span><span class="p">([</span><span class="s">'A'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">,</span> <span class="s">'A'</span><span class="p">,</span> <span class="s">'9'</span><span class="p">]),</span> <span class="s">"three aces, three 1"</span></code></pre></figure>
+
+  <!--  comment_ -->
+</section>
+
+<section>
+  <h3 id="and-the-rest">And The Rest</h3>
+
+  <p>Maybe for homework?</p>
+
+  <ul>
+    <li>dealing with user input</li>
+    <li>let the computer move</li>
+    <li>who won?</li>
+  </ul>
+
+</section>
+
+<!--
+<section markdown="block">
+##  [Mutability Revisited](mutability.html)
+</section>
+-->
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

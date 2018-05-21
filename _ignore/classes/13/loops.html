@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Loops Recap (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="loops-recap">Loops Recap</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="super-quick-review-before-we-move-on">Super Quick Review Before we Move On</h2>
+
+</section>
+
+<section>
+  <h3 id="repeating-blocks-of-code">Repeating Blocks of Code</h3>
+
+  <p>Python has two looping structures:</p>
+
+  <ul>
+    <li><strong>while</strong> - a <em>condition controlled</em> loop that repeats a block of code as long as a condition (a boolean expression) is True</li>
+    <li><strong>for</strong> - a <em>count controlled</em> loop that repeats a block of code for a specific number of times</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="while-loops">While Loops</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">while</span> <span class="n">some_boolean_expression</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"repeat an indented block of code"</span><span class="p">)</span></code></pre></figure>
+
+  <ul>
+    <li>repeats the indented body of code as long as condition (some boolean expression) is true</li>
+    <li><strong>if there&#39;s something wrong</strong> with the loop stopping or not stopping, <strong>check the condition</strong></li>
+    <li>if you want the loop to stop, must have something that influences the condition:
+      <ul>
+        <li>for example, counting requires that we maintain a count variable outside of the loop</li>
+        <li>another example, looping on input means keeping track of what a user types in</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="for-loops">For Loops</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">loop_variable</span> <span class="ow">in</span> <span class="n">iterable_object</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"repeat an indented block of code"</span><span class="p">)</span></code></pre></figure>
+
+  <ul>
+    <li>iterates over every element in an <em>iterable</em> object</li>
+    <li>an <strong>iterable object</strong> can be composed of multiple elements and is capable of <em>yielding</em> each element one at a time</li>
+    <li>a <strong>range</strong> is an iterable object that represents an arithmetic sequence of numbers</li>
+    <li><strong>loop variable</strong> represents the current element of the iterable object</li>
+    <li>no need to explicitly increment the loop variable</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="controlling-loops">Controlling Loops</h3>
+
+  <p>Python has two constructs to change the flow of a loop:</p>
+
+  <ul>
+    <li><strong>break</strong> - immediately stops the loop from running and <em>jumps</em> out of the loop</li>
+    <li><strong>continue</strong> - go to the next iteration of the loop</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="break">break</h3>
+
+  <ul>
+    <li>the break statement is used to immediately leave the body of the loop that it is in</li>
+    <li>the next statement to be executed is the first one after the body of the loop</li>
+  </ul>
+
+  <p><strong>What is the output of the following code?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">break</span> 
+	<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"done"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">5</span>
+<span class="mi">10</span>
+<span class="n">done</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="continue">continue</h3>
+
+  <ul>
+    <li>the continue statement causes the program to immediately skip the processing of the rest of the body of the loop</li>
+    <li>&#8230;but instead of jumping out of the loop, it <em>continues</em> on to the next iteration</li>
+  </ul>
+
+  <p><strong>What is the output of the following code?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">continue</span> 
+	<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"done"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">5</span>
+<span class="mi">10</span>
+<span class="mi">20</span>
+<span class="n">done</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="nested-loops">Nested Loops</h3>
+
+  <p>Lastly, we&#39;ve talked about nested loops.</p>
+
+  <ul>
+    <li>a nested loop is just a loop within the body of another loop</li>
+    <li>for every iteration of the outer loop, the inner loop must finish all of its iterations</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="squares">Squares!</h3>
+
+  <ul>
+    <li><strong>what are the x, y coordinates of the first square?</strong> &#8594;</li>
+    <li><strong>&#8230; and the second square?</strong> &#8594;</li>
+    <li><strong>&#8230; and the last square?</strong> &#8594;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">(),</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">size</span><span class="p">,</span> <span class="n">spacing</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span>
+<span class="n">step</span> <span class="o">=</span> <span class="n">size</span> <span class="o">+</span> <span class="n">spacing</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">201</span><span class="p">,</span> <span class="o">-</span><span class="n">step</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+        <span class="c"># draw a square</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+  <p>The first is at (0, 0), second is at (0, 25).</p>
+</section>
+
+<section>
+  <h3 id="squares-answers">Squares! Answers</h3>
+
+  <ul>
+    <li><strong>the first square is drawn at (0, 0)</strong></li>
+    <li><strong>the second square is drawn at (0, 25)</strong></li>
+    <li><strong>the last square is drawn at (-200, 200)</strong></li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="p">,</span> <span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">(),</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">size</span><span class="p">,</span> <span class="n">spacing</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span>
+<span class="n">step</span> <span class="o">=</span> <span class="n">size</span> <span class="o">+</span> <span class="n">spacing</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">201</span><span class="p">,</span> <span class="o">-</span><span class="n">step</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+        <span class="c"># draw a square</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+  <p><strong>Let&#39;s try this out!</strong> &#8594;</p>
+</section>
+
+<section>
+  <h2 id="turtle-review"><a href="turtle_review.html">Turtle Review</a></h2>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

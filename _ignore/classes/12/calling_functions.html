@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Calling Functions (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="calling-functions">Calling Functions</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="lets-make-sure-were-speaking-the-same-language">Let&#39;s Make Sure We&#39;re Speaking the Same Language!</h2>
+</section>
+
+<section>
+  <h3 id="a-function-again">A Function (Again)</h3>
+
+  <p><strong>What&#39;s a function? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>a <strong>function</strong>&#8230;
+        <ul>
+          <li>is a named sequence of statements that performs some useful operation</li>
+          <li>may or may not take parameters (produce a value)</li>
+          <li>may or may not produce a result (return a value)</li>
+        </ul>
+      </li>
+      <li>a <strong>method</strong> (also considered a function)&#8230;
+        <ul>
+          <li>a <strong>function</strong> that&#39;s attached to an <strong>object</strong></li>
+          <li>consequently, in context of an object, is interchangeable with <strong>function</strong></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="examples">Examples</h3>
+
+  <p><strong>What are some examples of built-in functions or functions in modules? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>built-in <strong>functions</strong>
+        <ul>
+          <li>print(&quot;something&quot;)</li>
+          <li>int(&quot;5&quot;)</li>
+          <li>intput(&quot;enter a number)</li>
+        </ul>
+      </li>
+      <li><strong>functions</strong> in modules
+        <ul>
+          <li>math.sqrt(5)</li>
+          <li>sys.exit()</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="examples-1">Examples</h3>
+
+  <p><strong>What are some examples of methods? &#8594;</strong></p>
+
+  <div class="incremental">
+    <p>So far we&#39;ve only &quot;officially&quot; learned <strong>methods</strong> that can be called on a Turtle <strong>object</strong>.  For example, if we have a Turtle called leo:</p>
+
+    <ul>
+      <li>leo.up()</li>
+      <li>leo.forward(50)</li>
+      <li>leo.right(90)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="calling-a-function">Calling a Function</h3>
+
+  <p><strong>Define what it means to &quot;call&quot; a function.  How do we call a function?  &#8594;</strong></p>
+
+  <div class="incremental">
+    <p>A <strong>function call</strong> is the statement that actually executes a function.  It causes the functions code to run.</p>
+
+    <p>Syntactically, we call a function by writing &#8594;:</p>
+
+    <ol>
+      <li>the function name</li>
+      <li>followed by parentheses</li>
+      <li>with zero or more arguments enclosed within those parentheses</li>
+      <li>(no arguments are ok)</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h3 id="calling-a-method">Calling a Method</h3>
+
+  <p><strong>Aaaaaaand&#8230; how is a method called?  &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <ol>
+      <li>the object name</li>
+      <li>follwed by a dot</li>
+      <li>followed by a function name</li>
+      <li>followed by parentheses</li>
+      <li>with zero or more arguments enclosed within those parentheses</li>
+      <li>(no arguments are ok)</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h3 id="arguments">Arguments</h3>
+
+  <p>Based on the definitions of <strong>function</strong> and <strong>calling a function</strong>, <strong>how can we define argument? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>an argument is a value provided to a function when the function is <strong>called</strong></li>
+      <li>this value (or values) is used within the function</li>
+      <li>the argument can be the result of an expression which may involve operators, operands and calls to other functions!</li>
+      <li>or simply, <em>the input</em></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="arguments--parameters">Arguments / Parameters</h3>
+  <p>What&#39;s the difference between an <strong>argument</strong> and a <strong>parameter</strong>?</p>
+
+  <ul>
+    <li>for our purposes, they&#39;re the same: the values we pass in to a function (<em>input</em>)</li>
+    <li>however&#8230;  THINKSCI makes a subtle distinction between the two:
+      <ul>
+        <li><strong>argument</strong>: value provided to a function when it&#39;s called</li>
+        <li><strong>parameter</strong>: name used inside a function to refer to the value which was passed to it as an argument</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="values-and-expressions">Values and Expressions</h3>
+
+  <p>Again, an <strong>argument</strong> can be a <strong>value</strong> or even an <strong>expression</strong> (which can be reduced to a value anyway!):</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  (t is a Turtle object)</span>
+
+<span class="c">#  using a value, 50, as an argument</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> 
+
+<span class="c">#  using an expression as an argument</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">20</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c">#  another function that results in a value as an argument</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="no-input-vs-some-input">No Input vs Some Input</h3>
+
+  <p>Some functions and methods require arguments, others don&#39;t.</p>
+
+  <p><strong>Name some functions or methods that take arguments.  Name some that don&#39;t require arguments. &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>arguments
+        <ul>
+          <li>str(5)</li>
+          <li>random.randint(5, 12)</li>
+        </ul>
+      </li>
+      <li>no argument
+        <ul>
+          <li>t.up() # called on a Turtle object, t</li>
+          <li>sys.exit() # called using the sys module</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="output--return-value">Output / Return Value</h3>
+
+  <p>Some functions and methods return values; others don&#39;t.</p>
+
+  <p><strong>Name some functions or methods that return a value.  Name some that don&#39;t. &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>returns a value
+        <ul>
+          <li>math.sqrt(25)</li>
+          <li>int(&quot;5&quot;)</li>
+          <li>input(&#39;foo&#39;)</li>
+        </ul>
+      </li>
+      <li>doesn&#39;t return a value
+        <ul>
+          <li>print(&quot;nothing to see here&quot;)</li>
+          <li>t.up() # called using the sys module</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="when-you-dont-have-a-value">When You Don&#39;t Have a Value</h3>
+
+  <p>Actually&#8230; you do get a value if you call a function that doesn&#39;t actually return one!</p>
+
+  <div class="incremental">
+    <ul>
+      <li>you get a special value called <strong>None</strong>.</li>
+      <li><strong>None</strong> represents the absence of a value!</li>
+    </ul>
+
+    <p>For example, assigning the result of print&#8230;</p>
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; # print doesn't return a value...
+... 
+&gt;&gt;&gt; result_from_print = print("foo")
+foo
+&gt;&gt;&gt; print(result_from_print)
+None
+&gt;&gt;&gt; </code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="some-more-about-none">Some More About None</h3>
+
+  <p><strong>None</strong> is valid value in your code.  You can even bind it to a variable name:</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; an_empty_box = None
+&gt;&gt;&gt; print(an_empty_box)
+None</code></pre></figure>
+
+  <ul>
+    <li>you may want to do this if you want to initialize a variable to <em>nothing</em>.
+      <ul>
+        <li>usually, it&#39;s better to start with a more meaningful ininitial value</li>
+        <li>for example, if you&#39;re summing numbers, zero might make sense as a meaningful initial value</li>
+      </ul>
+    </li>
+    <li>you can also test for None (if an_empty_box is None:)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="return-values">Return Values</h3>
+
+  <p>You might have noticed that in one of the examples above, the result of the function was used like any other value.</p>
+
+  <ul>
+    <li>for example random.randint(1,6) returns an int
+      <ul>
+        <li>it <em>gives back</em> an int</li>
+        <li>consequently it can be used in place of an int</li>
+      </ul>
+    </li>
+    <li>you can just treat a call to random.randint(1, 6) as a value</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  we've seen this (multiply a string by an int):</span>
+<span class="s">"hello"</span> <span class="o">*</span> <span class="mi">5</span>
+
+<span class="c">#  but we can also do something like this:</span>
+<span class="s">"hello"</span> <span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="return-values-1">Return Values</h3>
+
+  <p>Some more examples of using return values:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  storing it in a varable</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c">#  using it directly in an expression</span>
+<span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"in here!"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="dissecting-some-function-calls">Dissecting Some Function Calls</h2>
+
+  <p><strong>What&#39;s the name of the function, the number of arguments, and the argument values of each function call below? Does the function call return a value? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"foo"</span><span class="p">)</span>
+<span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"foo"</span><span class="p">)</span> <span class="c"># print, 1 arguments, ("foo"), no return value</span>
+<span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c"># randint, 2 arguments, (1, 10), returns an int</span>
+<span class="c">#  range, 3 arguments, (10, 100, 2), returns a sequence of numbers</span>
+<span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> </code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="review">Review</h2>
+</section>
+
+<section>
+  <h3 id="definitions">Definitions</h3>
+  <ul>
+    <li><strong>function</strong> - named sequence of statements that performs some useful operation</li>
+    <li><strong>function call</strong> - the statement that actually executes a function</li>
+    <li><strong>argument</strong> - a value that&#39;s passed in to a function when a function is called</li>
+    <li><strong>None</strong> - a special value in Python that represents the absence of a value!</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="defining-your-own-functions"><a href="defining_functions.html">Defining Your Own Functions</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

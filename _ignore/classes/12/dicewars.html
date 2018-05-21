@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Approaching a New Programming Problem (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="approaching-a-new-programming-problem">Approaching a New Programming Problem</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="dont-just-jump-into-code">Don&#39;t Just Jump Into Code!</h3>
+  <ul>
+    <li>(obvs!) make sure you understand the stated problem
+      <ul>
+        <li>what are the requirements for the program that you&#39;re writing?</li>
+        <li>create supporting materials to help you understand the problem (decision trees, flow charts, etc)</li>
+      </ul>
+    </li>
+    <li>think about how you would approach solving the problem
+      <ul>
+        <li>sketch out how you want your program to work</li>
+        <li>use pseudocode to get a general idea of your program&#39;s flow</li>
+        <li><em>design</em> your program</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="perfect-squares">Perfect Squares</h3>
+
+  <ul>
+    <li>print out all of the <strong>perfect squares</strong> that are less than a number that&#39;s inputted by the user</li>
+    <li>a perfect square is an integer that&#39;s the result of squaring another integer</li>
+    <li>print out the total after all of the squares are printed</li>
+    <li>if the user enters a negative number, print &quot;negative numbers aren&#39;t allowed&quot;.</li>
+    <li>example&#8230; user enter 30:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">1</span>
+<span class="mi">4</span>
+<span class="mi">16</span>
+<span class="mi">25</span>
+<span class="mi">4</span> <span class="n">perfect</span> <span class="n">squares</span> <span class="n">found</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="potential-solutions">Potential Solutions</h3>
+
+  <p>For math heavy problems like this, I&#39;ll make sure that there&#39;s a reasonable <em>brute force</em> (a simple, usually iterative and not necessarily efficient) solution.  <strong>What are some ways that we can solve this problem? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ol>
+      <li>we could start counting from 1&#8230; and square each number until the square is greater than the input</li>
+      <li>count up to the number and check if the square root of that number is a whole number (this seems a little trickier)</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-write-up-a-plan">Let&#39;s Write Up a Plan</h3>
+
+  <ul>
+    <li>we can create a flow chart
+      <ul>
+        <li>rectangle with rounded corner - start, stop</li>
+        <li>rectangles - a generic step in the process</li>
+        <li>diamonds - a decision point (usually yes or no)</li>
+      </ul>
+    </li>
+    <li>and / or write pseudocode
+      <ul>
+        <li>loose, verbose translation of problem into code</li>
+        <li>not syntactically correct</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="a-flow-chart">A Flow Chart</h3>
+
+  <p>The utility in this case may be up for debate, but for more complex programs, flow charts are indispensable!  <strong>Let&#39;s try it! &#8594;</strong></p>
+
+  <div class="incremental">
+    <div class="img-container">
+      <p><img src="../../resources/img/perfect_squares.png" alt="Perfect Squares" /></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 id="pseudocode">Pseudocode</h3>
+
+  <p><strong>Let&#39;s also try writing some pseudocode &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+ask for input
+start counting from 1...
+while the count squared is less than the input
+	print out the count squared
+print out the count
+"""</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="our-first-draft">Our First Draft</h3>
+
+  <p><strong>Let&#39;s get our first version done. &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter a number</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">))</span>
+<span class="k">while</span> <span class="n">count</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">count</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+	<span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">+</span> <span class="s">" squares found"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="another-version">Another Version</h3>
+
+  <p><strong>Our count was wrong, let&#39;s fix it. &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Enter a number</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">))</span>
+<span class="k">while</span> <span class="n">count</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">count</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+	<span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s">" squares found"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="dice-warz">Dice Warz!</h3>
+
+  <p>Let&#39;s try a more complicated example.  Write a game:</p>
+
+  <ul>
+    <li>the user and the computer both roll six sided dice</li>
+    <li>the player that rolls higher gets a point added to their score</li>
+  </ul>
+
+  <p><strong>First&#8230; are these requirements sufficient?  What additional questions might you ask? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>is it a graphical game or a text game?</li>
+      <li>if it&#39;s text, how do you roll?</li>
+      <li>can you leave the game?</li>
+      <li>etc.</li>
+    </ul>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="example-output">Example Output</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+Enter a command: roll or quit
+&gt;roll
+Player rolled: 4
+Computer rolled: 2
+Player won!
+Player: 1          Computer: 0
+
+Enter a command: roll or quit
+&gt;quit
+Bye! The final score was...
+Player: 1          Computer: 0
+"""</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-flesh-out-those-requirements">Let&#39;s flesh out those requirements:</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+* It's a text game - print out ASCII art!
+* Ask for a command (there are only two possible commands: roll or quit)
+* If command is roll, roll random dice for computer and player
+* Print out the rolls
+* Determine who wins (3 states: computer wins, player wins or tie)
+* For each state add scores appropriately, 
+* Print out who won and the resulting scores (keep track of scores)
+* After each roll, go back to #2 to ask for a command again 
+* (keep doing this until the user types in quit)
+* If command is quit, print out the score and then exit the game
+* If the command is not quit or roll, 
+	* say "I don't know that command" and print the score
+	* ...continue asking for a command
+"""</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="design-your-program">Design Your Program</h3>
+
+  <p><strong>Write some pseudocode.</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">keep</span> <span class="n">track</span> <span class="n">of</span> <span class="n">scores</span>
+<span class="n">ask</span> <span class="n">the</span> <span class="n">user</span> <span class="k">for</span> <span class="nb">input</span>
+<span class="k">while</span> <span class="n">the</span> <span class="n">user</span> <span class="n">hasn</span><span class="s">'t quit</span><span class="err">
+</span><span class="s">	if the user'</span><span class="n">s</span> <span class="n">command</span> <span class="n">was</span> <span class="n">roll</span>
+		<span class="n">roll</span> <span class="n">dice</span> <span class="k">for</span> <span class="n">both</span> <span class="n">the</span> <span class="n">computer</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">user</span>
+		<span class="n">figure</span> <span class="n">out</span> <span class="n">who</span> <span class="n">one</span> <span class="ow">and</span> <span class="n">add</span> <span class="n">scores</span>
+	<span class="n">otherwise</span><span class="p">,</span> <span class="k">if</span> <span class="n">the</span> <span class="n">command</span> <span class="n">was</span> <span class="n">quit</span><span class="p">,</span> <span class="n">quit</span> <span class="n">the</span> <span class="n">game</span>
+	<span class="n">otherwise</span><span class="p">,</span> <span class="k">if</span> <span class="n">it</span><span class="s">'s an unknown command, print unknown command	</span><span class="err">
+</span><span class="s">	print scores</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">player_score</span><span class="p">,</span> <span class="n">computer_score</span><span class="p">,</span> <span class="n">play_game</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">True</span> 
+<span class="k">while</span> <span class="n">play_game</span><span class="p">:</span>
+	<span class="n">command</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter a command: roll or quit</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="s">'roll'</span><span class="p">:</span>
+		<span class="n">player_roll</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+		<span class="n">computer_roll</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Player rolled: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">player_roll</span><span class="p">))</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Computer rolled: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">computer_roll</span><span class="p">))</span>
+		<span class="k">if</span> <span class="n">player_roll</span> <span class="o">&gt;</span> <span class="n">computer_roll</span><span class="p">:</span>
+			<span class="k">print</span><span class="p">(</span><span class="s">"Player won!"</span><span class="p">)</span>
+			<span class="n">player_score</span> <span class="o">+=</span> <span class="mi">1</span>
+		<span class="k">elif</span> <span class="n">player_roll</span> <span class="o">&lt;</span> <span class="n">computer_roll</span><span class="p">:</span>
+			<span class="k">print</span><span class="p">(</span><span class="s">"Computer won!"</span><span class="p">)</span>
+			<span class="n">computer_score</span> <span class="o">+=</span> <span class="mi">1</span>
+		<span class="k">elif</span> <span class="n">player_roll</span> <span class="o">==</span> <span class="n">computer_roll</span><span class="p">:</span>
+			<span class="k">print</span><span class="p">(</span><span class="s">"Tie!"</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s">'quit'</span><span class="p">:</span>
+		<span class="n">play_game</span> <span class="o">=</span> <span class="bp">False</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Bye! The final score was..."</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"I don't know that command"</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"Player: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">player_score</span><span class="p">)</span> <span class="o">+</span> <span class="s">"         Computer: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">computer_score</span><span class="p">)</span> <span class="o">+</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="dont-forget-the-banner">Don&#39;t Forget the Banner!</h3>
+
+  <p>We&#39;re probably going to have to stop putting code in slides from here on in.  I skipped on the banner, and it still didn&#39;t fit!</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">banner</span> <span class="o">=</span> <span class="s">"""   ------
+ /      /|  ~Dice Warz~
+ ------| |
+ |     | |
+ |     |/
+ ------
+"""</span>
+<span class="k">print</span><span class="p">(</span><span class="n">banner</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

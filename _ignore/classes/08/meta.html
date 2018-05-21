@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>About Class (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="about-class-8">About Class #8</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="topics">Topics</h3>
+
+  <ul>
+    <li><strong>while loops</strong>, revisited and in-depth</li>
+    <li><strong>for loops</strong>, preview</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="homework">Homework</h3>
+
+  <ul>
+    <li><strong>Homework #3 is due on tonight!</strong></li>
+    <li><strong>Homework #4</strong>
+      <ul>
+        <li>will be posted later this evening</li>
+        <li>is due on the 26th</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="btw-did-you-know-we-have-a-book--and-an-optional-one">BTW, Did You Know We Have a Book?  (and an optional one?)</h3>
+
+  <p>Readings are listed on the course site.</p>
+
+  <ul>
+    <li><strong>Starting Out with Python</strong>
+      <ul>
+        <li>Chapter 4 on while loops</li>
+        <li>Chapter 4 on for loops</li>
+      </ul>
+    </li>
+    <li><strong>How to Think Like a Computer Scientist</strong>
+      <ul>
+        <li><a href="http://openbookproject.net/thinkcs/python/english3e/iteration.html">Chapter 7, Iteration, Sections 7.1 through 7.8</a></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="midterm-1">Midterm #1</h3>
+
+  <p><strong>It&#39;s in a week-and-a-half!</strong></p>
+
+  <ul>
+    <li>it will be in class on <strong>Tuesday, March 3rd</strong></li>
+    <li>review sessions
+      <ul>
+        <li>please let me know if you would like a review session <strong>in addition to the review session in class</strong></li>
+        <li>possible times are during my regular office hours (Tuesday&#39;s some time between 11 and 2pm)</li>
+        <li>and/or next Thursday from 5:00pm to 6:00pm</li>
+        <li><strong>notify me if you&#39;d like to attend</strong> &#8230; so I can try to reserve a room</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="final-exam">Final Exam</h3>
+
+  <p>You should also know that the department has the <a href="http://www.cs.nyu.edu/webapps/fall2016/Undergraduate/final_exams">final exam schedule posted</a></p>
+
+  <ul>
+    <li><strong>date:</strong> Thursday, June 28th</li>
+    <li><strong>time:</strong> 9:00AM - 11:05AM</li>
+    <li><strong>room:</strong> WWH 101</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="more-final-exam-info">More Final Exam Info</h3>
+
+  <ul>
+    <li>We&#39;ll have a review on during our last class before the exam (which is one week before)
+      <ul>
+        <li>I&#39;m open to doing an earlier review</li>
+        <li>I can also hold an out-of-class review during my regular office hours</li>
+      </ul>
+    </li>
+    <li>It&#39;s super early, but __please let me know (2 weeks before) if you need to reschedule the exam.  This is only possible if:
+      <ul>
+        <li>there&#39;s an exam conflict (this shouldn&#39;t happen&#8230;)</li>
+        <li>religious observations</li>
+        <li>if there is some other special circumstance, please contact me outside of class</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="while-loops-revisited"><a href="while-revisited.html">While Loops Revisited</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

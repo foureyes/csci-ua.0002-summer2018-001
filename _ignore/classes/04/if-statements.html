@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>If Statements (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="if-statements--conditionals">If Statements / Conditionals</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="controlling-program-flow-w-conditionals">Controlling Program Flow w/ Conditionals</h3>
+
+  <p><strong>What does an if statement allow you to do? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>allows for <strong>conditional</strong> execution of code.</li>
+      <li>the condition that is used to determine which code path to take is:
+        <ul>
+          <li>either a <strong>boolean value</strong></li>
+          <li>or some sort of <strong>boolean expression</strong> (an expression that evaluates to a boolean value)</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="boolean-values">Boolean Values</h3>
+
+  <p><strong>What are the two possible boolean values, and how are they represented in Python? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  note the uppercase!</span>
+
+<span class="bp">True</span>
+<span class="bp">False</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="boolean-expressions--the-equality-operator">Boolean Expressions / The Equality Operator</h3>
+
+  <p>Again, a  <strong>boolean expression</strong> is just an expression that eventually evaluates to a boolean value.  Let&#39;s look a boolean expression that uses the <strong>equality operator</strong>.</p>
+
+  <p>The <strong>equality operator</strong>, <strong>==</strong> (double equals), will test the left and right hand sides for equality and evaluate to the appropriate boolean value</p>
+
+  <ul>
+    <li>1 == 1 evaluates to True</li>
+    <li>&quot;foo&quot; == &quot;foo&quot; evaluates to True</li>
+    <li>&quot;foo&quot; == &quot;bar&quot; evaluates to False</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="the-equality-operator-continued">The Equality Operator Continued</h3>
+
+  <p>When two values are compared, and they are of different types (except if they&#39;re both numeric), they are never considered equal.  For example, all of the following comparisons evaluate to False:</p>
+
+  <ul>
+    <li>1 == &quot;one&quot;</li>
+    <li>1 = &quot;1.0&quot;</li>
+    <li>1 == &quot;1&quot;</li>
+  </ul>
+
+  <p>However, this gives us True (different types, but both types are numeric):</p>
+
+  <ul>
+    <li>1 == 1.0</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="if-statement-syntax">if Statement Syntax</h3>
+  <p>Again, <strong>if</strong> statements allow conditional code execution.</p>
+
+  <ol>
+    <li>start with the <strong>keyword</strong> <strong>if</strong></li>
+    <li>&#8230;followed by a <strong>boolean expression</strong></li>
+    <li>which ends with a <strong>colon</strong></li>
+    <li>the code that is to be executed if the condition is met is placed in an <strong>indented code block</strong>.</li>
+    <li>once the indentation goes back one level, the <strong>body</strong> of the if-statement ends</li>
+  </ol>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"this is"</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"true"</span><span class="p">)</span>
+
+<span class="c">#  now we're out of the if statement</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"outta here"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="if-statements-continued">if Statements continued</h3>
+
+  <p>The equality operator also works with variables:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"x and y are equal"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-quick-exercise">A Quick Exercise</h3>
+
+  <p><strong>Let&#39;s try writing an if statement that checks if the variables a and b are equal.  If they&#39;re equal, print the sum of a and b, and then print out the product of both a and b. &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> </code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-potential-solution">A Potential Solution</h3>
+
+  <ul>
+    <li>begin with keyword <strong>if</strong></li>
+    <li>condition</li>
+    <li>colon - ends the condition / marks that a block of code is about to come up</li>
+    <li>if + condition + colon usually is considered the <strong>if-statement header</strong></li>
+    <li>indented block of code is the body of the if-statement</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> 
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-see-that-again">Let&#39;s See That Again</h3>
+  <aside>Now With More Blank Lines</aside>
+
+  <ul>
+    <li>the body of an if statement ends when indentation goes back one level</li>
+    <li>blank lines don&#39;t count as ending a block of code!</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> 
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">:</span>
+	<span class="c"># totally ok?  yes!</span>
+	<span class="k">print</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+
+	<span class="k">print</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="oh-yeah-else-what">Oh Yeah, Else What?</h3>
+
+  <p>We can use <strong>else</strong> to execute code if the original condition was not met.  After the body of an if-statement, add the following:</p>
+
+  <ul>
+    <li>go back one level of indentation to mark that the previous code block has ended</li>
+    <li>keyword <strong>else</strong>, immediately followed by a colon</li>
+    <li>body - indented, body ends when indentation goes back one level</li>
+    <li>(this whole <strong>else clause</strong> is totally optional; it&#39;s not required)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="an-ifelse-example">An if/else Example</h3>
+
+  <p><strong>What does this code print out?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> 
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"they're the same!"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"they're different"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash">they<span class="s1">'re the same!</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="an-ifelse-example-1">An if/else Example</h3>
+
+  <p><strong>What does this code print out?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">20</span> 
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"they're the same!"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"they're different"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash">they<span class="s1">'re different</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="an-if-example">An if Example</h3>
+
+  <p><strong>What does this code print out?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s">"foo"</span><span class="p">,</span> <span class="mi">20</span> 
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"they're the same!"</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"hello!"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash">hello!</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="another-if-example">Another if Example</h3>
+
+  <p><strong>What does this code print out?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s">"foo"</span><span class="p">,</span> <span class="s">"foo"</span> 
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"they're the same!"</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"hello!"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash">they<span class="s1">'re the same!
+hello!</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-make-a-game">Let&#39;s Make a Game!</h3>
+  <p><strong>Try writing a number guessing game. &#8594;</strong></p>
+
+  <ul>
+    <li>keep track of a <em>secret number</em> (choose whatever int value you&#39;d like)</li>
+    <li>ask the user for a number</li>
+    <li>if the number entered matches the secret number, print &quot;you got it!&quot;</li>
+    <li>if it doesn&#39;t match, print &quot;nope, I was thinking of &#8230;&quot; and the secret number</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="example-interaction">Example Interaction</h3>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">Guess the number that I<span class="s1">'m thinking of
+&gt;4
+Nope, I was thinking of 10</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">Guess the number that I<span class="s1">'m thinking of
+&gt;10
+You got it!</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-potential-solution-1">A Potential Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">secret</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">guess</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Guess the number that I</span><span class="se">\'</span><span class="s">m thinking of</span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'You got it!'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Nope, I was thinking of '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">secret</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="review">Review</h3>
+  <ul>
+    <li>What&#39;s the equality operator in Python?</li>
+    <li>What happens if I compare two different types using the equality operator?</li>
+    <li>What are the two possible values for the bool type?</li>
+    <li>What&#39;s the syntax for an if statement?</li>
+    <li>What statements do I use if I want either one branch of code to execute or another?</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="next-a-quick-note-on-statements-expressions-values"><a href="expressions.html">Next&#8230; a Quick Note on Statements, Expressions, Values</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

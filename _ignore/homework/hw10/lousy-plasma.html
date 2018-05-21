@@ -1,0 +1,258 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+		<title>Introduction to Computer Programming - CSCI-UA.0002 - Summer 2018 lousy_plasma.py</title> 
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	<!-- <link rel="stylesheet" type="text/css" href="resources/fonts/cmun-serif.css"> -->
+	<link rel="stylesheet" type="text/css" href="../../resources/css/screen.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<script src="resources/js/jquery-2.1.3.min.js"></script>
+	<script src="resources/js/persistent-nav.js"></script>
+
+</head>
+<body>
+<div id="hd">
+<h1> Introduction to Computer Programming - CSCI-UA.0002 - Summer 2018</h1>
+</div>
+<div id="bd">
+<div id="content">
+	<link href="https://fonts.googleapis.com/css?family=Merriweather:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+
+<style>
+# bd { 
+	background-color: #eee;
+}
+
+# content {
+	padding-top: 0 !important;
+}
+
+.assignment {
+	background-color: #fff;
+	max-width: 37em;
+	margin: auto;
+	padding: 1em 2em;
+	margin: auto;
+	line-height:1.5;
+	font-family: 'Merriweather', Georgia, 'Times New Roman', Times, serif;
+}
+
+aside {
+	font-size: 0.75em;
+}
+
+.assignment h1, .assignment h2, .assignment h3 {
+	color: #530510 !important;
+}
+
+.assignment h1 {
+	font-size: 2.747em;
+}
+
+.assignment h2 {
+	font-size: 0.874em;
+}
+
+.assignment h3 {
+	font-size:1.229em;
+}
+
+code {
+	color: #530510;
+	font-size: 1.15em;
+	background-color: #fee;
+	padding: 0.25em 0.5em 0.25em 0.5em;
+}
+
+pre code {
+	background-color: #fee;
+	padding: 0em !important;
+}
+
+pre {
+	background-color: #fee;
+	padding: 0.25em 0.5em 0.25em 0.5em;
+}
+
+.assignment a:visited {
+	color: #556699 !important;
+}
+
+.assignment a {
+	color: #3355bb !important;
+}
+</style>
+
+<div class="assignment">
+
+  <h1 id="lousyplasmapy">lousy_plasma.py</h1>
+
+  <aside>This assignment is based on materials from Professors Case, Engel, and Kapp</aside>
+
+  <p>Write a program that takes the <a href="http://genius.com/Taylor-swift-bad-blood-lyrics">lyrics to Taylor Swift&#39;s song</a>, Bad Blood, and replaces a half of its words with synonyms. With enough of the song changed, you can create your own hit song and roll in the money! 	&#128176;&#128176;&#128176;</p>
+
+  <p>The last parts of this assignment depend on a <a href="thesaurus.txt">thesaurus file</a> and a <a href="bad_blood.txt">lyrics file</a> that you&#39;ll have to download (right-click and save as&#8230;) to the same directory that your program is in.</p>
+
+  <p>This assignment will cover recent material on:</p>
+
+  <ul>
+    <li>dictionaries</li>
+    <li>file i/o</li>
+  </ul>
+
+  <hr />
+
+  <h2 id="part-0">Part 0</h2>
+
+  <p>Start off with creating a thesaurus by using a Python dictionary. The thesaurus only has 2 entries in it:</p>
+
+  <pre><code data-trim="" contenteditable="">thesaurus = { 
+    "happy": "glad",
+    "sad"  : "bleak" 
+}</code></pre>
+
+  <p>The dictionary contains two keys - <code>"happy"</code> and <code>"sad"</code>. Each of these keys holds a single synonym, a string, for that key.</p>
+
+  <p>Write a program that asks the user for a phrase. Then compare the words in that phrase to the keys in the thesaurus. If the key can be found, you should replace the original word with a random synonym for that word. Words that are changed in this way should be printed in UPPERCASE letters. Make sure to <strong>remove all punctuation</strong>, but <strong>keep letters/numbers and spaces</strong> from your initial phrase so that you can find all possible matches (numbers probably don&#39;t matter that much, though). Here&#39;s a sample running of your program:</p>
+
+  <p><strong>Example Interaction</strong></p>
+
+  <pre><code data-trim="" contenteditable="">Enter a phrase
+&gt; Happy Birthday! exclaimed the sad, sad kitten
+GLAD birthday exclaimed the BLEAK BLEAK kitten</code></pre>
+
+  <p>Notice that the 1st sad was substituted, and the comma was removed.</p>
+
+  <p><strong>Hints</strong></p>
+
+  <ul>
+    <li>Removing punctuation and keeping letters, numbers and spaces
+      <ul>
+        <li>One way to do this is to accumulate all of the characters that are alphanumeric (<code>my_character.isalnum()</code>) or space</li>
+        <li>While it&#39;s not required, it might be useful to move this functionality into a separate function (maybe call it <code>remove_punctuation</code> &#8230; have it take a string and return a new string</li>
+      </ul>
+    </li>
+    <li>Breaking apart a string into single words
+      <ul>
+        <li>Multiples ways of doing this</li>
+        <li>Here are a couple of suggestions:
+          <ul>
+            <li>Accumulate until you see space, then you know you have a word</li>
+            <li><strong>OR</strong> simply use <code>split</code>, and then <code>join</code> at the end</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <hr />
+
+  <h2 id="part-1">Part 1</h2>
+
+  <p>Modify your program above so that the thesaurus word can have more than one synonym for each word:</p>
+
+  <pre><code data-trim="" contenteditable="">thesaurus = { 
+    "happy":["glad",  "blissful", "ecstatic", "at ease"], 
+    "sad":["bleak", "blue", "depressed"] 
+}</code></pre>
+
+  <p>In this version, the dictionary contains two keys - <code>"happy"</code> and <code>"sad"</code>. Each of these keys holds a list that contains synonyms of that key.</p>
+
+  <p>Change your original program by replacing the original word with a <strong>random</strong> synonym for that word. Again, words that are changed in this way should be printed in UPPERCASE letters. Here&#39;s a sample running of your program:</p>
+
+  <p><strong>Example Interaction</strong></p>
+
+  <pre><code data-trim="" contenteditable="">Enter a phrase
+&gt; Happy Birthday! exclaimed the sad, sad kitten
+ECSTATIC birthday exclaimed the DEPRESSED BLEAK kitten</code></pre>
+
+  <hr />
+
+  <h2 id="part-2">Part 2</h2>
+
+  <p>Rather than use a hard-coded dictionary as your thesaurus, use an <a href="thesaurus.txt">external thesaurus file</a> (right-click and save as&#8230; <strong>to where your Python program is</strong>) to populate the keys and values in your dictionary. Use the following line to read in your file (do not use absolute paths):</p>
+
+  <pre><code data-trim="" contenteditable="">f = open('thesaurus.txt', 'r') </code></pre>
+
+  <p>The data in the file is in the following format:</p>
+
+  <pre><code data-trim="" contenteditable="">word1,synonym1,synonym2,...,synonymN-1,synonymN
+word2,synonym1,synonym2,...,synonymN-1,synonymN
+word3,synonym1,synonym2,...,synonymN-1,synonymN</code></pre>
+
+  <p>Every word occupies its own line followed by a comma-separated list of synonyms. Every word can have a potentially unlimited # of synonyms. Your task for this part is to open this file and parse it into a Python dictionary object so that it functions just like the simple thesaurus from the previous part. Here&#39;s a sample running of your program:</p>
+
+  <p><strong>Example Interaction</strong></p>
+
+  <pre><code data-trim="" contenteditable="">Enter a phrase
+&gt; happy birthday said the sad kitten
+CONTENT ANNUAL HOLIDAY PRONOUNCED the DOLOROUS CHESHIRE CAT</code></pre>
+
+  <p><strong>Hints</strong></p>
+
+  <p>Generating the thesaurus will be the trickiest part:</p>
+
+  <ol>
+    <li>For each word in the thesaurus you will need to create a new list that contains all of the synonyms for that word.</li>
+    <li>You can then store this list in the dictionary using the 1st word as the key.</li>
+    <li>Again, <code>split</code> is incredibly helpful here!</li>
+  </ol>
+
+  <hr />
+
+  <h2 id="part-3">Part 3</h2>
+
+  <p>Finally, modify your above program to write a song for you. It&#39;ll use another external file, the <a href="bad_blood.txt">lyrics to Taylor Swift&#39;s Bad Blood</a>, as a source for lyrics.</p>
+
+  <ol>
+    <li>Download the <a href="bad_blood.txt">lyrics to Bad Blood</a> (right-click and save as to the same directory that your program is in)</li>
+    <li>Instead of asking the user for a phrase&#8230; open the lyrics file (bad_blood.txt), and read the entire contents as a string using <code>file_object.read()</code></li>
+    <li>Using the same algorithm that you used in the previous program, change the words in the song to a random word from the thesaurus
+      <ul>
+        <li>you&#39;ll have to lean out all punctuation again, and only keep letters/numbers and spaces</li>
+        <li>break apart into single words</li>
+        <li>substitute with a random word from thesaurus</li>
+      </ul>
+    </li>
+    <li>However, only do this in 1 out of every 2 words that are found in the thesaurus&#8230;
+      <ul>
+        <li>that is, if you a word from the lyrics is found in the thesaurus</li>
+        <li>there is a 50% chance that it will be substituted with the thesaurus word</li>
+      </ul>
+    </li>
+    <li>Again, words that are swapped should be printed in all UPPERCASE letters.</li>
+    <li>Print out the new lyrics!</li>
+    <li>Profit!!!</li>
+  </ol>
+
+  <p>See a sample running of the program below (note that you can simply remove all punctuation from the lyrics once you&#39;ve read them in from the source file):</p>
+
+  <p><strong>Example Output</strong></p>
+
+  <pre><code data-trim="" contenteditable="">Cause baby now we got DISAPPROBATION blood
+You know it use to be mad love
+So PLEASURABLENESS a ATTENTION SOCIALITY what youve done
+Cause INFANT now we got bad blood ...</code></pre>
+
+  <hr />
+
+  <h2 id="optional-part-4">(Optional) Part 4</h2>
+
+  <p>If you&#39;re on OSX, you won&#39;t even have to sing the lyrics that you <em>&quot;wrote&quot;</em>! Instead, you can have the computer sing it for you. Use the following lines of code at the end of your programming, substituting the variable <code>lyrics</code> with your own variable that contains lyrics:</p>
+
+  <pre><code data-trim="" contenteditable=""># lyrics is the variable that contains the new lyrics to your song
+from os import system
+system("say -i -v Fiona " + "\"" + lyrics + "\"")</code></pre>
+
+</div>
+
+</div>
+</div>
+
+<div id="ft">
+	<p>CSCI-UA.0002 - Introduction to Computer Programming - Summer 2018</p>
+</div>
+</div>
+</body>
+</html>

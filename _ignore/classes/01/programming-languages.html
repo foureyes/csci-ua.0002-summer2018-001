@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Programming Languages (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="we-write-programs-using-programming-languages">We Write Programs Using <em>Programming Languages</em></h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="first-lets-talk-about-natural-languages">First Let&#39;s Talk About Natural Languages</h3>
+  <aside>
+What are some characteristics of natural languages? &rarr;
+</aside>
+  <div class="incremental">
+    <ul>
+      <li>meant for communication between people (usually!)</li>
+      <li>these are the languages that people speak (<a href="http://en.wikipedia.org/wiki/List_of_languages_by_name">English, Urdu, Catalan, etc.</a>)</li>
+      <li>not intentionally designed - evolved naturally / organically</li>
+      <li>usually verbose</li>
+      <li>room for ambiguity, interpretation, etc.</li>
+    </ul>
+  </div>
+  <details open="">
+    <ul>
+      <li>QUESTION - (header) What are some characteristics of natural languages?</li>
+      <li>DEMO - list of languages</li>
+    </ul>
+  </details>
+</section>
+
+<section>
+  <h3 id="a-programming-language">A Programming Language&#8230;</h3>
+  <aside>
+On the other hand? &rarr;
+</aside>
+  <div class="incremental">
+    <ul>
+      <li>is artificial / synthetic</li>
+      <li>is created specifically to communicate <strong>instructions</strong> to a machine</li>
+      <li>usually has a rigid structure or grammar</li>
+      <li>is usually very strict about <strong>syntax</strong></li>
+      <li>some words / symbols have special meanings</li>
+      <li>is usually exact / explicit in its meaning</li>
+      <li>information dense; each character counts!</li>
+      <li>provides a layer of <strong>abstraction</strong> between programmer and machine</li>
+    </ul>
+  </div>
+  <details open="">
+    <p>QUESTION - (header) What are some characteristics of programming languages?</p>
+  </details>
+</section>
+
+<section>
+  <h2 id="this-makes-reading-and-writing-programs-much-different-from-natural-languages">This Makes Reading and Writing Programs Much Different From Natural Languages</h2>
+</section>
+
+<section>
+  <h3 id="reading-a-programming-language">Reading a Programming Language</h3>
+  <ul>
+    <li>reading a program requires analysis of a program&#39;s <strong>structure</strong></li>
+    <li>information density can make comprehension a slow process</li>
+    <li>again, meaning is usually unambiguous
+      <ul>
+        <li>behavior / meaning usually backed by formal specifications</li>
+        <li>though language is unambiguous, programmer intent may not be!</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="writing-a-program">Writing a Program</h3>
+  <ul>
+    <li>easy to introduce minor syntactic errors (you must be careful with syntax and grammar)</li>
+    <li>may have multiple implementation possibilities</li>
+    <li>may offer constructs for abstraction and preventing repetition
+      <ul>
+        <li>potentially further improves on human readability</li>
+        <li>important for refactoring, improving your program, and future maintenance</li>
+      </ul>
+    </li>
+    <li>don&#39;t necessarily have to know entire language to write a program!</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="sooo-many-programming-languages">Sooo Many Programming Languages&#8230;</h2>
+  <aside>(You could even make one yourself!)</aside>
+</section>
+
+<section>
+  <h3 id="these-are-20-of-the-most-used-languages-today">These Are 20 of the Most Used Languages Today</h3>
+  <aside>
+    <p>(At least, according to <a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html">TIOBE</a>, September 2016)</p>
+  </aside>
+  <div style="text-align:center;">
+<table style="text-align:left;margin:auto;">
+<tr>
+	<td width="33%">
+		<ol>
+		<li>Java</li>
+		<li>C</li>
+		<li>C++</li>
+		<li>C#</li>
+		<li><strong>Python</strong></li>
+		<li>PHP</li>
+		</ol>
+	</td>
+	<td width="33%">
+		<ol start="7">
+		<li>JavaScript</li>
+		<li>Visual Basic .NET</li>
+		<li>Perl</li>
+		<li>Assembly</li>
+		<li>Delphi</li>
+		<li>Ruby</li>
+		<li>VisualBasic</li>
+		</ol>
+	</td>
+	<td width="34%">
+		<ol start="14">
+		<li>Swift</li>
+		<li>Objective-C</li>
+		<li>Groovy</li>
+		<li>R</li>
+		<li>MATLAB</li>
+		<li>PL/SQL</li>
+		<li>Go</li>
+		</ol>
+	</td>
+</tr>
+</table>
+</div>
+  <details open="">
+    <ul>
+      <li>DEMO - click through to TIOBE</li>
+      <li>INFO - don&#39;t know details, but uses search engine results</li>
+      <li>INFO - note that is no indication of what&#39;s the <em>best</em> languages to use; that&#39;s up to you!</li>
+    </ul>
+  </details>
+</section>
+
+<section>
+  <h3 id="thats-a-lot">That&#39;s a Lot!</h3>
+  <aside>Why so Many?</aside>
+  <div class="incremental">
+    <ul>
+      <li>endless number of potential applications (right tool for the job)</li>
+      <li>personal preference! (what works best for you)</li>
+      <li>multiple platforms (web, mobile, operating systems, processors, etc.)</li>
+    </ul>
+  </div>
+  <details open="">
+    <p>QUESTION - (header) why so many?</p>
+  </details>
+</section>
+
+<section>
+  <h2 id="here-are-some-ways-that-we-can-describe-programming-languages">Here Are Some Ways That We Can Describe Programming Languages</h2>
+  <aside>This will motivate the tools that we'll use in this class</aside>
+
+  <details open="">
+    <p>INFO - a lot of material, some not in readings&#8230; but most important parts are reinforced in readings, of course</p>
+  </details>
+</section>
+
+<section>
+  <h3 id="some-characteristics-of-programming-languages-include">Some Characteristics of Programming Languages Include:</h3>
+  <ol>
+    <li>high-level and low-level</li>
+    <li>interpreted and compiled</li>
+    <li>by <em>paradigm</em></li>
+    <li>esoteric and mainstream</li>
+  </ol>
+</section>
+
+<section>
+  <h1> High-Level <br /> and Low-Level <br />Languages</h1>
+  <aside>Some languages are friendlier than others</aside>
+</section>
+
+<section>
+  <h3 id="low-level-language">Low-Level Language</h3>
+  <p>A <strong>programming language</strong> designed for execution by a computer. (Not so friendly.)</p>
+
+  <ul>
+    <li>loosely speaking, <strong>a computer can only directly execute programs written in low level languages</strong></li>
+    <li>generally makes no attempt to hide the machinery that it <em>instructs</em></li>
+    <li>usually <em>fast</em> and <em>resource efficient</em></li>
+    <li>some examples include:
+      <ul>
+        <li><strong>machine code</strong> - as close as you can get to the machine</li>
+        <li><strong>assembly language</strong> - just a step above machine code</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="low-level-languages-look-like">Low-Level Languages Look Like:</h3>
+  <aside>Don't worry, we won't be using them in this class!</aside>
+
+  <p><strong>Assembly</strong></p>
+
+  <figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="k">MOV</span> <span class="n">AL</span><span class="p">,</span> <span class="mi">1</span><span class="n">h</span>        <span class="c">; Load AL with immediate value 1</span>
+<span class="k">MOV</span> <span class="n">CL</span><span class="p">,</span> <span class="mi">2</span><span class="n">h</span>        <span class="c">; Load CL with immediate value 2</span>
+<span class="k">MOV</span> <span class="n">DL</span><span class="p">,</span> <span class="mi">3</span><span class="n">h</span>        <span class="c">; Load DL with immediate value 3</span></code></pre></figure>
+
+  <p><strong>Machine Code</strong></p>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">10110000 01100001</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="high-level-language">High-Level Language</h3>
+  <p>A <strong>programming language</strong> that is designed to be easy for humans to read and write.</p>
+
+  <ul>
+    <li>must be <strong>compiled</strong> or <strong>interpreted</strong> to a lower-level language so that a computer can execute it</li>
+    <li>provides abstractions that free the programmer from dealing with the details of the underlying machine</li>
+    <li>meant for the programmer rather than the computer</li>
+    <li>usually prioritizes usability over efficiency</li>
+    <li>more likely to be <em>correct</em></li>
+    <li><em>portable</em> across different operating systems/architectures</li>
+  </ul>
+</section>
+<section>
+  <h3 id="examples-of-some-high-level-languages">Examples of Some High-Level Languages:</h3>
+  <aside>BTW, what do you think these examples do?</aside>
+  <p><strong>Ruby</strong></p>
+
+  <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="mi">100</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+	<span class="nb">puts</span> <span class="n">i</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">end</span></code></pre></figure>
+
+  <p><strong>PHP</strong></p>
+
+  <figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="p">(</span><span class="nv">$count</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">print</span><span class="p">(</span><span class="nv">$count</span><span class="p">);</span>
+	<span class="nv">$count</span> <span class="o">=</span> <span class="nv">$count</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span> <span class="cp">?&gt;</span></code></pre></figure>
+
+  <details open="">
+    <ul>
+      <li>QUESTION - (header) what do these examples do?</li>
+      <li>DEMO - run the program</li>
+    </ul>
+  </details>
+</section>
+
+<section>
+  <h3 id="high-level-vs-low-level">High-Level vs Low-Level</h3>
+  <ul>
+    <li>high level
+      <ul>
+        <li>more human readable, but also usually more verbose</li>
+        <li>some are closer to natural languages</li>
+        <li>usually abstracts away intricacies of dealing with underlying machine / computer</li>
+        <li>loosely speaking, meant for programmers</li>
+      </ul>
+    </li>
+    <li>low level
+      <ul>
+        <li>usually terse / less verbose</li>
+        <li>usually does not look like a natural language</li>
+        <li>need some knowledge of underlying machine / computer</li>
+        <li>loosely speaking, meant for machines</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="compiled-and-interpreted">Compiled and Interpreted</h2>
+  <aside>If computers only know how to execute low-level programs, how do high-level programming languages <em>work</em>?</aside>
+</section>
+
+<section>
+  <h3 id="two-ways-to-execute-a-program">Two Ways to Execute a Program</h3>
+  <p>Before a program can be executed, the source code of a high-level language must be translated into something that the computer can understand.  You can:</p>
+
+  <ul>
+    <li><strong>compile</strong> the <strong>source code</strong> into another (usually  <strong>low-level</strong>) language using a <strong>compiler</strong>&#8230; then execute</li>
+    <li>execute the <strong>source code</strong> immediately using an <strong>interpeter</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="compiling-a-program">Compiling a Program</h3>
+  <ul>
+    <li>when we talk about <strong>source code</strong> (or just <strong>code</strong>), we&#39;re referring to the program prior to compilation</li>
+    <li>programs called <strong>compilers</strong> perform this translation</li>
+    <li>a compiler <strong>parses</strong> your source code in order to do this translation
+      <ul>
+        <li><strong>parse</strong> - to examine a program and analyze the syntactic structure</li>
+        <li>we do this for natural languages too!</li>
+      </ul>
+    </li>
+    <li>the result of this translation is usually referred to as <strong>object code</strong></li>
+    <li>the <strong>object code</strong> is what is run by the computer</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="compiling-a-program-continued">Compiling a Program&#8230; Continued</h3>
+  <p><strong>General Workflow</strong></p>
+
+  <ol>
+    <li>Write code</li>
+    <li>Compile</li>
+    <li>Execute program</li>
+    <li>Go back to step #1</li>
+  </ol>
+
+  <p><strong>Examples of Compiled Languages</strong></p>
+
+  <ul>
+    <li>Basic</li>
+    <li>C/C++</li>
+    <li>Java (there are some subtleties here that we&#39;ll talk about later)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="interpreting-a-program">Interpreting a Program</h3>
+  <ul>
+    <li>a program can be executed using an <strong>interpeter</strong></li>
+    <li>an <strong>intpreter</strong> is a program that executes source code without the need for compilation
+      <ul>
+        <li>the way that a program is executed behind the scenes varies by language and implementation</li>
+        <li>perhaps compilation is done behind the scenes</li>
+        <li>&#8230;or the interpreter acts as a <em>virtual machine</em> where the codes <em>just runs</em></li>
+      </ul>
+    </li>
+    <li>Sometimes an <strong>interpeter</strong> may also allow a program to be run interactively
+      <ul>
+        <li>also called an <strong>interactive shell</strong> or an <strong>interactive console</strong></li>
+      </ul>
+    </li>
+  </ul>
+
+  <details open="">
+
+    <ul>
+      <li>DEMO - python interactive shell</li>
+      <li>DEMO - irb</li>
+    </ul>
+
+  </details>
+</section>
+
+<section>
+  <h3 id="interpreting-a-program-continued">Interpreting a Program&#8230; Continued</h3>
+  <p><strong>General Workflow</strong></p>
+
+  <ol>
+    <li>Write code</li>
+    <li>Execute program</li>
+    <li>Go back to step #1</li>
+  </ol>
+
+  <p><strong>Examples of Interpreted Languages</strong></p>
+
+  <ul>
+    <li>Ruby</li>
+    <li>PHP</li>
+    <li>Lisp</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="compiled-vs-interpreted">Compiled vs Interpreted</h3>
+  <aside>Some stereotypes...</aside>
+  <ul>
+    <li>compiled languages are usually considered faster and more efficient than interpreted languages</li>
+    <li>interpreted languages are generally thought of as easier to use (less steps, immediate feedback, etc.)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="and-what-does-this-mean-for-us">And What Does This Mean for Us?</h3>
+  <p>Despite the pros and cons of compiled and interpreted languages, for our purposes, the <em>main</em> difference between a <strong>compiled</strong> and <strong>interpreted</strong> language is:</p>
+
+  <ul>
+    <li>a <strong>compiled language</strong> requires an explicit compilation step
+before the program can be run.</li>
+    <li>an <strong>interpreted language</strong> can be run immediately</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="some-important-caveats">Some Important Caveats</h3>
+  <ul>
+    <li>distinction is wholly dependent on implementation, not language design</li>
+    <li>a programming language may be considered compiled, interpreted or even both!</li>
+    <li>hybrids exist (to further complicate things!)
+      <ul>
+        <li>a language may be <strong>compiled</strong> to an intermediary form
+          <ul>
+            <li>this form may be run by an <strong>interpeter</strong>!</li>
+            <li>still considered <strong>compiled</strong> because of explicit compilation step</li>
+          </ul>
+        </li>
+        <li>a language may be <strong>compiled</strong> to an intermediary form that&#39;s run immediately by the <strong>interpreter</strong></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="programming-paradigms">Programming Paradigms</h2>
+
+  <aside>
+    <p>Think: <em>programming style</em></p>
+  </aside>
+</section>
+
+<section>
+  <h3 id="some-programming-paradigms">Some Programming Paradigms</h3>
+  <aside>This is how we approach a programming problem</aside>
+  <ul>
+    <li><a href="http://en.wikipedia.org/wiki/Procedural_programming">Procedural</a></li>
+    <li><a href="http://en.wikipedia.org/wiki/Imperative_programming">Imperative</a></li>
+    <li><a href="http://en.wikipedia.org/wiki/Object-oriented_programming">Object Oriented</a></li>
+    <li><a href="http://en.wikipedia.org/wiki/Functional_programming">Functional</a></li>
+    <li><a href="http://en.wikipedia.org/wiki/Aspect-oriented_programming">Aspect Oriented</a></li>
+    <li><a href="http://en.wikipedia.org/wiki/Declarative_programming">Declarative</a></li>
+    <li>and more&#8230;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="for-this-class">For This Class&#8230;</h3>
+  <p>We&#39;ll mostly be concerned with <strong>imperative</strong> and <strong>procedural</strong> programming. (So don&#39;t worry about the others).</p>
+
+  <ul>
+    <li>this approach most closely resembles our definition of what a program is</li>
+    <li>solves a problem through a sequence of commands</li>
+    <li>these commands (or statements) can change the program&#39;s state (data)</li>
+  </ul>
+
+  <p>The tools that we use may include bits of <strong>object oriented</strong> programming.</p>
+</section>
+
+<section>
+  <h2 id="and-lastly-is-it-practical">And, Lastly&#8230; Is it Practical?</h2>
+  <aside>
+    <p>Esoteric and mainstream languages</p>
+  </aside>
+</section>
+<section>
+  <h3 id="esoteric-vs-mainstream">Esoteric vs Mainstream</h3>
+  <ul>
+    <li>mainstream
+      <ul>
+        <li>widely adopted</li>
+        <li>may adopt features found in <strong>esoteric languages</strong></li>
+      </ul>
+    </li>
+    <li>esoteric
+      <ul>
+        <li>experimental - not necessarily meant for practical use</li>
+        <li>may serve as a proof of concept</li>
+        <li>recreational - a thought exercise, or even a joke!</li>
+        <li>examples - <a href="http://www.dangermouse.net/esoteric/piet/samples.html">Piet</a>, <a href="http://en.wikipedia.org/wiki/LOLCODE#Example_3">LOLCODE</a>, and <a href="http://en.wikipedia.org/wiki/Befunge#Sample_Befunge-93_code">Befunge</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <details open="">
+    <ul>
+      <li>DEMO - Piet</li>
+      <li>DEMO - LOLCODE</li>
+    </ul>
+  </details>
+</section>
+<section>
+  <h2 id="lets-use-python"><a href="tools.html">Let&#39;s Use Python</a></h2>
+  <aside>
+    <p>It&#39;s a friendly high-level interpreted* language that supports multiple programming paradigms.</p>
+  </aside>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

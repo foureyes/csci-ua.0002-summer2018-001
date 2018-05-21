@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>String Formatting (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="string-formatting">String Formatting</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="putting-strings-together">Putting Strings Together</h3>
+
+  <p><strong>We&#39;ve already learned one way to put together strings. What is it? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>concatenation (<strong>+</strong>)</li>
+      <li>&quot;string 1&quot; + &quot; string 2&quot; &#8594; &quot;string 1 string 2&quot;</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="theres-also-string-formatting">There&#39;s Also String Formatting</h3>
+  <p><strong>String formatting</strong> allows you to put placeholders in your string where values should go.  One way to this is to use the <strong>%</strong> operator (there&#39;s a more modern syntax, but you&#39;ll still see this a lot):</p>
+
+  <ul>
+    <li>the <strong>%</strong> sign signals that the string on the left will be populated by the comma separated values enclosed in parentheses on the right</li>
+    <li><strong>%s</strong> will represent a placeholder in your string</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">"string"</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"this is a </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">s</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="multiple-values">Multiple Values</h3>
+
+  <ul>
+    <li>more than one %s in the string</li>
+    <li>each substitute value separated by comma</li>
+    <li>the original string can be a variable with a value of a string with placeholders</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">lyrics</span> <span class="o">=</span> <span class="s">"you can get with </span><span class="si">%</span><span class="s">s or you can get with </span><span class="si">%</span><span class="s">s"</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="s">"this"</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="s">"that"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lyrics</span> <span class="o">%</span> <span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="string-formatting-1">String Formatting</h3>
+  <p><strong>What was it again?</strong></p>
+
+  <div class="incremental">
+    <p>Allowing placeholders in a string to accommodate variable / value substitution.</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  note the use of variables... </span>
+<span class="c">#  string formatting doesn't have to consist of string literals!</span>
+<span class="c">#  values don't have to be strings!?</span>
+<span class="n">greeting</span> <span class="o">=</span> <span class="s">"Hi.  My name is </span><span class="si">%</span><span class="s">s and I have </span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s"</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">"Joe"</span>
+<span class="n">number_of_pets</span> <span class="o">=</span> <span class="mi">314</span>
+<span class="n">pet</span> <span class="o">=</span> <span class="s">"aardvarks"</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">greeting</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">number_of_pets</span><span class="p">,</span> <span class="n">pet</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="a-closer-look-at-string-formatting">A Closer Look at String Formatting</h3>
+  <aside>What just happened there?</aside>
+
+  <ul>
+    <li>we passed in a non-string type, and it didn&#39;t complain</li>
+    <li>the placeholder, <strong>%s</strong>, signifies a <strong>string</strong> substitution</li>
+    <li>str is called on the values (convenient!)</li>
+    <li>there are other placeholders
+      <ul>
+        <li>like %i or %f, they represent other types, like int and float</li>
+        <li>but they don&#39;t necessarily call a conversion function</li>
+        <li>we&#39;ll just stick with %s right now</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="when-to-use-string-formatting">When to Use String Formatting</h3>
+  <ul>
+    <li>less <em>cumbersome</em> than string concatenation</li>
+    <li>less error prone!  <strong>why?</strong></li>
+    <li>however, it can get complicated
+      <ul>
+        <li>there are even more features to string formatting!
+          <ul>
+            <li>supporting / restricting to other data types</li>
+            <li>formatting floats</li>
+          </ul>
+        </li>
+        <li>sufficient to just get the basics down for our simple use-cases</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="so-what-does-print-do">So, What Does print() Do?</h3>
+  <p>Both <strong>string concatenation</strong> and <strong>string formatting</strong> evaluate to a value - specifically a string!  That means:</p>
+
+  <ul>
+    <li>you can assign it to a variable, etc!</li>
+    <li>but for print&#8230; the result is None</li>
+  </ul>
+
+  <p>As for print()</p>
+
+  <ul>
+    <li>it just prints out strings; it returns nothing</li>
+    <li>using multiple parameters in print let&#39;s you skip the construction step</li>
+    <li>(again) <strong>but it doesn&#39;t give you back a value</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="greetings-revisited">Greetings (Revisited)</h3>
+  <p><strong>Write a program that asks for the user&#39;s name.  The program will print out &quot;Hello (name)&quot; using string formatting.  &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">What<span class="s1">'s your name?
+&gt;Joe
+Hello Joe!</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'What</span><span class="se">\'</span><span class="s">s your name?</span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Hello </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">))</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="and-mistakes-were-made">And Mistakes Were Made</h3>
+  <ul>
+    <li>string concatenation
+      <ul>
+        <li>adding a numeric type (we saw this earlier) &#8594;</li>
+        <li>missing quotes, missing plus symbol, etc.  &#8594;</li>
+      </ul>
+    </li>
+    <li>string formatting
+      <ul>
+        <li>not enough arguments (more placeholders than values) &#8594;</li>
+        <li>not all arguments converted (more values than placeholders) &#8594;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="functions--odds-and-ends-"><a href="functions.html">Functions / Odds and Ends </a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

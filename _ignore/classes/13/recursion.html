@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Recursion (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="a-very-brief-look-at-recursion-well-see-more-later">A Very Brief Look at Recursion (We&#39;ll See More Later)</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="recursion">Recursion</h3>
+
+  <p><strong>Recursion</strong> is a process of repeating something in a self similar way.  When we define a <strong>recursive function</strong>, we define a function in terms of itself.  That is, it can call itself to define itself!</p>
+
+  <p>A couple of examples where we&#39;ll use recursion are:</p>
+
+  <ul>
+    <li>an approach to generating a mathematical sequence or computing a mathematical operation</li>
+    <li>generating a fractal</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="fractals">Fractals</h3>
+
+  <p>You know&#8230; fractals!</p>
+
+  <ul>
+    <li><a href="http://urbanhonking.com/kmikeym/2010/12/07/fractal-pizza/">Pizza Fractal</a></li>
+    <li><a href="http://www.elbruz.org/islands/Islands%20and%20Lakes.htm">The Largest Island in a Lake&#8230;</a></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="back-to-recursion">Back to Recursion</h3>
+
+  <p>So&#8230; to create a recursive function definition:</p>
+
+  <ul>
+    <li>you&#39;ll need to create a function that calls itself</li>
+    <li>a way for the function to stop calling itself (sometimes called a base case)</li>
+    <li>otherwise&#8230; <strong>what do you think will happen here?</strong></li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">is_this_forever</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"yes"</span><span class="p">)</span>
+	<span class="n">is_this_forever</span><span class="p">()</span>
+
+<span class="n">is_this_forever</span><span class="p">()</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>RuntimeError: maximum recursion depth exceeded while calling a Python object</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="factorial-revisited">Factorial Revisited</h3>
+
+  <p>If we look at factorial again&#8230;.</p>
+
+  <ul>
+    <li>5! = 5 * 4 * 3 * 2 * 1</li>
+    <li>can be rewritten as: 5 * 4!</li>
+    <li>we can define factorial in terms of itself!</li>
+    <li>(note that 0! is 1)</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="factorial-using-recursion">Factorial Using Recursion</h3>
+
+  <p><strong>Let&#39;s try to reimplement factorial using recursion rather than a loop. &#8594;</strong></p>
+
+  <ul>
+    <li>we&#39;ll need to call the function within its definition</li>
+    <li>we may need an end condition</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span></code></pre></figure>
+
+  </div>
+</section>
+<section>
+  <h3 id="asking-using-recursion">Asking Using Recursion</h3>
+
+  <p><strong>Let&#39;s try to reimplement a program that continues to ask a question until the user says no by using recursion rather than a loop (how does the loop version go again?). &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Type</span> <span class="s">"no"</span> <span class="n">to</span> <span class="n">stop</span>
+<span class="o">&gt;</span> <span class="n">yup</span>
+<span class="n">Type</span> <span class="s">"no"</span> <span class="n">to</span> <span class="n">stop</span>
+<span class="o">&gt;</span> <span class="n">no</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">ask_for_input</span><span class="p">():</span>
+    <span class="k">if</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Type </span><span class="se">\"</span><span class="s">no</span><span class="se">\"</span><span class="s"> to stop</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span> <span class="o">!=</span> <span class="s">"no"</span><span class="p">:</span>
+        <span class="n">ask_for_input</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c"># else is not necessary, but left in for clarity</span>
+        <span class="k">return</span>
+
+<span class="n">ask_for_input</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="a-tree">A Tree</h3>
+
+  <p><strong>Let&#39;s try to draw a tree using recursion. &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">turtle</span>
+
+<span class="n">leo</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">branch</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">length_multiplier</span><span class="p">,</span> <span class="n">min_length</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">length</span> <span class="o">&lt;</span> <span class="n">min_length</span><span class="p">:</span>
+		<span class="k">return</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+		<span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+		<span class="n">branch</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">length</span> <span class="o">*</span> <span class="n">length_multiplier</span><span class="p">,</span> <span class="n">length_multiplier</span><span class="p">,</span> <span class="n">min_length</span><span class="p">)</span>
+		<span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+		<span class="n">branch</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">length</span> <span class="o">*</span> <span class="n">length_multiplier</span><span class="p">,</span> <span class="n">length_multiplier</span><span class="p">,</span> <span class="n">min_length</span><span class="p">)</span>
+		<span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+		<span class="n">t</span><span class="o">.</span><span class="n">back</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+		<span class="k">return</span>
+<span class="c"># base - branch(leo, , 0.6, 10)</span>
+<span class="n">branch</span><span class="p">(</span><span class="n">leo</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="more-trees">More Trees</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">tracer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="s">"""
+add functions here
+draw_tree
+forest
+"""</span>
+
+<span class="n">forest</span><span class="p">()</span>
+<span class="n">wn</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="drawtree">draw_tree</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">draw_tree</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">new_w</span> <span class="o">=</span> <span class="n">w</span> <span class="k">if</span> <span class="n">w</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">w</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">pensize</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+        <span class="n">a1</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
+        <span class="n">draw_tree</span><span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">s</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">new_w</span><span class="p">)</span>
+        <span class="n">a2</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="n">a1</span> <span class="o">+</span> <span class="n">a2</span><span class="p">)</span>
+        <span class="n">draw_tree</span><span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">s</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">new_w</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">back</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="forest">forest</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">forest</span><span class="p">():</span>
+	<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">301</span><span class="p">,</span> <span class="mi">200</span><span class="p">):</span>
+    	<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    	<span class="n">t</span><span class="o">.</span><span class="n">up</span><span class="p">()</span>
+    	<span class="n">t</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">)</span>
+    	<span class="n">t</span><span class="o">.</span><span class="n">down</span><span class="p">()</span>
+    	<span class="n">t</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s">"#{}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="o">*</span> <span class="mi">3</span><span class="p">))</span>
+    	<span class="n">draw_tree</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span></code></pre></figure>
+
+</section>
+<!--
+<section markdown="block">
+###  Why Recursion?
+
+* Recursive programs 
+</section>
+-->
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

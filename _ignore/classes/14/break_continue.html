@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Break and Continue (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="break-and-continue">Break and Continue</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="break">Break</h3>
+
+  <p>The <strong>break</strong> statement:</p>
+
+  <ul>
+    <li>when encountered in the body of a loop&#8230;</li>
+    <li>immediately causes the loop to end</li>
+    <li>works for both for and while loops</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="break-example">Break Example</h3>
+
+  <p>Using break in a for loop to:</p>
+
+  <ul>
+    <li>roll a six sided die at most 10 times</li>
+    <li>stop rolling as soon as a 1 is rolled</li>
+  </ul>
+
+  <p><strong>Let&#39;s try running this a few times</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"> 
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+	<span class="n">roll</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">roll</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="k">break</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="break-question-1">Break Question #1</h3>
+
+  <p><strong>What does this code output?</strong>&#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"> 
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="k">break</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'fin'</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>Stops looping after first iteration because of break&#8230;</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"> 
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="n">fin</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="break-question-2">Break Question #2</h3>
+
+  <p><strong>Fill out the body of this while loop so that it stops asking continue when the input is exactly &#39;n&#39;.</strong>&#8594;</p>
+
+  <ul>
+    <li>keep asking continue</li>
+    <li>stop asking when input is &#39;n&#39;</li>
+    <li>use existing code (the while loop)</li>
+    <li>use break</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"> 
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+	<span class="n">keep_going</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Continue?</span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">)</span>
+	<span class="c"># your code goes here</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'done'</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="break-question-2-potential-solution">Break Question #2 Potential Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"> 
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+	<span class="n">keep_going</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Continue?</span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">keep_going</span> <span class="o">==</span> <span class="s">'n'</span><span class="p">:</span>
+		<span class="k">break</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'done'</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="approximating-square-root">Approximating Square Root</h3>
+
+  <p>You can calculate a square root by hand using <strong>Newton&#39;s method for finding square roots</strong>.</p>
+
+  <ul>
+    <li>start with almost any approximation</li>
+    <li>a better approximation can be found with the following formula</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  original_number is the number that we're trying to find the sqrt of</span>
+<span class="c">#  current_guess is the current candidate for result of sqrt</span>
+<span class="c">#  better_guess is a slightly better approximation / guess</span>
+
+<span class="n">better_guess</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_guess</span> <span class="o">+</span> <span class="n">original_number</span><span class="o">/</span><span class="n">current_guess</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span></code></pre></figure>
+
+  <ul>
+    <li>this formula can be repeatedly applied until the difference between the consecutive better approximations reaches some threshold</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="approximating-square-root-1">Approximating Square Root</h3>
+
+  <p><strong>Write a program the approximates the square root by using the method described in the previous slides. &#8594;</strong></p>
+
+  <ul>
+    <li>ask the user for a number
+      <ul>
+        <li>make an initial guess at the square root by taking number / 2</li>
+      </ul>
+    </li>
+    <li>use Newton&#39;s method to refine guess
+      <ul>
+        <li>loop forever</li>
+        <li>iteratively create a new_guess by: new_guess is (guess + original_number / guess) / 2</li>
+        <li>once the difference between the new guess and the old guess is 0.0001, stop (use built in absolute value function, <strong>abs</strong>)</li>
+        <li>reset current guess to new_guess before going to next iteration</li>
+      </ul>
+    </li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">square</span> <span class="n">root</span> <span class="n">calculator</span>
+<span class="n">enter</span> <span class="n">a</span> <span class="n">number</span>
+<span class="o">&gt;</span> <span class="mi">25</span>
+<span class="mf">5.000000000016778</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="approximating-square-root-potential-solution">Approximating Square Root Potential Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">'square root calculator...'</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'enter a number</span><span class="se">\n</span><span class="s">&gt; '</span><span class="p">))</span>
+<span class="n">guess</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.0001</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+	<span class="c"># approximate</span>
+	<span class="n">new_guess</span> <span class="o">=</span> <span class="p">(</span><span class="n">guess</span> <span class="o">+</span> <span class="n">n</span> <span class="o">/</span> <span class="n">guess</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+	<span class="c"># compare new approximation to old...</span>
+	<span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">new_guess</span> <span class="o">-</span> <span class="n">guess</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">:</span> 
+		<span class="n">guess</span> <span class="o">=</span> <span class="n">new_guess</span>
+		<span class="k">break</span>
+	<span class="n">guess</span> <span class="o">=</span> <span class="n">new_guess</span>
+<span class="k">print</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="tell-me-when-to-stop">Tell me When to Stop</h3>
+
+  <p><strong>Count down from 10 to 1&#8230;&#8594;</strong></p>
+
+  <ul>
+    <li>after each number, ask the user if they want to stop</li>
+    <li>if the user says stop, immediately exit the loop</li>
+    <li>use break to do this</li>
+  </ul>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"> 
+<span class="mi">10</span>
+<span class="nb">type</span> <span class="s">'stop'</span> <span class="n">to</span> <span class="n">end</span> <span class="n">countdown</span><span class="err">!</span>
+<span class="o">&gt;</span> 
+<span class="mi">9</span>
+<span class="nb">type</span> <span class="s">'stop'</span> <span class="n">to</span> <span class="n">end</span> <span class="n">countdown</span><span class="err">!</span>
+<span class="o">&gt;</span> 
+<span class="mi">8</span>
+<span class="nb">type</span> <span class="s">'stop'</span> <span class="n">to</span> <span class="n">end</span> <span class="n">countdown</span><span class="err">!</span>
+<span class="o">&gt;</span> <span class="n">stop</span></code></pre></figure>
+
+</div>
+
+</section>
+
+<section>
+  <h3 id="tell-me-when-to-stop-solution">Tell me When to Stop Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+	<span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"type 'stop' to end countdown!</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'stop'</span><span class="p">:</span>
+		<span class="k">break</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="continue">Continue</h3>
+
+  <p>The <strong>continue</strong> statement immediately skips to the next iteration of the loop.  This works for both for and while loops.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"> 
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="k">continue</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="counting-yet-again">Counting (Yet Again)</h3>
+
+  <p><strong>Count to 15 by 1s, skip multiples of 3.  Use continue.  &#8594;</strong></p>
+
+  <p>(yeah, you can do this without continue too).</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"> 
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">4</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="counting-yet-again-1">Counting (Yet Again)</h3>
+
+  <p>A solution using continue.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"> 
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">continue</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="counting-another">Counting (Another)</h3>
+
+  <p><strong>Count to 30 by 3&#39;s, skip all 20&#39;s &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"> 
+<span class="mi">0</span>
+<span class="mi">3</span>
+<span class="mi">6</span>
+<span class="mi">9</span>
+<span class="mi">12</span>
+<span class="mi">15</span>
+<span class="mi">18</span>
+<span class="mi">21</span>
+<span class="mi">24</span>
+<span class="mi">27</span>
+<span class="mi">30</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="counting-another-1">Counting (Another)</h3>
+
+  <p>A solution using continue&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"> 
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span><span class="mi">20</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>
+		<span class="k">continue</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="break-and-continue-1">Break and Continue</h3>
+
+  <ul>
+    <li>generally, you can use a while with some condition as an alternative to break</li>
+    <li>you can also potentially use an if statement with a different boolean expression as an alternative to continue</li>
+    <li>some texts discourage the use of break and continue (or at least, overuse of)
+      <ul>
+        <li>could lead to many points of exit</li>
+        <li>complex code</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<!--
+<section markdown="block">
+##  [Turtle](turtle.html)
+</section>
+-->
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

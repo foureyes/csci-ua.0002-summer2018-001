@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Iteration Using Indexes (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="iteration-using-indexes">Iteration Using Indexes</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="indexing-into-a-sequence">Indexing Into a Sequence</h3>
+
+  <p>How do we retrieve an element at a specific place from a list or a string?  For example, <strong>to get the second element from the list a = [1, 2, 3], what code would I write? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="indexes">Indexes</h3>
+
+  <p>What are some attributes of list and string <strong>indexes</strong>? That is&#8230; when you index into a sequence type&#8230;</p>
+
+  <ul>
+    <li><strong>What data type does the index have to be? &#8594;</strong></li>
+    <li><strong>Are list indexes sequential and consecutive, or are they unordered? &#8594;</strong></li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li>Indexes are ints</li>
+      <li>They are sequential and consecutive</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="getting-an-index-with-an-item">Getting an Index With an Item</h3>
+
+  <p>Occasionally, you&#39;ll want to determine the index of the item that you&#39;re working on.  <strong>For example&#8230;</strong> &#8594;</p>
+</section>
+
+<section>
+  <h3 id="getting-an-index-with-an-item-exercise-1">Getting an Index With an Item Exercise 1</h3>
+
+  <p><strong>Printing out the index of a list item along with the actual item</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Carol'</span><span class="p">]</span>
+<span class="c">#  loop through list to print out</span>
+<span class="mi">0</span> <span class="n">Alice</span>
+<span class="mi">1</span> <span class="n">Bob</span>
+<span class="mi">2</span> <span class="n">Carol</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="getting-an-index-with-an-item-exercise-2">Getting an Index With an Item Exercise 2</h3>
+
+  <p><strong>Changing a list <em>in place</em> (that is assigning a new value to each element in a list)</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Carol'</span><span class="p">]</span>
+<span class="c">#  make every item in names uppercase without creating a new list</span>
+<span class="k">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+<span class="c">#  prints out...</span>
+<span class="p">[</span><span class="s">'ALICE'</span><span class="p">,</span> <span class="s">'BOB'</span><span class="p">,</span> <span class="s">'CAROL'</span><span class="p">]</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="getting-the-index-with-the-list-item">Getting the Index With the List Item</h3>
+
+  <p>There are a few ways to loop through a list so that you have access the index of every item:</p>
+
+  <ol>
+    <li>using <strong>enumerate</strong>() (the most <em>pythonic</em> way)</li>
+    <li>using a count variable in conjunction with a for loop</li>
+    <li>using indexes to iterate</li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="using-the-built-in-enumerate-function">Using the Built in Enumerate Function</h3>
+
+  <p><strong>enumerate</strong>() is a built in function that:</p>
+
+  <ul>
+    <li>takes a list as an argument</li>
+    <li>it returns a list-like structure composed of tuples</li>
+    <li>each tuple consists of the index and the value of each element in the list</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Carol'</span><span class="p">]</span>
+<span class="n">index_value_pairs</span> <span class="o">=</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+<span class="c">#  index_value_pairs will give back an index and a value if iterated over...</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="enumerate-example">Enumerate Example</h3>
+
+  <p><strong>Printing out the index of a list, [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Carol&#39;], item along with the actual item.</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Carol'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></code></pre></figure>
+
+    <p><strong>Making every element in names uppercase without creating a new list.</strong> &#8594;</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Carol'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+	<span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="using-a-count-variable">Using a Count Variable</h3>
+
+  <p><strong>Printing out the index of a list, [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Carol&#39;], item along with the actual item.</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Carol'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+	<span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span> </code></pre></figure>
+
+    <p><strong>Making every element in names uppercase without creating a new list.</strong> &#8594;</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Carol'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+	<span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+	<span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span> 
+<span class="k">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="generating-a-sequence-of-integers">Generating a Sequence of Integers</h3>
+
+  <p>One last way of iterating over every item in a list or a string is to go through each element by indexing.</p>
+
+  <p><strong>&#8230;But how would you generate all of those indexes and go through each one? &#8594;</strong></p>
+
+  <p>Hint: there are two ways to do this using constructs / statements that we&#39;ve used before.</p>
+
+  <div class="incremental">
+    <ul>
+      <li>for loop with range</li>
+      <li>while loops</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="for-loops-and-indexes">For Loops and Indexes</h3>
+
+  <p><strong>Use a for loop to print out every element in the list a = [&quot;quill&quot;, &quot;qat&quot;, &quot;quip&quot;]: &#8594;</strong></p>
+
+  <p>Some hints:</p>
+
+  <ul>
+    <li>what parameters should be passed to range?
+      <ul>
+        <li>what&#39;s the start index?</li>
+        <li>what&#39;s the last index?</li>
+      </ul>
+    </li>
+    <li>how do you access a list element?</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">"quill"</span><span class="p">,</span> <span class="s">"qat"</span><span class="p">,</span> <span class="s">"quip"</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="while-loops-and-indexes">While Loops and Indexes</h3>
+
+  <p><strong>Use a while loop to print out every element in the list a = [&quot;quill&quot;, &quot;qat&quot;, &quot;quip&quot;]: &#8594;</strong></p>
+
+  <p>Some hints:</p>
+
+  <ul>
+    <li>what index do you start with?</li>
+    <li>what&#39;s the end condition?</li>
+    <li>how do you access a list element?</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">"quill"</span><span class="p">,</span> <span class="s">"qat"</span><span class="p">,</span> <span class="s">"quip"</span><span class="p">]</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+	<span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="generating-indexes">Generating Indexes</h3>
+
+  <p><strong>Printing out the index of a list, [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Carol&#39;], item along with the actual item.</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Carol'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+    <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span></code></pre></figure>
+
+    <p><strong>Making every element in names uppercase without creating a new list.</strong> &#8594;</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Carol'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>
+    <span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="reversing-a-list">Reversing a List</h3>
+
+  <p><strong>Write a function that takes a list as an input and returns the list in reverse order (btw, there&#39;s already a list method that does this) &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">rev</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+	<span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+		<span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>	
+	<span class="k">return</span> <span class="n">new_list</span>
+		
+<span class="k">assert</span> <span class="p">[</span><span class="s">"charlie"</span><span class="p">,</span> <span class="s">"bravo"</span><span class="p">,</span> <span class="s">"alpha"</span><span class="p">]</span> <span class="o">==</span> <span class="n">rev</span><span class="p">([</span><span class="s">"alpha"</span><span class="p">,</span> <span class="s">"bravo"</span><span class="p">,</span> <span class="s">"charlie"</span><span class="p">]),</span> <span class="s">"reverses order of non-empty list"</span>
+<span class="k">assert</span> <span class="p">[]</span> <span class="o">==</span> <span class="n">rev</span><span class="p">([]),</span> <span class="s">"returns empty list for empty list"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">rev</span><span class="p">([</span><span class="s">"alpha"</span><span class="p">,</span> <span class="s">"bravo"</span><span class="p">,</span> <span class="s">"charlie"</span><span class="p">]))</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="another-more-destructive-way-to-reverse-a-list">Another (More Destructive Way) to Reverse a List</h3>
+
+  <p><strong>Can you use pop to do it? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">rev</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+	<span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">while</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+		<span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+	<span class="k">return</span> <span class="n">new_list</span>
+
+<span class="n">my_stuff</span> <span class="o">=</span> <span class="p">[</span><span class="s">"will"</span><span class="p">,</span> <span class="s">"soon"</span><span class="p">,</span> <span class="s">"disappear"</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">my_stuff</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">rev</span><span class="p">(</span><span class="n">my_stuff</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">my_stuff</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="but-wait---what-happened">But Wait - What Happened?</h3>
+
+  <p><strong>What&#39;s the output of the pop() version of the solution? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">rev</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+	<span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">while</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+		<span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+	<span class="k">return</span> <span class="n">new_list</span>
+
+<span class="n">my_stuff</span> <span class="o">=</span> <span class="p">[</span><span class="s">"will"</span><span class="p">,</span> <span class="s">"soon"</span><span class="p">,</span> <span class="s">"disappear"</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">my_stuff</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">rev</span><span class="p">(</span><span class="n">my_stuff</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">my_stuff</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="s">'will'</span><span class="p">,</span> <span class="s">'soon'</span><span class="p">,</span> <span class="s">'disappear'</span><span class="p">]</span>
+<span class="p">[</span><span class="s">'disappear'</span><span class="p">,</span> <span class="s">'soon'</span><span class="p">,</span> <span class="s">'will'</span><span class="p">]</span>
+<span class="p">[]</span></code></pre></figure>
+
+  </div>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

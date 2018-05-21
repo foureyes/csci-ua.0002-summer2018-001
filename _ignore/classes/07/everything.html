@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Everything (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section>
+  <h3 id="number-guessing-game-forever">Number Guessing Game <em>Forever</em></h3>
+
+  <p>So, we&#39;ll finally be able to complete our number guessing game:</p>
+
+  <ul>
+    <li>use random to generate a secret number</li>
+    <li>ask the user to guess what the number is</li>
+    <li>if the user has it wrong, let them know if they should go higher or lower</li>
+    <li>keep on asking the user to guess until they get it right</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="number-guessing-game-forever-1">Number Guessing Game <em>Forever</em></h3>
+
+  <p>Some example output:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">I</span><span class="s">'m thinking of a number between 1 and 10; guess what it is!</span><span class="err">
+</span><span class="s">&gt; 8</span><span class="err">
+</span><span class="s">Too low!</span><span class="err">
+</span><span class="s">I'</span><span class="n">m</span> <span class="n">thinking</span> <span class="n">of</span> <span class="n">a</span> <span class="n">number</span> <span class="n">between</span> <span class="mi">1</span> <span class="ow">and</span> <span class="mi">10</span><span class="p">;</span> <span class="n">guess</span> <span class="n">what</span> <span class="n">it</span> <span class="ow">is</span><span class="err">!</span>
+<span class="o">&gt;</span> <span class="mi">9</span>
+<span class="n">Too</span> <span class="n">low</span><span class="err">!</span>
+<span class="n">I</span><span class="s">'m thinking of a number between 1 and 10; guess what it is!</span><span class="err">
+</span><span class="s">&gt; 10</span><span class="err">
+</span><span class="s">I was thinking of 10!.  You got it right!</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="number-guessing-game-forever-and-ever">Number Guessing Game <em>Forever</em> and <em>Ever</em></h3>
+
+  <ul>
+    <li>what if we want to say that they&#39;re really close (within 1), but not say higher or lower in that case?</li>
+    <li>what we want to be nice and ask the user if they want to quit after a wrong guess?</li>
+    <li>what if we want to ask the user for a start and end number?</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="lets-write-a-mini-quiz-game">Let&#39;s Write a Mini Quiz Game!</h3>
+
+  <p><strong>Write a program to ask a couple of questions about the book, Dune.</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#   ______            _        _______ </span>
+<span class="c">#  (  __  \ |\     /|( (    /|(  ____ \</span>
+<span class="c">#  | (  \  )| )   ( ||  \  ( || (    \/</span>
+<span class="c">#  | |   ) || |   | ||   \ | || (__    </span>
+<span class="c">#  | |   | || |   | || (\ \) ||  __)   </span>
+<span class="c">#  | |   ) || |   | || | \   || (      </span>
+<span class="c">#  | (__/  )| (___) || )  \  || (____/\</span>
+<span class="c">#  (______/ (_______)|/    )_)(_______/</span>
+<span class="c">#  </span>
+<span class="c">#  What is the name of the desert planet that's informally called Dune?</span>
+<span class="c">#  &gt; Arrakis</span>
+<span class="c">#  You got it right!</span>
+<span class="c">#  What valuable resource is only found on Dune?</span>
+<span class="c">#  &gt; cheese?</span>
+<span class="c">#  Nope, the answer is: spice</span>
+<span class="c">#  You got 1 questions right! </span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-write-a-mini-quiz-game-continued">Let&#39;s Write a Mini Quiz Game (Continued)!</h3>
+
+  <p>Let&#39;s get some requirements down:</p>
+
+  <ul>
+    <li>ask two questions sequentially</li>
+    <li>keep track of the number of questions that the player got right</li>
+    <li>output the number of questions right</li>
+    <li>(optional) keep track of the number of questions wrong, and output that as well</li>
+    <li>(optional) ask for the player&#39;s name and greet the player</li>
+    <li>(optional) ask the player if they want to play again</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="we-dont-have-to-jump-right-into-code">We Don&#39;t Have To Jump Right Into Code!</h3>
+
+  <p><strong>So, first, what&#39;s our plan?</strong> &#8594;</p>
+
+  <ul>
+    <li>flow chart?</li>
+    <li>pseudocode?</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="lets-write-a-mini-quiz-game-continued-some-more">Let&#39;s Write a Mini Quiz Game! (Continued Some More)!</h3>
+
+  <p>What are some ways that we can be more tolerant about capitalization?  That is&#8230; what if we wanted to accept these answers:</p>
+
+  <ol>
+    <li>Arrakis / arrakis</li>
+    <li>spice 4 / the spice / the spice melange</li>
+  </ol>
+
+  <p>Another wrinkle might be to have different output based on which version of the <em>right</em> answer was chosen.  For example, if someone puts in spice, it might say, &quot;oh, you mean, <em>the spice melange</em>&quot;.</p>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

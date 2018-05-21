@@ -1,0 +1,420 @@
+<section class="title-slide">
+  <h1 id="boolean-logic">Boolean Logic</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="some-computer-science-history">Some Computer Science History&#8230;</h2>
+</section>
+
+<section>
+  <h3 id="for-context---whats-this-boolean-stuff-about">For Context - What&#39;s this Boolean Stuff About?</h3>
+  <aside>It's This Guy...</aside>
+
+  <div class="img-container">
+    <p><img src="../../resources/img/boole.jpeg" alt="George Boole" /></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="george-boole">George Boole</h3>
+
+  <aside>
+    <p>The <em>Father</em> of Computer Science!  SCIENCE!</p>
+  </aside>
+
+  <ul>
+    <li>English Mathematician, Philosopher and Logician in the 1800&#39;s</li>
+    <li>Proposed that logical propositions can be expressed by algebraic equations (mathematical logic - AND, OR, NOT)</li>
+    <li>This idea, now called <strong>Boolean logic</strong>, is the basis of computer science!</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="in-python">In Python&#8230;</h3>
+  <p>As we talked about in the review, Python has a <strong>bool</strong> type to represent Boolean values</p>
+
+  <ul>
+    <li>True or False</li>
+    <li>just like other values, can be assigned to variables</li>
+    <li><strong>comparison operators</strong> (we learned the equality operator) return Boolean values</li>
+    <li>Boolean values can be combined into expressions using <strong>logical operators</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="comparison-operators">Comparison Operators</h2>
+</section>
+
+<section>
+  <h3 id="comparison-operators-1">Comparison Operators</h3>
+  <p><strong>Can you guess what some of the comparison operators are?  Like I said, you already know one!</strong></p>
+
+  <p>There are six comparison operators:</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>==</strong> - equals (can be called logical equivalence or equality operator)</li>
+      <li><strong>!=</strong> - not equal</li>
+      <li><strong>&gt;</strong> - greater than</li>
+      <li><strong>&lt;</strong> - less than</li>
+      <li><strong>&gt;=</strong> - greater than / equal</li>
+      <li><strong>&lt;=</strong> - less than / equal</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="comparison-operators-continued">Comparison Operators Continued</h3>
+  <ul>
+    <li>again - these operators always return a bool</li>
+    <li>these operators do what you would expect
+      <ul>
+        <li><strong>==</strong> - returns True if both sides are equal &#8594;</li>
+        <li><strong>!=</strong> - returns True if both sides are not equal &#8594;</li>
+        <li><strong>&gt;</strong>, <strong>&lt;</strong>, <strong>&gt;=</strong>, <strong>&lt;=</strong> - returns True if value on the left is greater than, less than, greater than / equal, or less than equal to the value on the right &#8594;</li>
+      </ul>
+    </li>
+    <li>never put equals first on &gt;=, &lt;=</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="comparison-operators-have-feelings-too">Comparison Operators Have Feelings Too</h3>
+  <aside>Just as Sensitive to Type Mismatches as Numeric or String Operators.  Well... At Least Some Are</aside>
+
+  <p><strong>What do you think will happen if we compare 8 &gt;= &quot;four&quot;?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; 8 &gt;= "four"
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+TypeError: unorderable types: int() &gt;= str()</code></pre></figure>
+
+  </div>
+
+</section>
+
+<section>
+  <h3 id="comparison-operators-and-different-types">Comparison Operators and Different Types</h3>
+  <ul>
+    <li>objects of different types, except different numeric types, are never equal
+      <ul>
+        <li>equals (<strong>==</strong>) will always return False for different types &#8594;</li>
+        <li>not equals (<strong>!=</strong>) will always return True for different types &#8594;</li>
+      </ul>
+    </li>
+    <li>the &lt;, &lt;=, &gt; and &gt;= operators&#8230;
+      <ul>
+        <li>will raise a TypeError if the objects are of different types that cannot be compared &#8594;</li>
+        <li>will happily compare numeric types (for example comparing floats and ints works as you&#39;d expect)! &#8594;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="logical-operators">Logical Operators</h2>
+</section>
+
+<section>
+  <h3 id="what-are-logical-operators">What are Logical Operators?</h3>
+
+  <p><strong>Logical Operators are operators that combine Boolean values.</strong></p>
+
+  <ul>
+    <li>these operators always return another Boolean value.</li>
+    <li>furthermore, these operators can be used to create more complex Boolean expressions.</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="three-logical-operators">Three Logical Operators:</h3>
+  <ol>
+    <li><strong>and</strong> -
+      <ul>
+        <li>takes two operands, one on each side</li>
+        <li>to return True, both sides of the operator must be True &#8594;</li>
+      </ul>
+    </li>
+    <li><strong>or</strong> -
+      <ul>
+        <li>takes two operands, one on each side</li>
+        <li>to return True,at least one side of the operator must be True &#8594;</li>
+      </ul>
+    </li>
+    <li><strong>not</strong> -
+      <ul>
+        <li>only takes one operand to the right</li>
+        <li>to return True, the original value on the right must evaluate to False &#8594;</li>
+        <li>two nots cancel eachother out (fun!) &#8594;</li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="logical-operators-in-action">Logical Operators <em>in Action</em></h3>
+
+  <p>Note that these are all expressions that result in a value that&#39;s of type <strong>bool</strong>:</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; True and False
+False
+&gt;&gt;&gt; True and True
+True
+&gt;&gt;&gt; True or False
+True
+&gt;&gt;&gt; not True
+False
+&gt;&gt;&gt; not not True
+True</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="that-can-get-complicated">That Can Get Complicated!</h3>
+
+  <aside>Is There a Way to Show All Operands and Results?</aside>
+
+  <p><strong>Yes</strong>.  We&#39;ll use <strong>truth tables</strong> to show what each operator will return.</p>
+
+  <ul>
+    <li>a <strong>truth table</strong> is a concise table of Boolean values that describes the semantics of an operator</li>
+    <li>it will go through each possible combination of operands and specify the resulting Boolean value</li>
+    <li>each row will represent a combination of operands</li>
+    <li>each column will represent a value of one operand</li>
+    <li>&#8230;with the exception of the last column, which represents the resulting value</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="truth-table---and">Truth Table - AND</h3>
+
+  <p><strong>and</strong> takes two operands.  Each operand can be True or False (or will evaluate to True or False!).</p>
+
+  <p><strong>Can you guess how many possible combinations there are for these two operands?</strong>  <strong>What will the Truth Table look like?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+(using p and q to represent the operands
+...and t and f for true and false)
+ p | q | p and q
+----------------
+ f | f | f
+ f | t | f
+ t | f | f
+ t | t | t
+"""</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="truth-table---or">Truth Table - OR</h3>
+
+  <p>Let&#39;s fill out a truth table for <strong>or</strong>! &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+(using p and q to represent the operands
+...and t and f for true and false)
+ p | q | p and q
+----------------
+ f | f | f
+ f | t | t
+ t | f | t
+ t | t | t
+"""</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="truth-table---not">Truth Table - NOT</h3>
+
+  <p>Let&#39;s fill out a truth table for <strong>not</strong>! &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+(using p and q to represent the operands
+...and t and f for true and false)
+ p | not p
+-----------
+ t | f 
+ f | t 
+"""</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-evaluate-some-simple-boolean-expressions">Let&#39;s Evaluate Some Simple Boolean Expressions</h3>
+
+  <ul>
+    <li>True and False &#8594;</li>
+    <li>True and not False &#8594;</li>
+    <li>True or False &#8594;</li>
+    <li>True or not False &#8594;</li>
+    <li>False or False &#8594;</li>
+    <li>not False and not False &#8594;</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="chaining-operators">Chaining Operators</h3>
+
+  <p>Boolean, comparison and other operators can be combined to create complex Boolean expressions!  For example:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">100</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="o">-</span><span class="mi">10</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">100</span> <span class="ow">or</span> <span class="s">"foo"</span> <span class="o">==</span> <span class="s">"foo"</span> <span class="o">+</span> <span class="s">"bar"</span></code></pre></figure>
+
+  <ul>
+    <li>what order will the operations be evaluated in?</li>
+    <li>there is an overall order of operations that exists; <a href="http://docs.python.org/3/reference/expressions.html#operator-precedence">a summary can be found in the official Python 3 documentation</a></li>
+    <li><strong>what does the expression above evaluate to?</strong> &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+    <p>True</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="order-of-operations--operator-precedence">Order of Operations / Operator Precedence</h3>
+  <p>The previous summary, but even more <em>summar-ied</em></p>
+
+  <ul>
+    <li>parentheses are evaluated first (obv)</li>
+    <li>numeric / string operations (in turn, are also ordered)</li>
+    <li>comparison operations (==, !=, &gt;, &lt;, &gt;=, &gt;=)</li>
+    <li>not</li>
+    <li>and</li>
+    <li>or</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="a-quick-note-about-boolean-operators-and-style">A Quick Note About Boolean Operators and Style</h3>
+  <aside>Because This is Crazy...</aside>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">True</span> <span class="ow">and</span> <span class="bp">True</span> <span class="ow">or</span> <span class="bp">False</span> <span class="ow">and</span> <span class="bp">True</span> <span class="ow">and</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">110</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">False</span></code></pre></figure>
+
+  <ul>
+    <li>it&#39;s usually a good idea to use parentheses, at the very least, for readability</li>
+    <li>&#8230;unless you&#39;re chaining the same operator (for example True and True and True)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="an-exercise">An Exercise</h3>
+
+  <p><strong>Evaluate the following boolean expression.</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="ow">not</span> <span class="p">(</span><span class="mi">8</span> <span class="o">!=</span> <span class="mi">8</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">True</span>  </code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="ow">not</span> <span class="bp">False</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">True</span>  </code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">True</span> <span class="ow">or</span> <span class="bp">False</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">True</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="another-one">Another One</h3>
+
+  <p><strong>Evaluate the following boolean expression.</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"hello"</span> <span class="o">==</span> <span class="s">"world"</span> <span class="ow">or</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">8</span> <span class="ow">and</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">16</span> <span class="ow">and</span> <span class="mi">28</span> <span class="o">!=</span> <span class="mi">0</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"hello"</span> <span class="o">==</span> <span class="s">"world"</span> <span class="ow">or</span> <span class="mi">10</span> <span class="o">&gt;</span> <span class="mi">8</span> <span class="ow">and</span> <span class="mi">12</span> <span class="o">&lt;</span> <span class="mi">16</span> <span class="ow">and</span> <span class="mi">28</span> <span class="o">!=</span> <span class="mi">0</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">False</span> <span class="ow">or</span> <span class="bp">True</span> <span class="ow">and</span> <span class="bp">True</span> <span class="ow">and</span> <span class="bp">True</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">True</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="one-more-please">One More Please?</h3>
+
+  <p><strong>Evaluate the following boolean expression.</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">((</span><span class="bp">True</span> <span class="ow">or</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">False</span> <span class="ow">and</span> <span class="bp">False</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">(</span><span class="bp">True</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">False</span> <span class="ow">and</span> <span class="bp">False</span><span class="p">)</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">False</span> <span class="ow">and</span> <span class="bp">True</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">False</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="short-circuit-evaluation">Short Circuit Evaluation</h3>
+  <ul>
+    <li>if left hand side of boolean decides the outcome, no need to deal with the remainder of expression
+      <ul>
+        <li>saves some processin&#39; time!</li>
+        <li>for example: <code class="highlighter-rouge">(false and (true and true and true or false))</code></li>
+        <li>can stop at false!</li>
+      </ul>
+    </li>
+    <li>can be applied internally to a larger more complex boolean expression</li>
+    <li>generally, just language implementation details, right?
+      <ul>
+        <li>but it&#39;s a concept you should be aware of</li>
+        <li>(perhaps if there&#39;s a function on the right side that doesn&#39;t get called!)</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="short-circuit-evaluation-continued">Short Circuit Evaluation Continued</h3>
+  <p><strong>Can you think of some comparison or logical operators where short circuit evaluation wouldn&#39;t make sense?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>obv <strong>not</strong> - nothing to short circuit!</li>
+      <li>== equivalence operations - both sides must be evaluated to test equality</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="review">Review</h3>
+  <ul>
+    <li>comparison operators
+      <ul>
+        <li>==, !=, &gt;, &lt;, &gt;=, &lt;=</li>
+        <li>comparing different types</li>
+      </ul>
+    </li>
+    <li>logical operators
+      <ul>
+        <li>and, or, not</li>
+        <li>truth tables</li>
+      </ul>
+    </li>
+    <li>operator precedence</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="if-we-feel-like-continuing"><a href="if-statements.html">If We Feel Like Continuing</a></h2>
+</section>

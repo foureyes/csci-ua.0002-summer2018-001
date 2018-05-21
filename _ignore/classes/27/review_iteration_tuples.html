@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Review (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="review">Review</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="aliasing">Aliasing</h3>
+
+  <p>I have a variable called <strong>fungi</strong>.  It&#39;s a list of strings.  I&#39;d like to create an <strong>alias</strong> called <strong>same_as_fungi</strong> for it - that is, I&#39;d like to create a variable name that refers to the same object as the original.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fungi</span> <span class="o">=</span> <span class="p">[</span><span class="s">'yeasts'</span><span class="p">,</span> <span class="s">'molds'</span><span class="p">,</span> <span class="s">'mushrooms'</span><span class="p">]</span>
+<span class="c">#  create an alias here called same_as_fungi</span>
+<span class="n">same_as_fungi</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'fungi </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">fungi</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'same_as_fungi </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">same_as_fungi</span><span class="p">))</span>
+
+<span class="c">#  resulting output: </span>
+<span class="c">#  fungi ['yeasts', 'molds']</span>
+<span class="c">#  same_as_fungi ['yeasts', 'molds']</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">same_as_fungi</span> <span class="o">=</span> <span class="n">fungi</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="what-if-we-wanted-to-make-a-copy">What if We Wanted to Make a Copy</h3>
+
+  <p>Let&#39;s <strong>clone</strong> an existing list rather than creating an <strong>alias</strong> for it.  How can you write this in code?</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fungi</span> <span class="o">=</span> <span class="p">[</span><span class="s">'yeasts'</span><span class="p">,</span> <span class="s">'molds'</span><span class="p">,</span> <span class="s">'mushrooms'</span><span class="p">]</span>
+<span class="c">#  clone here; call it copy_of_fungi</span>
+<span class="n">copy_of_fungi</span> <span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'fungi </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">fungi</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'copy_of_fungi </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">copy_of_fungi</span><span class="p">))</span>
+<span class="c">#  results in</span>
+<span class="c">#  fungi ['yeasts', 'molds', 'mushrooms']</span>
+<span class="c">#  copy_of_fungi ['yeasts', 'molds']</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>You can use <strong>slicing</strong> to clone:</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">copy_of_fungi</span> <span class="o">=</span> <span class="n">fungi</span><span class="p">[:]</span>
+<span class="c">#  or copy_of_fungi = fungi[0:len(fungi)]</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="in-functions">In Functions</h3>
+
+  <p>When you pass a list as an argument to a function, you&#39;re actually passing a reference to the list.  <strong>What will the following code print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="k">def</span> <span class="nf">add_a_fungus</span><span class="p">(</span><span class="n">list_of_stuff</span><span class="p">):</span>
+	<span class="s">"""adds a random fungus to whatever list is passed in!"""</span>
+	<span class="n">fungus_to_add</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">'mushroom'</span><span class="p">,</span> <span class="s">'mold'</span><span class="p">,</span> <span class="s">'yeast'</span><span class="p">])</span>
+	<span class="n">list_of_stuff</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fungus_to_add</span><span class="p">)</span>
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">add_a_fungus</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'mushrooms'</span><span class="p">]</span>
+<span class="bp">None</span></code></pre></figure>
+
+  </div>
+
+  <!--_-->
+</section>
+
+<section>
+  <h3 id="remove-vowels-from-every-element-in-a-list">Remove Vowels From Every Element in a List</h3>
+
+  <p><strong>Create a function called no_vowels_please; implement it two different ways:</strong> &#8594;</p>
+
+  <ul>
+    <li>returns a new list
+      <ul>
+        <li>the new list contains every element with vowels removed</li>
+      </ul>
+    </li>
+    <li>modifies the list in place
+      <ul>
+        <li>every element in the list passed in should be overwritten with that same element without vowels</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="first">First&#8230;</h3>
+
+  <p><strong>Let&#39;s create a reusable function that will remove vowels for us!</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">remove_vowels</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+	<span class="n">no_vowels</span> <span class="o">=</span> <span class="s">''</span>
+	<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s">'aeiou'</span><span class="p">:</span>
+			<span class="n">no_vowels</span> <span class="o">+=</span> <span class="n">c</span>
+	<span class="k">return</span> <span class="n">no_vowels</span>
+
+<span class="k">assert</span> <span class="s">'rdvrk'</span> <span class="o">==</span> <span class="n">remove_vowels</span><span class="p">(</span><span class="s">'aardvark'</span><span class="p">)</span>
+<span class="k">assert</span> <span class="s">'ntlp'</span> <span class="o">==</span> <span class="n">remove_vowels</span><span class="p">(</span><span class="s">'antelope'</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="remove-vowels-from-every-element-in-a-list-new-list">Remove Vowels From Every Element in a List (New List)</h3>
+
+  <p><strong>Implement no_vowels_please</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">no_vowels_please</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+	<span class="n">vowels_removed</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+		<span class="n">vowels_removed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">remove_vowels</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
+	<span class="k">return</span> <span class="n">vowels_removed</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="s">'rdvrk'</span><span class="p">,</span> <span class="s">'ntlp'</span><span class="p">]</span> <span class="o">==</span> <span class="n">no_vowels_please</span><span class="p">([</span><span class="s">'aardvark'</span><span class="p">,</span> <span class="s">'antelope'</span><span class="p">])</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="remove-vowels-from-every-element-in-a-list-in-place">Remove Vowels From Every Element in a List (In Place)</h3>
+
+  <p><strong>Implement no_vowels_please_in_place</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">no_vowels_please_in_place</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)):</span>
+		<span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">remove_vowels</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">animals</span> <span class="o">=</span> <span class="p">[</span><span class="s">'aardvark'</span><span class="p">,</span> <span class="s">'antelope'</span><span class="p">]</span>
+<span class="n">no_vowels_please_in_place</span><span class="p">(</span><span class="n">animals</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="s">'rdvrk'</span><span class="p">,</span> <span class="s">'ntlp'</span><span class="p">]</span> <span class="o">==</span> <span class="n">animals</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="iterating-over-a-list-using-indexes">Iterating Over a List Using Indexes</h3>
+
+  <p>Notice that the <em>in place</em> version accessed every element in the list using a for loop and <strong>generated indexes</strong>.  This is possible because:</p>
+
+  <ul>
+    <li>list indexes are <strong>ints</strong></li>
+    <li>indexes are <strong>sequential and consecutive</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="we-could-have-used-a-while-loop-too">We Could Have Used a While Loop Too</h3>
+
+  <p><strong>Implementation of no_vowels_please_in_place with a while loop&#8230;</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">no_vowels_please_in_place</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+	<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="k">while</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+		<span class="n">words</span><span class="p">[</span><span class="n">count</span><span class="p">]</span> <span class="o">=</span> <span class="n">remove_vowels</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">count</span><span class="p">])</span>
+		<span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">animals</span> <span class="o">=</span> <span class="p">[</span><span class="s">'aardvark'</span><span class="p">,</span> <span class="s">'antelope'</span><span class="p">]</span>
+<span class="n">no_vowels_please_in_place</span><span class="p">(</span><span class="n">animals</span><span class="p">)</span>
+<span class="k">assert</span> <span class="p">[</span><span class="s">'rdvrk'</span><span class="p">,</span> <span class="s">'ntlp'</span><span class="p">]</span> <span class="o">==</span> <span class="n">animals</span></code></pre></figure>
+
+  </div>
+
+</section>
+
+<section>
+  <h3 id="and-finally-with-enumerate">And Finally, With Enumerate</h3>
+
+  <p><strong>Implementation of no_vowels_please_in_place with enumerate&#8230;</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">no_vowels_please_in_place</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+		<span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">remove_vowels</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+<span class="n">animals</span> <span class="o">=</span> <span class="p">[</span><span class="s">'aardvark'</span><span class="p">,</span> <span class="s">'antelope'</span><span class="p">]</span>
+<span class="n">no_vowels_please_in_place</span><span class="p">(</span><span class="n">animals</span><span class="p">)</span>
+<span class="k">assert</span> <span class="p">[</span><span class="s">'rdvrk'</span><span class="p">,</span> <span class="s">'ntlp'</span><span class="p">]</span> <span class="o">==</span> <span class="n">animals</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="reversing-a-list">Reversing a List</h3>
+
+  <p>Iterating using indexes is useful for changing things in place, but it&#39;s also necessary for certain algorithms.  For example, bubble sort requires an awareness of the following element.  Here&#39;s an example of reversing a list&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">rev</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+	<span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+		<span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>	
+	<span class="k">return</span> <span class="n">new_list</span>
+		
+<span class="k">assert</span> <span class="p">[</span><span class="s">"charlie"</span><span class="p">,</span> <span class="s">"bravo"</span><span class="p">,</span> <span class="s">"alpha"</span><span class="p">]</span> <span class="o">==</span> <span class="n">rev</span><span class="p">([</span><span class="s">"alpha"</span><span class="p">,</span> <span class="s">"bravo"</span><span class="p">,</span> <span class="s">"charlie"</span><span class="p">]),</span> <span class="s">"reverses order of non-empty list"</span>
+<span class="k">assert</span> <span class="p">[]</span> <span class="o">==</span> <span class="n">rev</span><span class="p">([]),</span> <span class="s">"returns empty list for empty list"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">rev</span><span class="p">([</span><span class="s">"alpha"</span><span class="p">,</span> <span class="s">"bravo"</span><span class="p">,</span> <span class="s">"charlie"</span><span class="p">]))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="again-with-list-comprehensions">Again, With List Comprehensions</h3>
+
+  <p><strong>We can actually replace our new list version of no_vowels_please with a single list comprehension&#8230;</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">remove_vowels</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+	<span class="n">no_vowels</span> <span class="o">=</span> <span class="s">''</span>
+	<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s">'aeiou'</span><span class="p">:</span>
+			<span class="n">no_vowels</span> <span class="o">+=</span> <span class="n">c</span>
+	<span class="k">return</span> <span class="n">no_vowels</span></code></pre></figure>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s">'aardvark'</span><span class="p">,</span> <span class="s">'antelope'</span><span class="p">]</span>
+<span class="n">no_vowels</span> <span class="o">=</span> <span class="p">[</span><span class="n">remove_vowels</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">no_vowels</span><span class="p">)</span></code></pre></figure>
+
+</div>
+  <!--_-->
+</section>
+
+<section>
+  <h3 id="filtering-with-list-comprehensions">Filtering With List Comprehensions</h3>
+
+  <p>We can use list comprehensions to filter lists as well&#8230; <strong>let&#39;s create a list comprehension that takes a list of words and returns a new list that only contains words that end in &#39;k&#39;</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s">'aardvark'</span><span class="p">,</span> <span class="s">'antelope'</span><span class="p">]</span></code></pre></figure>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">last_letter_k</span> <span class="o">=</span> <span class="p">[</span> <span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">w</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">'k'</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">last_letter_k</span><span class="p">)</span></code></pre></figure>
+
+</div>
+  <!--_-->
+</section>
+
+<section>
+  <h3 id="list-comprehensions-summary">List Comprehensions Summary</h3>
+
+  <ul>
+    <li>syntatic sugar (a <em>convenience</em>) for making new lists</li>
+    <li>again, list comprehensions <strong>make new lists</strong>.</li>
+    <li>consists of square brackets (like a list)</li>
+    <li>a for loop-like expression within the brackets</li>
+    <li>before the for loop-like expression, an expression that <em>calculates</em> each element of the new list</li>
+    <li>after the for loop-like expression, an optional expression that determines if an element should be in the new list</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="whats-a-tuple">What&#39;s a Tuple?</h3>
+
+  <p><strong>What&#39;s a tuple and how is it different from a list?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>a <strong>tuple</strong> is an immutable grouping of data</li>
+      <li>a <strong>tuple</strong> is a sequence type</li>
+      <li>it can be considered as an immutable list.</li>
+      <li>consequently, tuples can&#39;t be changed, unlike lists</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="tuple-syntax">Tuple Syntax</h3>
+
+  <p><strong>What&#39;s the syntax for creating a tuple?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>comma separated list of values</li>
+      <li>add parentheses to prevent ambiguity (for example, in function calls)</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="tuple-operations-functions-and-methods">Tuple Operations, Functions and Methods</h3>
+
+  <p><strong>What can and can&#39;t you do with tuples?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>supports sequence operators such as:
+        <ul>
+          <li>concatenation (<strong>+</strong>), multiplication (<strong>*</strong>) - both return a tuple</li>
+          <li>indexing (<strong>[index]</strong>) - returns value</li>
+          <li>slicing (<strong>[m:n]</strong>) - returns a tuple</li>
+          <li>iteration - you can loop over elements in a tuple</li>
+        </ul>
+      </li>
+      <li>because tuples are immutable&#8230;
+        <ul>
+          <li>no append</li>
+          <li>no extend</li>
+          <li>etc.</li>
+        </ul>
+      </li>
+      <li><strong>Let&#39;s try these out!</strong></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="multiple-assignment--unpacking">Multiple Assignment / Unpacking</h3>
+
+  <p>We&#39;ve seen tuples before in multiple assignment</p>
+
+  <ul>
+    <li>if there is a tuple of variables on the left side</li>
+    <li>and equal number of values in a tuple on the right side</li>
+    <li>each value is bound to each variable in order</li>
+    <li>this is also called <strong>tuple unpacking</strong></li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span> <span class="o">=</span> <span class="p">(</span><span class="s">"Timothy"</span><span class="p">,</span> <span class="s">"Tupleton"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lists-of-tuples">Lists of Tuples</h3>
+
+  <p><strong>What&#39;s the type of person in every iteration?  How many iterations are there?  What does this print out?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">smarties</span> <span class="o">=</span> <span class="p">[(</span><span class="s">"Mr"</span><span class="p">,</span> <span class="s">"Smartypants"</span><span class="p">),</span> <span class="p">(</span><span class="s">"Ms"</span><span class="p">,</span> <span class="s">"Knowitall"</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">smarties</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>it&#39;s a tuple</li>
+      <li>this loops twice</li>
+      <li>it outputs:</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">(</span><span class="s">'Mr'</span><span class="p">,</span> <span class="s">'Smartypants'</span><span class="p">)</span>
+<span class="p">(</span><span class="s">'Ms'</span><span class="p">,</span> <span class="s">'Knowitall'</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="lists-of-tuples-exercise">Lists of Tuples Exercise</h3>
+
+  <p><strong>Write a function called hello&#8230;</strong></p>
+
+  <ul>
+    <li>it should take a list of tuples as an argument</li>
+    <li>assume that every tuple is three elements, with an honorific and a first and last name</li>
+    <li>it should take each tuple and convert it into a string by:
+      <ul>
+        <li>starting with hello, and adding the first element with a period</li>
+        <li>adding the third element with an exclamation point</li>
+        <li>(&quot;Mr&quot;, &quot;Sam&quot;, &quot;Smartypants&quot;) &#8594; Hello Mr. Smartypants</li>
+        <li>note that the first name is ignored</li>
+      </ul>
+    </li>
+    <li>the function should just print out each resulting string (no return value)</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">smarties</span> <span class="o">=</span> <span class="p">[(</span><span class="s">"Mr"</span><span class="p">,</span> <span class="s">"Sam"</span><span class="p">,</span> <span class="s">"Smartypants"</span><span class="p">),</span> <span class="p">(</span><span class="s">"Ms"</span><span class="p">,</span> <span class="s">"Nelly"</span><span class="p">,</span> <span class="s">"Knowitall"</span><span class="p">)]</span>
+<span class="n">hello</span><span class="p">(</span><span class="n">smarties</span><span class="p">)</span>
+
+<span class="n">Hello</span> <span class="n">Mr</span><span class="o">.</span> <span class="n">Smartypants</span><span class="err">!</span>
+<span class="n">Hello</span> <span class="n">Ms</span><span class="o">.</span> <span class="n">Knowitall</span><span class="err">!</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lists-of-tuples-exercise-solutions">Lists of Tuples Exercise Solutions</h3>
+
+  <p><strong>We can do this a couple of ways&#8230;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">smarties</span> <span class="o">=</span> <span class="p">[(</span><span class="s">"Mr"</span><span class="p">,</span> <span class="s">"Sam"</span><span class="p">,</span> <span class="s">"Smartypants"</span><span class="p">),</span> <span class="p">(</span><span class="s">"Ms"</span><span class="p">,</span> <span class="s">"Nelly"</span><span class="p">,</span> <span class="s">"Knowitall"</span><span class="p">)]</span>
+
+<span class="k">def</span> <span class="nf">hello_v1</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Hello </span><span class="si">%</span><span class="s">s. </span><span class="si">%</span><span class="s">s!"</span> <span class="o">%</span> <span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">person</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+
+<span class="k">def</span> <span class="nf">hello_v2</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">last</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Hello </span><span class="si">%</span><span class="s">s. </span><span class="si">%</span><span class="s">s!"</span> <span class="o">%</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">last</span><span class="p">))</span>
+
+
+<span class="n">hello_v1</span><span class="p">(</span><span class="n">smarties</span><span class="p">)</span>
+<span class="n">hello_v2</span><span class="p">(</span><span class="n">smarties</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="lists-of-tuples-exercise-solutions-1">Lists of Tuples Exercise Solutions</h3>
+
+  <p>By the way, if we wanted to include the first name&#8230; we could use the code below.  <strong>Why does this work</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  tuples can be used in string formatting as is!</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Hello </span><span class="si">%</span><span class="s">s. </span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s!"</span> <span class="o">%</span> <span class="p">(</span><span class="n">person</span><span class="p">))</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>As mentioned in the previous class, we use tuples in familiar constructs in Python&#8230; such as multiple assignment.  It turns out, the second operand of a string formatting is a tuple.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="run-length-encoding">Run Length Encoding</h3>
+
+  <p><strong>Run length encoding</strong> is a simple method of compressing data by:</p>
+
+  <ol>
+    <li>Finding sequences of the same element in the data</li>
+    <li>And converting those sequences to a number and a single element</li>
+    <li>For example, &quot;loook!!&quot; would be encoded as &quot;1l3o1k2!&quot;</li>
+    <li><a href="http://en.wikipedia.org/wiki/Run-length_encoding#Example">The wikipedia article shows some examples</a></li>
+  </ol>
+
+  <p><strong>What&#39;s the run length encoded version of &quot;cccaaabbb&quot;?</strong></p>
+
+  <div class="incremental">
+    <p>3c3a3b</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="encode">Encode!</h3>
+
+  <p><strong>Let&#39;s write some pseudocode.  What are some ways to solve this?</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  keep track of the current letter</span>
+<span class="c">#  keep track of the current letter count</span>
+<span class="c">#  keep track of all previous letters and counts (what's a good data structure for this?)</span>
+<span class="c">#  go through every letter in the string</span>
+<span class="c">#  when we first see a letter, count it as 1, if we see it again, increment that count</span>
+<span class="c">#  stop incrementing when we see another letter (reset values)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="a-possible-solution">A Possible Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+	<span class="n">cur_letter</span> <span class="o">=</span> <span class="bp">None</span>
+	<span class="n">cur_letter_count</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">letter_list</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+		<span class="c"># print(letter, cur_letter, cur_letter_count)</span>
+		<span class="c"># if there's a change in letter... count it</span>
+		<span class="k">if</span> <span class="n">letter</span> <span class="o">!=</span> <span class="n">cur_letter</span><span class="p">:</span>
+			<span class="c"># guard against the initial case </span>
+			<span class="k">if</span> <span class="n">cur_letter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+				<span class="n">letter_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cur_letter</span><span class="p">,</span> <span class="n">cur_letter_count</span><span class="p">))</span>
+			<span class="c"># otherwise, we'll always reset</span>
+			<span class="n">cur_letter</span> <span class="o">=</span> <span class="n">letter</span>
+			<span class="n">cur_letter_count</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">cur_letter_count</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="n">letter_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cur_letter</span><span class="p">,</span> <span class="n">cur_letter_count</span><span class="p">))</span>
+	<span class="n">encoded</span> <span class="o">=</span> <span class="s">""</span>
+	<span class="k">for</span> <span class="n">letter</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">letter_list</span><span class="p">:</span>
+		<span class="n">encoded</span> <span class="o">=</span> <span class="n">encoded</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">+</span> <span class="n">letter</span>
+	<span class="k">return</span> <span class="n">encoded</span>
+
+<span class="n">word</span> <span class="o">=</span> <span class="s">"tutt"</span>
+<span class="c"># print("%s encoded is %s" % (word, encode(word)))</span>
+<span class="k">assert</span> <span class="s">"1t1u2t"</span> <span class="o">==</span> <span class="n">encode</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+<span class="n">word</span> <span class="o">=</span> <span class="s">"whaaaaat the what???"</span>
+<span class="c"># print("%s encoded is %s" % (word, encode(word)))</span>
+<span class="k">assert</span> <span class="s">"1w1h5a1t1 1t1h1e1 1w1h1a1t3?"</span> <span class="o">==</span> <span class="n">encode</span><span class="p">(</span><span class="n">word</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

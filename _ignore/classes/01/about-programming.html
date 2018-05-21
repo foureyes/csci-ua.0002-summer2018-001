@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>About Programming Slides (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1> About 
+<br />
+Programming
+</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="whats-a-program">What&#39;s a Program?</h2>
+  <aside>And what's all this talk about computer science?</aside>
+</section>
+
+<section>
+  <h3 id="heres-one">Here&#39;s One!</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">urllib.request</span><span class="o">,</span> <span class="nn">json</span>
+
+<span class="c"># we're going to ask tumblr for some posts ...</span>
+<span class="n">search_tag</span> <span class="o">=</span> <span class="s">'cat'</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s">'XBu4Lke6Cyh2UrLFIZW0jIo79sUT8EwtruJduMAknEUNhccNwY'</span>
+<span class="n">post_type</span> <span class="o">=</span> <span class="s">'text'</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'http://api.tumblr.com/v2/tagged?api_key='</span> <span class="o">+</span> <span class="n">api_key</span> 
+<span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s">'&amp;tag='</span> <span class="o">+</span> <span class="n">search_tag</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="n">posts</span>  <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="p">)[</span><span class="s">'response'</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">post</span><span class="p">[</span><span class="s">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'photo'</span><span class="p">:</span>
+        <span class="n">tags</span> <span class="o">=</span> <span class="n">post</span><span class="p">[</span><span class="s">'tags'</span><span class="p">]</span>
+        <span class="n">photo</span> <span class="o">=</span> <span class="n">post</span><span class="p">[</span><span class="s">'photos'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">number_of_tags</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">number_of_tags</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">photo</span><span class="p">[</span><span class="s">'original_size'</span><span class="p">][</span><span class="s">'url'</span><span class="p">]</span> <span class="o">+</span> <span class="s">"</span><span class="se">\n\n</span><span class="s">"</span><span class="p">)</span></code></pre></figure>
+
+  <details open="">
+    <ul>
+      <li>QUESTION - (next) What does this do?</li>
+      <li>QUESTION - (next) What&#39;s a program?</li>
+    </ul>
+  </details>
+</section>
+
+<section>
+  <h3 id="a-quick-exercise">A Quick Exercise</h3>
+  <aside>
+What do you think this program does?  Try walking through it line-by-line. &rarr;
+</aside>
+  <div class="incremental">
+    <p>This program prints out photo posts from tumblr that have at least two tags, with "cat" as one of those tags.</p>
+    <aside>
+Let's try running it (hopefully looking for cats is a sufficiently benign search!). &rarr;
+</aside>
+    <p>(You can try this out too if you have your laptop and can follow along)</p>
+    <aside>
+Based on this example, describe what a program is. &rarr;
+</aside>
+    <p>One simple description might be: a set of instructions that tell the computer to do things.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="a-formal-definition">A Formal Definition</h3>
+  <p><strong>program</strong> - a sequence of instructions that specifies to a computer actions and computations to be performed</p>
+</section>
+
+<section>
+  <h2 id="this-course-is-about-programming-not-just-programs">This Course is About <em>Programming</em>, not Just Programs</h2>
+  <aside>So... what's programming?</aside>
+</section>
+
+<section>
+  <h3 id="programming">Programming</h3>
+
+  <ul>
+    <li>writing a program (of course!)</li>
+    <li>all of the ancillary processes involved in writing that program
+      <ul>
+        <li>designing / planning / requirements</li>
+        <li>testing</li>
+        <li>debugging</li>
+        <li>refactoring (changing code)</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="programming-can-be">Programming Can Be:</h3>
+  <ul>
+    <li>Engineering (software engineering)
+      <ul>
+        <li>Precise and exacting</li>
+        <li>Provable and formally verifiable</li>
+      </ul>
+    </li>
+    <li>A craft  (creative coding)
+      <ul>
+        <li>Creative and iterative process</li>
+        <li>Expertise built through experience</li>
+      </ul>
+    </li>
+    <li>A science (computer science)
+      <ul>
+        <li>The study of information processing and computation</li>
+        <li>Related to mathematics and philsophy</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="but-its-really-just-problem-solving">But It&#39;s Really Just Problem Solving</h2>
+  <aside>Taking a step back, we write programs to scratch an itch</aside>
+</section>
+
+<section>
+  <h3 id="why-would-you-want-to-learn-how-to-program">Why Would You Want to Learn How to Program?</h3>
+  <aside>
+Some motivation...
+</aside>
+  <ul>
+    <li>I&#39;m going to be the next <a href="http://en.wikipedia.org/wiki/Sid_Meier">Sid Meier</a>, <a href="http://en.wikipedia.org/wiki/Ada_Lovelace#First_computer_program">Ada Lovelace</a>, or <a href="http://en.wikipedia.org/wiki/Mark_Zuckerberg">Mark Zuckerberg</a>!</li>
+    <li>(Speaking of Ada Lovelace, <a href="https://upload.wikimedia.org/wikipedia/commons/a/ac/AnalyticalMachine_Babbage_London.jpg">this is a computer!</a>)</li>
+    <li>I&#39;m obsessive about my <a href="http://globalgeeknews.com/wp-content/uploads/2011/04/Spreadsheet-Batman.jpg">spreadsheets</a>; I need to get that formula/conditional formatting to work!</li>
+    <li>Statistics is hard; I need to learn some <a href="http://en.wikipedia.org/wiki/R_(programming_language)">R</a>!</li>
+    <li>Physics is hard; I need to learn some <a href="http://en.wikipedia.org/wiki/MATLAB">MATLAB</a>!</li>
+  </ul>
+
+  <details open="">
+    <ul>
+      <li>QUESTION - anyone know sid meier or ada lovelace</li>
+      <li>DEMO - wiki articles</li>
+      <li>DEMO - R?</li>
+    </ul>
+  </details>
+</section>
+
+<section>
+  <h3 id="why-else">Why Else?</h3>
+  <aside>
+Some more motivation...
+</aside>
+  <ul>
+    <li>I&#39;m managing a bunch of nerdy programmers; we need to figure out how to talk to each other.</li>
+    <li>Technology is the art medium of the future; I&#39;m going to be the next <a href="http://www.coryarcangel.com/things-i-made/2002-001-super-mario-clouds">Cory</a> <a href="http://en.wikipedia.org/wiki/Cory_Arcangel">Arcangel</a>!</li>
+    <li>I want to make <a href="http://www.minecraft.net/">MineCraft</a>, like <a href="http://en.wikipedia.org/wiki/Notch_(game_designer)">Notch</a>, or at least make <a href="http://www.youtube.com/watch?v=GwHBaSySHmo">minecraft in minecraft</a></li>
+    <li>It&#39;s a prereq (meh).</li>
+    <li><strong>It&#39;s fun!</strong> (seriously, it is!)</li>
+  </ul>
+
+  <details open="">
+    <ul>
+      <li>QUESTION - anyone know cory arcangel or minecraft?</li>
+      <li>DEMO - art</li>
+      <li>DEMO - wiki article</li>
+      <li>DEMO - video?</li>
+    </ul>
+  </details>
+</section>
+
+<section>
+  <h2 id="great-im-convinced--sign-me-up">Great, I&#39;m convinced!  <strong>Sign me up!</strong></h2>
+  <aside>
+But before we get too much into programs ...
+</aside>
+</section>
+
+<section>
+  <h1 id="lets-talk-about-what-these-programs-run-on-"><a href="computers-storage.html">Let&#39;s talk about what these programs run on </a></h1>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

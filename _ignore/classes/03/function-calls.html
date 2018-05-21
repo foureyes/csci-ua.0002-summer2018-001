@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Calling Built-In Functions (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="calling-built-in-functions">Calling Built-In Functions</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="built-in-functions">Built-In Functions</h3>
+
+  <p>Based on the previous slides, <strong>name some functions that we&#39;ve learned so far</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>(Remember, a <strong>function</strong> is a named sequence of statements that performs a specific task or useful operation)</p>
+
+    <ol>
+      <li>print</li>
+      <li>type</li>
+      <li>int</li>
+      <li>float</li>
+      <li>str</li>
+    </ol>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="using-built-in-functions">Using Built-In Functions</h3>
+
+  <p>How do you use (<em>call</em>) built-in functions in your code?  <strong>How would you call the function, str, on a value, 300 (that is, convert 300 to a string)?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+1. start with the function name, str
+2. use parentheses to signify that you're calling a function
+3. within those parentheses, put in the value that you're passing in, 300
+"""</span>
+<span class="nb">str</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="parentheses-after-a-function-name-signify-that-youre-calling-executing-that-function">Parentheses after a function name signify that you&#39;re calling (executing) that function!</h2>
+</section>
+
+<section>
+  <h3 id="using-built-in-functions-with-multiple-input-values">Using Built-In Functions with Multiple Input Values</h3>
+
+  <ol>
+    <li>again start with the function name</li>
+    <li>use parentheses to signify that you&#39;re calling a function</li>
+    <li>within those parentheses, put in the values, <strong>separated by commas</strong>, that you&#39;re passing in</li>
+  </ol>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+print can take multiple values as inputs
+this contrived example shows two strings as inputs to print
+"""</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Hi "</span><span class="p">,</span> <span class="s">"there"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="some-terminology">Some Terminology</h3>
+
+  <ul>
+    <li><strong>call</strong> - using a function in your code, executing a function</li>
+    <li><strong>arguments</strong> - the actual literal values that a function is called with; 25 is the argument in <em>print(25)</em></li>
+    <li><strong>parameters</strong> - within the function itself, the names given to the values passed in (we&#39;ll see more about this when we create our own functions)</li>
+    <li><strong>passing</strong> arguments into a function - providing input values to a function</li>
+    <li><strong>return</strong> value - the value that&#39;s given back to your program after <em>calling</em> a function (returning a value <strong>doesn&#39;t mean printing out a value</strong>)</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="talkin-the-talk">Talkin&#39; the Talk</h3>
+
+  <p>Using this code as an example:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">num</span> <span class="o">=</span> <span class="s">"5"</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">)</span></code></pre></figure>
+
+  <ol>
+    <li><strong>what is the name of the function being called?</strong> &#8594;</li>
+    <li><strong>what are the arguments passed in to the function?</strong> &#8594;</li>
+    <li><strong>what value is returned from this function call?</strong> &#8594;</li>
+  </ol>
+
+  <div class="incremental">
+    <ol>
+      <li>int</li>
+      <li>num, or the string, &quot;5&quot;</li>
+      <li>the integer, 5</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h3 id="talkin-the-talk-2">Talkin&#39; the Talk 2</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">length</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="k">print</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span></code></pre></figure>
+
+  <ol>
+    <li><strong>what is the name of the function being called?</strong> &#8594;</li>
+    <li><strong>what are the arguments passed in to the function?</strong> &#8594;</li>
+  </ol>
+
+  <div class="incremental">
+    <ol>
+      <li>print</li>
+      <li>the integers, length and width (10 and 7 respectively)</li>
+    </ol>
+
+    <p>Note that <strong>print does not return a value to your program; rather it <em>prints</em> values to the screen</strong>.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="composing-functions">Composing Functions</h3>
+
+  <ul>
+    <li>you can call functions within functions</li>
+    <li>the value returned by the inner function calls are what&#39;s used as arguments to the outer function call</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">5</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+  <p><strong>What is printed out by this program?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>The type of the result of calling str(5 + 5), which <strong>turns out to be?</strong> &#8594;</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">str</span><span class="s">'&gt;</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="a-closer-look-at-a-built-in-function-called-input"><a href="input-review.html">A Closer Look At a Built-In Function Called Input</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

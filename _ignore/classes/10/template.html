@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <p>#</p>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <p>###</p>
+  <aside></aside>
+  <div class="incremental">
+
+  </div>
+</section>
+
+<section>
+  <div class="highlighter-rouge"><pre class="highlight"><code>* built in modules
+	* random
+		* randint
+		* random
+	* sys
+		* exit
+		* version
+	* math
+		* sqrt
+		* floor
+		* ceil
+	* turtle (we won't cover functions, etc from turtle, but just know that it's a module)
+* if statements
+	* be careful of order of elifs
+		* see fizz buzz
+		* &gt; or = to exactly
+		* narrowest up top
+	* remember to use elif and else
+		* for example... if there's an else condition... user inputs 1, 2 or any number larger
+		* print out foo, bar, baz respectively
+		* if n == 1:
+		*   print("foo")	
+		* if n == 2:
+		*   print("bar")	
+   	    	* else:
+		*   print("baz")
+* loops
+	* while loops
+		* some sort of condition
+		* remember guard variable
+		* best for
+			* user input
+			* unknown number of iterations
+			* need to stop at a condition
+	* for loops
+		* several permutations of range
+			* one argument
+			* two args
+			* three args
+		* remember variable is anything
+		* but you do not need count!
+		* best for
+			* known number of iterations
+			* iterating over a finite, "known" sequence
+	* general strategy
+		* summing (same for both)
+		* counting (only really for while, maybe)
+		* input
+		* what are you keeping track of?
+			* perhaps more than one var
+				* count and sum in while loop
+				* input and sum?
+			* remember there are variables outside
+				* let's say x position
+				* for ... move random number of feet * homeworks
+* hw1
+* hw2
+* hw3
+* hw4 * handouts
+* go over initial hand out
+* go over intermediary handout
+* go over quiz 1 * about the exam again
+</code></pre>
+  </div>
+</section>
+
+<section>
+  <h2 id="section"><a href=""></a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

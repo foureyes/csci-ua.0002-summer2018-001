@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>About Class (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="homework-1-feedback">Homework #1 Feedback</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="general-feedback">General Feedback</h2>
+
+</section>
+<section>
+  <h3 id="output-vs-program">Output vs Program</h3>
+
+  <ul>
+    <li>please don&#39;t submit the output of your program</li>
+    <li>&#8230; and don&#39;t send a copied and pasted version of your interaction with the interactive shell (that will give an error)</li>
+  </ul>
+
+  <p>Don&#39;t send a file that looks like this:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span>
+<span class="n">hello</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="print-vs-string-concatenation">Print vs String Concatenation</h3>
+
+  <p><strong>Using multiple arguments when calling print is not the same as using string concatenation.</strong></p>
+
+  <p>This is two string arguments being passed to print&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="p">,</span> <span class="s">"there"</span><span class="p">)</span></code></pre></figure>
+
+  <p>This is a single argument created by adding strings&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"hello"</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="s">"there"</span><span class="p">)</span></code></pre></figure>
+
+  <p>Lastly, avoid doing this (it works, but it&#39;s confusing!)&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"hello"" ""there"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="variable-names">Variable Names</h3>
+
+  <p><strong>One convention that we use for naming variables is: keep variable names lowercase</strong></p>
+
+  <p>This is preferred:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">greeting</span> <span class="o">=</span> <span class="s">"hello"</span></code></pre></figure>
+
+  <p>Over these:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Greeting</span> <span class="o">=</span> <span class="s">"hello"</span>
+<span class="n">GREETING</span> <span class="o">=</span> <span class="s">"hello"</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="operators">Operators</h3>
+
+  <p>Try to use spaces between operators:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span></code></pre></figure>
+
+  <p>Avoid this&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">var</span> <span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="o">+</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="temperaturepy-milespy">temperature.py, miles.py</h2>
+</section>
+
+<section>
+  <h3 id="floats--ints">Floats / Ints</h3>
+
+  <ul>
+    <li>totally optional, but if you want to accept floating point numbers, don&#39;t use int in your conversion</li>
+    <li>(<strong>no points were taken off for this</strong>)</li>
+    <li>what happens if you convert the user input into int?</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mf">5.0</span></code></pre></figure>
+
+  <p>(hint&#8230; it comes in as a string because of input)</p>
+</section>
+
+<section>
+  <h2 id="treepy">tree.py</h2>
+</section>
+
+<section>
+  <h3 id="draw-a-tree">Draw a Tree</h3>
+
+  <ul>
+    <li>escape backslashes</li>
+    <li>add spaces before and after</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">" /</span><span class="se">\\</span><span class="s"> "</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"/  </span><span class="se">\\</span><span class="s">"</span><span class="p">)</span></code></pre></figure>
+
+  <p>&#8230; But really &#8230;it wasn&#39;t the code that was the issue. The assignment asked for <strong>two trees!</strong></p>
+
+</section>
+
+<section>
+  <h3 id="lost-in-a-forest">Lost in a Forest</h3>
+
+  <p>Your tree programs:</p>
+
+  <ul>
+    <li>for maximum effect, <a href="https://www.youtube.com/watch?v=RGT4V6JmINA&amp;t=3m45s">play this</a> while scrolling through slowly</li>
+    <li><a href="../../resources/txt/trees.txt">trees</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="review"><a href="review.html">Review</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

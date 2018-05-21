@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Strings as a Compound Data Type - Review (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="strings-as-a-compound-data-type---review">Strings as a Compound Data Type - Review</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="indexing">Indexing</h3>
+
+  <p><strong>What is the index of the following characters in these strings? &#8594;</strong></p>
+
+  <ol>
+    <li>&#39;h&#39; in &quot;hi bob!&quot;</li>
+    <li>&#39;!&#39; in &quot;hi bob!&quot;</li>
+    <li>&#39; &#39; in &quot;hi bob!&quot;</li>
+  </ol>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mf">1.</span> <span class="mi">0</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mf">2.</span> <span class="mi">6</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mf">3.</span> <span class="mi">2</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="indexing-continued">Indexing Continued</h3>
+
+  <p><strong>What&#39;s the output of the following code? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">idx</span><span class="p">,</span> <span class="n">animal</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s">"tiger"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">animal</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">animal</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"animal"</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">animal</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">animal</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">100</span><span class="p">])</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">r</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">e</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">i</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">IndexError</span><span class="p">:</span> <span class="n">string</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="summary-for-indexing">Summary for Indexing</h3>
+
+  <ul>
+    <li>a <strong>string</strong> is an <strong>ordered sequence</strong> of characters</li>
+    <li>an <strong>index</strong> is the numeric position of an element within a collection of elements</li>
+    <li>in the case of <strong>strings</strong>, <strong>index</strong> is the position of the char within a string</li>
+    <li>the <strong>first element</strong> is at <strong>index 0</strong>, and it increments from there</li>
+    <li><strong>last element</strong> is at index <strong>length - 1</strong> (len(s) - 1)</li>
+    <li>also, <strong>last element</strong> is at index <strong>-1</strong></li>
+    <li><strong>second to last element</strong> is at index <strong>-2</strong></li>
+    <li>you can retrieve a specific character from a string by indexing into it</li>
+    <li>if index doesn&#39;t exist, you will get an error</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="indexing-syntax">Indexing Syntax</h3>
+
+  <p>The <strong>indexing</strong> syntax is as follows:</p>
+
+  <ul>
+    <li>value (as variable or literal or even function call)</li>
+    <li>open square bracket</li>
+    <li>index of desired char (an integer)</li>
+    <li>close square bracket</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="indexing-examples">Indexing Examples</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  index into string that's bound to a variable name</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s">"foo"</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c">#  index into a string literal</span>
+<span class="s">"foo"</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c">#  index into the return result of a function</span>
+<span class="k">def</span> <span class="nf">give_back_foo</span><span class="p">():</span>
+	<span class="k">return</span> <span class="s">"foo"</span>
+
+<span class="n">give_back_foo</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="are-strings-mutable">Are Strings Mutable?</h3>
+
+  <p><strong>What happens if I try to change the string &quot;pugs&quot; into &quot;hugs&quot; using inexing and the assignment operator? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">"hugs"[0] = 'p'</code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>strings are <strong>not mutable</strong></li>
+      <li>you can read values by indexing into a string</li>
+      <li>however, you can&#39;t change characters in a string</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+TypeError: 'str' object does not support item assignment</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="an-index-that-doesnt-exist">An Index That Doesn&#39;t Exist</h3>
+
+  <p><strong>What happens if I try to access an index that doesn&#39;t exist? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="s">"pugs"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">50</span><span class="p">])</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>accessing an index that doesn&#39;t exist causes an error</li>
+      <li>specifically, an IndexError</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">IndexError</span><span class="p">:</span> <span class="n">string</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="n">ranges</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="using-every-character-in-a-string">Using Every Character in a String</h3>
+
+  <p>What if we want to do something to each character in a string?</p>
+
+  <ul>
+    <li>count the number of exclamation points I used in my slides!?
+      <ul>
+        <li>by going through every character</li>
+        <li>and incremting a count variable</li>
+      </ul>
+    </li>
+    <li>take a word and create a new word by changing all vowels into numbers for a variant of &quot;L33T SP34K&quot;
+      <ul>
+        <li>construct a new string</li>
+        <li>go through every character of the original string</li>
+        <li>add a number for cerain characters&#8230; or the original character</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="looping-over-each-character">Looping Over Each Character</h3>
+
+  <p>We can iterate over every character that&#39;s in a string.</p>
+
+  <ul>
+    <li>we&#39;ve used a construct that lets us iterate over every element in an ordered sequence</li>
+    <li><strong>what was that construct?&#8594;</strong></li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  for loops!</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s">"hello"</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="for-loops-and-strings">For Loops and Strings</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">my_crazy_string</span> <span class="o">=</span> <span class="s">"oh my!"</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">my_crazy_string</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></code></pre></figure>
+
+  <ul>
+    <li>for loops allow us to iterate over every char in a string.</li>
+    <li>similar to looping over a sequence of #&#39;s</li>
+    <li>variable specified in loop represents the current char</li>
+    <li>the loop continues until there are no letters left</li>
+    <li>the above code prints out:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">o</span>
+<span class="n">h</span>
+ 
+<span class="n">m</span>
+<span class="n">y</span>
+<span class="err">!</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="another-example">Another Example</h3>
+
+  <p>The following code:</p>
+
+  <ul>
+    <li>uses a for loop to go over every letter in &quot;jetpack&quot;</li>
+    <li>for each letter, prints out the letter with a suffix of &quot;am&quot; appended it</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="s">"jetpack"</span>
+<span class="n">suffix</span> <span class="o">=</span> <span class="s">"am"</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="n">suffix</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-quick-aside-on-assert">A Quick Aside on Assert</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">assert</span> <span class="o">&lt;</span><span class="n">some</span> <span class="n">expression</span> <span class="n">that</span> <span class="n">results</span> <span class="ow">in</span> <span class="n">a</span> <span class="nb">bool</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">string</span><span class="o">&gt;</span></code></pre></figure>
+
+  <ul>
+    <li><strong>assert</strong> statements consist of the <strong>keyword assert</strong></li>
+    <li>followed by <em>any</em> expressions that results in a bool</li>
+    <li>followed by a string</li>
+    <li>causes an error if condition is not True</li>
+    <li>we use asserts to test expected and actual values of functions</li>
+    <li>goal is to get <strong>no output</strong> (though you can print something after saying that tests passed)</li>
+    <li><strong>try writing your tests first!</strong></li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">assert</span> <span class="n">expected</span> <span class="o">==</span> <span class="n">actual</span><span class="p">,</span> <span class="s">"describe test"</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-quick-aside-on-break">A Quick Aside on Break</h3>
+
+  <p>The <strong>break</strong> statement immediately stops the execution of a loop. <strong>What does the following code print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s">"challenge"</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s">'a'</span><span class="p">:</span>
+		<span class="k">break</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">letter</span> <span class="o">+</span> <span class="s">"at"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">cat</span>
+<span class="n">hat</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="a-quick-aside-on-docstrings">A Quick Aside on Docstrings</h3>
+
+  <p>A <strong>docstring</strong> is a triple-quoted string immediately following the header of a function definition.</p>
+
+  <ul>
+    <li>it describes what the function does</li>
+    <li>it&#39;s essentially an inline comment / documentation</li>
+    <li>some tools pick up on this documentation (like the help function in the interactive shell)</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">foo</span><span class="p">()</span>
+	<span class="s">"""gives back a greeting"""</span>
+	<span class="k">return</span> <span class="s">"hi"</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="letter-in-word-v1">Letter in Word (v1)</h3>
+
+  <p><strong>Try implementing this function!</strong></p>
+
+  <ul>
+    <li>create an ipo chart</li>
+    <li>write assertion statements (how many?)</li>
+    <li>write a doc string</li>
+    <li>implement a function called letter_in_word</li>
+    <li>it should take two arguments, a letter and a word</li>
+    <li>it should return True if the letter is in the word, otherwise, return False</li>
+    <li>use assert on a True case and on a False case</li>
+    <li>implement using <strong>two return statements</strong></li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="letter-in-word-v1-continued">Letter in Word (v1) Continued</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">letter_in_word</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+	<span class="s">""" determines whether or not a letter is in a word"""</span>
+	<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="n">letter</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">True</span>
+	<span class="k">return</span> <span class="bp">False</span>
+
+<span class="k">assert</span> <span class="bp">True</span> <span class="o">==</span> <span class="n">letter_in_word</span><span class="p">(</span><span class="s">'x'</span><span class="p">,</span> <span class="s">"ox"</span><span class="p">),</span> <span class="s">"letter is in word"</span>
+<span class="k">assert</span> <span class="bp">False</span> <span class="o">==</span> <span class="n">letter_in_word</span><span class="p">(</span><span class="s">'y'</span><span class="p">,</span> <span class="s">"ox"</span><span class="p">),</span> <span class="s">"letter is not in word"</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="letter-in-word-v2">Letter in Word (v2)</h3>
+
+  <p>Here&#39;s another way of doing it using <strong>break</strong>.</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">letter_in_word</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+	<span class="n">result</span> <span class="o">=</span> <span class="bp">False</span>
+	<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="n">letter</span><span class="p">:</span>
+			<span class="n">result</span> <span class="o">=</span> <span class="bp">True</span>
+			<span class="k">break</span>
+	<span class="k">return</span> <span class="n">result</span>
+
+<span class="k">assert</span> <span class="bp">True</span> <span class="o">==</span> <span class="n">letter_in_word</span><span class="p">(</span><span class="s">'c'</span><span class="p">,</span> <span class="s">"chihuahua"</span><span class="p">),</span> <span class="s">"letter is in word"</span>
+<span class="k">assert</span> <span class="bp">False</span> <span class="o">==</span> <span class="n">letter_in_word</span><span class="p">(</span><span class="s">'x'</span><span class="p">,</span> <span class="s">"chihuahua"</span><span class="p">),</span> <span class="s">"letter is not in word"</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="letter-in-word-revisited">Letter in Word Revisited</h3>
+
+  <p>There are actually a couple of much easier ways to do this rather than writing our own function. <strong>What are two ways of determining whether or not a string is a substring of another string?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  use the in operator:</span>
+<span class="s">'a'</span> <span class="ow">in</span> <span class="s">'aardvark'</span>
+
+<span class="c">#  use the find method:</span>
+<span class="s">'aardvark'</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'a'</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+
+</section>
+
+<section>
+  <h3 id="looping-over-strings-summary--syntax">Looping Over Strings Summary / Syntax</h3>
+
+  <ul>
+    <li>for loops allow us to iterate over every character in a string.</li>
+    <li>it&#39;s similar to looping over a sequence of #&#39;s</li>
+    <li>the variable in the loop head represents the current character</li>
+    <li>the loop continues until there are no letters left</li>
+  </ul>
+
+</section>
+
+<!--
+<section markdown="block">
+###  Letter in Word (v1)
+
+Using loops, we can implement a function that determines whether a letter is in a word (there's actually already a construct in Python that does this...).
+
+* we'll use assert to test a True case and a False case
+* this particular implementation uses two __return__ statements
+
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">letter_in_word</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+	<span class="s">""" determines whether or not a letter is in a word"""</span>
+	<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="n">letter</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">True</span>
+	<span class="k">return</span> <span class="bp">False</span>
+
+<span class="k">assert</span> <span class="bp">True</span> <span class="o">==</span> <span class="n">letter_in_word</span><span class="p">(</span><span class="s">'x'</span><span class="p">,</span> <span class="s">"ox"</span><span class="p">),</span> <span class="s">"letter is in word"</span>
+<span class="k">assert</span> <span class="bp">False</span> <span class="o">==</span> <span class="n">letter_in_word</span><span class="p">(</span><span class="s">'y'</span><span class="p">,</span> <span class="s">"ox"</span><span class="p">),</span> <span class="s">"letter is not in word"</span></code></pre></figure>
+
+</section>
+-->
+
+<section>
+  <h3 id="how-many-as-are-in-aardvark">How Many A&#39;s Are in Aardvark?</h3>
+
+  <p><strong>Write a function that counts how many times a letter occurs in a word. &#8594;</strong></p>
+
+  <ul>
+    <li>create a function called <strong>count_letters</strong></li>
+    <li>use assert on at least two cases to test, and write a docstring</li>
+    <li>create an ipo chart
+      <ul>
+        <li>it should take <strong>two arguments</strong>: a letter and a word</li>
+        <li>it should <strong>return an integer</strong></li>
+      </ul>
+    </li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">count_letters</span><span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'aardvark'</span><span class="p">))</span>
+<span class="mi">3</span></code></pre></figure>
+
+  <!--_end bold-->
+</section>
+
+<section>
+  <h3 id="how-many-as-are-in-aardvark-solution">How Many A&#39;s Are in Aardvark? Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">count_letters</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+	<span class="s">"""returns the number of times a letter occurs in a word"""</span>
+	<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="n">letter</span><span class="p">:</span>
+			<span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">return</span> <span class="n">count</span>
+<span class="k">assert</span> <span class="mi">3</span> <span class="o">==</span> <span class="n">count_letters</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"aardvark"</span><span class="p">),</span> <span class="s">"should count letters in word"</span>
+<span class="k">assert</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">count_letters</span><span class="p">(</span><span class="s">"x"</span><span class="p">,</span> <span class="s">"aardvark"</span><span class="p">),</span> <span class="s">"zero if no letters in word"</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="counting-letters-revisited">Counting letters Revisited</h3>
+
+  <p>Just like finding a substring, there&#39;s a much easier way to find the number of times a substring occurs inside another string. <strong>What is the method that let&#39;s us do this?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  it's just count!</span>
+<span class="s">"banana"</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">'an'</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+
+</section>
+
+<section>
+  <h3 id="construct-a-string-with-spaces-after-every-letter">Construct a String With Spaces After Every Letter</h3>
+
+  <p><strong>Let&#39;s write a function that takes a string and puts a space after every character. &#8594;</strong></p>
+
+  <ul>
+    <li>create a function called <strong>insert_spaces</strong></li>
+    <li>use assert on at least two cases to test (a good one might be empty string), write a doc string</li>
+    <li>create an ipo chart
+      <ul>
+        <li>it should take two one argument: a string</li>
+        <li>it should return a string</li>
+      </ul>
+    </li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">insert_spaces</span><span class="p">(</span><span class="s">'aaaah!'</span><span class="p">))</span>
+<span class="n">a</span> <span class="n">a</span> <span class="n">a</span> <span class="n">a</span> <span class="n">h</span> <span class="err">!</span> </code></pre></figure>
+
+  <!--_end bold-->
+</section>
+
+<section>
+  <h3 id="construct-a-string-with-spaces-after-every-letter-solution">Construct a String With Spaces After Every Letter Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">insert_spaces</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="s">"""inserts spaces after every letter in word"""</span>
+    <span class="n">new_word</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+        <span class="n">new_word</span> <span class="o">+=</span> <span class="n">c</span> <span class="o">+</span> <span class="s">" "</span> 
+    <span class="k">return</span> <span class="n">new_word</span>
+<span class="k">assert</span> <span class="s">"f i s h "</span> <span class="o">==</span> <span class="n">insert_spaces</span><span class="p">(</span><span class="s">"fish"</span><span class="p">),</span> <span class="s">"inserts spaces after every letter"</span>
+<span class="k">assert</span> <span class="s">""</span> <span class="o">==</span> <span class="n">insert_spaces</span><span class="p">(</span><span class="s">""</span><span class="p">),</span> <span class="s">"empty string if word is empty"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">insert_spaces</span><span class="p">(</span><span class="s">"fish"</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="slicing">Slicing</h3>
+
+  <p>You can also retrieve a <strong>substring</strong> from another string.</p>
+
+  <ul>
+    <li>you can get a section of consecutive characters from a string</li>
+    <li>example: &quot;ana&quot; is a substring in the string &quot;banana&quot;</li>
+  </ul>
+
+  <p>This is done using slicing.  Slicing syntax works as follows:</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; "placate"[3:6]
+'cat'</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="slicing-syntax">Slicing Syntax</h3>
+
+  <p>Looking at the slicing code again:</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; "placate"[3:6]
+'cat'</code></pre></figure>
+
+  <p>The general case is:</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">some_long_string[m:n]</code></pre></figure>
+
+  <ul>
+    <li><strong>m</strong> is the start index and <strong>n</strong> is the end index.</li>
+    <li>the resulting substring starts at <strong>m</strong>, and goes up to, but does <strong>not</strong> include <strong>n</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="substring-exercises">Substring Exercises</h3>
+
+  <p>Write the slice to pick out the following substring from the original string:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">"gone!"</span>
+<span class="c">#     01234</span></code></pre></figure>
+
+  <ol>
+    <li>go</li>
+    <li>on</li>
+    <li>one</li>
+    <li>one!</li>
+  </ol>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="some-slicing-tricks">Some Slicing Tricks</h3>
+
+  <ul>
+    <li>leaving out the first index (before the colon - m) starts at the beginning of the string</li>
+    <li>leaving out the second index (after the colon - n), ends at the end of the string</li>
+    <li>if the second index, n is greater than the length of the string, up to the end is sliced</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"eggs and ham"</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="c">#eggs</span>
+<span class="s">"eggs and ham"</span><span class="p">[</span><span class="mi">9</span><span class="p">:]</span> <span class="c">#ham</span>
+<span class="s">"eggs and ham"</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span> <span class="c">#ham</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="an-easier-way-to-tell-if-a-letter-is-in-a-word">An Easier Way to Tell if a Letter is in a Word</h3>
+
+  <p>Use the <strong>in</strong> operator!</p>
+
+  <ul>
+    <li><strong>in</strong> tests for membership</li>
+    <li>it takes two operands, one on each side</li>
+    <li>if the operand on the left is in the operand on the right, <strong>in</strong> returns True</li>
+    <li>in the case of strings, <strong>in</strong> tests if one string is a substring of the other</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="in-examples">In Examples</h3>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; word = "ice cream"
+&gt;&gt;&gt; letter = "a"
+&gt;&gt;&gt; letter in word
+True
+&gt;&gt;&gt; "cat" in "vacation"
+True
+&gt;&gt;&gt; "cat" in "work"
+False
+&gt;&gt;&gt; </code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="in--not-in">In / Not In</h3>
+
+  <p>Some other things to note:</p>
+
+  <p>A string is always a substring of itself.</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; "vacation" in "vacation"
+True</code></pre></figure>
+
+  <p>Empty string is always a substring of any other string.</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; "" in "vacation"
+True</code></pre></figure>
+
+  <p><strong>not in</strong> is the logical opposite of the <strong>in</strong> operator</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; "cat" not in "vacation"
+False</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="first-word-in-a-sentence">First Word in a Sentence</h3>
+
+  <p>Create a function that returns the first word in a sentence.</p>
+
+  <ul>
+    <li>assume that spaces separate words</li>
+    <li>use assert to test with a sentence
+      <ul>
+        <li>0 words</li>
+        <li>1 word</li>
+        <li>&gt; 1 words</li>
+        <li>only spaces</li>
+      </ul>
+    </li>
+    <li>it should take one argument, a string</li>
+    <li>it should return a string</li>
+    <li>if the original string is only one word, return that word</li>
+    <li>if the original string is empty, return an empty string</li>
+    <li>if the original string is only white space, return an empty string</li>
+    <li><strong>hint</strong>: substring may be helpful</li>
+    <li><strong>hint</strong>: how do you find the end index of substring?</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="first-word-in-a-sentence-potential-solution">First Word in a Sentence Potential Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">get_first_word</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+	<span class="s">"""returns the first word in a sentence"""</span>
+	<span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s">" "</span><span class="p">:</span>
+			<span class="k">break</span>
+		<span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">return</span> <span class="n">sentence</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">index</span><span class="p">]</span>
+
+<span class="k">assert</span> <span class="s">"hi"</span> <span class="o">==</span> <span class="n">get_first_word</span><span class="p">(</span><span class="s">"hi there!"</span><span class="p">),</span> <span class="s">"returns first word"</span>
+<span class="k">assert</span> <span class="s">"hi"</span> <span class="o">==</span> <span class="n">get_first_word</span><span class="p">(</span><span class="s">"hi"</span><span class="p">),</span> <span class="s">"returns word if only one word"</span>
+<span class="k">assert</span> <span class="s">""</span> <span class="o">==</span> <span class="n">get_first_word</span><span class="p">(</span><span class="s">"  "</span><span class="p">),</span> <span class="s">"returns empty if only white space"</span>
+<span class="k">assert</span> <span class="s">""</span> <span class="o">==</span> <span class="n">get_first_word</span><span class="p">(</span><span class="s">""</span><span class="p">),</span> <span class="s">"returns empty if sentence is empty"</span>
+<span class="c"># print(get_first_word("hi there!"))</span>
+<span class="c"># print(get_first_word("hi"))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="is-digit">Is Digit?</h3>
+
+  <p>Create a function that determines whether or not a string only has numbers (0-9) in it.</p>
+
+  <ul>
+    <li>use assert to test a string composed of
+      <ul>
+        <li>only digits</li>
+        <li>digits and other characters</li>
+        <li>only non numeric characters</li>
+        <li>empty string</li>
+      </ul>
+    </li>
+    <li>it should take one argument, a string</li>
+    <li>it should return a True only if the only characters in it are 0 through 9</li>
+    <li>if the original string is empty, return False</li>
+    <li><strong>hint</strong>: <strong>not in</strong> may be useful</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="is-digit-potential-solution">Is Digit? Potential Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">is_digit</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+	<span class="s">"""determines if a string is numeric (only contains 0 through 9)"""</span>
+	<span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s">""</span><span class="p">:</span>
+		<span class="k">return</span> <span class="bp">False</span>
+
+	<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s">"0123456789"</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">False</span>
+
+	<span class="k">return</span> <span class="bp">True</span>
+
+<span class="k">assert</span> <span class="bp">True</span> <span class="o">==</span> <span class="n">is_digit</span><span class="p">(</span><span class="s">"58723"</span><span class="p">),</span> <span class="s">"true of all characters are numeric "</span>
+<span class="k">assert</span> <span class="bp">False</span> <span class="o">==</span> <span class="n">is_digit</span><span class="p">(</span><span class="s">"twelve"</span><span class="p">),</span> <span class="s">"false if not all characters are numeric"</span>
+<span class="k">assert</span> <span class="bp">False</span> <span class="o">==</span> <span class="n">is_digit</span><span class="p">(</span><span class="s">"12 ducks"</span><span class="p">),</span> <span class="s">"false if not all characters are numeric"</span>
+<span class="k">assert</span> <span class="bp">False</span> <span class="o">==</span> <span class="n">is_digit</span><span class="p">(</span><span class="s">""</span><span class="p">),</span> <span class="s">"false if empty string"</span>
+<span class="c"># print(is_digit("43"))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="is-digit-revisited">Is Digit Revisited</h3>
+
+  <p>And of course, there&#39;s already a couple of methods that do this. <strong>What are they?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"123"</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span>
+<span class="s">"123"</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()</span>
+<span class="s">"abc"</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span>
+<span class="s">"abc"</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

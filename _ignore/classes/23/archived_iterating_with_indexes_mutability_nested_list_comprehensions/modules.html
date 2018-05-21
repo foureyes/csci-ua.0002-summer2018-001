@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Creating Modules (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="creating-modules">Creating Modules</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="modules">Modules</h3>
+
+  <p><strong>What&#39;s a module again?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>it&#39;s just a file that contains Python code!</li>
+      <li>use <strong>import</strong> to bring in a module</li>
+      <li>the name of the module is the file name without extension</li>
+      <li>for example - import mymodule <em>brings in</em> the file named mymodule.py</li>
+      <li>&#8230;or importing random may bring in this file (varies depending on your system and installation of Python):</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">Cellar</span><span class="o">/</span><span class="n">python3</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">Frameworks</span><span class="o">/</span><span class="n">Python</span><span class="o">.</span><span class="n">framework</span><span class="o">/</span><span class="n">Versions</span><span class="o">/</span><span class="mf">3.3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">3</span><span class="o">/</span><span class="n">random</span><span class="o">.</span><span class="n">py</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="where-does-python-find-modules">Where Does Python Find Modules?</h3>
+
+  <ul>
+    <li>it checks the <strong>list of directories of directories in variable called sys.path</strong> &#8594;</li>
+    <li><strong>the current directory (where your program is located) is always at the beginning of this list</strong></li>
+  </ul>
+
+</section>
+
+<section>
+  <p>All Together Now&#8230;</p>
+</section>
+
+<section>
+  <h3 id="lets-try-creating-and-using-our-own-module">Let&#39;s Try Creating and Using Our Own Module</h3>
+
+  <p><strong>Create a Python file; call it stringtools.py</strong> &#8594;</p>
+
+  <ul>
+    <li>save a file as  <strong>stringtools.py</strong></li>
+    <li>it should have a single function, called pluralize</li>
+    <li>the function should take a single argument, a string</li>
+    <li>it should return the original string with an s appended to it</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  in stringtools.py:</span>
+<span class="k">def</span> <span class="nf">pluralize</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">word</span> <span class="o">+</span> <span class="s">'s'</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="and-using-it">&#8230;And Using It</h3>
+
+  <p>Use the pluralize function in your stringtools module&#8230;<strong>Create a new file; call it myprogram.py</strong> &#8594;</p>
+
+  <ul>
+    <li>create <strong>myprogram.py</strong> - make sure it&#39;s in the same directory as your module</li>
+    <li>ask the user for a word</li>
+    <li>print out the plural of the word using your module</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  in myprogram.py</span>
+<span class="kn">import</span> <span class="nn">stringtools</span>
+<span class="n">user_response</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Word plz&gt;</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="n">plural_w</span> <span class="o">=</span> <span class="n">stringtools</span><span class="o">.</span><span class="n">pluralize</span><span class="p">(</span><span class="n">user_response</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">plural_w</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

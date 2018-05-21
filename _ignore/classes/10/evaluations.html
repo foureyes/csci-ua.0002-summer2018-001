@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Midterm Evaluations (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="midterm-evaluations">Midterm Evaluations</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="youll-have-your-first-midterm">You&#39;ll Have Your First Midterm</h3>
+  <ul>
+    <li>the first of two midterms</li>
+    <li>(two midterms, shouldn&#39;t this be a <em>one-third</em> term?)</li>
+    <li>an early exam helps:
+      <ul>
+        <li>you and me determine where we are in this course (early on!)</li>
+        <li>pace the course accordingly</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="not-just-for-you">Not Just For You</h3>
+
+  <p>There&#39;s also a course evaluation!</p>
+
+  <ul>
+    <li>teaching approach</li>
+    <li>course material</li>
+    <li>course logistics</li>
+    <li>etc.</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="midterm-evaluations-1">Midterm Evaluations</h3>
+  <ol>
+    <li>I&#39;ll need a volunteer to deliver the evaluations to room 305 WWH</li>
+    <li>I&#39;ll distribute midterm course evaluations</li>
+    <li>I&#39;ll leave the room for 5 minutes</li>
+    <li>you&#39;ll complete the evaluations</li>
+    <li>you&#39;ll have five minutes</li>
+    <li>the volunteer will collect the completed forms</li>
+    <li>the volunteer will immediately bring them to room 305 of Warren Weaver Hall (the envelopes may be left under the door if it is closed)</li>
+  </ol>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

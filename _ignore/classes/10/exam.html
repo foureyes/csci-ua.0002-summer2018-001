@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>About the Exam (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="about-the-exam">About the Exam</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="some-logistics">Some Logistics</h3>
+
+  <ul>
+    <li>if you miss it, you get a 0</li>
+    <li>the best indication of the types of questions you&#39;ll see is the list of sample exam questions</li>
+    <li>expect the exam to to be similar to the <em>easier</em> homework (questions.py and some of the basic programming problems&#8230;) and handouts</li>
+    <li>expect about 15 questions (give or take a couple) total</li>
+    <li>you&#39;ll have the entire class period for the exam</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="types-of-questions">Types of Questions</h2>
+</section>
+
+<section>
+  <h3 id="short-answer">Short Answer</h3>
+
+  <ul>
+    <li>What&#39;s a while loop?</li>
+    <li>Name some built-in functions and what they do?</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="guided-programming-questions">Guided Programming Questions</h3>
+
+  <p>Instructions step you through each statement, you write it&#8230;</p>
+
+  <ul>
+    <li>create a variable named noun, set it equal to &quot;aardvark&quot;</li>
+    <li>create a variable named adjective, set it equal to &quot;agitated&quot;</li>
+    <li>use string interpolation to put the two together in a sentence &quot;the agitated aardvark acted awkwardly&quot;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="answer-questions-about-a-small-sample-of-code">Answer Questions About a Small Sample of Code</h3>
+
+  <p>(We&#39;ve seen this before in our quiz.) Some examples:</p>
+
+  <p>What&#39;s the output&#8230; or is there an error?</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">"foo"</span> <span class="o">+</span>  <span class="nb">int</span><span class="p">(</span><span class="s">"5"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span></code></pre></figure>
+
+  <p>What type is a?</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"enter a number"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="questions-about-sample-code-continued">Questions About Sample Code Continued</h3>
+
+  <p>What will make the loop run/not run</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">response</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="k">while</span> <span class="n">response</span> <span class="o">==</span> <span class="s">'go'</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"going"</span><span class="p">)</span></code></pre></figure>
+
+  <p><strong>Is there an error? How do you fix the error?&#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">"10"</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">+</span> <span class="n">s</span>
+<span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">n</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="questions-about-sample-code-continued-some-more">Questions About Sample Code Continued Some More</h3>
+
+  <p><strong>What&#39;s the output of&#8230;&#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">56</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"foo"</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"bar"</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"baz "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="fill-in-the-blanks">Fill in the Blanks</h3>
+
+  <p>Use a while loop to count backwards from 10 to 0 by 2&#39;s</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">count</span> <span class="o">=</span> 
+<span class="k">while</span>               <span class="p">:</span>
+   <span class="k">print</span><span class="p">(</span>         <span class="p">)</span>    
+   <span class="c">#what else goes here?</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="obviously-write-some-code">Obviously, Write Some Code</h3>
+
+  <p>Expect to write&#8230;</p>
+
+  <ul>
+    <li>if / elif / else</li>
+    <li>while and for loops (including counting, summing and sentinel variables)</li>
+    <li>modules</li>
+    <li>strings, ints, floats, bools and associated operations</li>
+    <li>all of that nested within each other (if statements in while loops, for example)</li>
+    <li>user input, for example: <strong>keep adding numbers that a user inputs, until the user enters quit</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="there-are-x-errors-in-this-code">There Are <em>X</em> Errors in This Code</h3>
+
+  <p>Read over a few lines of code; find and fix the syntax and logical errors.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  We're just counting from 1 through 10</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"we're just counting "</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="evaluate-boolean-expressions--truth-tables">Evaluate Boolean Expressions / Truth Tables</h3>
+
+  <ul>
+    <li><strong>truth tables</strong> for more complex expressions, such as <strong>p or q or r</strong></li>
+    <li>True and False or not False</li>
+    <li>10 % 5 == 1 or 1 != &quot;hello&quot;</li>
+    <li>etc.</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="exam-topics">Exam Topics</h2>
+</section>
+
+<section>
+  <h3 id="materials-covered">Materials Covered</h3>
+
+  <ul>
+    <li>the exam content <strong>is from</strong>:
+      <ul>
+        <li>the <strong>slides</strong></li>
+        <li>the <strong>modules</strong></li>
+        <li>the <strong>homework</strong></li>
+        <li>&#8230; the corresponding <strong>readings</strong> from Starting Out with Python</li>
+      </ul>
+    </li>
+    <li>if it was not covered in class, homework, or the modules/quizzes, it will not be in the exam</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="topics-from-slides">Topics from Slides</h3>
+
+  <ul>
+    <li>all topics in the slides from classes <strong>1</strong> through <strong>10</strong></li>
+    <li>check out the <strong>definitions</strong> in the slides (they&#39;re usually <strong>bolded</strong>)</li>
+    <li>check out the <strong>sample problems</strong> in the slides</li>
+    <li>the built-in functions that were in the homework (and that appeared in slides that we did not go over) <strong>may be in the exam</strong></li>
+    <li>the following topics from the slides (and modules) <strong>will not</strong> be in the exam:
+      <ul>
+        <li>turtle (was only in the online modules)</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="test-taking-strategies">Test-Taking Strategies</h2>
+</section>
+
+<section>
+  <h3 id="general-strategies">General Strategies</h3>
+
+  <ul>
+    <li>don&#39;t get bogged down on a single problem, jot down a potential answer and <strong>go back to it later</strong></li>
+    <li><strong>partial credit is given</strong>; don&#39;t leave a question blank, even if it&#39;s just notes or half an attempt</li>
+    <li><strong>double check your work</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="sample-code">Sample Code</h3>
+
+  <ul>
+    <li>go through the code line by line</li>
+    <li>write down the values you suspect will be in the variables</li>
+    <li>if there&#39;s something that requires user input, try going through the code with sample input</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="code-from-scratch">Code from Scratch</h3>
+
+  <ul>
+    <li>plan out what your going to do first</li>
+    <li>ask yourself questions, like - will there be data stored, are there repeated actions, etc.</li>
+    <li>if there is example output, run through your finished code with the sample data to make sure it works</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="any-questions-about-material-or-exam-format">Any Questions About Material or Exam Format?</h2>
+
+  <aside>If not, let's figure out how we want to review...</aside>
+</section>
+
+<section>
+  <h3 id="review">Review</h3>
+
+  <p>We have a few options.  <strong>Which one do you want to do first?</strong></p>
+
+  <ul>
+    <li>suggest topics?</li>
+    <li>alternate working on sample exam questions and going over answers</li>
+    <li>go over review slides
+      <ul>
+        <li>variables, expressions, statements</li>
+        <li>operators and types (int, bool, etc)</li>
+        <li>boolean logic</li>
+        <li>conditionals / if statements</li>
+        <li>loops / while and for</li>
+        <li>functions</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

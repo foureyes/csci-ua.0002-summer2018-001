@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>List Warm-Ups (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="list-warm-ups">List Warm-Ups</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="swap-first-and-second">Swap First and Second</h3>
+
+  <p>Write a function called <strong>swappy</strong>:</p>
+
+  <ul>
+    <li>it has one parameter, a list</li>
+    <li>it&#39;ll create an entirely new list (how?) that&#39;s copied from the list passed in</li>
+    <li>it&#39;ll swap the first and second element of the new list</li>
+    <li>if the list is less than two elements, it&#39;ll just give back the original list</li>
+    <li>finally, its return value is the new list with the first and second element swapped</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">swappy</span><span class="p">([</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">]))</span>
+<span class="c">#  prints ['b', 'c', 'a']</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="swap-first-and-second-1">Swap First and Second</h3>
+
+  <p>Here&#39;s one way to do it&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">swappy</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+	<span class="c"># create a copy of the original list</span>
+	<span class="n">new_list</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[:]</span>
+	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_list</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="n">new_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">new_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">new_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">new_list</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="an-average-point">An Average Point</h3>
+
+  <p>Write a function called <strong>average_point</strong>:</p>
+
+  <ul>
+    <li>it has one parameter, a list of lists</li>
+    <li>each sub list represents a point on the coordinate plain, so each will be composed of two elements</li>
+    <li>for example: [[0, 0], [5, 10]] &#8230; is a list of two points (0, 0) and (5, 10)</li>
+    <li>it&#39;ll create a new single point where the x value is the average of all of the x&#39;s and the y value is average of all of the y&#39;s</li>
+    <li>finally, it&#39;ll return this new single point</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">average_point</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]))</span>
+<span class="c">#  prints out [3.0, 1.0]</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="an-average-point-solution">An Average Point Solution</h3>
+
+  <p>Nested lists can be tricky sometimes, but here&#39;s a solution that could work:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">average_point</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+	<span class="n">x_total</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">y_total</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
+		<span class="n">x_total</span> <span class="o">+=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+		<span class="n">y_total</span> <span class="o">+=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+	<span class="k">return</span> <span class="p">[</span><span class="n">x_total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">),</span> <span class="n">y_total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)]</span>
+	</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="all-y">All Y</h3>
+
+  <p>Using the same list of points (a list of lists) as the previous example, write a function called <strong>all_y</strong>:</p>
+
+  <ul>
+    <li>it should take a list of points as one parameter</li>
+    <li>it should return a new list with only points where the y value is greater than the x value</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">all_y</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]))</span> <span class="c"># --&gt; [[2, 200], [4, 99]]</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">all_y</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+	<span class="n">new_points</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+			<span class="n">new_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">new_points</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="sorting-an-list-without-sort">Sorting an List Without Sort!</h3>
+
+  <ol>
+    <li>go through each position in the list and look at that element</li>
+    <li>compare the value of the current element with the value of the next element</li>
+    <li>if the value of the current element goes after the value of th next element, swap elements</li>
+    <li>remember, the idiomatic way of swapping in python is a, b = b, a</li>
+    <li>of course, once you&#39;re at the last element, there&#39;s no next element to check</li>
+    <li>once you&#39;ve gone through all of the elements&#8230; REPEAT the whole process if you&#39;ve swapped at least once</li>
+  </ol>
+
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

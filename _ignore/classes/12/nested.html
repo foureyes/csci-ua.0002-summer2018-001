@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Nested Loops Review (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="nested-loops">Nested Loops</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="nested-loops-1">Nested Loops</h3>
+
+  <p>A <strong>nested loop</strong> is just a loop inside the body of another loop.</p>
+
+  <ul>
+    <li>every iteration of the outer loop, the inner loop runs through all of its iterations</li>
+    <li>in a nested loop, the inner most loop must finish&#8230;</li>
+    <li>before another iteration of the outer loop is executed</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="a-simple-case">A Simple Case</h3>
+
+  <p><strong>How many times does the outer loop run?  For each run of the outer loop, how many times does the inner loop run?  How many times is &quot;You&#39;re driving me loopy!&quot; printed out?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">'Run number: </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"You're driving me loopy!"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>the <strong>outer</strong> loop runs 5 times</li>
+      <li>the <strong>inner</strong> loop runs 10 times</li>
+      <li>&quot;You&#39;re driving me loopy&quot; is printed out 50 times</li>
+      <li>(between each set of 10 prints, the iteration of the outer loops printed out)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="cheers">Cheers!</h3>
+
+  <p>Write a program that asks for how many cheers, and then prints out the appropriate number of cheers.</p>
+
+  <ul>
+    <li>continually ask for number of cheers</li>
+    <li>print out that many cheers, each prefixed with the count of the cheer</li>
+    <li>if the input is zero, stop asking</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">How</span> <span class="n">many</span> <span class="n">cheers</span> <span class="n">shall</span> <span class="n">we</span> <span class="n">give</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">2</span>
+<span class="n">Cheer</span> <span class="c">#1: Hip hip hooray!</span>
+<span class="n">Cheer</span> <span class="c">#2: Hip hip hooray!</span>
+<span class="n">How</span> <span class="n">many</span> <span class="n">cheers</span> <span class="n">shall</span> <span class="n">we</span> <span class="n">give</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">1</span>
+<span class="n">Cheer</span> <span class="c">#1: Hip hip hooray!</span>
+<span class="n">How</span> <span class="n">many</span> <span class="n">cheers</span> <span class="n">shall</span> <span class="n">we</span> <span class="n">give</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">0</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="some-questions-to-ask">Some Questions to Ask&#8230;</h3>
+
+  <p>Based on this output&#8230;  <strong>What parts are repeated and what kind of loops would you use for each part?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">How</span> <span class="n">many</span> <span class="n">cheers</span> <span class="n">shall</span> <span class="n">we</span> <span class="n">give</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">2</span>
+<span class="n">Cheer</span> <span class="c">#1: Hip hip hooray!</span>
+<span class="n">Cheer</span> <span class="c">#2: Hip hip hooray!</span>
+<span class="n">How</span> <span class="n">many</span> <span class="n">cheers</span> <span class="n">shall</span> <span class="n">we</span> <span class="n">give</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">1</span>
+<span class="n">Cheer</span> <span class="c">#1: Hip hip hooray!</span>
+<span class="n">How</span> <span class="n">many</span> <span class="n">cheers</span> <span class="n">shall</span> <span class="n">we</span> <span class="n">give</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">0</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>asking for input and cheering are repeated</li>
+      <li>a while loop might make sense for input (the outer loop) and a for loop for cheering (the inner loop)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="some-pseudocode">Some Pseudocode</h3>
+
+  <p><strong>In pseudocode, how might we describe this program?</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+assume number of cheers is not zero
+as long as the number of cheers isn't zero
+	ask for number of cheers
+	for every cheer 
+		display the number and display "Hip hip hooray!"
+"""</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="a-cheers-implementation">A Cheers Implementation</h3>
+
+  <p><strong>Using the output we&#39;ve seen, implement the cheers program.</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">How</span> <span class="n">many</span> <span class="n">cheers</span> <span class="n">shall</span> <span class="n">we</span> <span class="n">give</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">2</span>
+<span class="n">Cheer</span> <span class="c">#1: Hip hip hooray!</span>
+<span class="n">Cheer</span> <span class="c">#2: Hip hip hooray!</span>
+<span class="n">How</span> <span class="n">many</span> <span class="n">cheers</span> <span class="n">shall</span> <span class="n">we</span> <span class="n">give</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">0</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">number_of_cheers</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">number_of_cheers</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+	<span class="n">number_of_cheers</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'How many cheers shall we give?</span><span class="se">\n</span><span class="s">&gt; '</span><span class="p">))</span>
+	<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">number_of_cheers</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">'Cheer #'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="s">': Hip hip hooray!'</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="password-generator">Password Generator</h3>
+
+  <p>Below is the output of a program that generates passwords based on a number that is input by the user. It&#39;s similar to the cheers example.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">pasword</span> <span class="n">length</span> <span class="p">(</span><span class="mi">0</span> <span class="n">to</span> <span class="nb">exit</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="mi">10</span>
+<span class="mi">2402991612</span>
+<span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">pasword</span> <span class="n">length</span> <span class="p">(</span><span class="mi">0</span> <span class="n">to</span> <span class="nb">exit</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="mi">5</span>
+<span class="mi">60773</span>
+<span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">pasword</span> <span class="n">length</span> <span class="p">(</span><span class="mi">0</span> <span class="n">to</span> <span class="nb">exit</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="mi">2</span>
+<span class="mi">72</span>
+<span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">pasword</span> <span class="n">length</span> <span class="p">(</span><span class="mi">0</span> <span class="n">to</span> <span class="nb">exit</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="mi">0</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="password-generator-1">Password Generator</h3>
+
+  <p>Create a program that generates passwords! The passwords only consist of digits, though&#8230;</p>
+
+  <ul>
+    <li>continually ask the user for a number</li>
+    <li>if the number is 0, stop asking</li>
+    <li>if the number is not 0, generate a password:
+      <ul>
+        <li>the number entered will specify how many characters are in the password</li>
+        <li>each character is a randomly generated digit from 0 through 9</li>
+      </ul>
+    </li>
+    <li>for example, if the user enters 4, a password that may be generated is: 3084</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="password-generator-solution">Password Generator Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">password_length</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">password_length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+	<span class="n">password_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'Please enter a pasword length (0 to exit)</span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">))</span>
+	<span class="n">password</span> <span class="o">=</span> <span class="s">''</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">password_length</span><span class="p">):</span>
+		<span class="n">password</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">password</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="triangle">Triangle</h3>
+
+  <p>Draw a triangle made of stars by using <strong>nested loops</strong> to accumulate single characters.  Don&#39;t use string multiplication or string formatting. Here&#39;s the expected output:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+*
+**
+***
+****
+*****
+"""</span></code></pre></figure>
+
+  <ul>
+    <li>what&#39;s the relation between rows and stars?</li>
+    <li>note that the first row has 1 star, the second has 2 stars, etc.</li>
+    <li>try accumulating strings into a row using the inner loop</li>
+    <li>start with an empty string</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="potential-solution-for-triangle">Potential Solution for Triangle</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># create an empty  string to hold the triangle</span>
+<span class="n">triangle</span> <span class="o">=</span> <span class="s">''</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+
+	<span class="c"># create a string to hold the current row</span>
+	<span class="n">row_of_stars</span> <span class="o">=</span> <span class="s">''</span>
+
+	<span class="c"># keep on adding stars based on the current row</span>
+	<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+		<span class="n">row_of_stars</span> <span class="o">+=</span> <span class="s">'*'</span>
+
+	<span class="c"># add the row to the triangle with a new line</span>
+	<span class="n">triangle</span> <span class="o">+=</span> <span class="n">row_of_stars</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">triangle</span><span class="p">)</span></code></pre></figure>
+
+  <ul>
+    <li>note that multiplication could have also been a possible implementation</li>
+    <li>another alternative is to print out each line instead of accumulating strings</li>
+  </ul>
+
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

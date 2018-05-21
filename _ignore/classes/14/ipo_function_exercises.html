@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Functions - Exercises (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="functions---exercises-ipo-charts">Functions - Exercises, IPO Charts</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="exercises">Exercises!</h3>
+
+  <aside>Writing functions, 3 exercises and 1 demo:</aside>
+
+  <ol>
+    <li>Designing a Function</li>
+    <li>Factorial</li>
+    <li>David Lynch Movies</li>
+    <li>Greatest Common Divisor</li>
+    <li>Euclidean Rhythms</li>
+  </ol>
+
+</section>
+
+<section>
+  <h3 id="a-couple-of-tools-for-designing-functions">A Couple of Tools for Designing Functions</h3>
+
+  <ol>
+    <li>Pseudocode (we&#39;ve seen this before)</li>
+    <li>IPO Charts</li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="ipo-charts">IPO Charts</h3>
+
+  <aside>To help with the exercises... let's look at IPO charts</aside>
+
+  <p>Starting Out with Python describes the use of <strong>IPO Charts</strong> to help design and document functions.  The chart has three columns, input, processing, output:</p>
+
+  <ul>
+    <li>the <strong>input</strong> column shows a description of data that is passed in to the function</li>
+    <li>the <strong>processing</strong> column describes the process that the function performs</li>
+    <li>finally, the <strong>output</strong> column shows the data that is returned from the function</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="ipo-charts-example">IPO Charts Example</h3>
+
+  <p>An example IPO chart for our version of absolute value:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
++-----------------------------------------------------+
+| absolute_value                                      |
++-----------------------------------------------------+
+| input            | processing        | output       |
++------------------+-------------------+--------------+
+| the number to be | calculate the     | a number     |
+| processed        | number's distance | representing |
+|                  | from 0, e.g. -5   | the absolute |
+|                  | is 5 away from 0  | value        |
++------------------+-------------------+--------------+
+"""</span></code></pre></figure>
+
+  <!--_-->
+</section>
+
+<section>
+  <h2 id="and--some-exercises">And &#8230; Some Exercises</h2>
+</section>
+
+<section>
+  <h3 id="factorial">Factorial</h3>
+
+  <aside>(!!!!!!!!!!!!!!)</aside>
+
+  <p>Does anyone remember what the factorial of a number is?  For example, <strong>what is 4!? &#8594;</strong></p>
+
+  <div class="incremental">
+    <p>24</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="factorial-definition">Factorial Definition</h3>
+
+  <p>The <strong>factorial</strong> of a number is the product of all positive integers less than or equal to that number.</p>
+
+  <ul>
+    <li>it&#39;s denoted by an exclamation point (<strong>!</strong>)</li>
+    <li>the factorial of 0 is 1</li>
+  </ul>
+
+  <p>The previous example of 4! is:</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; 4 * 3 * 2 * 1
+24</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="write-a-function-that-calculates-factorial">Write a Function That Calculates Factorial</h3>
+
+  <p>We want a function that takes a number and gives back (not prints out!) the factorial of that number.</p>
+
+  <p>Example usage:</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; result = factorial(4)
+&gt;&gt;&gt; print(result)
+24
+&gt;&gt;&gt; result = factorial(0)
+&gt;&gt;&gt; print(result)
+1</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="ipo-chart">IPO Chart</h3>
+
+  <p><strong>How many arguments will the factorial function take, if any?  What processing will it do?  What will it return, if anything? &#8594;</strong></p>
+
+  <div class="incremental">
+    <p>Our no frills IPO chart for factorial:</p>
+
+    <ul>
+      <li><strong>input</strong>: a number to calculate the factorial of</li>
+      <li><strong>processing</strong>: calculate the product of all positive numbers less than or equal to the input</li>
+      <li><strong>output</strong>: return the product</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="how-about-some-pseudocode">How About Some Pseudocode</h3>
+
+  <p><strong>In pseudocode, what would the implementation of this function look like? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">define</span> <span class="n">a</span> <span class="n">function</span> <span class="n">that</span> <span class="n">takes</span> <span class="n">one</span> <span class="n">parameter</span>
+<span class="n">keep</span> <span class="n">track</span> <span class="n">of</span> <span class="n">the</span> <span class="n">product</span><span class="o">...</span>
+<span class="k">for</span> <span class="n">every</span> <span class="n">number</span> <span class="n">less</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span> <span class="n">to</span> <span class="n">n</span> <span class="p">(</span><span class="n">up</span> <span class="n">to</span><span class="p">,</span> <span class="n">but</span> <span class="ow">not</span> <span class="n">including</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="n">multiply</span> <span class="n">the</span> <span class="n">product</span> <span class="n">by</span> <span class="n">each</span> <span class="n">number</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="possible-solution">Possible Solution</h3>
+
+  <p>Here&#39;s a possible <em>iterative</em> solution:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+	<span class="n">product</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+		<span class="n">product</span> <span class="o">=</span> <span class="n">product</span> <span class="o">*</span> <span class="n">i</span>
+	<span class="k">return</span> <span class="n">product</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="using-our-new-factorial-function">Using Our New Factorial Function</h3>
+
+  <p><strong>How would I use this function in a program that asks the user for a number&#8230; and then prints out the factorial of that number? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+	<span class="n">product</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+		<span class="n">product</span> <span class="o">=</span> <span class="n">product</span> <span class="o">*</span> <span class="n">i</span>
+	<span class="k">return</span> <span class="n">product</span>
+
+<span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Give me a number, I'll give you the factorial</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="n">num</span><span class="p">))</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="is-it-a-david-lynch-movie">Is It a David Lynch Movie?</h3>
+
+  <p>Write a program that determines whether or not a user inputted movie was made by David Lynch.</p>
+
+  <div class="img-container">
+    <p><img src="../../resources/img/eraserhead.jpg" alt="Eraserhead" /></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="who">Who?</h3>
+
+  <ul>
+    <li>American filmmaker and television director</li>
+    <li>surrealist style</li>
+    <li>you might know him from:
+      <ul>
+        <li>Blue Velvet</li>
+        <li>Eraserhead</li>
+        <li>Dune (yes!)</li>
+        <li>Twin Peaks</li>
+        <li>the voice of the bartender in Family Guy (!?)</li>
+        <li>etc.</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="requirements">Requirements</h3>
+
+  <ul>
+    <li>define a function that determines if a string given is the title of a David Lynch movie</li>
+    <li>the function will return True or False</li>
+    <li><strong>use the function</strong> in a program that&#8230;
+      <ul>
+        <li><strong>continually</strong> asks the user:</li>
+        <li>&quot;Give me a movie title or q to quit&quot;</li>
+      </ul>
+    </li>
+    <li>if the user types q, end the program</li>
+    <li>if it&#39;s a David Lynch movie, print out &quot;(movie) is a David Lynch movie!&quot;</li>
+    <li>otherwise, print out &quot;There&#39;s a fish in the percolator&quot;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="example-output">Example Output</h3>
+
+  <p><strong>Go!&#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Give</span> <span class="n">me</span> <span class="n">a</span> <span class="n">movie</span> <span class="n">title</span>
+<span class="o">&gt;</span><span class="n">Blue</span> <span class="n">Velvet</span>
+<span class="n">Blue</span> <span class="n">Velvet</span> <span class="n">a</span> <span class="n">David</span> <span class="n">Lynch</span> <span class="n">movie</span><span class="err">!</span>
+<span class="n">Give</span> <span class="n">me</span> <span class="n">a</span> <span class="n">movie</span> <span class="n">title</span>
+<span class="o">&gt;</span><span class="n">Clueless</span>
+<span class="n">There</span><span class="s">'s a fish in the percolator</span><span class="err">
+</span><span class="s">Give me a movie title</span><span class="err">
+</span><span class="s">&gt;q</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="example-usage-of-the-function">Example Usage of the Function</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">movie</span> <span class="o">=</span> <span class="s">"Blue Velvet"</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">is_a_david_lynch_movie</span><span class="p">(</span><span class="n">movie</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="ipo-chart-1">IPO Chart</h3>
+
+  <p><strong>How many arguments will it take, if any?  What processing will it do?  What will it return, if anything? &#8594;</strong></p>
+
+  <div class="incremental">
+    <p>Our no frills IPO chart for is_a_david_lynch_movie:</p>
+
+    <ul>
+      <li><strong>input</strong>: a movie title</li>
+      <li><strong>processing</strong>: determine whether or not a movie title is directed by David Lynch</li>
+      <li><strong>output</strong>: return either True (if it&#39;s a David Lynch movie) or False (if it&#39;s not)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="possible-solution-1">Possible Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">is_a_david_lynch_movie</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s">"Blue Velvet"</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">==</span> <span class="s">"Dune"</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">==</span> <span class="s">"Lost Highway"</span><span class="p">:</span>
+		<span class="k">return</span> <span class="bp">True</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="bp">False</span>
+
+<span class="n">movie</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Give me a movie title</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">movie</span> <span class="o">!=</span> <span class="s">'q'</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">is_a_david_lynch_movie</span><span class="p">(</span><span class="n">movie</span><span class="p">):</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">s a David Lynch movie!"</span> <span class="o">%</span> <span class="p">(</span><span class="n">movie</span><span class="p">))</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"There's a fish in the percolator"</span><span class="p">)</span>
+	<span class="n">movie</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Give me a movie title</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="greatest-common-divisor">Greatest Common Divisor?</h3>
+
+  <p>What&#39;s the greatest common divisor (GCD) for 12 and 8?</p>
+
+  <div class="incremental">
+    <p>4</p>
+  </div>
+</section>
+
+<section>
+  <h2 id="how-did-you-figure-that-out">How Did You Figure That Out?</h2>
+</section>
+
+<section>
+  <h3 id="maybe-this-guy-could-help">Maybe This Guy Could Help&#8230;</h3>
+
+  <div class="img-container">
+    <p><img src="../../resources/img/euclid.jpg" alt="Euclid" /></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="euclid-of-alexandria">Euclid of Alexandria</h3>
+
+  <p>Who was that?  That was Euclid (obv!).</p>
+
+  <ul>
+    <li>AKA &quot;Father of Geometry&quot;</li>
+    <li>was writing algorithms two millennia ago! (about 300 BC)</li>
+    <li>wrote a series of book called Euclid&#39;s <em>Elements</em>
+      <ul>
+        <li>one of the most influential works in the history of mathematics</li>
+        <li>was used to teach math up until the 19th or 20th century</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="euclidean-algorithm">Euclidean Algorithm</h3>
+
+  <p>One method for finding the greatest common divisor is using Euclid&#39;s Algorithm:</p>
+
+  <ol>
+    <li>start with a pair of positive integers</li>
+    <li>form a new pair that&#39;s made up of the smaller number and the difference between the larger and smaller numbers</li>
+    <li>repeat until the numbers are equal</li>
+    <li>the resulting number is the GCD</li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="the-euclidean-algorithm-in-action">The Euclidean Algorithm in Action</h3>
+
+  <p><strong>By hand, find the GCD of 12 and 8 using Eclid&#39;s Algorithm. &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Larger</span> <span class="n">of</span> <span class="n">the</span> <span class="n">pair</span> <span class="n">goes</span> <span class="ow">in</span> <span class="n">column</span> <span class="n">A</span>
+
+ <span class="n">A</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">delta</span>
+<span class="n">___</span><span class="o">|</span><span class="n">___</span><span class="o">|</span><span class="n">______</span>
+<span class="mi">12</span> <span class="o">|</span> <span class="mi">8</span> <span class="o">|</span> <span class="mi">4</span>  
+ <span class="mi">8</span> <span class="o">|</span> <span class="mi">4</span> <span class="o">|</span> <span class="mi">4</span>      <span class="p">(</span><span class="mi">4</span> <span class="n">replaced</span> <span class="mi">12</span><span class="p">)</span> 
+ <span class="mi">4</span> <span class="o">|</span> <span class="mi">4</span> <span class="o">|</span> <span class="mi">0</span>      <span class="p">(</span><span class="n">Done</span><span class="err">!</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="another-example">Another Example</h3>
+
+  <p><strong>By hand, find the GCD of 60 and 24 using Eclid&#39;s Algorithm. &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Larger</span> <span class="n">of</span> <span class="n">the</span> <span class="n">pair</span> <span class="n">goes</span> <span class="ow">in</span> <span class="n">column</span> <span class="n">A</span>
+
+ <span class="n">A</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">delta</span>
+<span class="n">___</span><span class="o">|</span><span class="n">___</span><span class="o">|</span><span class="n">______</span>
+<span class="mi">60</span> <span class="o">|</span> <span class="mi">24</span><span class="o">|</span> <span class="mi">36</span>
+<span class="mi">36</span> <span class="o">|</span> <span class="mi">24</span><span class="o">|</span> <span class="mi">12</span>     <span class="p">(</span><span class="mi">36</span> <span class="n">replaced</span> <span class="mi">60</span><span class="p">)</span> 
+<span class="mi">24</span> <span class="o">|</span> <span class="mi">12</span><span class="o">|</span> <span class="mi">12</span>     <span class="p">(</span><span class="mi">12</span> <span class="n">replaced</span> <span class="mi">36</span><span class="p">)</span>
+<span class="mi">12</span> <span class="o">|</span> <span class="mi">12</span><span class="o">|</span> <span class="mi">0</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="requirements-1">Requirements</h3>
+
+  <p>Create a function that calculates the greatest common divisor of two numbers by using Euclid&#39;s algorithm.</p>
+</section>
+
+<section>
+  <h3 id="example-usage-of-the-function-1">Example Usage of the Function</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">number_1</span><span class="p">,</span> <span class="n">number_2</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">144</span>
+<span class="n">greatest_common_divisor</span> <span class="o">=</span> <span class="n">gcd</span><span class="p">(</span><span class="n">number_1</span><span class="p">,</span> <span class="n">number_2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">greatest_common_divisor</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="ipo-chart-2">IPO Chart</h3>
+
+  <p><strong>How many arguments will it take, if any?  What processing will it do?  What will it return, if anything? &#8594;</strong></p>
+
+  <div class="incremental">
+    <p>Our no frills IPO chart for gcd:</p>
+
+    <ul>
+      <li><strong>input</strong>: two numbers to find the greatest common divisor of</li>
+      <li><strong>processing</strong>: use Euclid&#39;s algorithm to find the greatest common divisor</li>
+      <li><strong>output</strong>: return the greatest common divisor</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="pseudocode">Pseudocode</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">create</span> <span class="n">a</span> <span class="n">function</span> <span class="n">that</span> <span class="n">takes</span> <span class="n">two</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">a</span> <span class="ow">and</span> <span class="n">b</span>
+
+<span class="k">while</span> <span class="n">a</span> <span class="ow">and</span> <span class="n">b</span> <span class="n">aren</span><span class="s">'t equal...</span><span class="err">
+</span><span class="s">	let'</span><span class="n">s</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">that</span> <span class="n">we</span> <span class="n">know</span> <span class="n">which</span> <span class="n">variable</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">larger</span> <span class="n">one</span> 
+	<span class="p">(</span><span class="n">we</span><span class="s">'ll always assign it to a)</span><span class="err">
+</span><span class="s">	if a is larger than b, then swap</span><span class="err">
+</span><span class="s">	otherwise a gets changed to the difference between itself and b</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="possible-solution-2">Possible Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  version 1</span>
+<span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
+    <span class="k">return</span> <span class="n">a</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  version 2</span>
+<span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">:</span>
+        <span class="c"># let's always make a the larger number</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+            <span class="c"># swap the values!</span>
+            <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">a</span>
+<span class="k">print</span><span class="p">(</span><span class="n">gcd</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">gcd</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">105</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<!--
+<section markdown="block">
+##  Um.  That's cool... but I just wanna dance! (To some algorithmically generated rhythms).  
+</section>
+
+<section markdown="block">
+###  Euclidean Rhythms
+
+Apparently, the Euclidean Algorithm can be used to generate rhythms.  A paper by Godfried Toussaint explores the concept of Euclidean Rhythms.
+
+* Euclid's Algorithm can be used to generate traditional music rhythms
+* The rhythms generated cover almost all of the most important World Music rhythms 
+
+</section>
+
+<section markdown="block">
+###  Euclidean Rhythms Continued
+
+The Euclidean Algorithm can be used to distribute a set number of notes as evenly as possible over a set period of time (where time is divided into equal parts).
+
+* for example, 4 notes in 16 units of time (four notes in one measure of 16 sixteenth notes):
+	* (X denotes a _pulse_, . denotes silence)
+	* X...X...X...X...
+	* [Let's take a listen](http://www.hisschemoller.com/2011/euclidean-rhythms/)
+* ...and a less even distribution... 5 notes in 12:
+ 	* X..X.X..X.X.
+	* we'll see how this works next!
+	
+</section>
+
+<section markdown="block">
+###  General Algorithm
+
+1. Put all of the _pulses_ in the beginning: XXXXX.......
+2. Break into two groups of repeating patterns
+3. Evenly distribute 2nd group of patterns to each element in the first group
+4. Go back to 2.
+</section>
+
+<section markdown="block">
+###  How It Works
+
+[5 notes in 12](http://mathforum.org/mathimages/index.php/The_Application_of_Euclidean_Algorithm#Euclidean_Rhythms)
+
+1. Put all of the _pulses_ in the beginning: XXXXX.......
+2. Move the remaining periods after each X: X.X.X.X.X...
+3. (There are 5 pairs of [X.], with two dots remaining)
+4. Place the remainder dots after the 1st two pairs of [X.]: X..X..X.X.X.
+5. (There are 2 triplets of [X..], with two pairs of [X.] remaining)
+6. Place the remainder of [X.] after the 1st two triplets of [X..]: X..X.X..X.X.
+7. From here, the replacements become cyclical, so end here
+</section>
+
+<section markdown="block">
+###  How It Works 2
+
+Sometimes it's easier to visualize in columns:
+
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+XXXXX....... 5, 12, delta is 7
+
+XXXXX..      5, 2, delta is 3
+.....
+
+XXXXX        2, 3, delta is 1
+.....
+..
+
+XXX          2, 1, stop
+...
+..
+XX
+..
+"""</span></code></pre></figure>
+
+
+</section>
+
+
+<section markdown="block">
+###  What Does That Actually Sound Like?
+
+[Let's take a listen](http://www.hisschemoller.com/2011/euclidean-rhythms/).  Some examples of pulses and intervals:
+
+* 3, 8  - tresillo - the fundamental rhythm in cuban and other latin music (also in  ragga or djembe drumming, etc.)
+* 7, 12 - west african bell pattern
+* 5, 9 - Arab rhythm called Agsag-Samai
+</section>
+-->
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Review Functions (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="review---functions">Review - Functions</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="greetings">Greetings</h3>
+
+  <p>Create a function called <strong>display_loud_greeting</strong> &#8230;</p>
+
+  <ul>
+    <li>this function will print out a greeting based on the <strong>arguments</strong> that are passed to it</li>
+    <li>it should have two <strong>parameters</strong>, the name of the person to be greeted, and the number of exclamation points to add</li>
+    <li>it will display the greeting, &quot;Hi&quot;, followed by the name, and finally some number of exclamation points</li>
+    <li><strong>example usage</strong>:
+      <ul>
+        <li>display_loud_greeting(&quot;Jasper&quot;, 4)</li>
+        <li>&#8230; will print out: Hi <strong>Jasper!!!!</strong></li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="greetings-implementation">Greetings Implementation</h3>
+
+  <p>Here&#39;s a possible implementation.  <strong>If this were the only code in this program, what would the output be if we ran it?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">display_loud_greeting</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">num_exclamation_points</span><span class="p">):</span>
+	<span class="n">greeting</span> <span class="o">=</span> <span class="s">"Hi "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="n">num_exclamation_points</span> <span class="o">*</span> <span class="s">"!"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <p>Yup.  That&#39;s nothing.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="calling-greetings">Calling Greetings</h3>
+
+  <p>So&#8230;. <strong>how do we call this function (let&#39;s use the arguments, Jasper and 4)?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">display_loud_greeting</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">num_exclamation_points</span><span class="p">):</span>
+	<span class="n">greeting</span> <span class="o">=</span> <span class="s">"Hi "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="n">num_exclamation_points</span> <span class="o">*</span> <span class="s">"!"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">display_loud_greeting</span><span class="p">(</span><span class="s">"Jasper"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="detour---some-definitions-revisited">Detour - Some Definitions Revisited</h3>
+
+  <p>The previous slides mentioned function <strong>call</strong>, <strong>parameters</strong> and <strong>arguments</strong>.  <strong>What does it mean to call a function?  What is a parameter, and what is an argument</strong>? &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>calling</strong> a function - running or executing the function</li>
+      <li><strong>argument</strong> - a piece of data that is passed into a function</li>
+      <li>a <strong>parameter</strong> - is a variable in a function that receives an argument that&#39;s passed
+        <ul>
+          <li>within a function the values passed in can be referred to by parameter name</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="and-more-definitions">&#8230;.And More Definitions</h3>
+
+  <p>What is a <strong>function definition</strong>, <strong>header</strong>, and <strong>body</strong>?  What is meant by saying a <strong>block</strong> of code? &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>function definition</strong> - all of the code for a function</li>
+      <li><strong>function header</strong> - the beginning of the function: its name and optional list of parameters</li>
+      <li><strong>function body</strong> - the code that gets executed when a function is called..</li>
+      <li><strong>block</strong> - a set of statements that belong together as a group; indentation marks the beginning and end of a block</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="combined-with-user-input">Combined With User Input</h3>
+
+  <ul>
+    <li>instead of hardcoding arguments, let&#39;s ask the user for some input!</li>
+    <li><strong>modify the program below so that it asks the user for a name and a number</strong> &#8594;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">display_loud_greeting</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">num_exclamation_points</span><span class="p">):</span>
+	<span class="n">greeting</span> <span class="o">=</span> <span class="s">"Hi "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="n">num_exclamation_points</span> <span class="o">*</span> <span class="s">"!"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
+
+<span class="n">display_loud_greeting</span><span class="p">(</span><span class="s">"Jasper"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></code></pre></figure>
+
+  <p>Example output from the new program:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">What</span><span class="s">'s your name? </span><span class="err">
+</span><span class="s">&gt; Jasper</span><span class="err">
+</span><span class="s">How many exclamation points? </span><span class="err">
+</span><span class="s">&gt; 4</span><span class="err">
+</span><span class="s">Hi Jasper!!!!</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="combined-with-user-input---implementation">Combined With User Input - Implementation</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">display_loud_greeting</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">num_exclamation_points</span><span class="p">):</span>
+	<span class="n">greeting</span> <span class="o">=</span> <span class="s">"Hi "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="n">num_exclamation_points</span> <span class="o">*</span> <span class="s">"!"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"What's your name?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"How many exclamation points?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+
+<span class="n">display_loud_greeting</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-main-function">A Main Function</h3>
+
+  <p><strong>How do we change the previous program so that all of the logic is contained within functions?</strong> &#8594;</p>
+
+  <ul>
+    <li>the main() function should contain the main line or flow of logic</li>
+    <li>display_loud_greeting and input can be in the main function&#39;s body&#8230;.</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">display_loud_greeting</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">num_exclamation_points</span><span class="p">):</span>
+	<span class="n">greeting</span> <span class="o">=</span> <span class="s">"Hi "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="n">num_exclamation_points</span> <span class="o">*</span> <span class="s">"!"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+	<span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"What's your name?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+	<span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"How many exclamation points?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+	<span class="n">display_loud_greeting</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
+
+<span class="n">main</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="variables-inside-a-function">Variables Inside a Function</h3>
+
+  <p><strong>What&#39;s a local variable?  What&#39;s scope?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>local variable</strong> - variable created inside a function&#39;s definition
+        <ul>
+          <li>only accessible within that function</li>
+          <li>cannot be changed from outside of the function</li>
+          <li>does not overwrite variables of the same name outside of the function (or in other functions)</li>
+        </ul>
+      </li>
+      <li><strong>scope</strong> - the part of the program where a variable can be accessed</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="local-variables">Local Variables</h3>
+
+  <p><strong>What is the output of this program?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">make_some_noise</span><span class="p">():</span>
+	<span class="n">sound</span> <span class="o">=</span> <span class="s">"pop"</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">sound</span><span class="p">)</span>
+
+<span class="n">sound</span> <span class="o">=</span> <span class="s">"fizz"</span>
+<span class="n">make_some_noise</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sound</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pop</span>
+<span class="n">fizz</span></code></pre></figure>
+
+</div>
+</section>
+
+<section>
+  <h2 id="review-conditionals"><a href="review-conditionals.html">Review: Conditionals</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>If Statements - Advanced (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="truthiness">Truthiness</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="truthiness-1">Truthiness</h3>
+
+  <p>See this <a href="http://docs.python.org/py3k/library/stdtypes.html#truth-value-testing">crazy chart</a> on the <em>intrinsic</em> boolean value of various types.  The following values are considered false:</p>
+
+  <ul>
+    <li>None</li>
+    <li>False</li>
+    <li>0 of any numeric type (0.0, 0)</li>
+    <li>empty mapping or sequence type (We&#39;ll look at these later) - this includes the empty string &#39;&#39;, &quot;&quot;, etc.</li>
+    <li>some instances of user defined types based on <strong>bool</strong> method</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="truthiness-examples">Truthiness Examples</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="s">""</span>
+<span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"true!"</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"true!"</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s">"foo"</span>
+<span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"true!"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="another-note-about-style">Another Note About Style</h3>
+  <ul>
+    <li>remember idioms?</li>
+    <li><a href="http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html#testing-for-truth-values">testing for truth values, python idioms</a></li>
+    <li>more elegant to test intrinsic truth values than using equality operator</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">b</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="c">#  instead of if b == True</span>
+<span class="k">if</span> <span class="n">b</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"b"</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s">"catz!"</span>
+<span class="c">#  to test if the string exists</span>
+<span class="k">if</span> <span class="n">s</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="and-finally-loops"><a href="while.html">And Finally&#8230; Loops</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

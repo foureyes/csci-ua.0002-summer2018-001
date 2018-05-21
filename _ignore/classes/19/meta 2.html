@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>About Class (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="about-class-21">About Class #21</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="midterm-2">Midterm #2</h3>
+
+  <ul>
+    <li>it&#39;s on Wednesday, 11/18</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="topics">Topics</h3>
+
+  <p>For the review&#8230; we can go over (your choice):</p>
+
+  <ul>
+    <li>list / <em>in class</em> exercises?</li>
+    <li><em>difficult</em> topics
+      <ul>
+        <li>consecutive application of list methods</li>
+        <li>nested lists / loops</li>
+        <li>scope</li>
+        <li>mutability</li>
+        <li>function arguments</li>
+      </ul>
+    </li>
+    <li>homework solutions</li>
+    <li>specific requests for topics</li>
+    <li>review slides
+      <ul>
+        <li>I&#39;m open to reviewing topics in any order</li>
+        <li>will default to chronological to re-familiarize with older material</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="major-topics-covered-in-midterm-2">Major Topics Covered in Midterm #2</h3>
+
+  <p>Topics in the Exam</p>
+
+  <ol>
+    <li>Nested Loops</li>
+    <li>Creating Functions
+      <ul>
+        <li>(including testing functions with assertions)</li>
+      </ul>
+    </li>
+    <li>Strings</li>
+    <li>Lists</li>
+  </ol>
+
+  <p>Potentially Extra Credit</p>
+
+  <ol>
+    <li>Turtle (Objects and Methods)</li>
+    <li>Recursion</li>
+  </ol>
+</section>
+
+<!--
+<section markdown="block">
+###  Homework #6, #7
+
+
+
+* [nerd_talk.py](../../resources/code/hw7/nerd_talk.py)
+	* lots of creative solutions, solution above uses conditionals and string concatenation
+	* here's one [wrong way with the replace method](http://www.pythontutor.com/visualize.html#code=def+convert(words)%3A%0A+++++%23+partial+implementation%0A+++++words.replace('A',+'4')%0A+++++words.replace('a',+'4')%0A++%0A++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%0Aprint(convert('hay'))&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0), and one [right way with the replace method](http://www.pythontutor.com/visualize.html#code=def+convert(words)%3A%0A+++++%23+partial+implementation%0A+++++words+%3D+words.replace('A',+'4')%0A+++++words+%3D+words.replace('a',+'4')%0A+++++return+words%0A++%0A++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%0Aprint(convert('hay'))&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0)
+	* here's an [interesting one...](http://www.pythontutor.com/visualize.html#code=def+convert(words)%3A%0A+++++a+%3D+''%0A+++++for+num+in+range(0,len(words))%3A%0A++++++++++if+words%5Bnum%5D+%3D%3D+'a'+or+words%5Bnum%5D+%3D%3D+'A'%3A%0A+++++++++++++++a+%2B%3D+str(4)%0A++++++++++elif+words%5Bnum%5D+%3D%3D+'e'+or+words%5Bnum%5D+%3D%3D+'E'%3A%0A+++++++++++++++a+%2B%3D+str(3)%0A++++++++++elif+words%5Bnum%5D+%3D%3D+'i'+or+words%5Bnum%5D+%3D%3D+'I'%3A%0A+++++++++++++++a+%2B%3D+str(1)%0A++++++++++elif+words%5Bnum%5D+%3D%3D+'o'+or+words%5Bnum%5D+%3D%3D+'O'%3A%0A+++++++++++++++a+%2B%3D+str(0)%0A++++++++++else%3A%0A+++++++++++++++a+%2B%3D+words%5Bnum%5D%0A+++++return+a%0A++++++++++++++++++++++++++++++++%0A++++++++++++++++++++++++++++++++%0Aprint(convert('aeioAEIO'))&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0)
+</section>
+
+<section markdown="block">
+###  Homework #6 
+* [prime.py](../../resources/code/hw7/prime.py)
+	* [a common error with prime.py](http://www.pythontutor.com/visualize.html#code=def+is_prime(n)%3A%0A++++for+i+in+range(2,+n)%3A%0A++++++++if+n+%25+i+%3D%3D+0%3A%0A++++++++++++return+False%0A++++++++else%3A%0A++++++++++++return+True%0A%0Aprint('Is+9+prime%3F+'+%2B+str(is_prime(9)))&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0)
+	* placement of break or return
+	* btw, can we make this algorithm slightly more efficient?
+* [recursive_power.py](../../resources/code/hw7/recursive_power.py)
+	* what's the base case?
+	* how do we define power in terms of itself?
+	* [step_by_step](http://www.pythontutor.com/visualize.html#code=def+recursive_power(n,+p)%3A%0A++++if+p+%3D%3D+0%3A%0A++++++++return+1%0A++++else%3A%0A++++++++return+n+*+recursive_power(n,+p+-+1)%0A%0Aassert+1+%3D%3D+recursive_power(2,+0),+'base+case,+power+of+0+is+1'%0Aassert+81+%3D%3D+recursive_power(3,+4),+'returns+n+raised+to+power+p'&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0)
+</section>
+-->
+
+<section>
+  <h3 id="course-materials-for-review">Course Materials for Review</h3>
+
+  <ul>
+    <li><strong>modules</strong> #5 through #8 (nested loops through lists)</li>
+    <li><strong>slides</strong>
+      <ul>
+        <li>slides from classes <strong>#12</strong> through class <strong>#20</strong></li>
+        <li>should be comfortable with topics prior to #12 (loops, conditionals&#8230;)</li>
+      </ul>
+    </li>
+    <li><strong>homework</strong> <strong>#5</strong> through <strong>#8</strong> (again, turtle is extra credit)</li>
+    <li><strong>practice questions</strong> - posted</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="readings">Readings</h3>
+
+  <p>Starting Out with Python</p>
+
+  <ul>
+    <li>Chapter 4 - Loops
+      <ul>
+        <li>Section 4.7 on Nested Loops</li>
+      </ul>
+    </li>
+    <li>Chapter 5 - Functions</li>
+    <li>Chapter 7 - Lists</li>
+    <li>Chapter 8 - More About Strings</li>
+    <li>Chapter 12 - Recursion (Extra Credit)</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="additional-readings-from-how-to-think-like-a-computer-scientist">Additional Readings from <em>How to Think Like a Computer Scientist</em></h3>
+
+  <ul>
+    <li><a href="http://openbookproject.net/thinkcs/python/english3e/hello_little_turtles.html">Chapter 3 Hello, little turtles!</a> (Extra Credit)</li>
+    <li><a href="http://openbookproject.net/thinkcs/python/english3e/functions.html">Chapter 4 Functions</a></li>
+    <li><a href="http://openbookproject.net/thinkcs/python/english3e/fruitful_functions.html">Chapter 6 Fruitful functions</a></li>
+    <li><a href="http://openbookproject.net/thinkcs/python/english3e/strings.html">Chapter 8 Strings</a></li>
+    <li><a href="http://openbookproject.net/thinkcs/python/english3e/lists.html">Chapter 11 Lists</a></li>
+    <li>(be familiar with loops - <a href="http://openbookproject.net/thinkcs/python/english3e/iteration.html">Chapter 7</a>)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="kinds-of-questions">Kinds of Questions</h3>
+
+  <ul>
+    <li>3 or 5 code from scratch
+      <ul>
+        <li>mostly derived from concepts in homework or slides</li>
+        <li>for example, <em>accumulating</em> characters or <em>reducing</em> a list to a single value (average, max/min, etc.)</li>
+      </ul>
+    </li>
+    <li>complete the missing parts of this code</li>
+    <li>find what&#39;s wrong with this code and correct it</li>
+    <li>short answer questions (name two string methods and their parameters)</li>
+    <li>what will this code output?</li>
+    <li>what is the value of this variable at (after x iterations, after calling methods, etc.)&#8230;</li>
+    <li>what will this function return (what value, what type)&#8230;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="additional-review-session">Additional Review Session</h3>
+
+  <aside>And if you haven't had enough, yet...</aside>
+
+  <p>In addition to the in class review&#8230; I will be running another session:</p>
+
+  <ul>
+    <li>Tuesday, <strong>11/17</strong></li>
+    <li>7:05pm to 8:00pm, WWH 517</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="about-your-midterm-2-score">About Your Midterm #2 Score</h3>
+
+  <ul>
+    <li>if you score 10% points more than your midterm 1&#8230;</li>
+    <li>I will count your 2nd midterm twice</li>
+    <li>(and drop the score from your first midterm)</li>
+    <li>(or a small extra credit assignment if you did not qualify for the previous)</li>
+  </ul>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

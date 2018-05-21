@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Mutability, References, and Aliasing (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="mutability-references-and-aliasing">Mutability, References, and Aliasing</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="mutability">Mutability</h3>
+
+  <p>An object is <em>mutable</em> if you can modify or change its data.</p>
+</section>
+
+<section>
+  <h3 id="mutability---strings-and-lists">Mutability - Strings and Lists</h3>
+
+  <ul>
+    <li><strong>Are strings mutable? &#8594;</strong></li>
+    <li><strong>Are lists mutable? &#8594;</strong></li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li>strings <strong>cannot be changed</strong>; they are <strong>immutable</strong>.</li>
+      <li>lists <strong>can be changed</strong>; they are mutable</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="strings-vs-lists-indexing-and-assignment">Strings vs Lists&#8230; Indexing and Assignment</h3>
+
+  <p><strong>What&#39;s the output of the following code? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s">"123"</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">"1"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"indexing_and_assignment.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">5</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">"1"</span>
+<span class="nb">TypeError</span><span class="p">:</span> <span class="s">'str'</span> <span class="nb">object</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">item</span> <span class="n">assignment</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="lists-indexing-and-assignment">Lists, Indexing and Assignment</h3>
+
+  <p>You can change values in a list!</p>
+
+  <ul>
+    <li>index into the list</li>
+    <li>use the assignment operator (=)</li>
+    <li>example:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">really_famous_cats</span> <span class="o">=</span> <span class="p">[</span><span class="s">"nermal"</span><span class="p">,</span> <span class="s">"felix"</span><span class="p">,</span> <span class="s">"sylvester"</span><span class="p">]</span>
+<span class="n">really_famous_cats</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">"garfield"</span>
+<span class="c">#  assignment works just fine!</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="list-methods-vs-string-methods">List Methods vs String Methods</h3>
+
+  <p>The behavior of the methods in lists and strings are consistent with the mutability of each type:</p>
+
+  <ul>
+    <li>string methods <strong>don&#39;t change the object they&#39;re called on</strong>; they return a new value</li>
+    <li>list methods usually <strong>change the object they&#39;re called on</strong>; they change the object in place</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="list-methods-vs-string-methods-example">List Methods vs String Methods Example</h3>
+
+  <p><strong>What does this code output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="s">"one two three"</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="n">result_upper</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result_upper</span><span class="p">)</span>
+
+<span class="n">result_sort</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result_sort</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">one</span> <span class="n">two</span> <span class="n">three</span>
+<span class="n">ONE</span> <span class="n">TWO</span> <span class="n">THREE</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="bp">None</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="variables">Variables</h3>
+
+  <p><strong>What&#39;s a variable? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>a <strong>variable</strong> is a name that <strong>refers</strong> to a value</li>
+      <li>note the wording; it&#39;s intentional
+        <ul>
+          <li>in other contexts, variables may be thought of as holding values</li>
+          <li>in Python, variables are references (that is, they point to) values</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="variables-as-references">Variables as References</h3>
+
+  <p>Imagine variables as names that point to objects:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">a ------&gt; [1, 2, 3]</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="variables-as-references-continued">Variables as References Continued</h3>
+
+  <p>Assignment is just pointing a reference.  When a new value is assigned to a name, it&#39;s the reference that&#39;s being changed.</p>
+
+  <p>In the following reassignment example, notice that there are no more names that reference the initial list, [1, 2, 3].</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">          [1, 2, 3]
+
+a ------&gt; [4, 5, 6]</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="aliasing">Aliasing</h3>
+
+  <p>When one variable is assigned to another variable, both variables end up referring to the same object:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">a ---+ 
+     |--&gt; [1, 2, 3]
+b ---+ </code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="aliasing-continued">Aliasing Continued</h3>
+
+  <p>The actual list object, [1, 2, 3], now has two names that refer to it.  Referencing the same object with more than one name is called <strong>aliasing</strong>.</p>
+
+  <p>In the following code, a and b refer to the same object.  <strong>What will the values of a and b be if we append a value to b? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span></code></pre></figure>
+
+    <p>See in <a href="http://pythontutor.com/visualize.html#code=a+%3D+%5B1,+2,+3%5D%0Ab+%3D+a%0Ab.append(4)&amp;mode=display&amp;cumulative=false&amp;py=3&amp;curInstr=0">python tutor</a></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="aliasing-continued-some-more">Aliasing Continued Some More!</h3>
+
+  <p><strong>Aliasing causes side effects in mutable objects!</strong>  However, it&#39;s a different story with immutable objects, like strings.  <strong>What gets printed out here? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="s">"hello"</span> 
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">hello</span>
+<span class="n">hello</span>
+<span class="n">HELLO</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="and-if-aliasing-was-not-the-intention">And if Aliasing Was Not the Intention</h3>
+
+  <p>If you&#39;d like to make a new list rather than refer to the same list (that is have each variable point to a different object - though two equal objects)&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">a ------&gt; [1, 2, 3]
+
+b ------&gt; [1, 2, 3]</code></pre></figure>
+
+  <p>&#8230;you can use list slicing, which always gives back a new list.  Creating a new list that is equivalent to, but a different object from the original, is called <strong>cloning</strong>.</p>
+</section>
+
+<section>
+  <h3 id="cloning">Cloning</h3>
+
+  <p>You can slice out the entire list to clone a list from the start index (0) to end index (len(list_of_elements) - 1):</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="c">#  cloned!</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span></code></pre></figure>
+
+  <p>Alternatively, there&#39;s shortcut to slicing out the whole string (without having to deal with precise start and end indexes)&#8230;</p>
+
+  <p><strong>Just leave out the start and end (m, n) index from the slice.</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="and-what-about-functions">And What About Functions?</h3>
+
+  <p>When parameters are passed to functions the value is a reference!  <strong>What will this code print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">add_to_list</span><span class="p">(</span><span class="n">stuff</span><span class="p">):</span>
+	<span class="n">stuff</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">add_to_list</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span></code></pre></figure>
+
+    <p>See in <a href="http://pythontutor.com/visualize.html#code=numbers+%3D+%5B1,+2,+3%5D%0A%0Adef+add_four_to_list(a)%3A%0A++++a.append(4)%0A++++%0Aadd_four_to_list(numbers)&amp;mode=display&amp;cumulative=false&amp;py=3&amp;curInstr=0">Python tutor</a></p>
+  </div>
+</section>
+
+<section>
+  <h2 id="iterating-with-indexes"><a href="iterating_with_indexes.html">Iterating With Indexes</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

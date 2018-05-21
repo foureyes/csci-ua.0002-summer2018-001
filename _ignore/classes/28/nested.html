@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Nested Loops, Nested Lists (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="nested-loops-nested-lists">Nested Loops, Nested Lists</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section class="title-slide">
+  <h3 id="nested-loops">Nested Loops</h3>
+
+  <p>Loops can be nested within each other:</p>
+
+  <ul>
+    <li>for and while loops can be nested in for and while loops!</li>
+    <li>nesting can be done in greater depths than 2 (though, that&#39;s not always recommended!)</li>
+    <li>the inner loop must complete before the next iteration of the outer loop is executed</li>
+  </ul>
+</section>
+
+<section class="title-slide">
+  <h3 id="a-silly-example">A Silly Example</h3>
+
+  <p><strong>How many times does this code print &quot;um. what?&quot;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">"um.  what?"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>16 times</li>
+      <li>there are 4 nested loops</li>
+      <li>each loop repeats its body twice</li>
+      <li>2 * 2 * 2 * 2</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="another-example-still-silly">Another Example (Still Silly)</h3>
+
+  <p><strong>How many lines are printed in the following example?  Why?  What are the first two lines printed?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"i is </span><span class="si">%</span><span class="s">s, j is </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  eight lines are printed</span>
+<span class="c">#  the inner loop results in 2 printed lines, the outer loop does that 4 times</span>
+
+<span class="c">#  the first two are...</span>
+<span class="n">i</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="ow">is</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="ow">is</span> <span class="mi">1</span>
+
+<span class="c">#  the last two are...</span>
+<span class="n">i</span> <span class="ow">is</span> <span class="mi">3</span><span class="p">,</span> <span class="n">j</span> <span class="ow">is</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="ow">is</span> <span class="mi">3</span><span class="p">,</span> <span class="n">j</span> <span class="ow">is</span> <span class="mi">1</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="yet-another-example">Yet Another Example</h3>
+
+  <p><strong>How many lines are printed in the following example?  What are the first four lines printed out?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+		<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  infinite!</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="a-closer-look">A Closer Look</h3>
+
+  <ul>
+    <li>again, the inner-most loop must finish iterating before the next outer loop goes on to its next iteration</li>
+    <li>variables outside of an inner loop are accessible to the inner loop
+      <ul>
+        <li>&#8230;including regular variables declared outside of the loop</li>
+        <li>and the outer for-loop variables</li>
+      </ul>
+    </li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+		<span class="c"># the variables i and j can be used in the inner loop!</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"i is </span><span class="si">%</span><span class="s">s, j is </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span></code></pre></figure>
+
+  <p><a href="http://pythontutor.com/visualize.html#code=for+i+in+range(4)%3A%0A++++for+j+in+range(2)%3A%0A++++++++%23+the+variables+i+and+j+can+be+used+in+the+inner+loop!%0A++++++++print(%22i+is+%25s,+j+is+%25s%22+%25+(i,+j))&amp;mode=display&amp;cumulative=false&amp;py=3&amp;curInstr=0">See this code execute on pythontutor.com</a></p>
+</section>
+
+<section>
+  <h3 id="lets-see-some-examples">Let&#39;s See Some Examples</h3>
+
+  <ul>
+    <li>draw an x</li>
+    <li>finding the first n primes using trial division</li>
+    <li>generating the names of the squares on a chess board</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="draw-an-x">Draw an X</h3>
+
+  <p><strong>Write a function called draw_an_x:</strong></p>
+
+  <ul>
+    <li>it&#39;s similar to stars.py in homework #9</li>
+    <li>it takes one argument, the length of the arm</li>
+    <li>it creates and returns a string representation of an x, with the size based on input</li>
+    <li>calling draw_an_x(10) gives:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">O        O
+ O      O 
+  O    O  
+   O  O   
+    OO    
+    OO    
+   O  O   
+  O    O  
+ O      O 
+O        O</code></pre></figure>
+
+  <ul>
+    <li>in one diagonal, O&#39;s are placed at (0, 0), (1,1), etc.</li>
+    <li>in the other diagonal, O&#39;s are placed at (0, 9), (1, 8), (2, 7), (3, 6) etc.</li>
+    <li>what are the patterns</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="draw-an-x-pseudocode">Draw an X Pseudocode</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+for the number of rows (that is the length of the X)...
+	create a row by...
+	for every number of elements in a row (that is, number of columns, or the length of the X)
+		if the row and column are equal
+		or if their sum is the length of the X minus 1
+			add an "O" to the row
+		otherwise...
+			add a space to the row
+"""</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="draw-an-x-solution">Draw an X Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">draw_an_x</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+	<span class="s">""" returns an x """</span>
+	<span class="c"># create an empty string to hold the X</span>
+	<span class="n">pattern</span> <span class="o">=</span> <span class="s">""</span>
+
+	<span class="c"># start the first for loop, these will represent rows</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+		<span class="c"># each row is going to start off as an empty string</span>
+		<span class="n">line</span> <span class="o">=</span> <span class="s">""</span>
+
+		<span class="c"># the second loop will represent every item in a row </span>
+		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+			<span class="c"># only draw the diagonals based on these conditions</span>
+			<span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">==</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">:</span>
+				<span class="n">line</span> <span class="o">+=</span> <span class="s">"O"</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="n">line</span> <span class="o">+=</span> <span class="s">" "</span>	
+		<span class="n">pattern</span> <span class="o">+=</span> <span class="n">line</span> <span class="o">+</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span>
+	<span class="k">return</span> <span class="n">pattern</span>
+<span class="k">print</span><span class="p">(</span><span class="n">draw_an_x</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="finding-the-first-n-primes">Finding the First n Primes</h3>
+
+  <p><strong>Write a function called first_n_primes:</strong></p>
+
+  <ul>
+    <li>it should take one argument, n</li>
+    <li>it should return a list with the first n primes (starting with 2)</li>
+    <li>find the primes by using trial division
+      <ul>
+        <li>count up to - but not including - the candidate from 2</li>
+        <li>if it&#39;s divisible by any number, it&#39;s not prime</li>
+      </ul>
+    </li>
+    <li>example output:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">first_n_primes</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">first_n_primes</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="finding-the-first-n-primes-pseudocode">Finding the First n Primes Pseudocode</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+keep track of all of the primes that we've fund
+set our first possible prime number to 2
+while that list of primes is less than n...
+	let's assume that our number is prime, until we find out it's not...
+	go through every number up to (but not including) our candidate
+		if our candidate is divisible by a number
+			it's not prime
+	if it's prime, add it to our list
+"""</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="first-n-primes">First n Primes</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">first_n_primes</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+	<span class="s">"""returns a list of the first n prime numbers"""</span> 
+	<span class="n">list_of_primes</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="c"># the current number that we're checking the primality of</span>
+	<span class="n">candidate</span> <span class="o">=</span> <span class="mi">2</span>
+
+	<span class="c"># keep on finding primes until our list has enough elements</span>
+	<span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_primes</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+		<span class="c"># assume that we have a prime number</span>
+		<span class="n">is_prime</span> <span class="o">=</span> <span class="bp">True</span>
+
+		<span class="c"># use trial division to determine if it's not prime</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">candidate</span><span class="p">):</span>
+			<span class="c"># once we know it's not prime, break!</span>
+			<span class="k">if</span> <span class="n">candidate</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+				<span class="n">is_prime</span> <span class="o">=</span> <span class="bp">False</span>
+				<span class="k">break</span>
+		<span class="k">if</span> <span class="n">is_prime</span><span class="p">:</span>
+			<span class="n">list_of_primes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+		<span class="n">candidate</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">return</span> <span class="n">list_of_primes</span>
+<span class="k">print</span><span class="p">(</span><span class="n">first_n_primes</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+	</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="chess-board-squares">Chess Board Squares</h3>
+
+  <p><strong>Print out the names of each square on a chess board using nested loops &#8594;</strong>  See <a href="http://www.chessstrategiesblog.com/chess-notation/">this article on chess notation</a>:</p>
+
+  <ul>
+    <li>rows are 8 through 1 from the top</li>
+    <li>columns are a through h starting from the left</li>
+    <li>the actual name is column letter and row number</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">a8 b8 c8 d8 e8 f8 g8 h8 
+a7 b7 c7 d7 e7 f7 g7 h7 
+a6 b6 c6 d6 e6 f6 g6 h6 
+a5 b5 c5 d5 e5 f5 g5 h5 
+a4 b4 c4 d4 e4 f4 g4 h4 
+a3 b3 c3 d3 e3 f3 g3 h3 
+a2 b2 c2 d2 e2 f2 g2 h2 
+a1 b1 c1 d1 e1 f1 g1 h1 </code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="chess-board-squares-solution">Chess Board Squares Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">board</span> <span class="o">=</span> <span class="s">""</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s">"abcdefgh"</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">+=</span> <span class="n">letter</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="o">+</span> <span class="s">" "</span>
+    <span class="n">board</span> <span class="o">+=</span> <span class="n">row</span> <span class="o">+</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">board</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="strings-and-grids">Strings and Grids</h3>
+
+  <p>There&#39;s a pattern in the past couple of strings and nested loops that we&#39;ve seen:</p>
+
+  <ul>
+    <li>to create a string representation of a grid, we use nested loops</li>
+    <li>the outer loop usually represents each row</li>
+    <li>the inner loop usually represents an element of each row (or each column)</li>
+    <li>generally, we do things in this order because it&#39;s easier to append rows to a string than columns</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="strings-and-grids-continued">Strings and Grids Continued</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">col</span> <span class="o">=</span> <span class="s">"a8</span><span class="se">\n</span><span class="s">a7</span><span class="se">\n</span><span class="s">a6</span><span class="se">\n</span><span class="s">a5</span><span class="se">\n</span><span class="s">a4</span><span class="se">\n</span><span class="s">a3</span><span class="se">\n</span><span class="s">a2</span><span class="se">\n</span><span class="s">a1</span><span class="se">\n</span><span class="s">"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+<span class="n">a8</span>   
+<span class="n">a7</span>   
+<span class="n">a6</span>   
+<span class="n">a5</span>   
+<span class="n">a4</span>   
+<span class="n">a3</span>   
+<span class="n">a2</span>   
+<span class="n">a1</span>   </code></pre></figure>
+
+  <p>Adding another column isn&#39;t quite as easy as&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">col</span> <span class="o">=</span> <span class="n">col</span> <span class="o">+</span> <span class="s">"b8</span><span class="se">\n</span><span class="s">b7</span><span class="se">\n</span><span class="s">b6</span><span class="se">\n</span><span class="s">b5</span><span class="se">\n</span><span class="s">b4</span><span class="se">\n</span><span class="s">b3</span><span class="se">\n</span><span class="s">b2</span><span class="se">\n</span><span class="s">b1</span><span class="se">\n</span><span class="s">"</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="values-in-lists">Values in Lists</h3>
+
+  <p><strong>What types of objects can a list hold?</strong></p>
+
+  <div class="incremental">
+    <p>Any arbitrary value!</p>
+
+    <ul>
+      <li>strs</li>
+      <li>ints</li>
+      <li>floats</li>
+      <li>turtles (!)</li>
+      <li><strong>even other lists</strong>&#8230; even dictionaries, tuples, etc.</li>
+      <li><strong>even other lists with more lists in them!</strong></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="lists-in-lists">Lists in Lists</h3>
+
+  <p>So, yes.  You can have a list in yr list (<a href="http://en.wikipedia.org/wiki/List_of_lists_of_lists">wikipedia does!</a>).  <strong>But why!?  What are some things that you could use nested lists for?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>any kind of two dimensional grid or collection of elements
+        <ul>
+          <li>a game board (chess, scrabble, battleship, tic-tac-toe)</li>
+          <li>an image!</li>
+        </ul>
+      </li>
+      <li>matrix math</li>
+      <li>collecting groups of related types (a list of three dimensional points, which in turn are just lists of of three ints)</li>
+      <li>this really extends to tuples as well (which may be more suited for representing some items above)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="creating-nested-lists">Creating Nested Lists</h3>
+
+  <p>Let&#39;s take a look at three ways of creating nested lists:</p>
+
+  <ul>
+    <li>list literals</li>
+    <li>appending lists to an empty list</li>
+    <li>using loops</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="list-literals">List Literals</h3>
+
+  <p>We can simply use list literal syntax (lots brackets and commas!).</p>
+
+  <ul>
+    <li>create a list with 3 lists in it</li>
+    <li>each inner list has 4 elements - 1, 2, 3 and 4</li>
+  </ul>
+
+  <p><strong>What does this look like?</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="appending-lists-to-lists">Appending Lists to Lists</h3>
+
+  <p>Alternatively, you can:</p>
+
+  <ul>
+    <li>start with an empty list</li>
+    <li>and append lists to it</li>
+  </ul>
+
+  <p>Again, if we want to create a list with 3 lists in it, each inner list containing 1 through 4&#8230; <strong>How would I do that using an empty list and append?</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="appending-lists-to-lists-continued">Appending Lists to Lists Continued</h3>
+
+  <p>Both of the previous solutions get old really fast!  <strong>Can I do the same with less manual repetition?</strong></p>
+
+  <ul>
+    <li>start with an empty list</li>
+    <li>and append lists to it repeatedly using a <strong>???</strong></li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+	<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="chess-board-revisited">Chess Board Revisited</h3>
+
+  <p>Instead of just having a string representation of our chess board, <strong>can we represent it as a list?</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  Yes!</span>
+<span class="c">#  first two rows...</span>
+<span class="n">board</span> <span class="o">=</span> <span class="p">[[</span><span class="s">"a8"</span><span class="p">,</span> <span class="s">"b8"</span><span class="p">,</span> <span class="s">"c8"</span><span class="p">,</span> <span class="s">"d8"</span><span class="p">,</span> <span class="s">"e8"</span><span class="p">,</span> <span class="s">"f8"</span><span class="p">,</span> <span class="s">"g8"</span><span class="p">,</span> <span class="s">"h8"</span><span class="p">],</span> <span class="p">[</span><span class="s">"a7"</span><span class="p">,</span> <span class="s">"b7"</span><span class="p">,</span> <span class="s">"c7"</span><span class="p">,</span> <span class="s">"d7"</span><span class="p">,</span> <span class="s">"e7"</span><span class="p">,</span> <span class="s">"f7"</span><span class="p">,</span> <span class="s">"g7"</span><span class="p">,</span> <span class="s">"h7"</span><span class="p">]]</span> </code></pre></figure>
+
+  </div>
+
+</section>
+
+<section>
+  <h3 id="chess-board-revisited-1">Chess Board Revisited&#8230;</h3>
+
+  <p><strong>How could we create this nested list without using list literals?</strong></p>
+
+  <ul>
+    <li>probably nested loops!</li>
+    <li>instead of building rows as strings, we&#39;ll use lists</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">board</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+	<span class="n">row</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s">"abcdefgh"</span><span class="p">:</span>
+		<span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">s</span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">letter</span><span class="p">,</span><span class="n">number</span><span class="p">))</span>
+	<span class="n">board</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">board</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="reading-elements-from-a-nested-list">Reading Elements from a Nested List</h3>
+
+  <p>You can access an element within a list that&#39;s within a list by indexing <strong>twice</strong>!</p>
+  <ul>
+    <li>the first index is the place in the outer list</li>
+    <li>the second index is the place in the inner list</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="s">'foo'</span><span class="p">,</span> <span class="s">'bar'</span><span class="p">],[</span><span class="s">'baz'</span><span class="p">,</span> <span class="s">'qux'</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="c">#  gives back bar</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lists-in-lists-example">Lists in Lists Example</h3>
+
+  <p>Here&#39;s a list of lists that represents a tic-tac-toe board.  <strong>What does this code output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">tic_tac_toe</span> <span class="o">=</span> <span class="p">[[</span><span class="s">" "</span><span class="p">,</span> <span class="s">" "</span><span class="p">,</span> <span class="s">" "</span><span class="p">],[</span><span class="s">" "</span><span class="p">,</span> <span class="s">"x"</span><span class="p">,</span> <span class="s">" "</span><span class="p">],[</span><span class="s">"o"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tic_tac_toe</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tic_tac_toe</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tic_tac_toe</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">o</span>
+ 
+<span class="n">x</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="changing-values-in-nested-lists">Changing Values in Nested Lists</h3>
+
+  <p>In addition to retrieving values from nested lists, we can also change values.</p>
+
+  <ul>
+    <li>use multiple indexes to find the element you want to change</li>
+    <li>use the assignment operator</li>
+    <li>list_to_change[index_1][index_2] = &quot;some other value&quot;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s">"not a one"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="c">#  results in: </span>
+<span class="c">#  [[1, 1, 1, 'not a one'], [1, 1, 1, 1]]</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="tic-tac-toe-again">Tic Tac Toe Again</h3>
+
+  <p>Let&#39;s look at our tic tac toe board again.  It&#39;s x&#39;s turn to go.  <strong>Where should an x be placed to win the game?  In code, how would we change the element at that position from space (&quot; &quot;) to &quot;x&quot;?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">tic_tac_toe</span> <span class="o">=</span> <span class="p">[[</span><span class="s">" "</span><span class="p">,</span> <span class="s">" "</span><span class="p">,</span> <span class="s">" "</span><span class="p">],[</span><span class="s">" "</span><span class="p">,</span> <span class="s">"x"</span><span class="p">,</span> <span class="s">" "</span><span class="p">],[</span><span class="s">"o"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">]]</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  put an x at 0, 0 (the upper left-hand corner)</span>
+<span class="n">tic_tac_toe</span> <span class="o">=</span> <span class="p">[[</span><span class="s">" "</span><span class="p">,</span> <span class="s">" "</span><span class="p">,</span> <span class="s">" "</span><span class="p">],[</span><span class="s">" "</span><span class="p">,</span> <span class="s">"x"</span><span class="p">,</span> <span class="s">" "</span><span class="p">],[</span><span class="s">"o"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">]]</span>
+<span class="n">tic_tac_toe</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">"x"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tic_tac_toe</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="looping-over-lists-in-lists">Looping Over Lists in Lists</h3>
+
+  <p>We saw how we could use nested loops in various example programs.  We&#39;ll also need nested loops if we want to look at every element within a nested list.  First, let&#39;s stick to one loop.  <strong>How many times does this loop run?  What&#39;s the type of the loop variable called <em>inner</em>?  What&#39;s the last thing that gets printed out?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="k">for</span> <span class="n">inner</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">inner</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>3 times</li>
+      <li>list</li>
+      <li>[7, 8 , 9]</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="every-single-element">Every Single Element</h3>
+
+  <p>Because each inner element is also a list, we can loop over that as well!  <strong>Print out every number in this list on its own line:</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="c">#  your code...</span>
+<span class="c">#  results in</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+<span class="o">.</span>
+<span class="o">.</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="k">for</span> <span class="n">inner</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">inner</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="changing-all-elements-in-a-nested-list">Changing All Elements in a Nested List</h3>
+
+  <p>Let&#39;s try changing every element in the previous so that it is twice the amount as the original.  Let&#39;s do this <strong>in place</strong>.  That is, we&#39;re modifying the list itself.</p>
+</section>
+
+<section>
+  <h3 id="changing-all-elements-in-a-nested-list-1">Changing All Elements in a Nested List&#8230;</h3>
+
+  <p>If I want to change the first element in the first list to twice the amount <strong>what could would I use to do that?</strong></p>
+
+  <ul>
+    <li>what about changing the second element of the first list to twice the amount?</li>
+    <li>and the third element of the first list</li>
+    <li>and the first element of the second list</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="a-pattern-for-changing-elements">A Pattern for Changing Elements</h3>
+
+  <p><strong>Notice the pattern?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>the inner list index is incremented by one for every element of the inner list</li>
+      <li>the outer list index is incremented after all of the inner list indexes have been iterated over</li>
+    </ul>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="nested-loops-and-list-indexes">Nested Loops and List Indexes</h3>
+
+  <p>We&#39;ve seen similar patterns when we used nested loops:</p>
+
+  <ul>
+    <li>we can use nested loops and range to get index pairs</li>
+    <li>using these index pairs, we can modify each list element</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+		<span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="tic-tac-toe-one-last-time">Tic-Tac-Toe, One Last Time</h3>
+
+  <p>Printing out our tic-tac-toe board</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">tic_tac_toe</span> <span class="o">=</span> <span class="p">[[</span><span class="s">" "</span><span class="p">,</span> <span class="s">" "</span><span class="p">,</span> <span class="s">" "</span><span class="p">],[</span><span class="s">" "</span><span class="p">,</span> <span class="s">"x"</span><span class="p">,</span> <span class="s">" "</span><span class="p">],[</span><span class="s">"o"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">]]</span></code></pre></figure>
+
+  <p>Gives us</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[[</span><span class="s">" "</span><span class="p">,</span> <span class="s">" "</span><span class="p">,</span> <span class="s">" "</span><span class="p">],[</span><span class="s">" "</span><span class="p">,</span> <span class="s">"x"</span><span class="p">,</span> <span class="s">" "</span><span class="p">],[</span><span class="s">"o"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">]]</span></code></pre></figure>
+
+  <p><strong>Let&#39;s try to create a string representation of the board so that when it&#39;s printed, it looks like:</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">-------</span>
+<span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span>
+<span class="o">-------</span>
+<span class="o">|</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="o">|</span>
+<span class="o">-------</span>
+<span class="o">|</span><span class="n">o</span><span class="o">|</span><span class="n">o</span><span class="o">|</span><span class="n">x</span><span class="o">|</span>
+<span class="o">-------</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="tic-tac-toe-printing">Tic Tac Toe Printing</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">tic_tac_toe</span> <span class="o">=</span> <span class="p">[[</span><span class="s">" "</span><span class="p">,</span> <span class="s">" "</span><span class="p">,</span> <span class="s">" "</span><span class="p">],[</span><span class="s">" "</span><span class="p">,</span> <span class="s">"x"</span><span class="p">,</span> <span class="s">" "</span><span class="p">],[</span><span class="s">"o"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">]]</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s">"-------</span><span class="se">\n</span><span class="s">"</span>
+<span class="k">for</span> <span class="n">inner</span> <span class="ow">in</span> <span class="n">tic_tac_toe</span><span class="p">:</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="s">"|"</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">inner</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">+=</span> <span class="n">letter</span> <span class="o">+</span> <span class="s">"|"</span>
+    <span class="n">row</span> <span class="o">+=</span> <span class="s">"</span><span class="se">\n</span><span class="s">-------</span><span class="se">\n</span><span class="s">"</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="n">row</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

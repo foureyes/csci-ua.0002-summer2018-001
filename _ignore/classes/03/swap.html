@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Swapping Values (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="swapping-values">Swapping Values</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="heres-a-quick-exercise-on-a-tiny-algorithm">Here&#39;s a Quick Exercise on a Tiny Algorithm</h3>
+  <aside>And Idioms, as Well!</aside>
+  <p><strong>If I have two variables, a and b, and they are set to 3 and 21 respectively, how would I swap their values in code? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"a:"</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s">"b:"</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">b</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">c</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"a:"</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s">"b:"</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="an-idiomatic-way-to-do-it">An Idiomatic Way to Do It</h3>
+  <aside>(read: easier)</aside>
+  <p>Here&#39;s another, more idiomatic way to do it</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span></code></pre></figure>
+
+  <p>You can use the same construct to assign multiple values (these features are not common in other languages). &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">21</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="some-btws">Some BTWs</h3>
+  <ul>
+    <li>in Python, if something is idiomatic, it&#39;s called Pythonic</li>
+    <li>this swap example brings up a trickier part of programming: references and values
+      <ul>
+        <li>if you&#39;re eager, or like being confused here&#39;s a link about references and values in Python:</li>
+        <li>http://od-eon.com/blogs/bogdan/python-assignment-value-or-reference/</li>
+        <li>we&#39;ll revisit this later!</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="greeaaat--now-what-do-we-do-with-all-of-these-variables-and-assignments"><a href="user-input.html">Greeaaat.  Now, what do we do with all of these variables and assignments?</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

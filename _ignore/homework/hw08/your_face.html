@@ -1,0 +1,79 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+		<title>Introduction to Computer Programming - CSCI-UA.0002 - Summer 2018 your_face.py</title> 
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	<!-- <link rel="stylesheet" type="text/css" href="resources/fonts/cmun-serif.css"> -->
+	<link rel="stylesheet" type="text/css" href="../../resources/css/screen.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<script src="resources/js/jquery-2.1.3.min.js"></script>
+	<script src="resources/js/persistent-nav.js"></script>
+
+</head>
+<body>
+<div id="hd">
+<h1> Introduction to Computer Programming - CSCI-UA.0002 - Summer 2018</h1>
+</div>
+<div id="bd">
+<div id="content">
+	<h1 id="your_facepy-5-points">your_face.py (5 points)</h1>
+<p>Draw a face using turtle. For example, you can draw the look of disapproval!</p>
+
+<p><img src="http://foureyes.github.io/csci-ua.0002-fall2015-008/resources/img/turtle/your_face.png" alt="look of disapproval" /></p>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+  <li>you can draw whatever face you like</li>
+  <li>but you have to use the turtle module
+    <ul>
+      <li>change the size of the pen</li>
+      <li>set the window size to 400 x 400</li>
+      <li>turn animation off (for sanity&#39;s sake)</li>
+    </ul>
+  </li>
+  <li>create a function called draw_face &#8230; it&#39;s up to you to decide if it should have parameters or not (it&#39;s ok if you don&#39;t parametrize it, but it may be helpful for extra credit)
+    <ul>
+      <li>your function will draw a face</li>
+      <li>use at least one circle</li>
+      <li>use at least one line</li>
+      <li>remember to call update at the end of your function to let Python know to <em>repaint</em> the screen</li>
+    </ul>
+  </li>
+  <li>call your function at the end of your program</li>
+</ul>
+
+<h2 id="extra-credit">Extra Credit</h2>
+<p>5 points (warning: this is one may be a little frustrating depending on how complicated your drawing is!)</p>
+
+<ul>
+  <li>ask the user for comma separated input that specifies how to draw the face&#8230; with each value representing x, y and size respectively
+    <ul>
+      <li>for example, 0,0,20 means draw the face at (0, 0) with size 20</li>
+      <li>size can mean whatever you like&#8230;</li>
+    </ul>
+  </li>
+  <li>using the string method, split, break up the input, and use each individual value to draw the face</li>
+  <li>continue to ask for input, with each new input drawing another face</li>
+  <li>hints:
+    <ul>
+      <li>how do you keep the relationship between all of the parts of the face in proportion?</li>
+      <li>setheading might be helpful</li>
+    </ul>
+  </li>
+  <li>see the example below:</li>
+</ul>
+
+<p><img src="http://foureyes.github.io/csci-ua.0002-fall2015-008/resources/img/turtle/your_face_ec.gif" alt="asking for input" /></p>
+
+
+</div>
+</div>
+
+<div id="ft">
+	<p>CSCI-UA.0002 - Introduction to Computer Programming - Summer 2018</p>
+</div>
+</div>
+</body>
+</html>

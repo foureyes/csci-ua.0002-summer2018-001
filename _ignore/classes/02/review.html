@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Review (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="review">Review</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="programs-and-programming-languages">Programs and Programming Languages</h3>
+
+  <p><strong>What&#39;s a program?</strong></p>
+
+  <div class="incremental">
+
+    <p>A sequence of instructions that specifies to a computer actions and computations to be performed</p>
+
+    <p><strong>How are programming languages similar to or different from natural languages?</strong></p>
+
+    <ol>
+      <li>natural languages evolved organically, while programming languages are deliberately created and designed</li>
+      <li>programming languages are usually unambiguous in meaning; on the other hand, there is usually room for interpretation in natural languages</li>
+    </ol>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="binary-bits-and-bytes">Binary, Bits, and Bytes</h3>
+
+  <p><strong>What are the possible values that a bit can hold?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <p>0 and 1</p>
+
+    <p><strong>How many bits are in a byte?</strong> &#8594;</p>
+
+    <p>8</p>
+
+    <p><strong>What is 5 in binary _ _ _ _ _ _ _ _ ?</strong> &#8594;</p>
+
+    <p>00000101</p>
+
+    <p><strong>What is 10000010 in decimal?</strong> &#8594;</p>
+
+    <p>130</p>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="more-about-programming-languages">More About Programming Languages!</h3>
+
+  <p><strong>What does a compiler do?</strong></p>
+
+  <div class="incremental">
+
+    <p>It translates a high-level programming language into a low-level language that the computer can execute (our books call this object code)</p>
+
+    <p><strong>What&#39;s the difference between compiled and interpreted languages?</strong></p>
+
+    <p>Languages that have an explicit compilation step are generally thought of as compiled languages.  That is, the workflow for a compiled language is: write code, compile, execute&#8230; rather than just write code and then execute.</p>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="tools">Tools</h3>
+
+  <p><strong>What&#39;s the name of the language we&#39;re using?</strong></p>
+
+  <div class="incremental">
+
+    <p>Python</p>
+
+    <p><strong>Is python a high level or low level language?  Why?</strong></p>
+
+    <ul>
+      <li>Python is a high-level programming language</li>
+      <li>it&#39;s meant to be easy to read and write for humans</li>
+      <li>abstracts away the details of dealing with the underlying machine</li>
+    </ul>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="tools-continued">Tools Continued</h3>
+
+  <p><strong>What extension is used for Python source code files?</strong></p>
+
+  <div class="incremental">
+
+    <p>.py</p>
+
+    <p><strong>What kind of applications do we use to create and edit Python programs?</strong></p>
+
+    <p>Text editors and / or IDE&#39;s.  We&#39;re using IDLE as our IDE</p>
+
+    <p><strong>What&#39;s the main difference between using a text editor and the interactive shell to execute code?</strong></p>
+
+    <p>The interactive shell executes code as you enter each line; it give you immediate feedback.  For a text editor, you have to save your entire program first before you can run it.</p>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="how-to-say-hello"><a href="hello.html">How to Say Hello</a></h2>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

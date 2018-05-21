@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>OSX File System, Paths (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="osx-file-system-paths">OSX File System, Paths</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="where-are-my-files-again">Where are My Files Again?</h3>
+
+  <aside>Navigating the file system in three parts</aside>
+
+  <p>Warning: this part is fairly OSX-centric&#8230; <strong>if you&#39;re on windows, let me know, and we can do a separate session</strong>.</p>
+
+  <ul>
+    <li>Definitions (of course)</li>
+    <li>OSX&#39;s directory structure</li>
+    <li>A little bit about pathnames</li>
+  </ul>
+
+</section>
+
+<section>
+  <h2 id="first-some-definitions">First, Some Definitions</h2>
+</section>
+
+<section>
+  <h3 id="directories">Directories</h3>
+
+  <p>What&#39;s a <strong>directory</strong> (to simplify things, we can use &quot;directory&quot; and &quot;folder&quot; interchangeably)? &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>a <strong>directory</strong> is an organizing structure in your file system; it references other files (and directories)</li>
+      <li>we can think of it as <em>a thing that contains files</em></li>
+      <li>&#8230;or because directories can be nested, you can think of your directories and files as a tree! (<a href="http://itp.nyu.edu/groups/flyby/wp-content/uploads/sites/6/2014/09/unix-file-system-example-1.png">what a terrible looking tree</a>!?)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="root">Root</h3>
+
+  <p><strong>root</strong> (or just /) is:</p>
+
+  <ul>
+    <li>the top most directory on a disk</li>
+    <li>think of it as the <em>root</em> of your tree!</li>
+    <li>it&#39;s the directory that contains all of the other files and directories</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="pathnames">Pathnames</h3>
+
+  <p>What&#39;s a <strong>pathname</strong>? &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>a <strong>pathname</strong> is the general form of the name of a file or directory; it specifies a unique location in a file system</li>
+      <li>for example, in finder, to locate a file or folder, you follow a particular path - <strong>let&#39;s check this out</strong> &#8594;.</li>
+      <li><strong>what&#39;s the path to the Desktop starting from the <em>top most</em> folder, the hard drive (probably Macintosh HD)?</strong> &#8594;</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2 id="lets-look-at-osxs-directory-structure">Let&#39;s Look at OSX&#39;s Directory Structure</h2>
+</section>
+
+<section>
+  <h3 id="some-structure">Some Structure</h3>
+
+  <p>Each operating system organizes their files and directories differently.  OSX&#39;s file structure looks like this (it&#39;s similar to other UNIX based file systems):</p>
+
+  <ul>
+    <li><strong>/</strong> - (also called <strong>root</strong>) the top most folder on a disk (the directory that <em>contains</em> all of the other files and directories)</li>
+    <li><strong>/Applications</strong> - where shared applications are kept</li>
+    <li><strong>/Users</strong> - all user accounts and their accompanying files are stored here</li>
+    <li><strong>/Volumes</strong> - all disks that are attached to your computer including USB drives, hard drives, etc.</li>
+    <li><strong>/System</strong> - <em>system specific</em> files, libraries, preferences that are critical to the operating system</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="more-about-the-users-directory">More About the User&#39;s Directory</h3>
+
+  <p>It&#39;s worth noting the directories nested under Users.  They should seem familiar to you.</p>
+
+  <ul>
+    <li><strong>/Users/username</strong> - (also called <strong>home</strong> when you&#39;re in your own username&#39;s directory) contains files specific to that particular user</li>
+    <li><strong>/Users/username/Desktop</strong> - represents the user&#39;s Desktop</li>
+    <li><strong>/Users/username/Downloads</strong> - the user&#39;s downloads folder</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="and-now-to-pathnames">And Now&#8230; To Pathnames!</h2>
+
+  <aside>We know a little bit about the file system structure; let's take a closer look at how we locate files</aside>
+
+</section>
+
+<section>
+  <h3 id="whats-a-pathname">What&#39;s a Pathname?</h3>
+
+  <p>A <strong>pathname</strong> is the general form of the name of a file or directory; <strong>it specifies a unique location in a file system</strong>.</p>
+</section>
+
+<section>
+  <h3 id="path-separator">Path Separator</h3>
+
+  <p>A <strong>path separator</strong> is a character that&#39;s used to join together each directory in a pathname that contains nested directories (for example, Desktop was located under Users and username&#8230;  there was a character that separated each directory).</p>
+
+  <p><strong>What character represents the path separator on OSX (we just saw this)?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>it&#39;s a <strong>forward slash</strong>, <strong>/</strong></li>
+      <li>(sometimes just called <strong>slash</strong> when referencing directories)</li>
+      <li>for windows, the separator is backslash</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="absolute-vs-relative-paths">Absolute vs Relative Paths</h3>
+
+  <ul>
+    <li><strong>absolute paths</strong> are paths expressed as starting from root
+      <ul>
+        <li>example: /Users/username/Desktop</li>
+      </ul>
+    </li>
+    <li><strong>relative paths</strong> are paths expressed as relative from the current working directory
+      <ul>
+        <li>example (if you&#39;re starting from /Users/username): Desktop</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="some-special-paths">Some Special Paths</h3>
+
+  <p>There are shortcuts to represent specific paths:</p>
+
+  <ul>
+    <li><strong>~ (tilde)</strong> is <em>your</em> home directory</li>
+    <li><strong>/ (forward slash)</strong> is root directory</li>
+  </ul>
+
+  <p>The following paths are relative to the directory <em>that you&#39;re in</em>:</p>
+
+  <ul>
+    <li><strong>. (dot)</strong> is the current directory</li>
+    <li><strong>.. (dot dot)</strong> is the parent directory</li>
+    <li><strong>../.. (dot dot slash dot dot)</strong> is the parent of the parent directory</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="lets-see-some-pathnames-through-finder">Let&#39;s See Some Pathnames Through Finder</h3>
+
+  <ul>
+    <li>Desktop</li>
+    <li>Downloads</li>
+    <li>root (probably Macintosh HD)</li>
+  </ul>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

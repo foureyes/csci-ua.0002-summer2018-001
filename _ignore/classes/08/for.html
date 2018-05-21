@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>For Loops (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="for-loops">For Loops</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="loops-in-general">Loops, In General</h3>
+
+  <p>Does anyone remember the two broad  <strong>categories</strong> of loops?  <strong>What are they, and how are they different?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>condition-controlled</strong> - repeats as long as a condition is true</li>
+      <li><strong>count-controlled</strong> - repeats a specific number of times</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="condition-controlled-loops-in-python">Condition Controlled Loops in Python</h3>
+
+  <p><strong>What programming construct (repetition structure) do we use in Python to create a condition-controlled loop?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>A <strong>while</strong> loop is a repetition structure in Python that repeats a block of code as long as a check for a particular condition is true.</p>
+  </div>
+</section>
+
+<section>
+  <h2 id="count-controlled-loops">Count-Controlled Loops</h2>
+
+  <aside>In Python, <em>for loops</em> are count-controlled loops.</aside>
+
+</section>
+
+<section>
+  <h3 id="for-loops-1">For Loops</h3>
+
+  <p>An Example</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></pre></figure>
+
+  <p>Its output:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="for-loop-syntax">For Loop Syntax</h3>
+
+  <p><strong>for loops</strong> repeat code by iterating over every item in some group / collection of items:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+for &lt;loop variable&gt; in &lt;iterable object&gt;:
+	(&lt;loop variable&gt; can be used here)
+"""</span></code></pre></figure>
+
+  <p>Again, the same example:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+ keyword    loop    an iterable object,
+     for  variable  like range
+       |     |      |
+       |     |      |
+        for i in range(5):
+              print(i)
+"""</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-break-that-down-a-bit">Let&#39;s Break That Down a Bit</h3>
+
+  <p>A <strong>for</strong> loop:</p>
+
+  <ul>
+    <li>consists of the keyword <strong>for</strong> (obvs!)</li>
+    <li>followed by a <strong>loop variable</strong> (this could be named anything you like)</li>
+    <li>followed by some <strong>iterable object</strong> (some sequence of values)</li>
+    <li>followed by a colon</li>
+    <li>in this case, the iterable object is returned by the <strong>range</strong> function</li>
+    <li>the range function returns an arithmetic sequence of numbers</li>
+    <li>in this case, that sequence is [0, 1, 2, 3, 4]</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="for-loops---details-details-details">For Loops - Details, Details, Details</h2>
+</section>
+
+<section>
+  <h3 id="what-does-it-do">What Does It Do?</h3>
+
+  <p>A <strong>for</strong> loop:</p>
+
+  <ul>
+    <li>repeats a block of code for a specific number of times</li>
+    <li>it does this by running through all of the elements in a sequence, one at a time</li>
+    <li>the current element can be accessed in the body of the for loop using the <strong>loop variable</strong></li>
+    <li>(note that the <strong>loop variable</strong> is called <strong>target variable</strong> in Starting Out with Python)</li>
+    <li>that is&#8230; for each element in your sequence, the <strong>loop variable</strong> is set to that element</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="for-loops-2">For Loops</h3>
+
+  <p>A more technical explanation is: <strong>for loops</strong> iterate over every item in an <strong>iterable object</strong>.</p>
+
+  <p>An <em>iterable object</em>:</p>
+
+  <ul>
+    <li>is a <em>thing</em> (<em>object</em>) that contains other values / <em>members</em></li>
+    <li>is capable of returning each of its members <strong>one at a time</strong></li>
+    <li>examples of iterable objects include:
+      <ul>
+        <li>strings (we know these)</li>
+        <li><strong>range objects</strong> (we&#39;ll learn these today)</li>
+        <li>lists (for the future!)</li>
+      </ul>
+    </li>
+    <li>so&#8230; let&#39;s see about these <strong>range objects</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="range-and-range-objects">Range and Range Objects</h3>
+
+  <p>A <strong>range</strong> object is another data type!  It represents an <em>arithmetic sequence</em>, such as 0, 1, 2, 3, 4.</p>
+
+  <ul>
+    <li>a <strong>range</strong> object is created by calling the range() function.</li>
+    <li>with one argument, it creates an arithmetic sequence from 0 up to but <strong>not including</strong> that argument</li>
+    <li>consequently, range(5) produces 0, 1, 2, 3, 4</li>
+    <li>to see the elements in a range, you can use the <strong>list()</strong> function</li>
+    <li>(we&#39;ll learn more about lists later!)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="showing-the-results-of-range">Showing the Results of Range</h3>
+
+  <p><strong>Let&#39;s see if we can make sense of this:</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  make a range object - an arithmetic sequence from 0 through 5</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c">#  let's look at that object</span>
+<span class="k">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+
+<span class="c">#  what type is it?</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">numbers</span><span class="p">))</span>
+
+<span class="c">#  can we actually see the sequence?  yes, but we have to use list.</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">numbers</span><span class="p">))</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">range</span><span class="s">'&gt;</span><span class="err">
+</span><span class="s">[0, 1, 2, 3, 4]</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="so-all-of-that-meant">So&#8230; All of That Meant&#8230;</h3>
+
+  <ul>
+    <li>there&#39;s a type called <strong>range</strong></li>
+    <li>the string representation of a range shows you the original arguments that you passed in</li>
+    <li>you can call the built-in <strong>list</strong> function (used to convert value into a list) to show the exact ints in the list</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="quick-summary-so-far">Quick Summary So Far&#8230;</h3>
+
+  <p>We&#39;ve learned two new built in functions</p>
+
+  <ul>
+    <li><strong>range</strong> returns a range <em>object</em>, a representation of an arithmetic sequence</li>
+    <li><strong>list</strong> returns a list <em>object</em>
+      <ul>
+        <li>for now, we use list in combination with print  to show each number in a range object</li>
+        <li>we&#39;ll learn more about lists later</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="range-life">Range Life&#8230;</h2>
+
+  <aside>The built-in function, range(), creates range objects - convenient, eh?</aside>
+</section>
+
+<section>
+  <h3 id="range">Range</h3>
+
+  <p><strong>range()</strong> returns a <strong>range object</strong>, an arithmetic sequence of numbers.</p>
+
+  <ul>
+    <li>one argument: <strong>range</strong>(stop)
+      <ul>
+        <li>returns a series of numbers starting with 0, up to, but not including <em>stop</em> by ones</li>
+        <li>range(3) &#8594; 0, 1, 2</li>
+      </ul>
+    </li>
+    <li>two arguments: <strong>range</strong>(start, stop)
+      <ul>
+        <li>returns a series of numbers starting with <em>start</em> , up to, but not including <em>stop</em> by ones</li>
+        <li>range(5, 10) &#8594; 5, 6, 7, 8, 9</li>
+      </ul>
+    </li>
+    <li>three arguments: so many arguments, you&#39;ll have to go to the next slide &#8594;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="range-continued">Range (Continued)</h3>
+
+  <p>(continued from previous slide)</p>
+
+  <ul>
+    <li>three arguments: <strong>range</strong>(start, stop, step)
+      <ul>
+        <li>returns a series of numbers starting with <em>start</em> , up to, but not including <em>stop</em> by <em>step</em></li>
+        <li>range(4, 9, 2) &#8594; 4, 6, 8</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="some-other-things-you-should-know-about-range">Some Other Things You Should Know About Range</h3>
+
+  <ul>
+    <li>negative <em>step</em> goes backwards
+      <ul>
+        <li>range(8, 3, -2) &#8594; 8, 6, 4</li>
+      </ul>
+    </li>
+    <li>printing the result of a range object just gives you the original arguments that you used to call range
+      <ul>
+        <li>print(range(8, 3, -2)) &#8594; range(8, 3, -2)</li>
+      </ul>
+    </li>
+    <li>use the list function to show the elements in a range
+      <ul>
+        <li>print(<strong>list</strong>(range(8, 3, -2)))</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="guess-that-series-of-numbers">Guess That Series of Numbers</h3>
+  <aside>Fun!</aside>
+
+  <p><strong>Given the following calls to the range function, what is the start, stop, and step?  What is the resulting arithmetic sequence? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  start:0, end:3, step:1</span>
+<span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  start:10, end:16, step:1</span>
+<span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  start:-2, end:3, step:1</span>
+<span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="guess-that-series-of-numbers-1">Guess That Series of Numbers</h3>
+  <aside>MORE Fun!</aside>
+
+  <p><strong>What is the start, stop, and step?  What is the resulting arithmetic sequence? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">501</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  start:200, end:501, step:100</span>
+<span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  start:0, end:10, step: 5</span>
+<span class="mi">0</span><span class="p">,</span> <span class="mi">5</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  start:5, end:-11, step:-5</span>
+<span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="for-loop-examples">For Loop Examples</h2>
+</section>
+
+<section>
+  <h3 id="and-now-back-to-for-loops">And Now, Back to For Loops</h3>
+  <aside>A Slightly Different Example</aside>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">whatevs</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+		<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">whatevs</span><span class="p">)</span> <span class="o">+</span> <span class="s">" Mississippi"</span><span class="p">)</span></code></pre></figure>
+
+  <ul>
+    <li>notice the different loop variable name, <em>whatevs</em>?</li>
+    <li><strong>What does this snippet of code output?</strong></li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">1</span> <span class="n">Mississippi</span>
+<span class="mi">2</span> <span class="n">Mississippi</span>
+<span class="mi">3</span> <span class="n">Mississippi</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-take-a-closer-look">Let&#39;s Take a Closer Look</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">whatevs</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+		<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">whatevs</span><span class="p">)</span> <span class="o">+</span> <span class="s">" Mississippi"</span><span class="p">)</span></code></pre></figure>
+
+  <p><strong>Going over this step-by-step, what is the value of whatevs, and what is printed? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>range(4) gives a sequence of 1, 2, 3</li>
+      <li>first iteration, the loop variable, whatevs, is 1</li>
+      <li>&quot;1 Mississippi&quot; is printed</li>
+      <li>next iteration, the loop variable, whatevs, is 2</li>
+      <li>&quot;2 Mississippi&quot; is printed</li>
+      <li>next iteration, the loop variable, whatevs is 3</li>
+      <li>&quot;3 Mississippi&quot; is printed</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="another-for-loop-example">Another For Loop Example</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+	<span class="n">result</span> <span class="o">=</span> <span class="n">num</span> <span class="o">*</span> <span class="n">num</span>
+	<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="s">" squared is "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">))</span></code></pre></figure>
+
+  <p><strong>And&#8230; step-by-step, that&#39;s: &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>the sequence is 6, 9, 12</li>
+      <li><strong>num</strong>: 6, <strong>result</strong>: 36, 6 squared is 36</li>
+      <li><strong>num</strong>: 9, <strong>result</strong>: 81, 9 squared is 81</li>
+      <li><strong>num</strong>: 12,<strong>result</strong>: 144, 12 squared is 144</li>
+    </ul>
+
+    <p><a href="http://www.pythontutor.com/visualize.html#code=for+num+in+range(6,+13,+3)%3A%0A++++result+%3D+num+*+num%0A++++print(str(num)+%2B+%22+squared+is+%22+%2B+str(result))&amp;mode=display&amp;cumulative=false&amp;heapPrimitives=false&amp;drawParentPointers=false&amp;textReferences=false&amp;py=3&amp;curInstr=0">And by using pythontutor.com</a>
+<!-- stop it* --></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="how-about-another">How About Another?</h3>
+
+  <p><strong>What is the output of this code? Let&#39;s read through it line-by-line to figure it out. &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">whatevs</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">whatevs</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"let's skip this one"</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">whatevs</span><span class="p">)</span> <span class="o">+</span> <span class="s">" Mississippi"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">1</span> <span class="n">Mississippi</span>
+<span class="n">let</span><span class="s">'s skip this one</span><span class="err">
+</span><span class="s">3 Mississippi</span></code></pre></figure>
+
+    <p><a href="http://www.pythontutor.com/visualize.html#code=for+whatevs+in+range(1,+4)%3A%0A++++if+whatevs+%3D%3D+2%3A%0A++++++++print(%22let's+skip+this+one%22)%0A++++else%3A%0A++++++++print(str(whatevs)+%2B+%22+Mississippi%22)&amp;mode=display&amp;cumulative=false&amp;heapPrimitives=false&amp;drawParentPointers=false&amp;textReferences=false&amp;py=3&amp;curInstr=0">And again, step-by-step</a></p>
+  </div>
+</section>
+
+<section>
+  <h2 id="for-loop-exercises">For Loop Exercises</h2>
+</section>
+
+<section>
+  <h3 id="some-quick-excercises">Some Quick Excercises</h3>
+
+  <p><strong>Let&#39;s do these together &#8594;</strong></p>
+
+  <ul>
+    <li>count to 100 starting from 1</li>
+    <li>count to 100 by twos from 0</li>
+    <li>count backwards starting from 100 down to and including 0</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="fizz-buzz">Fizz Buzz</h3>
+  <ul>
+    <li><a href="http://c2.com/cgi/wiki?FizzBuzzTest">fizz buzz</a></li>
+    <li>print out 1 to 100 &#8230;with the following exceptions:</li>
+    <li>for multiples of three, print out &quot;Fizz&quot; instead of the number</li>
+    <li>for multiples of five, print out &quot;Buzz&quot; instead of the number</li>
+    <li>for multiples of both three and five print “FizzBuzz”</li>
+    <li>example output, next slide, plz!</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="fizzbuzz-output">FizzBuzz Output</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">1</span>
+<span class="mi">2</span>
+<span class="n">Fizz</span>
+<span class="mi">4</span>
+<span class="n">Buzz</span>
+<span class="n">Fizz</span>
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="mi">14</span>
+<span class="n">FizzBuzz</span>
+<span class="mi">16</span>
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="mi">98</span>
+<span class="n">Fizz</span>
+<span class="n">Buzz</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="fizzbuzz-solution">FizzBuzz Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"FizzBuzz"</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Fizz"</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Buzz"</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="using-an-accumulator-variable">Using an Accumulator Variable</h2>
+</section>
+
+<section>
+  <h3 id="accumulator-variable">Accumulator Variable</h3>
+
+  <p>An <strong>accumulator</strong> variable is a variable used to keep the running total of a repeated calculation or operation that&#39;s within a loop:</p>
+
+  <ul>
+    <li>a variable is declared outside of the loop</li>
+    <li>it is added to within the loop</li>
+  </ul>
+
+  <p>Some examples include:</p>
+
+  <ul>
+    <li>counting the number of times a while loop runs (count += 1)</li>
+    <li>incrementally building a string within a loop (s += word)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="summing-numbers">Summing Numbers</h3>
+  <ul>
+    <li>sum the first 1-100 numbers, print out the resulting the sum</li>
+    <li>(which, of course, <a href="http://betterexplained.com/articles/techniques-for-adding-the-numbers-1-to-100/">doesn&#39;t need a loop</a>)</li>
+    <li>(and there&#39;s <a href="http://en.wikipedia.org/wiki/Carl_Friedrich_Gauss#Anecdotes">this story</a>)</li>
+    <li>(and <a href="http://en.wikipedia.org/wiki/List_of_things_named_after_Carl_Friedrich_Gauss">the list of things named after him!?</a>)</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
+	<span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">i</span>
+<span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="counting-dice-for-loop">Counting Dice For Loop</h3>
+
+  <p><strong>Roll a die 1000 times; count how many times a one is rolled!  Print out the result.  Use a for loop.&#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">ones</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">):</span>
+	<span class="n">roll</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="n">ones</span> <span class="o">=</span> <span class="n">ones</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ones</span><span class="p">)</span> <span class="o">+</span> <span class="s">" of 1000 rolls were ones"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="counting-dice-while-loop">Counting Dice While Loop</h3>
+
+  <p><strong>Roll a die 1000 times; count how many times a one is rolled!  Print out the result.  Use a while loop.&#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">ones</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
+	<span class="n">roll</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="n">ones</span> <span class="o">=</span> <span class="n">ones</span> <span class="o">+</span> <span class="mi">1</span>
+	<span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ones</span><span class="p">)</span> <span class="o">+</span> <span class="s">" of 1000 rolls were ones"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+  <!--_ -->
+</section>
+
+<section>
+  <h2 id="using-user-input-to-influence-number-of-repetitions">Using User Input to Influence Number of Repetitions</h2>
+</section>
+
+<section>
+  <h3 id="controlling-a-for-loop-with-user-input">Controlling a For Loop With User Input</h3>
+
+  <p>We can base the number of repetitions that a for loop goes through by asking the user to enter a value.</p>
+
+  <p><strong>Let&#39;s check out a programming problem where this idea might come in handy&#8230;</strong> &#8594;</p>
+
+  <!--
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">highest_number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"How high should I count?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">highest_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></code></pre></figure>
+
+-->
+
+</section>
+
+<section>
+  <h3 id="a-ladder">A Ladder</h3>
+
+  <p><strong>Make me a ladder!</strong> &#8594;</p>
+
+  <ul>
+    <li>ask for a height, make a ladder with that many rungs</li>
+    <li>can you do this using a for loop?</li>
+    <li>or how about just string multiplication?</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">How</span> <span class="n">tall</span> <span class="n">do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">this</span> <span class="n">ladder</span> <span class="n">to</span> <span class="n">be</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">3</span>
+
+ <span class="o">========</span>
+ <span class="o">|</span>      <span class="o">|</span>
+ <span class="o">========</span>
+ <span class="o">|</span>      <span class="o">|</span>
+ <span class="o">========</span>
+ <span class="o">|</span>      <span class="o">|</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-ladder-implementation">A Ladder Implementation</h3>
+
+  <p>(Or&#8230; two implementations, really)</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'How tall do you want this ladder to be?'</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">'========</span><span class="se">\n</span><span class="s">|      |'</span><span class="p">)</span>
+
+<span class="c">#  or... just multiply instead of using the for loop</span>
+<span class="c">#  print(height * '========\n|      |')</span></code></pre></figure>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

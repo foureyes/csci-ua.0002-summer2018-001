@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Review (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="printhi">print(&quot;hi&quot;)</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="a-first-program">A First Program</h3>
+  <aside>"Hello world!"</aside>
+  <ul>
+    <li>&quot;Hello world!&quot; is traditionally the <a href="http://en.wikipedia.org/wiki/List_of_Hello_world_program_examples">first program you write when learning a new language</a></li>
+    <li>simply outputs &quot;Hello world!&quot;</li>
+  </ul>
+
+  <p>Follow these steps:</p>
+
+  <ol>
+    <li>create a new file (File &#8594; New Window)</li>
+    <li>type in:	<strong>print(&quot;Hello world!&quot;)</strong></li>
+    <li>run your program (Run &#8594; Run Module)
+      <ul>
+        <li>you will be prompted you to save your file</li>
+        <li>save your file as hello.py (make sure you keep the .py extension!)</li>
+      </ul>
+    </li>
+  </ol>
+
+  <details>
+</details>
+</section>
+
+<section>
+  <h2 id="lets-take-a-closer-look-at-hello-world-">Let&#39;s Take a Closer Look at &quot;Hello World&quot; &#8230;</h2>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"Hello world!"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="space">SPACE!</h3>
+  <ul>
+    <li>notice there&#39;s no space prior to <strong>print</strong></li>
+    <li>Python is <strong>whitespace significant</strong>
+      <ul>
+        <li>whitespace matters</li>
+        <li>it mostly matters at the beginning of lines</li>
+        <li>indentation specifies the beginning and end of a group of lines of code</li>
+        <li>interior spacing usually doesn&#39;t matter</li>
+      </ul>
+    </li>
+    <li>this will work &#8594;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span>  <span class="p">(</span>      <span class="s">"Hello world!"</span><span class="p">)</span></code></pre></figure>
+
+  <ul>
+    <li>this won&#39;t &#8594;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python">        <span class="k">print</span><span class="p">(</span><span class="s">"Hello world!"</span><span class="p">)</span></code></pre></figure>
+
+  <ul>
+    <li>we&#39;ll see more about spacing in our next class</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="print">Print</h3>
+
+  <ul>
+    <li>print is a built-in <strong>function</strong></li>
+    <li><strong>what&#39;s a function?</strong> &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li>a function is a bunch of code that gets executed whenever the name of the function is <em>called</em></li>
+      <li>it&#39;s a black box that does <em>something</em></li>
+      <li>similar to functions you&#39;ve seen in math
+        <ul>
+          <li>it may have parameters (inputs)</li>
+          <li>it can return a value (output)</li>
+          <li>though it doesn&#39;t necessarily have to have parameters or return values</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="print-continued">Print Continued</h3>
+  <ul>
+    <li><strong>print</strong> is a built in function&#8230; that will output whatever you give it to the console followed by a <strong>new line</strong></li>
+    <li>you can tell it&#39;s a built-in function because it&#39;s highlighted (purple)</li>
+    <li>if you start typing it and open parentheses, you get a hint &#8594;
+      <ul>
+        <li>notice - it can take more than one parameter or argument!</li>
+        <li>you can give print multiple parameters by separating them with a comma; all parameters will be printed out separated by a space &#8594;</li>
+      </ul>
+    </li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"Hi"</span><span class="p">,</span> <span class="s">"there"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-quick-note-about-functions">A Quick Note About Functions</h3>
+  <ul>
+    <li>we will go into the rest of the hint when we cover functions</li>
+    <li>for now we&#39;re just interested in calling functions</li>
+    <li>you call a function by
+      <ul>
+        <li>typing the function&#39;s name</li>
+        <li>open parentheses</li>
+        <li>any <strong>arguments</strong> (that is, values that you use as input for the function), separated by commas</li>
+        <li>close parentheses</li>
+      </ul>
+    </li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a_function_name</span><span class="p">(</span><span class="s">"argument 1"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-string">A String</h3>
+  <ul>
+    <li>the one argument that we pass to the <strong>print</strong> function  is <strong>&quot;Hello world!&quot;</strong></li>
+    <li>this is called a <strong>string</strong>&#8230;</li>
+    <li>it&#39;s just a sequence of characters</li>
+    <li>note that it&#39;s surrounded by quotes!</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="one-last-look">One Last Look&#8230;</h3>
+  <ul>
+    <li>a function named <strong>print</strong></li>
+    <li>being called with exactly one <strong>argument</strong></li>
+    <li>the one argument is a <strong>string</strong>:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"Hello world!"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-reminder-about-a-neat-trick">A Reminder About a Neat Trick</h3>
+
+  <p>Again&#8230; as mentioned previously, you can use <strong>help</strong>(<em>thing</em>) in the <strong>interactive shell</strong> to show information about built-in functions and other Python features:</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; help(print)</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="some-more-new-stuff">Some More New Stuff</h3>
+  <aside>For the remainder of this class:</aside>
+  <ul>
+    <li>we&#39;ll talk a little more about strings and other <strong>types</strong> of <strong>values</strong></li>
+    <li>comments</li>
+    <li>the operations that you can use on those types</li>
+    <li>variables</li>
+    <li>user input</li>
+    <li>design, input, processing and output</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="lets-move-on-to-values-and-data-types"><a href="values-and-types.html">Let&#39;s Move on to Values and Data Types</a></h2>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

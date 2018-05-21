@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>File I/O (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="file-io">File I/O</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="using-files">Using Files</h3>
+
+  <p><strong>How do we read information from a file?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">in_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'my_file.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+
+<span class="c">#  iterate over file object</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">in_file</span><span class="p">:</span>
+	<span class="c"># do stuff</span>
+
+<span class="c">#  read entire contents of file as string</span>
+<span class="n">contents</span> <span class="o">=</span> <span class="n">in_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c">#  read entire contents of file as list</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">in_file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="c">#  read one line at a time (check if empty)</span>
+<span class="n">line</span> <span class="o">=</span> <span class="n">in_file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+
+<span class="c">#  remember to close!</span>
+<span class="n">in_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="using-files-continued">Using Files Continued</h3>
+
+  <p><strong>Aaaand how about writing to a file?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">out_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'my_file.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span>
+
+<span class="c">#  write out to a file</span>
+<span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'foo!'</span><span class="p">)</span>
+
+<span class="c">#  remember to close!</span>
+<span class="n">out_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="an-exercise">An Exercise</h3>
+
+  <p>You have a file called <strong>numbers.txt</strong>.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Numbers</span>
+<span class="mi">5</span><span class="p">,</span><span class="mi">2</span>
+<span class="mi">9</span><span class="p">,</span><span class="mi">3</span>
+<span class="mi">144</span><span class="p">,</span><span class="mi">12</span></code></pre></figure>
+
+  <ul>
+    <li>extract the numbers from each line</li>
+    <li>ignore the first line</li>
+    <li>divide the 1st number by the 2nd number</li>
+    <li>create a new file called <strong>results.txt</strong> with the results of each calculation:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Results</span>
+<span class="mf">2.5</span>
+<span class="mf">3.0</span>
+<span class="mf">12.0</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="an-exercise-continued">An Exercise Continued</h3>
+
+  <p><strong>Now modify your file to handle this input file.</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Numbers</span>
+<span class="n">hello</span><span class="p">,</span><span class="mi">2</span>
+<span class="mi">9</span><span class="p">,</span><span class="mi">0</span>
+<span class="mi">144</span><span class="p">,</span><span class="mi">12</span></code></pre></figure>
+
+  <ul>
+    <li>use <strong>try</strong> / <strong>except</strong></li>
+    <li>there are two exceptions you&#39;ll need to handle</li>
+    <li><strong>results.txt</strong> should contain:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Results</span>
+<span class="ow">not</span> <span class="n">a</span> <span class="n">number</span>
+<span class="n">divided</span> <span class="n">by</span> <span class="mi">0</span><span class="err">!</span>
+<span class="mf">12.0</span></code></pre></figure>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>If Statements - Advanced (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="how-to-uncomplicate-things-with-if-statements">How to (Un)Complicate Things With If Statements</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="if-statements">if Statements</h3>
+
+  <p><strong>if</strong> statements allow for the conditional execution of code:</p>
+
+  <ul>
+    <li>Starting Out with Python refers to this as a <strong>single alternative decision structure</strong></li>
+    <li>there is only one <em>alternative</em> path of execution that the code could veer off to</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">some_boolean_expression</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"do something"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="if-else-statements">if-else Statements</h3>
+
+  <p><strong>if-else</strong> statements will execute one block of code if the condition is true&#8230; or another block if it&#39;s false:</p>
+
+  <ul>
+    <li>Starting Out with Python refers to this as a <strong>dual alternative decision structure</strong></li>
+    <li>two possible paths of execution</li>
+    <li>note that the if and else clause are part of the same structure</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">some_boolean_expression</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"do something"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"do another thing"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="elif">elif</h2>
+  <aside>Like Smashing Together Your Two Favorite Keywords</aside>
+</section>
+
+<section>
+  <h3 id="elif-is-the-new-else-if">elif Is the New <em>Else If</em></h3>
+
+  <p>We can use <strong>elif</strong> to chain together a series of conditions.  This allows us to create multiple flows of execution (more than two), but - at most - only one path will be executed (<strong>even if more than one condition is true</strong>).</p>
+
+  <ul>
+    <li>each condition is checked in order</li>
+    <li>if the first is false, the next condition is checked</li>
+    <li>this continues until the first true condition</li>
+    <li>the body of code associated with that condition is executed</li>
+    <li>the statement ends even if there are more conditions left</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="elif-syntax">elif Syntax</h3>
+
+  <p>Let&#39;s see what it looks like&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">condition_1</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"do something"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">condition_2</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"do another thing"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">condition_3</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"...and another thing"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">condition_n</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"actually, any artibtrary number of things!"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"else clause is optional"</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"for conditions not caught above"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="elif-syntax-explained">elif Syntax Explained</h3>
+
+  <ul>
+    <li><strong>if</strong> statement like usual</li>
+    <li>go back one level of indentation to mark that the previous code block has ended</li>
+    <li>keyword <strong>elif</strong></li>
+    <li>condition</li>
+    <li>colon</li>
+    <li>body - indented, body ends when indentation goes back one level</li>
+    <li>not required obv</li>
+    <li><strong>even if more than one true, only the first true executes!</strong></li>
+    <li>can still add an <strong>else</strong> at the end</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="a-trivial-elif-example">A Trivial elif Example</h3>
+
+  <p><strong>Translate an athlete&#39;s finishing placement (1st, 2nd and 3rd) into its Olympic medal value: 1 for gold, 2 for silver, 3 for bronze and anything else means no medal &#8594;</strong>.  Do this by asking for user input.  For example:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">What</span> <span class="n">number</span> <span class="n">should</span> <span class="n">I</span> <span class="n">translate</span> <span class="n">into</span> <span class="n">a</span> <span class="n">medal</span><span class="err">?</span>
+<span class="o">&gt;</span><span class="mi">1</span>
+<span class="n">gold</span>
+
+<span class="n">What</span> <span class="n">number</span> <span class="n">should</span> <span class="n">I</span> <span class="n">translate</span> <span class="n">into</span> <span class="n">a</span> <span class="n">medal</span><span class="err">?</span>
+<span class="o">&gt;</span><span class="mi">3</span>
+<span class="n">bronze</span>
+
+<span class="n">What</span> <span class="n">number</span> <span class="n">should</span> <span class="n">I</span> <span class="n">translate</span> <span class="n">into</span> <span class="n">a</span> <span class="n">medal</span><span class="err">?</span>
+<span class="o">&gt;</span><span class="mi">23</span>
+<span class="n">no</span> <span class="n">medal</span> <span class="k">for</span> <span class="n">you</span><span class="err">!</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="medals-solution">Medals&#8230; Solution!</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""Translate place number into Olympic medal.  FTW!"""</span>
+
+<span class="n">place</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'What number should I translate into a medal?</span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">place</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">medal</span> <span class="o">=</span> <span class="s">"gold"</span>
+<span class="k">elif</span> <span class="n">place</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">medal</span> <span class="o">=</span> <span class="s">"silver"</span>
+<span class="k">elif</span> <span class="n">place</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="n">medal</span> <span class="o">=</span> <span class="s">"bronze"</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">medal</span> <span class="o">=</span> <span class="s">"no medal for you!"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">medal</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="another-elif-example">Another elif Example</h3>
+  <aside>Let's have some more cake...</aside>
+  <p><strong>Let&#39;s do the cake exercise again using elif&#8230;</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">Do you want cake?
+&gt; yes
+Here, have some cake.
+#  &gt; no ... no cake for you
+#  &gt; bleargh ... i don't understand</code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""Ask me if I want cake, I *dare* you to."""</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="and-how-did-that-compare-to-consecutive-if-statements">And How Did That Compare To Consecutive If Statements?</h3>
+
+  <p><strong>We could have impemented this using consecutive if statements.</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'yes'</span> <span class="ow">and</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'no'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="an-if-in-your-if">An if in Your if</h3>
+
+  <p>You can actually nest if statements within each other:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">condition_1</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"condition 1 is true!"</span><span class="p">)</span>
+
+	<span class="c"># nested if!</span>
+	<span class="k">if</span> <span class="n">condition_2</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"in 2"</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"condition 1 is not true!"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-see-cake-with-nested-if-statements">Let&#39;s See Cake With Nested If Statements</h3>
+
+  <p><strong>We could have impemented this using nested if statements.</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="and-how-did-that-compare-to-consecutive-nested-if-statements">And How Did That Compare To Consecutive Nested If Statements?</h3>
+
+  <p><strong>What do you think the decision trees look like?.</strong> &#8594; (Oh, and BTW, what&#39;s a decision tree? &#8230;It&#39;s a graph that shows all possible decisions and the outcomes of those decisions.)</p>
+
+  <div class="incremental">
+    <div class="img-container">
+      <p><img src="../../resources/img/cake-decision-trees.png" alt="trees" /></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 id="and-how-about-speed">And How About Speed?</h3>
+
+  <p><strong>We could make an educated guess.</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>elif skips conditions if one of the early conditions is true!</li>
+      <li>that means, best case, there are less instructions for the computer to execute when using elif
+        <ul>
+          <li>compared to nested ifs</li>
+          <li>or consecutive ifs</li>
+        </ul>
+      </li>
+      <li>not sure what the interpreter/compiler does behind the scenes when it translates, though
+        <ul>
+          <li>could optimize things</li>
+          <li>produce similar machine code for both kinds of code</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="were-not-finished-yet">We&#39;re Not Finished Yet&#8230;</h3>
+  <aside>I'm bad at making decisions...</aside>
+
+  <ul>
+    <li><strong>Add &quot;maybe&quot; as a potential answer?</strong> &#8594;</li>
+    <li><strong>Handle different ways of saying yes (like &quot;yeah&quot;)?</strong> &#8594;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">cake</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">maybe</span>
+<span class="n">So</span><span class="p">,</span> <span class="n">call</span> <span class="n">me</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">cake</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">yes</span>
+<span class="n">Here</span><span class="p">,</span> <span class="n">have</span> <span class="n">some</span> <span class="n">cake</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">cake</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">yeah</span>
+<span class="n">Here</span><span class="p">,</span> <span class="n">have</span> <span class="n">some</span> <span class="n">cake</span><span class="o">.</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="adding-yeah-and-maybe">Adding &#39;yeah&#39; and &#39;maybe&#39;&#8230;</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""Ask me if I want cake, I *dare* you to."""</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span> <span class="ow">or</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yeah'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'maybe'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"So, call me."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lastly-everything-together">Lastly, Everything Together</h3>
+
+  <p><strong>Write a program that names the rolls of two dice in a dice game called craps&#8230;</strong> &#8594;</p>
+
+  <ul>
+    <li>ask the user for the values of two dice rolls.</li>
+    <li>output the <a href="http://en.wikipedia.org/wiki/Craps#Rolling">name of the roll</a> using Wikipedia&#39;s article on Craps</li>
+    <li>only check for the following rolls:
+      <ul>
+        <li><em>Snake Eyes</em></li>
+        <li><em>Hard Four</em></li>
+        <li><em>Easy Four</em></li>
+      </ul>
+    </li>
+    <li>print out &quot;I don&#39;t know yet&quot; for any other rolls.  Example output:</li>
+    <li>example interaction on next page</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="craps---example-interaction">Craps - Example Interaction</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">What</span> <span class="n">roll</span> <span class="n">did</span> <span class="n">you</span> <span class="n">get</span> <span class="k">for</span> <span class="n">the</span> <span class="n">first</span> <span class="n">die</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">1</span>
+<span class="n">What</span> <span class="n">roll</span> <span class="n">did</span> <span class="n">you</span> <span class="n">get</span> <span class="k">for</span> <span class="n">the</span> <span class="n">second</span> <span class="n">die</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">1</span>
+<span class="n">Snake</span> <span class="n">Eyes</span><span class="err">!</span>
+
+<span class="n">What</span> <span class="n">roll</span> <span class="n">did</span> <span class="n">you</span> <span class="n">get</span> <span class="k">for</span> <span class="n">the</span> <span class="n">first</span> <span class="n">die</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">1</span>
+<span class="n">What</span> <span class="n">roll</span> <span class="n">did</span> <span class="n">you</span> <span class="n">get</span> <span class="k">for</span> <span class="n">the</span> <span class="n">second</span> <span class="n">die</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">3</span>
+<span class="n">Easy</span> <span class="n">Four</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="name-that-craps-roll">Name That Craps Roll</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">""" Name that craps roll! (well, at least four of them)
+http://en.wikipedia.org/wiki/Craps#Rolling"""</span>
+
+<span class="n">d1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"What roll did you get for the first die?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"What roll did you get for the second die?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">d1</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">d2</span> <span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Snake Eyes!"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">d1</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">d1</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Easy Four"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">d1</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">d2</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Hard Four"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"I don't know that roll yet"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="nesting-if-statements">Nesting If Statements</h3>
+
+  <ul>
+    <li>we saw this above to motivate our <strong>elif</strong> example</li>
+    <li>it behaves as you&#39;d expect</li>
+    <li>remember to get indentation right</li>
+    <li>if there are multiple elif&#39;s or else&#39;s,  you can use indentation to see which initial if statement they belong to</li>
+    <li>this works for any combination of if, elif and else</li>
+    <li>note that sometimes nested if statements are equivalent to and</li>
+    <li>best to simplify - that is, less nesting, better</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="nesting-if-statements-example">Nesting If Statements Example</h3>
+
+  <p>The coffee shop has a special for half price pastries on Fridays after 4 (16:00&#8230; or 16).  <strong>Ask for day and time, and make a recommendation (buy now, wait x hours or don&#39;t buy).</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">What</span> <span class="n">day</span> <span class="ow">is</span> <span class="n">it</span> <span class="p">(</span><span class="n">ex</span> <span class="n">Thursday</span><span class="p">,</span> <span class="n">Friday</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span><span class="p">)</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">Friday</span>
+<span class="n">What</span> <span class="n">time</span> <span class="ow">is</span> <span class="n">it</span> <span class="p">(</span><span class="ow">in</span> <span class="mi">24</span> <span class="n">hour</span> <span class="n">time</span><span class="p">)</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">17</span>
+<span class="n">Go</span> <span class="n">ahead</span><span class="p">,</span> <span class="n">you</span> <span class="n">deserve</span> <span class="n">a</span> <span class="n">treat</span>
+
+<span class="n">What</span> <span class="n">day</span> <span class="ow">is</span> <span class="n">it</span> <span class="p">(</span><span class="n">ex</span> <span class="n">Thursday</span><span class="p">,</span> <span class="n">Friday</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span><span class="p">)</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">Friday</span>
+<span class="n">What</span> <span class="n">time</span> <span class="ow">is</span> <span class="n">it</span> <span class="p">(</span><span class="ow">in</span> <span class="mi">24</span> <span class="n">hour</span> <span class="n">time</span><span class="p">)</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="mi">12</span>
+<span class="n">Just</span> <span class="n">wait</span> <span class="mi">4</span> <span class="n">more</span> <span class="n">hours</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="pastry-buying-guide">Pastry Buying Guide</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">""" pastry buying guide """</span>
+
+<span class="n">day</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"What day is it (ex Thursday, Friday, etc.)?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="n">time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"What time is it (in 24 hour time)?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span> <span class="c"># not adventure</span>
+<span class="n">delicious_time</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="k">if</span> <span class="n">day</span> <span class="o">==</span> <span class="s">'Friday'</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">time</span> <span class="o">&gt;=</span> <span class="n">delicious_time</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Go ahead, you deserve a treat"</span><span class="p">)</span> 
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Just wait </span><span class="si">%</span><span class="s">s more hours"</span> <span class="o">%</span> <span class="p">(</span><span class="n">delicious_time</span> <span class="o">-</span> <span class="n">time</span><span class="p">))</span> 
+<span class="k">else</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"Don't do it!  Just don't."</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="how-to-order-conditions">How to Order Conditions</h3>
+
+  <ul>
+    <li>if more than one condition in a series of elif&#39;s is true
+      <ul>
+        <li>only the first true condition is executed!</li>
+        <li>other are skipped, including else</li>
+      </ul>
+    </li>
+    <li>be careful of conditions that never get evaluated
+      <ul>
+        <li>an above condition may already account for it</li>
+        <li>here&#39;s an example&#8230;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="ordering-conditions-continued">Ordering Conditions Continued!</h3>
+
+  <p>The intention of the following code is to:</p>
+
+  <ul>
+    <li>determine if a number is 101 or greater than 100</li>
+    <li>if it&#39;s 101, it should only print out &quot;exactly 101&quot; (it should not print out greater than 100)</li>
+  </ul>
+
+  <p><strong>What gets printed if n = 200?  What if n = 101?</strong>   &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"more than 100"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">101</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"exactly 101"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>200 &#8594; more than 100, 101 &#8594; more than 100</p>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="how-to-order-conditions-continued-some-more">How to Order Conditions Continued Some More!</h3>
+
+  <p><strong>Of course, we could fix this.  There are a few ways&#8230;</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>reordering</li>
+      <li>using and</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">101</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"exactly 101"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"more than 100"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">101</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"more than 100"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">101</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"exactly 101"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="equivalent-conditions">Equivalent Conditions</h2>
+</section>
+
+<section>
+  <h3 id="logical-opposites">Logical Opposites</h3>
+  <p>A way to get rid of not operators is to use the opposite logical operator:</p>
+
+  <p><a href="http://openbookproject.net/thinkcs/python/english3e/conditionals.html">Logical Opposites from How to Think Like a Computer Scientist </a></p>
+
+  <p>Examples of logical opposites:</p>
+
+  <ul>
+    <li>the logical opposite of &gt; is &lt;=</li>
+    <li>the logical opposite of &lt; is &gt;=</li>
+  </ul>
+
+  <p>Consequently</p>
+
+  <ul>
+    <li>not &gt; is the same as &lt;=</li>
+    <li>not &lt; is the same as &gt;=</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="logical-opposites-continued">Logical Opposites Continued</h3>
+  <p><strong>How can we rewrite this without the not?</strong>&#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  Example from How to Think Like a Computer Scientist</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">17</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Hey, you're too young to get a driving licence!"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Hey, you're too young to get a driving licence!"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="de-morgans-law">De Morgan&#39;s Law</h3>
+  <ul>
+    <li>not (x and y)  ==  (not x) or (not y)</li>
+    <li>not (x or y)   ==  (not x) and (not y)</li>
+    <li>How to Think Like a Computer Scientist example
+      <ul>
+        <li>uses combination of logical opposites and De Morgan&#39;s Law</li>
+        <li>clarity / closeness to original</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Let&#39;s try truth tables for these!</strong> &#8594;</p>
+</section>
+
+<section>
+  <h3 id="de-morgans-law-truth-tables">De Morgan&#39;s Law Truth Tables</h3>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">x | y | not <span class="o">(</span>x and y<span class="o">)</span>   x | y | <span class="o">(</span>not x<span class="o">)</span> or <span class="o">(</span>not y<span class="o">)</span>
+<span class="o">=====================</span>   <span class="o">=========================</span>
+t | t | f               t | t | f
+t | f | t               t | f | t
+f | t | t               f | t | t
+f | f | t               f | f | t
+
+x | y | not <span class="o">(</span>x or y<span class="o">)</span>   x | y | <span class="o">(</span>not x<span class="o">)</span> and <span class="o">(</span>not y<span class="o">)</span>
+<span class="o">====================</span>   <span class="o">===========================</span>
+t | t | f              t | t | f
+t | f | f              t | f | f
+f | t | f              f | t | f
+f | f | t              f | f | t</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="de-morgans-law-1">De Morgan&#39;s Law</h3>
+  <p><strong>How can we rewrite this fragment of code from How to Think Like a Computer Scientist?</strong>&#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  "suppose we can slay the dragon only if our magic lightsabre sword </span>
+<span class="c">#  is charged to 90% or higher, and we have 100 or more energy units </span>
+<span class="c">#  in our protective shield." </span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="p">((</span><span class="n">sword_charge</span> <span class="o">&gt;=</span> <span class="mf">0.90</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">shield_energy</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">)):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Your attack has no effect, the dragon fries you to a crisp!"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"The dragon crumples in a heap. You rescue the gorgeous princess!"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  first... demorgan's: </span>
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">sword_charge</span> <span class="o">&gt;=</span> <span class="mf">0.90</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span><span class="n">shield_energy</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">):</span>
+	<span class="c"># ...</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  next... logical opposites:</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">sword_charge</span> <span class="o">&lt;</span> <span class="mf">0.90</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">shield_energy</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">):</span>
+	<span class="c"># ...</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="truthiness-and-style">Truthiness and Style</h2>
+</section>
+
+<section>
+  <h3 id="truthiness">Truthiness</h3>
+
+  <p>See this <a href="http://docs.python.org/py3k/library/stdtypes.html#truth-value-testing">crazy chart</a> on the <em>intrinsic</em> boolean value of various types.  The following values are considered false:</p>
+
+  <ul>
+    <li>None</li>
+    <li>False</li>
+    <li>0 of any numeric type (0.0, 0)</li>
+    <li>empty mapping or sequence type (We&#39;ll look at these later) - this includes the empty string &#39;&#39;, &quot;&quot;, etc.</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="truthiness-examples">Truthiness Examples</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="s">""</span>
+<span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"true!"</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"true!"</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s">"foo"</span>
+<span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"true!"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="using-logical-operators">Using Logical Operators</h3>
+
+  <p><strong>What&#39;s the difference between the following two code samples?</strong>&#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  sample 1</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="s">'no'</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span> <span class="ow">or</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'YES'</span> <span class="ow">or</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'Yes'</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">'you said yes'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">'you said no'</span><span class="p">)</span>
+
+<span class="c">#  sample 2</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span> <span class="ow">or</span> <span class="s">'YES'</span> <span class="ow">or</span> <span class="s">'Yes'</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">'you said yes'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">'you said no'</span><span class="p">)</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="s">'no'</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="using-logical-operators-continued">Using Logical Operators Continued</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  boolean expression in sample 1</span>
+<span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span> <span class="ow">or</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'YES'</span> <span class="ow">or</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'Yes'</span><span class="p">:</span>
+
+<span class="c">#  boolean expression in sample 2</span>
+<span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span> <span class="ow">or</span> <span class="s">'YES'</span> <span class="ow">or</span> <span class="s">'Yes'</span><span class="p">:</span></code></pre></figure>
+
+  <ul>
+    <li>the second one always ends up being True (the other values in the boolean expression are treated as true)
+      <ul>
+        <li><strong>or &#39;YES&#39;</strong> can be translated as <strong>or True</strong>!</li>
+        <li>which means you always get back True!</li>
+      </ul>
+    </li>
+    <li>you should have the full comparison operator along with operands to prevent this from happening</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="another-note-about-style">Another Note About Style</h3>
+  <ul>
+    <li>remember idioms?</li>
+    <li>http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html#testing-for-truth-values</li>
+    <li>more elegant to test intrinsic truth values than using equality operator</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">b</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="c">#  instead of if b == True</span>
+<span class="k">if</span> <span class="n">b</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"b"</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s">"catz!"</span>
+<span class="c">#  to test if the value is not empty string </span>
+<span class="c">#  (rather than s != "")</span>
+<span class="k">if</span> <span class="n">s</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-write-a-mini-quiz-game">Let&#39;s Write a Mini Quiz Game!</h3>
+
+  <p><strong>Write a program to ask a couple of questions about the book, Dune.</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#   ______            _        _______ </span>
+<span class="c">#  (  __  \ |\     /|( (    /|(  ____ \</span>
+<span class="c">#  | (  \  )| )   ( ||  \  ( || (    \/</span>
+<span class="c">#  | |   ) || |   | ||   \ | || (__    </span>
+<span class="c">#  | |   | || |   | || (\ \) ||  __)   </span>
+<span class="c">#  | |   ) || |   | || | \   || (      </span>
+<span class="c">#  | (__/  )| (___) || )  \  || (____/\</span>
+<span class="c">#  (______/ (_______)|/    )_)(_______/</span>
+<span class="c">#  </span>
+<span class="c">#  What is the name of the desert planet that's informally called Dune?</span>
+<span class="c">#  &gt; Arrakis</span>
+<span class="c">#  You got it right!</span>
+<span class="c">#  What valuable resource is only found on Dune?</span>
+<span class="c">#  &gt; cheese?</span>
+<span class="c">#  Nope, the answer is: spice</span>
+<span class="c">#  You got 1 questions right! </span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-write-a-mini-quiz-game-continued">Let&#39;s Write a Mini Quiz Game (Continued)!</h3>
+
+  <p>Let&#39;s get some requirements down:</p>
+
+  <ul>
+    <li>ask two questions sequentially</li>
+    <li>keep track of the number of questions that the player got right</li>
+    <li>output the number of questions right</li>
+    <li>(optional) keep track of the number of questions wrong, and output that as well</li>
+    <li>(optional) ask for the player&#39;s name and greet the player</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="we-dont-have-to-jump-right-into-code">We Don&#39;t Have To Jump Right Into Code!</h3>
+
+  <p><strong>So, first, what&#39;s our plan?</strong> &#8594;</p>
+
+  <ul>
+    <li>flow chart?</li>
+    <li>pseudocode?</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="lets-write-a-mini-quiz-game-continued-some-more">Let&#39;s Write a Mini Quiz Game! (Continued Some More)!</h3>
+
+  <p>What are some ways that we can be more tolerant about capitalization?  That is&#8230; what if we wanted to accept these answers:</p>
+
+  <ol>
+    <li>Arrakis / arrakis</li>
+    <li>spice / the spice / the spice melange</li>
+  </ol>
+
+  <p>Another wrinkle might be to have different output based on which version of the <em>right</em> answer was chosen.  For example, if someone puts in spice, it might say, &quot;oh, you mean, <em>the spice melange</em>&quot;.</p>
+</section>
+
+<section>
+  <h2 id="built-in-modules-are-up-next"><a href="built-in-modules.html">Built-In Modules Are Up Next!</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

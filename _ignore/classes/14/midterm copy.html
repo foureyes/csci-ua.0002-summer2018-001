@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Midterm (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="midterm-1">Midterm #1</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="about-the-midterm">About the Midterm</h3>
+
+  <ul>
+    <li><strong>15</strong> questions</li>
+    <li><strong>54</strong> points total</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="about-the-midterm-continued">About the Midterm Continued</h3>
+
+  <ul>
+    <li>easiest of the 3 exams</li>
+    <li>3 code-from-scratch questions
+      <ul>
+        <li>1 moderate difficulty (countdown)</li>
+        <li>2 were guided, and only a few lines (distance and function)</li>
+      </ul>
+    </li>
+    <li>upcoming exams will have more code-from-scratch questions</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="midterm-results">Midterm Results</h3>
+
+  <ul>
+    <li><strong>46 ~ 46.5</strong> (86%) - average</li>
+    <li><strong>46 ~ 46.5</strong> (86%) - median</li>
+    <li>no curve</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="approximate-scale">Approximate Scale</h3>
+
+  <p>Very rough scale&#8230;</p>
+
+  <ul>
+    <li>A: <strong>48.5+</strong> (~90%)</li>
+    <li>B: <strong>43.0+</strong> (~80%)</li>
+    <li>C: <strong>38.0+</strong> (~70%)</li>
+    <li>D: <strong>32.5+</strong> (~60%)</li>
+    <li>F: below 32.5</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="most-difficult">Most Difficult</h3>
+
+  <p>The two toughest questions were:</p>
+
+  <ul>
+    <li>#7 on types</li>
+    <li>#9 on logical errors</li>
+  </ul>
+
+  <p>Majority only scored half the possible points on the previous two questions.</p>
+
+</section>
+
+<section>
+  <h3 id="most-often-correct">Most Often Correct</h3>
+
+  <p>These two questions were the most likely to be answered correctly:</p>
+
+  <ul>
+    <li>#5 on two kinds of loops</li>
+    <li>#8 on 4 types and examples</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="and-finally-solutions">And Finally, Solutions</h3>
+
+  <p><a href="../../resources/handouts/midterm_1_annotated.pdf">See the annotated solutions.</a></p>
+</section>
+
+<section>
+  <h2 id="review-for-loops-while-vs-for"><a href="review_loops.html">Review For Loops, While vs For</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

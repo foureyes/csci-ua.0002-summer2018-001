@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>While Loops (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="another-look-at-while-loops-its-the-sequel">Another Look at While Loops (It&#39;s the Sequel!)</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="whats-a-while-loop-again">What&#39;s a While Loop Again?</h3>
+
+  <p><strong>Describe what a while loop is&#8230;</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>it lets you repeat a block of code</li>
+      <li>the block of code continues to repeat as long as a condition is true</li>
+      <li>as soon as the condition evaluates to false, the loop ends</li>
+    </ul>
+
+    <p><strong>What is the while loop syntax?</strong> &#8594;</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"execute this block of code"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="great--so--why-even">Great.  So.  Why Even?</h2>
+
+  <aside>What's the motivation for using while loops?</aside>
+
+</section>
+
+<section>
+  <h3 id="sales-commission-program">Sales Commission Program</h3>
+
+  <p>Starting Out with Python has a program that:</p>
+
+  <ol>
+    <li>asks for a salesperson&#39;s number of sales and their rate</li>
+    <li>&#8230;and then calculates their sales commission.</li>
+  </ol>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  get a salesperson's sales and commission rate.</span>
+<span class="n">sales</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'Enter the amount of sales: '</span><span class="p">))</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'Enter the commission rate: '</span><span class="p">))</span>
+
+<span class="c">#  calculate the commission</span>
+<span class="n">commission</span> <span class="o">=</span> <span class="n">sales</span> <span class="o">*</span> <span class="n">rate</span>
+
+<span class="c">#  display the commission</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"the commission is $"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">commission</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="commission-for-10-please">Commission for 10, Please?</h3>
+
+  <p>Is it possible to change the code in the previous slide so that <strong>the program requests data and calculates commissions for 10 salespersons &#8230; WITHOUT USING A WHILE LOOP?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>Of course!  It&#39;s tedious, but just write the code 10 times!</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">sales</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'Enter the amount of sales: '</span><span class="p">))</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'Enter the commission rate: '</span><span class="p">))</span>
+<span class="n">commission</span> <span class="o">=</span> <span class="n">sales</span> <span class="o">*</span> <span class="n">rate</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"the commission is $"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">commission</span><span class="p">))</span>
+
+<span class="n">sales</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'Enter the amount of sales: '</span><span class="p">))</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">'Enter the commission rate: '</span><span class="p">))</span>
+<span class="n">commission</span> <span class="o">=</span> <span class="n">sales</span> <span class="o">*</span> <span class="n">rate</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"the commission is $"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">commission</span><span class="p">))</span>
+
+<span class="c">#  and keep on going...</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="what-about-counting">What About Counting?</h3>
+
+  <p><strong>Can you write a program to count from 1 to 5 by printing out each number on a new line WITHOUT USING A LOOP (we saw this last week)</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">n</span><span class="p">,</span> <span class="n">delta</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="n">delta</span>
+<span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="n">delta</span>
+<span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="n">delta</span>
+<span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="n">delta</span>
+<span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="counting-without-a-while-loop">Counting Without a While Loop</h3>
+
+  <ul>
+    <li>again, very tedious</li>
+    <li>there&#39;s a repeating pattern of code</li>
+    <li>&#8230;but it&#39;s totally possible!</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="last-example-for-motivating-loops-i-swear">Last Example for Motivating Loops, I Swear</h3>
+
+  <div class="img-container" style="border:none">
+    <p><img src="../../resources/img/game-over.png" alt="Game Over" /></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="continue-yesno">Continue? (Yes/No)</h3>
+
+  <p><strong>WITHOUT USING A WHILE LOOP, is it possible to write a program that:</strong> &#8594;</p>
+
+  <ul>
+    <li>asks a user if they want to continue</li>
+    <li>if they say yes, the program will ask them if they want to continue again</li>
+    <li>this goes on until they don&#39;t say Yes</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Continue</span><span class="err">?</span> <span class="p">(</span><span class="n">Yes</span> <span class="n">keeps</span> <span class="n">on</span> <span class="n">going</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">Yes</span>
+<span class="n">Continue</span><span class="err">?</span> <span class="p">(</span><span class="n">Yes</span> <span class="n">keeps</span> <span class="n">on</span> <span class="n">going</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">Yes</span>
+<span class="n">Continue</span><span class="err">?</span> <span class="p">(</span><span class="n">Yes</span> <span class="n">keeps</span> <span class="n">on</span> <span class="n">going</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">No</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="continue-yesno-1">Continue? (Yes/No)</h3>
+
+  <p>We could try using consecutive nested if statements, <strong>but we don&#39;t know how deep the nesting could go</strong>.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Continue? (Yes keeps on going) </span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'Yes'</span><span class="p">:</span>
+	<span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Continue? (Yes keeps on going) </span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'Yes'</span><span class="p">:</span>
+		<span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Continue? (Yes keeps on going) </span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'Yes'</span><span class="p">:</span>
+			<span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Continue? (Yes keeps on going) </span><span class="se">\n</span><span class="s">'</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="functions">Functions!?</h3>
+
+  <ul>
+    <li>There&#39;s actually a way to do this using a function definition that calls itself.</li>
+    <li>We&#39;ll take a look at <strong>recursion</strong> later this semester.</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">ask</span><span class="p">():</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Continue? (Yes keeps on going) </span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'Yes'</span><span class="p">:</span>
+        <span class="n">ask</span><span class="p">()</span>
+
+<span class="n">ask</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="loops-will-make-all-of-those-previous-programs-easier-to-write">Loops Will Make All of Those Previous Programs <em>Easier</em> to Write!</h2>
+
+  <aside>Let's talk about loops a bit...</aside>
+</section>
+
+<section>
+  <h3 id="iteration-and-loops">Iteration and Loops</h3>
+
+  <p>Some formal definitions:</p>
+
+  <ul>
+    <li><strong>iteration</strong> - repeated execution of a set of programming statements</li>
+    <li><strong>loop</strong> (or a <em>repetition structure</em>) - the actual <strong>structure</strong> that allows repeated execution of a statement or a group of statements.  The statements are repeated either:
+      <ul>
+        <li>a specific number of times or &#8230;</li>
+        <li>as long as a certain condition is true</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="two-types-of-loops">Two Types of Loops</h3>
+
+  <p>There are two broad categories of loops:</p>
+
+  <ul>
+    <li><strong>condition controlled</strong> - condition determines number of repetitions</li>
+    <li><strong>count controlled</strong> - loop for a specific number of times
+      <ul>
+        <li>(it turns out that you can simulate <strong>count controlled loops</strong> in <strong>condition controlled loops</strong>)</li>
+      </ul>
+    </li>
+    <li>guess which one a while loops is?</li>
+  </ul>
+
+  <div class="incremental">
+    <p>A <strong>while</strong> loop is a <strong>condition controlled loop</strong>.</p>
+  </div>
+</section>
+
+<section>
+  <h2 id="while-loops">While Loops</h2>
+</section>
+
+<section>
+  <h3 id="condition-controlled-loops">Condition Controlled Loops</h3>
+
+  <ul>
+    <li>a <strong>condition controlled</strong> loop causes a set of statements to be repeated as long as a condition is true</li>
+    <li>again, in Python, the <strong>while</strong> statement allows us to write a <strong>condition controlled loop</strong></li>
+    <li>&#8230; or more succinctly: <em>while a condition is true, do some stuff</em></li>
+    <li>a <strong>while</strong> loop consists of two parts:
+      <ul>
+        <li>a condition (<em>a boolean expression</em>) that is continually tested for a True or False value</li>
+        <li>a block of statements to repeat</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="while-loop-logic">While Loop Logic</h3>
+
+  <p>A flow chart representing a while loop:</p>
+
+  <div class="img-container" style="border:none">
+    <p><img src="../../resources/img/while-loop-flow.png" alt="While Loop Flow" /></p>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="while-loop-logic-continued">While Loop Logic Continued</h3>
+
+  <p>What happens if the condition is True?</p>
+
+  <div class="incremental">
+
+* one or more statements are executed
+* condition is tested again
+
+What happens if the condition is False?
+
+The flow goes to the statements after the while loop
+</div>
+
+</section>
+
+<section>
+  <h3 id="compared-to-an-if-statement">Compared to an If Statement</h3>
+
+  <p>The flow chart for an if statement looks pretty similar to a while loop.  <strong>What do you think the difference would be from the diagram showing while loop logic?</strong> &#8594;</p>
+
+</section>
+
+<section>
+  <h3 id="if-statement-flow-chart">If Statement Flow Chart</h3>
+
+  <div class="img-container" style="border:none">
+    <p><img src="../../resources/img/if-statement-flow.png" alt="If Statement Flow" /></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="while-loop-syntax">While Loop Syntax</h3>
+
+  <p>A template:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">while</span> <span class="n">condition</span><span class="p">:</span> <span class="c"># the book calls this the while clause</span>
+	<span class="n">statement</span>
+	<span class="n">statement</span></code></pre></figure>
+
+  <p>Some <em>real</em> code:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">while</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+  <p><strong>What does this output? &#8594;</strong></p>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">100</span>
+<span class="mi">100</span>
+<span class="mi">100</span></code></pre></figure>
+
+</div>
+</section>
+
+<section>
+  <h2 id="basic-while-loop-examples">Basic While Loop Examples</h2>
+
+  <aside>There are lots...</aside>
+</section>
+
+<section>
+  <h3 id="trivial-cases-again">Trivial Cases, Again</h3>
+
+  <p><strong>What do these snippets of code print out?&#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"I'm true!"</span><span class="p">)</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">while</span> <span class="bp">False</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"I'm false!"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">I</span><span class="s">'m true!</span><span class="err">
+</span><span class="s">I'</span><span class="n">m</span> <span class="n">true</span><span class="err">!</span>
+<span class="n">I</span><span class="s">'m true!</span></code></pre></figure>
+
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  nothing printed here</span></code></pre></figure>
+
+</div>
+</section>
+
+<section>
+  <h3 id="lets-step-through-true">Let&#39;s Step Through True</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"I'm true!"</span><span class="p">)</span></code></pre></figure>
+
+  <ol>
+    <li>condition is true</li>
+    <li>print &quot;I&#39;m true!&quot;</li>
+    <li>go back to top</li>
+    <li>condition is true</li>
+    <li>print &quot;I&#39;m true!&quot;</li>
+    <li>go back to top</li>
+    <li>you know the <em>deal</em></li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="lets-step-through-false">Let&#39;s Step Through False</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">while</span> <span class="bp">False</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"I'm false!"</span><span class="p">)</span></code></pre></figure>
+
+  <ol>
+    <li>condition is false</li>
+  </ol>
+
+  <p>We never even get into the body of the loop!</p>
+</section>
+
+<section>
+  <h3 id="slightly-more-complicated">Slightly More Complicated</h3>
+  <aside>Well, Not This One Exactly, But You'll See</aside>
+
+  <p><strong>What does this print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">keep_on_going</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">while</span> <span class="n">keep_on_going</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"I'm going!)"</span></code></pre></figure>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">I</span><span class="s">'m going</span><span class="err">
+</span><span class="s">I'</span><span class="n">m</span> <span class="n">going</span>
+<span class="n">I</span><span class="s">'m going</span><span class="err">
+</span><span class="s">.</span><span class="err">
+</span><span class="s">.</span><span class="err">
+</span><span class="s">I'</span><span class="n">m</span> <span class="n">going</span></code></pre></figure>
+
+</div>
+</section>
+
+<section>
+  <h3 id="slightly-more-complicated-continued">Slightly More Complicated Continued</h3>
+
+  <p><strong>Let&#39;s add one line.  What does this print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">keep_on_going</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">while</span> <span class="n">keep_on_going</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"I'm going!"</span><span class="p">)</span>
+	<span class="n">keep_on_going</span> <span class="o">=</span> <span class="bp">False</span></code></pre></figure>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">I</span><span class="s">'m going</span></code></pre></figure>
+
+</div>
+</section>
+
+<section>
+  <h3 id="slightly-more-complicated-continued-continued">Slightly More Complicated Continued Continued</h3>
+
+  <p>Going through each iteration</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">keep_on_going</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">while</span> <span class="n">keep_on_going</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"I'm going!"</span><span class="p">)</span>
+	<span class="n">keep_on_going</span> <span class="o">=</span> <span class="bp">False</span></code></pre></figure>
+
+  <ul>
+    <li>condition (keep_on_going) is true</li>
+    <li>print &quot;I&#39;m going!&quot;</li>
+    <li>set keep_on_going to false</li>
+    <li>condition (keep_on_going) is false</li>
+  </ul>
+
+  <p>Loop ends after one iteration.</p>
+</section>
+
+<section>
+  <h3 id="what-happened-there">What Happened There?</h3>
+
+  <ul>
+    <li>we had some state <strong>outside</strong> of the loop</li>
+    <li><strong>within</strong> the loop we mutated / changed that state to eventually get out of the condition</li>
+    <li>consequently, the loop <em>terminates</em></li>
+    <li>sometimes we call these kinds of variables <strong>sentinel</strong> variables</li>
+    <li>they only let certain conditions in!</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="affecting-the-outcome-of-the-condition">Affecting the Outcome of the Condition</h3>
+
+  <p>To change the outcome of your conditional:</p>
+
+  <ul>
+    <li>maintain state
+      <ul>
+        <li>declare a variable <strong>outside</strong> of the loop!</li>
+      </ul>
+    </li>
+    <li>mutate that state on loop iteration
+      <ul>
+        <li>change that variable <strong>inside</strong> the loop!</li>
+        <li>this will eventually cause the conditional to fail</li>
+      </ul>
+    </li>
+    <li>examples:
+      <ul>
+        <li>using operators to change a variable in your condition</li>
+        <li>using input to change a variable in your condition</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="some-practical-while-loop-examples">Some Practical While Loop Examples</h2>
+</section>
+
+<section>
+  <h3 id="handling-input-continue-again">Handling Input, Continue Again</h3>
+  <p>First an easy one.  Let&#39;s go back to the continue program that we discussed earlier:</p>
+
+  <ul>
+    <li>ask a user if they want to continue</li>
+    <li>if they say yes, the program will ask them if they want to continue again</li>
+    <li>this goes on until they don&#39;t say Yes</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Continue</span><span class="err">?</span> <span class="p">(</span><span class="n">Yes</span> <span class="n">keeps</span> <span class="n">on</span> <span class="n">going</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">Yes</span>
+<span class="n">Continue</span><span class="err">?</span> <span class="p">(</span><span class="n">Yes</span> <span class="n">keeps</span> <span class="n">on</span> <span class="n">going</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">Yes</span>
+<span class="n">Continue</span><span class="err">?</span> <span class="p">(</span><span class="n">Yes</span> <span class="n">keeps</span> <span class="n">on</span> <span class="n">going</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">No</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="continue-program-some-questions">Continue Program, Some Questions</h3>
+
+  <ul>
+    <li>what are we repeating?</li>
+    <li>how long are we repeating it, or what&#39;s the condition to keep on repeating it?</li>
+    <li>is there any data that we&#39;re keeping track of?</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="continue-program-implementation">Continue Program Implementation</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Continue? (Yes keeps on going) </span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'Yes'</span><span class="p">:</span>
+	<span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Continue? (Yes keeps on going) </span><span class="se">\n</span><span class="s">'</span><span class="p">)</span></code></pre></figure>
+
+  <p>Notice that, like an if statement, variables declared outside of the body of the while loop can be accessed (and even changed) within the body of the while loop.</p>
+</section>
+
+<section>
+  <h3 id="another-continue-program-implementation">Another Continue Program Implementation</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="s">'Yes'</span>
+
+<span class="k">while</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'Yes'</span><span class="p">:</span>
+	<span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Continue? (Yes keeps on going) </span><span class="se">\n</span><span class="s">'</span><span class="p">)</span></code></pre></figure>
+
+  <ul>
+    <li>in order to go into the while loop, just start off with something that makes the condition true!</li>
+    <li><strong>what are some benefits to using this pattern?</strong> &#8594;</li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li>we consolidate the request for input into a single point in the program</li>
+      <li>if we want to change the question, just one place</li>
+    </ul>
+
+    <p>(note that not all programs can fit this pattern)</p>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="a-more-flexible-continue">A More Flexible Continue</h3>
+
+  <p>Let&#39;s modify the previous program slightly so that it accepts either yes or yeah.</p>
+
+  <ul>
+    <li>ask a user if they want to continue</li>
+    <li>if they say yes or yeah, the program will ask them if they want to continue again</li>
+    <li>this goes on until they do not say Yes or Yeah</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Continue</span><span class="err">?</span> <span class="p">(</span><span class="n">Yes</span> <span class="ow">or</span> <span class="n">Yeah</span> <span class="n">will</span> <span class="n">keep</span> <span class="n">going</span><span class="p">)</span>
+<span class="n">Yeah</span>
+<span class="n">Continue</span><span class="err">?</span> <span class="p">(</span><span class="n">Yes</span> <span class="ow">or</span> <span class="n">Yeah</span> <span class="n">will</span> <span class="n">keep</span> <span class="n">going</span><span class="p">)</span>
+<span class="n">Yes</span>
+<span class="n">Continue</span><span class="err">?</span> <span class="p">(</span><span class="n">Yes</span> <span class="ow">or</span> <span class="n">Yeah</span> <span class="n">will</span> <span class="n">keep</span> <span class="n">going</span><span class="p">)</span>
+<span class="n">Nope</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="flexible-continue-program-some-questions">Flexible Continue Program, Some Questions</h3>
+
+  <ul>
+    <li>what are we repeating?</li>
+    <li>how long are we repeating it, or what&#39;s the condition to keep on repeating it?</li>
+    <li>is there any data that we&#39;re keeping track of?</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="flexible-continue-program-implementation">Flexible Continue Program, Implementation</h3>
+
+  <p>To implement this, modify the condition appropriately by adding <em>or answer == &#39;Yeah&#39;</em></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Continue? (Yes or Yeah will keep going) </span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'Yes'</span> <span class="ow">or</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'Yeah'</span><span class="p">:</span>
+	<span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Continue? (Yes or Yeah will keep going) </span><span class="se">\n</span><span class="s">'</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<!--
+<section markdown="block">
+###  
+
+<div class="incremental" markdown="block">
+
+</div>
+</section>
+-->
+
+<!--
+<section markdown="block">
+###  Examples
+* back to opposite yes or yeah will make it stop. answer != yes and answer != yeah ... why?
+	* what result do you want this to be to make it stop? false
+	* yes or yeah makes it stop ... when the input is yes or yeah, this statement should be false
+	* is the same as saying not yes and not yeah makes it go
+	* we briefly touched on demorgans laws
+	* what has to be true about this condition?
+not (x and y)  ==  (not x) or (not y)
+not (x or y)   ==  (not x) and (not y)
+we choose the bottom... because we said that yes or yeah made it go, now werew saying that opposite of that
+</section>
+-->
+
+<section>
+  <h2 id="designing-how-your-while-loop-works">Designing How Your While Loop Works</h2>
+</section>
+
+<section>
+  <h3 id="so-i-heard-you-want-to-repeat-some-code">So, I Heard You Want to Repeat Some Code&#8230;</h3>
+
+  <p>If you have some code that requires repetition, <strong>what questions should you ask?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>first, will this require a while loop?
+        <ul>
+          <li>as long as there&#39;s repeated code that&#39;s based on a condition, yes!</li>
+        </ul>
+      </li>
+      <li>what&#39;s the condition &#8230; which will probably lead to&#8230;.</li>
+      <li>what data is in the program?</li>
+      <li>what should the data initially be set to, if anything at all?</li>
+      <li>how will the loop terminate?</li>
+    </ul>
+  </div>
+
+</section>
+
+<section>
+  <h2 id="weve-seen-these-before-some-more-examples">We&#39;ve Seen These Before&#8230; Some More Examples</h2>
+</section>
+
+<section>
+  <h3 id="odd-numbers-except-13">Odd Numbers Except 13</h3>
+
+  <p><strong>Write a program that&#8230; &#8594;</strong></p>
+
+  <ul>
+    <li>prints all of the odd numbers from 1-99</li>
+    <li>skips 13</li>
+  </ul>
+
+  <p>There are a few ways to do this!  <strong>What are some general strategies for solving this problem?&#8594;</strong></p>
+
+  <div class="incremental">
+
+    <ul>
+      <li>using modulo</li>
+      <li>or incrementing by twos</li>
+    </ul>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="possible-solutions-for-odd-numbers-except-13">Possible Solutions for Odd Numbers Except 13</h3>
+
+  <p><a href="http://www.pythontutor.com/visualize.html#code=n+%3D+1%0Awhile+n+%3C%3D+99%3A%0A++++if+n+!%3D+13%3A%0A++++++++print(n)%0A++++n+%3D+n+%2B+2&amp;mode=display&amp;cumulative=false&amp;heapPrimitives=false&amp;drawParentPointers=false&amp;textReferences=false&amp;py=3&amp;curInstr=0">Increment by 2&#39;s</a></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">99</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">13</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">2</span></code></pre></figure>
+
+  <p><a href="http://www.pythontutor.com/visualize.html#code=n+%3D+1%0Awhile+n+%3C%3D+99%3A%0A++++if+n+!%3D+13%3A%0A++++++++print(n)%0A++++n+%3D+n+%2B+2&amp;mode=display&amp;cumulative=false&amp;heapPrimitives=false&amp;drawParentPointers=false&amp;textReferences=false&amp;py=3&amp;curInstr=0">Using modulo to determine odds</a></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">99</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">13</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span></code></pre></figure>
+
+</section>
+
+<!--
+<section markdown="block">
+###  Do You Want Cake (Again)
+
+__Repeatedy ask if user wants cake until user says yes or yeah.  How would you implement this?&rarr;__
+
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">cake</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">no</span>
+<span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">cake</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">No</span>
+<span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">cake</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">yeah</span>
+<span class="n">Have</span> <span class="n">some</span> <span class="n">cake</span><span class="err">!</span></code></pre></figure>
+
+
+<div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="s">'no'</span>
+<span class="k">while</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'yes'</span> <span class="ow">and</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'yeah'</span><span class="p">:</span>
+	<span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Have some cake!"</span><span class="p">)</span></code></pre></figure>
+
+</div>
+</section>
+
+<section markdown="block">
+###  Stepping Through Cake
+
+Let's make an assumption that the user enters "no" first, and then "yeah" second.
+
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="s">'no'</span>
+<span class="k">while</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'yes'</span> <span class="ow">and</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'yeah'</span><span class="p">:</span>
+	<span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Have some cake!"</span><span class="p">)</span></code></pre></figure>
+
+
+1. answer is set to no by default
+2. condition is true, answer (no) is not 'yes' or 'yeah'
+3. answer is set to user input of 'no'
+4. condition is true, answer (no) is not 'yes' or 'yeah'
+5. answer is set to user input of 'yes'
+6. condition is false, answer != 'yeah' is now false!
+7. have some cake is printed
+</section>
+-->
+
+<section>
+  <h3 id="accumulating-values">Accumulating Values</h3>
+
+  <p><strong>Write a program that will: &#8594;</strong></p>
+
+  <ul>
+    <li>continually ask the user for a number (<strong>forever</strong>)</li>
+    <li>add that number to a running total</li>
+    <li>print out the running total</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Give</span> <span class="n">me</span> <span class="n">a</span> <span class="n">number</span> <span class="n">to</span> <span class="n">add</span>
+<span class="o">&gt;</span> <span class="mi">10</span>
+<span class="n">Current</span> <span class="n">total</span> <span class="ow">is</span> <span class="mi">10</span>
+<span class="n">Give</span> <span class="n">me</span> <span class="n">a</span> <span class="n">number</span> <span class="n">to</span> <span class="n">add</span>
+<span class="o">&gt;</span> <span class="mi">15</span>
+<span class="n">Current</span> <span class="n">total</span> <span class="ow">is</span> <span class="mi">25</span>
+<span class="n">Give</span> <span class="n">me</span> <span class="n">a</span> <span class="n">number</span> <span class="n">to</span> <span class="n">add</span>
+<span class="o">&gt;</span> <span class="mi">5</span>
+<span class="n">Current</span> <span class="n">total</span> <span class="ow">is</span> <span class="mi">30</span>
+<span class="n">Give</span> <span class="n">me</span> <span class="n">a</span> <span class="n">number</span> <span class="n">to</span> <span class="n">add</span>
+<span class="o">&gt;</span> </code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="potential-solution-for-accumulating-values">Potential Solution for Accumulating Values</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Give me a number to add</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">n</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Current total is "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">total</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="average-of-input">Average of Input</h3>
+
+  <p><strong>Write a program that continually asks the user for numbers, and asks them if they&#39;d like to keep going.  In the end, it should output the average of all of the numbers entered&#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">I</span><span class="s">'ll calculate the average for you!</span><span class="err">
+</span><span class="s">Current total: 0</span><span class="err">
+</span><span class="s">Numbers summed: 0</span><span class="err">
+</span><span class="s">Please enter a number to add</span><span class="err">
+</span><span class="s">&gt; 10</span><span class="err">
+</span><span class="s">Do you want to continue adding numbers (yes/no)?</span><span class="err">
+</span><span class="s">&gt; yes</span><span class="err">
+</span><span class="s">Current total: 10</span><span class="err">
+</span><span class="s">Numbers summed: 1</span><span class="err">
+</span><span class="s">Please enter a number to add</span><span class="err">
+</span><span class="s">&gt; 12</span><span class="err">
+</span><span class="s">Do you want to continue adding numbers (yes/no)?</span><span class="err">
+</span><span class="s">&gt; no</span><span class="err">
+</span><span class="s">The average is 11.0</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="some-hints-please">Some Hints, Please?</h3>
+  <p>Let&#39;s try keeping track of multiple variables:</p>
+
+  <ul>
+    <li>a user&#39;s answer to whether or not the program should continue</li>
+    <li>(possibly) the number that the user has just entered</li>
+    <li>the total (sum) of the numbers that a user has entered</li>
+    <li>the count of numbers input</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="an-average-solution">An Average Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="s">'yes'</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"I'll calculate the average for you!"</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Current total: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">total</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Numbers summed: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Please enter a number to add</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want to continue adding numbers (yes/no)?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"The average is "</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">total</span> <span class="o">/</span> <span class="n">count</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="syntactic-sugar">Syntactic Sugar</h2>
+</section>
+
+<section>
+  <h3 id="increment--decrement">Increment / Decrement</h3>
+
+  <p>We&#39;ve used the following syntax to increment or decrement a variable</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span></code></pre></figure>
+
+  <p><em>Slightly</em> tedious&#8230;</p>
+</section>
+
+<section>
+  <h3 id="increment--decrement-continued">Increment / Decrement Continued</h3>
+
+  <p>There&#39;s some <em>syntactic sugar</em> that makes doing this less verbose:  use <strong>+=</strong> or <strong>-=</strong></p>
+
+  <ul>
+    <li><strong>n += 1</strong> is the same as n = n + 1</li>
+    <li><strong>n -= 1</strong> is the same as n = n - 1</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c">#  adds one to n and binds the resulting value to n</span>
+<span class="n">n</span> <span class="o">+=</span>  <span class="mi">1</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="c">#  subtracts one to n and binds the resulting value to n</span>
+<span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="more-syntactic-sugar">More Syntactic Sugar</h3>
+
+  <p>This works for other operators too.   <strong>What does this code print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">n</span> <span class="o">*=</span> <span class="mi">2</span>
+<span class="n">n</span> <span class="o">*=</span> <span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">n</span> <span class="o">/=</span> <span class="mi">2</span>
+<span class="n">n</span> <span class="o">/=</span> <span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">8</span>
+<span class="mf">16.0</span></code></pre></figure>
+
+</div>
+
+</section>
+
+<section>
+  <h3 id="what-about-strings">What About Strings?</h3>
+
+  <p>Also works with strings&#8230;.   <strong>What does this code print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">"h"</span>
+<span class="n">s</span> <span class="o">+=</span> <span class="s">"e"</span>
+<span class="n">s</span> <span class="o">+=</span> <span class="s">"y"</span>
+<span class="n">s</span> <span class="o">*=</span> <span class="mi">3</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">heyheyhey</span></code></pre></figure>
+
+</div>
+
+</section>
+
+<section>
+  <h2 id="some-more-exercises">Some More Exercises!</h2>
+</section>
+
+<section>
+  <h3 id="powers-of-two">Powers of Two</h3>
+
+  <p><strong>Continually print out the next power of two, only if you say &#39;y&#39;</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">1</span>
+<span class="nb">next</span> <span class="n">power</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">y</span>
+<span class="mi">2</span>
+<span class="nb">next</span> <span class="n">power</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">y</span>
+<span class="mi">4</span>
+<span class="nb">next</span> <span class="n">power</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">n</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="squares">Squares</h3>
+
+  <p><strong>Continually ask for a number, print out the square, and ask to continue</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">number</span>
+<span class="o">&gt;</span> <span class="mi">5</span>
+<span class="mi">25</span>
+<span class="k">continue</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">y</span>
+<span class="n">number</span>
+<span class="o">&gt;</span> <span class="mi">2</span>
+<span class="mi">4</span>
+<span class="k">continue</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">n</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="other-exercises">Other Exercises</h3>
+
+  <ul>
+    <li>count the number of digits in an int
+      <ul>
+        <li>repeatedly use integer division</li>
+        <li>&#8230;until the original number becomes 0</li>
+        <li>keep count of divisions</li>
+      </ul>
+    </li>
+    <li>continually add exclamation points to a word
+      <ul>
+        <li>ask for a word</li>
+        <li>ask for x number of exclamation points</li>
+        <li>print out resulting word and exclamation points</li>
+        <li>continue asking for another word and exclamation points</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="and-for-loops"><a href="for.html">&#8230;And For Loops</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

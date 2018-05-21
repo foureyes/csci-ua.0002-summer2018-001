@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Review (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="review-variables-strings-integers-and-user-input">Review (Variables, Strings, Integers, and User Input)</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="so-lets-start-with-variables">So&#8230; Let&#39;s Start with Variables</h2>
+</section>
+
+<section>
+  <h3 id="variable">Variable</h3>
+
+  <p><strong>In Python, what&#39;s a variable?&#8594;</strong></p>
+
+  <div class="incremental">
+    <p>It&#39;s a name that refers to a value.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="declaring-variables">Declaring Variables</h3>
+
+  <p><strong>How do we declare a new variable name and assign it a value?&#8594;</strong></p>
+
+  <div class="incremental">
+    <p>Using an assignment statement:</p>
+
+    <ol>
+      <li>Start with the variable name</li>
+      <li>Then use the assignment operator (sometimes called token), a single equals sign: (<strong>=</strong>)</li>
+      <li>Finally, the value that you want to assign to the variable</li>
+    </ol>
+
+    <p>Variable name on the <em>left</em>, value on the <em>right</em>.</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">=</span> <span class="mi">42</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="naming-variables">Naming Variables</h3>
+
+  <p><strong>Are there any rules for naming variables?&#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>consists of letters, digits, and underscores</li>
+      <li>must begin with a letter or an underscore</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="naming-variables-continued">Naming Variables Continued</h3>
+
+  <p><strong>What are some stylistic <em>conventions</em> that we follow when naming variables?&#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>we usually don&#39;t use uppercase letters in variable names</li>
+      <li>we usually use underscores to separate words</li>
+    </ul>
+
+    <p><del>Word = &#39;cat&#39;</del></p>
+
+    <p><del>lotsofwords = &#39;cabbage, carrots, corn </del></p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="s">'cat'</span>
+<span class="n">lots_of_words</span> <span class="o">=</span> <span class="s">'cabbage, carrots, corn'</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="multiple-assignment">Multiple Assignment</h3>
+
+  <p><strong>And&#8230; what if I want to assign values to multiple variables in just one line? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>multiple assignment</li>
+      <li>comma separated variable names to the left of the assignment operator</li>
+      <li>comma separated values to the right of the assignment operator</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span><span class="p">,</span> <span class="n">lots_of_words</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">'cat'</span><span class="p">,</span> <span class="s">'cabbage, carrots, corn'</span><span class="p">,</span> <span class="mi">12</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="swapping-values">Swapping Values</h3>
+
+  <p><strong>What are two ways to swap values? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">21</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">c</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">c</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  the idiomatic / Pythonic way...</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="a-quick-look-back-at-string-operators">A Quick Look Back at String Operators</h2>
+</section>
+
+<section>
+  <h3 id="string-concatenation">String Concatenation</h3>
+
+  <p><strong>What was string concatenation it again? &#8594;</strong></p>
+
+  <div class="incremental">
+    <p>Using the addition operator to add strings together.  For example:</p>
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; "Hi. " + "I'm" + " adding " + "strings!"
+"Hi. I'm adding strings!"</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="string-concatenation-continued">String Concatenation Continued</h3>
+
+  <p>Let&#39;s use variables!  <strong>What happens when we run the program below? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">name</span> <span class="o">=</span> <span class="s">"Joe"</span>
+<span class="n">number_of_pets</span> <span class="o">=</span> <span class="s">"314"</span>
+<span class="n">pets</span> <span class="o">=</span> <span class="s">"aardvarks"</span>
+<span class="n">greeting</span> <span class="o">=</span> <span class="s">"Hi.  My name is "</span> <span class="o">+</span> <span class="n">name</span> 
+<span class="n">greeting</span> <span class="o">=</span> <span class="n">greeting</span> <span class="o">+</span> <span class="s">" and I have "</span> <span class="o">+</span> <span class="n">number_of_pets</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">pets</span> <span class="o">+</span> <span class="s">"."</span>
+<span class="k">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash">Hi.  My name is Joe and I have 314 aardvarks.</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="another-version">Another Version&#8230;</h3>
+
+  <p><strong>Let&#39;s look at a very similar program.  What&#39;s different?  And what happens when we run the program? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">name</span> <span class="o">=</span> <span class="s">"Joe"</span>
+<span class="n">number_of_pets</span> <span class="o">=</span> <span class="mi">314</span>
+<span class="n">pets</span> <span class="o">=</span> <span class="s">"aardvarks"</span>
+<span class="n">greeting</span> <span class="o">=</span> <span class="s">"Hi.  My name is "</span> <span class="o">+</span> <span class="n">name</span> 
+<span class="n">greeting</span> <span class="o">=</span> <span class="n">greeting</span> <span class="o">+</span> <span class="s">" and I have "</span> <span class="o">+</span> <span class="n">number_of_pets</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">pets</span> <span class="o">+</span> <span class="s">"."</span>
+<span class="k">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#  we tried to add an int to a string!</span>
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"&lt;stdin&gt;"</span>, line 1, <span class="k">in</span> &lt;module&gt;
+TypeError: Can<span class="s1">'t convert '</span>int<span class="s1">' object to str implicitly</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="type-conversion">Type Conversion</h3>
+
+  <p><strong>How do we fix this without changing the value of the variable named <em>number_of_pets</em>? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  use the str function when you add the strings together!</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">"Joe"</span>
+<span class="n">number_of_pets</span> <span class="o">=</span> <span class="mi">314</span>
+<span class="n">pets</span> <span class="o">=</span> <span class="s">"aardvarks"</span>
+<span class="n">greeting</span> <span class="o">=</span> <span class="s">"Hi.  My name is "</span> <span class="o">+</span> <span class="n">name</span> 
+<span class="n">greeting</span> <span class="o">=</span> <span class="n">greeting</span> <span class="o">+</span> <span class="s">" and I have "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_pets</span><span class="p">)</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">pets</span> <span class="o">+</span> <span class="s">"."</span>
+<span class="k">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+
+</section>
+
+<section>
+  <h2 id="now-lets-see-how-different-types-affect-numeric-operators">Now Let&#39;s See How Different Types Affect Numeric Operators</h2>
+</section>
+
+<section>
+  <h3 id="addition-subtraction-division-integer-division">Addition, Subtraction, Division, Integer Division</h3>
+
+  <aside>...All Work With Other Numeric Types</aside>
+
+  <p>For example: &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>    <span class="c"># addition - two ints</span>
+<span class="mi">24</span> <span class="o">+</span> <span class="mf">2.2</span> <span class="c"># addition - int and float</span>
+<span class="mi">5</span> <span class="o">//</span> <span class="mi">2</span>   <span class="c"># integer division - int and float</span>
+<span class="mi">5</span> <span class="o">//</span> <span class="mf">2.8</span> <span class="c"># integer division - int and a float</span>
+<span class="mi">5</span> <span class="o">/</span> <span class="mi">2</span>    <span class="c"># int and int</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="addition-subtraction-division-integer-division-fails">Addition, Subtraction, Division, Integer Division (Fails!)</h3>
+  <aside>Doesn't Work so Well With Non-Numeric Types</aside>
+
+  <p>For example: &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">2</span> <span class="o">+</span> <span class="s">"3"</span>
+<span class="mi">5</span> <span class="o">/</span> <span class="s">"3"</span>
+<span class="mi">5</span> <span class="o">//</span> <span class="s">"3"</span>
+<span class="mi">5</span> <span class="o">-</span> <span class="s">"3"</span>
+<span class="mi">5</span> <span class="o">**</span> <span class="s">"3"</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="an-exception-multiplication">An Exception: Multiplication</h3>
+
+  <p>Note that multiplication works with mixed operands: <strong>strings</strong> and <strong>integers</strong></p>
+
+  <p>(This only works for integers; it won&#39;t work with floats!).</p>
+
+  <p>For example: &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">2</span> <span class="o">*</span> <span class="s">"foo"</span>   <span class="c"># k, thx, worx</span>
+<span class="mf">2.2</span> <span class="o">*</span> <span class="s">"foo"</span> <span class="c"># fail!</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="some-more-type-conversions">Some More Type Conversions</h3>
+
+  <p><strong>Let&#39;s fix the errors in this program without changing the values that are in <em>slices</em> and <em>people</em>. &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">slices</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">people</span> <span class="o">=</span> <span class="s">"4"</span>
+<span class="n">slices_per_person</span> <span class="o">=</span> <span class="n">slices</span> <span class="o">/</span> <span class="n">people</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Slices per person: "</span> <span class="o">+</span> <span class="n">slices_per_person</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">slices</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">people</span> <span class="o">=</span> <span class="s">"4"</span>
+<span class="n">slices_per_person</span> <span class="o">=</span> <span class="n">slices</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Slices per person: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">slices_per_person</span><span class="p">)))</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="lets-introduce-the-user-into-the-mix">Let&#39;s Introduce the User Into the Mix!</h2>
+</section>
+
+<section>
+  <h3 id="functions">Functions&#8230;</h3>
+
+  <p>First off, <strong>what&#39;s a function? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>a named group of statements / <em>bunch of code</em></li>
+      <li>that can optionally take 0 or more values as inputs (<em>parameters</em> or <em>arguments</em>)</li>
+      <li>and can optionally return/produce a value as an output</li>
+    </ul>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="built-in-functions">Built-In Functions</h3>
+
+  <p><strong>What are some built-in functions that we&#39;ve seen?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>print</li>
+      <li>str, int, float</li>
+      <li>&#8230;</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="calling-a-function"><em>Calling</em> a Function</h3>
+
+  <p><strong>How do we <em>call</em> (execute / run) a function?</strong></p>
+
+  <div class="incremental">
+    <ol>
+      <li>function name</li>
+      <li>open parentheses</li>
+      <li>comma separated list of optional arguments</li>
+      <li>close parentheses</li>
+    </ol>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"one"</span><span class="p">,</span> <span class="s">"two"</span><span class="p">,</span> <span class="s">"three"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="ask-the-user">Ask the User!</h3>
+
+  <p><strong>What function do we use to ask the user for a value? &#8594;</strong></p>
+
+  <div class="incremental">
+    <p>input</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="the-input-function">The Input Function</h3>
+
+  <p><strong>When we call input, what argument(s) does it take, and what is done with it? &#8594;</strong></p>
+
+  <div class="incremental">
+    <p>Input takes one optional argument: the prompt that&#39;s printed out for the user.</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="the-input-function-continued">The Input Function Continued</h3>
+
+  <p><strong>Does the input function return (that is, <em>produce</em>) a value?  If so, what value is produced and what type is it?&#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>it returns a string</li>
+      <li>the string is what the user typed in</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="echo">Echo</h3>
+
+  <p><strong>Let&#39;s write a very simple program together that: &#8594;</strong></p>
+
+  <ul>
+    <li>asks the user to <em>type something</em></li>
+    <li>the prompt will be &quot;type something&quot;, followed by a newline, followed by &quot;&gt;&quot;</li>
+    <li>the program will just repeat what is typed in</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">type something
+&gt;hi there!
+hi there!</code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">something_to_echo</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'type something</span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">something_to_echo</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="repeat">Repeat</h3>
+
+  <p><strong>Try to write a program that: &#8594;</strong></p>
+
+  <ul>
+    <li>asks the user to <em>type a word</em></li>
+    <li>then, asks the user to enter the number of times they want the word repeated</li>
+    <li>finally, the program prints out the word repeated the number of times specified</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">please type word
+&gt;hello
+please type a number
+&gt;5
+hellohellohellohellohello</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="repeat-an-implementation">Repeat (an Implementation)</h3>
+
+  <aside>Here's One Way of Writing It</aside>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'please type word</span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">)</span>
+<span class="n">number</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'please type a number</span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">word</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">number</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-quick-summary-of-input">A Quick Summary of Input</h3>
+
+  <ul>
+    <li>the input() function takes an optional argument as a prompt</li>
+    <li>and it <strong>always</strong> returns a <strong>string</strong></li>
+    <li>if you ever want to use input, then&#8230;
+      <ul>
+        <li>whatever variable that you assign it to, it&#39;s a string!</li>
+        <li>if you need to use that input (like as a value in a numeric operation)&#8230;</li>
+        <li>make sure <em>convert</em> it if it needs to be changed into a different type</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="picking-up-where-we-left-off-functions"><a href="functions.html">Picking up where we left off: functions</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

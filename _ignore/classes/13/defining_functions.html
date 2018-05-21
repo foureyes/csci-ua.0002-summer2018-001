@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Defining Functions (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="defining-functions">Defining Functions</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="some-quick-examples">Some Quick Examples&#8230;</h2>
+</section>
+
+<section>
+  <h3 id="we-can-define-our-own-functions">We Can Define Our Own Functions!</h3>
+  <aside>Yes, Actually.</aside>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">greet_no_input</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span></code></pre></figure>
+
+  <p><strong>What&#39;s the name of this function?  How many arguments do you think it takes?  What does the function do?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>greet_no_input</li>
+      <li>no arguments!</li>
+      <li>prints out hello</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="we-can-define-our-own-functions-continued">We Can Define Our Own Functions (Continued)!</h3>
+
+  <p>How about this one?  <strong>What&#39;s the name of this function?  How many arguments do you think it takes, and what are they?  What does the function do?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">greet_with_input</span><span class="p">(</span><span class="n">greeting</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>greet_with_input</li>
+      <li>one argument, called greeting</li>
+      <li>prints out whatever you pass in as greeting</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="we-can-define-our-own-functions-continued-some-more">We Can Define Our Own Functions (Continued Some More)!</h3>
+
+  <p>&#8230; Aaaand this one?  <strong>What&#39;s the name of this function?  How many arguments do you think it takes, and what are they?  What does the function do?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">greet_more_input</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">greeting</span> <span class="o">*</span> <span class="n">num</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>greet_more_input</li>
+      <li>two arguments: greeting and num</li>
+      <li>prints out whatever you pass in as <em>greeting</em>, but <em>num</em> times</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="defining-a-function---syntax">Defining a Function - Syntax</h3>
+
+  <p><strong>Based on our examples, let&#39;s figure out how we define a function:</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="err">&lt;</span><span class="nf">function_name</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">zero_or_more_parameters</span><span class="o">&gt;</span><span class="p">):</span>
+	<span class="o">&lt;</span><span class="n">statement</span> <span class="c">#1&gt;</span>
+	<span class="o">&lt;</span><span class="n">statement</span> <span class="c">#2&gt;</span>
+	<span class="o">.</span>
+	<span class="o">.</span>
+	<span class="o">&lt;</span><span class="n">etc</span><span class="o">.&gt;</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="the-header-line">The Header Line</h3>
+  <aside>A Closer Look</aside>
+
+  <p>The beginning of a function consists of:</p>
+
+  <ol>
+    <li>the keyword, <strong>def</strong> (this never changes)</li>
+    <li>followed by the function&#39;s name
+      <ul>
+        <li>(whatever you want, but something meaningful)</li>
+        <li>same rules for variable names apply (alphanumeric and underscores)</li>
+      </ul>
+    </li>
+    <li>parentheses surrounding parameters (if any)
+      <ul>
+        <li>can just be () if no parameters are required</li>
+        <li>multiple parameters are separated by commas</li>
+        <li>the parameters specify what information must be provided to the function</li>
+      </ul>
+    </li>
+    <li>lastly, a colon to signify the end of the header line</li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="parameters">Parameters</h3>
+
+  <p>A <strong>parameter</strong> is &quot;a name used inside a function to <em>refer</em> to the value which was passed to it as an argument&quot;.</p>
+
+  <ul>
+    <li>sometimes we&#39;ll use <strong>parameter</strong> and <strong>argument</strong> interchangeably</li>
+    <li>note that whatever value you pass in to the function, you can now refer to it within the body using the parameter&#39;s name</li>
+    <li>we&#39;ll take a look at this in a little bit&#8230;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="function-body">Function Body</h3>
+
+  <p>The <strong>body</strong> of a function:</p>
+
+  <ul>
+    <li>consists of one or more statements</li>
+    <li>the values that were passed in as arguments in the call to the function:
+      <ul>
+        <li>can be accessed by the parameter names</li>
+        <li>these names correspond to the position that they were in when the function was called</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="and-back-to-parameters">&#8230;And Back to Parameters</h3>
+
+  <p>Let&#39;s see what that means. Whatever values you pass in to the function, you can now refer to it within the body using the parameter&#39;s name (based on the position of the argument).</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">greet_more_input</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">greeting</span> <span class="o">*</span> <span class="n">num</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">greet_more_input</span><span class="p">(</span><span class="s">"hello"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="parameters-example-1">Parameters Example 1:</h3>
+
+  <p><strong>Using the following function and function call, what are the values of both greeting and num within the function? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">greet_more_input</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">greeting</span> <span class="o">*</span> <span class="n">num</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">greet_more_input</span><span class="p">(</span><span class="s">"hola"</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>greeting &#8594; &quot;hola&quot;</li>
+      <li>num &#8594; 23</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="parameters-example-2">Parameters Example 2:</h3>
+
+  <p><strong>Using the following function and function call, what are the values of both greeting and num within the function? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">greet_more_input</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">greeting</span> <span class="o">*</span> <span class="n">num</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">greet_more_input</span><span class="p">(</span><span class="s">"hey "</span> <span class="o">+</span> <span class="s">"there"</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>greeting &#8594; &quot;hey there&quot;</li>
+      <li>num &#8594; 5</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="parameters-example-3">Parameters Example 3:</h3>
+
+  <p><strong>Using the following function and function call, what are the values of both greeting and num within the function? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">greet_more_input</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">greeting</span> <span class="o">*</span> <span class="n">num</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">num</span> <span class="o">=</span> <span class="s">"hi"</span>
+<span class="n">greeting</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">greet_more_input</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">greeting</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>greeting &#8594; &quot;hi&quot;</li>
+      <li>num &#8594; 20</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-take-a-closer-look">Let&#39;s Take a Closer Look</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#                     num       greeting</span>
+<span class="c">#                       |        |</span>
+<span class="c">#                     "hi"      20</span>
+<span class="c">#                       |        |</span>
+<span class="k">def</span> <span class="nf">greet_more_input</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">greeting</span> <span class="o">*</span> <span class="n">num</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">num</span> <span class="o">=</span> <span class="s">"hi"</span>
+<span class="n">greeting</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">greet_more_input</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">greeting</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="function-definition">Function Definition</h3>
+
+  <p>The entire block of code you wrote, the header and the body of the function, is called the <strong>function definition</strong>.  Here are a few things to note about your function definition:</p>
+
+  <ol>
+    <li>defining a function doesn&#39;t call a function</li>
+    <li>you must explicitly call it <strong>after</strong> it is defined&#8230;</li>
+    <li>(and related&#8230;) a function must be defined before it&#39;s called!
+      <ul>
+        <li>if you call it before you define it, you get an error</li>
+        <li>specifcally a NameError</li>
+        <li>(similar to what happens when using an undeclared variable)</li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="function-definition-example-1">Function Definition Example 1:</h3>
+
+  <p><strong>If this is the only code in your program, and you run it, what will be printed to the screen?  Something, nothing, or an error? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span>
+
+<span class="n">greet</span><span class="p">()</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">hello</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="function-definition-example-2">Function Definition Example 2:</h3>
+
+  <p><strong>If this is the only code in your program, and you run it, what will be printed to the screen?  Something, nothing, or an error? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  nothing (the function was never called after it was defined)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="function-definition-example-3">Function Definition Example 3:</h3>
+
+  <p><strong>If this is the only code in your program, and you run it, what will be printed to the screen?  Something, nothing, or an error? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">greet</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  we called the function before defining it</span>
+<span class="nb">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s">'greet'</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span> </code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="program-flow">Program Flow</h3>
+
+  <p>What we&#39;ve seen so far:</p>
+
+  <ul>
+    <li>statements are executed from top to bottom</li>
+    <li>each line is executed exactly once</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="program-flow-coninued">Program Flow Coninued</h3>
+
+  <p>Defining our own functions means:</p>
+
+  <ul>
+    <li>still top to bottom, so we have to define the function first</li>
+    <li>but once a function is called&#8230;
+      <ol>
+        <li>go to function</li>
+        <li>execute that code</li>
+        <li>go back to where function was called</li>
+      </ol>
+    </li>
+    <li>the body of a function can be executed as many times a function is called</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="program-flow-example">Program Flow Example</h3>
+
+  <p><strong>Let&#39;s walk through this program line-by-line &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">exclaim</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+	<span class="n">punctuation</span> <span class="o">=</span> <span class="n">num</span> <span class="o">*</span> <span class="s">'!'</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">word</span> <span class="o">+</span> <span class="n">punctuation</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span>
+<span class="n">exclaim</span><span class="p">(</span><span class="s">"hi"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"hey there"</span><span class="p">)</span>
+<span class="n">exclaim</span><span class="p">(</span><span class="s">"howdy"</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span></code></pre></figure>
+
+  <p><a href="http://www.pythontutor.com/visualize.html#code=def+exclaim(word,+num)%3A%0A++++punctuation+%3D+num+*+'!'%0A++++s+%3D+word+%2B+punctuation%0A++++print(s)%0A%0Aprint(%22hello%22)%0Aexclaim(%22hi%22,+1)%0Aprint(%22hey+there%22)%0Aexclaim(%22howdy%22,+10)&amp;mode=display&amp;cumulative=false&amp;py=2&amp;curInstr=0">Example Run in Python Tutor</a></p>
+
+</section>
+
+<section>
+  <h3 id="using-a-main-function">Using a Main Function</h3>
+
+  <p>Sometimes you&#39;ll see a function called main() within a program</p>
+
+  <ul>
+    <li>this signifies that this is the <em>main</em> line of execution</li>
+    <li>all of the code for the program is written in that function</li>
+    <li>the last line of the code calls that function</li>
+    <li>the rationale for doing this is to:
+      <ul>
+        <li>keep your code organized</li>
+        <li>isolate your function definitions from the actual program (handy when creating modules)</li>
+      </ul>
+    </li>
+    <li>we&#39;ll see this a bit more later&#8230;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="main-function-example">Main Function Example</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">exclaim</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+	<span class="n">punctuation</span> <span class="o">=</span> <span class="n">num</span> <span class="o">*</span> <span class="s">'!'</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">word</span> <span class="o">+</span> <span class="n">punctuation</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+	<span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"What's your name?</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+	<span class="n">greeting</span> <span class="o">=</span> <span class="s">"hi </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span>
+	<span class="n">exclaim</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="n">main</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="returning-values-fruitful-functions"><a href="returning_values.html">Returning Values</a> (&quot;fruitful functions&quot;)</h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dictionaries (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="dictionaries">Dictionaries</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="dictionaries-1">Dictionaries</h3>
+
+  <p><strong>What&#39;s a dictionary?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>a <strong>dictionary</strong> is an <strong>unordered</strong> collection of key/value pairs.</li>
+      <li>it&#39;s a <strong>mapping type</strong> - a data type that made of a collection of keys (think of names) and their associated values</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="dictionaries-syntax">Dictionaries Syntax</h3>
+
+  <p><strong>What&#39;s the syntax for a dictionary literal?  What delimits dictionaries?  What separates each name value pair?  What joins each name to a value?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>dictionaries are delimited by curly braces - { and }</li>
+      <li>an empty dictionary is {}</li>
+      <li>each key value pair in a dictionary is separated by a comma</li>
+      <li>keys and values are linked together by a colon, the key before and the value after</li>
+      <li>an example:</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">{</span><span class="s">"a"</span><span class="p">:</span><span class="s">"value one"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="retrieving-values-at-keys">Retrieving Values at Keys</h3>
+
+  <p><strong>How do you retrieve a value at a key from a dictionary?  What happens if the key doesn&#39;t exist?</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pizza</span><span class="p">[</span><span class="s">"topping"</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pizza</span><span class="p">[</span><span class="s">"extra topping"</span><span class="p">])</span>
+
+<span class="c"># ...</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">mushrooms</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">KeyError</span><span class="p">:</span> <span class="s">'extra topping'</span></code></pre></figure>
+
+    <p><a href="http://www.pizzabrain.org/about-pizza-brain/">btw, pizza!</a></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="using-the-get-method">Using the get Method</h3>
+
+  <p>You can also retrieve a value from a dictionary without having to worry about KeyErrors by calling the <strong>get</strong> method with two arguments:</p>
+
+  <ul>
+    <li>the key of the element you want to retrieve</li>
+    <li>an optional default value in case that key doesn&#39;t exist yet</li>
+  </ul>
+
+  <p><strong>What does this output?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pizza</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"extra topping"</span><span class="p">,</span> <span class="s">"peppers"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">peppers</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="keyvalue-pairs">Key/Value Pairs</h3>
+
+  <p>So&#8230; things are a bit different when <em>adding</em> keys and values to a dictionary.  There is <strong>no error</strong> if you use a key that doesn&#39;t exist in order to assign a value to it (that is&#8230; to create a new key/value pair).</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  look ma, no keys!</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c">#  but I can assign with no probz</span>
+<span class="n">d</span><span class="p">[</span><span class="s">"problems"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">d</span><span class="p">[</span><span class="s">"another key"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"another value"</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="keyvalue-pairs-continued">Key/Value Pairs Continued</h3>
+
+  <p>If the key already exists&#8230; and you use the assignment operator, you are just associating a new value with an existing key.</p>
+
+  <p><strong>What does this code output?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">d</span><span class="p">[</span><span class="s">"another key"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"another value"</span>
+<span class="n">d</span><span class="p">[</span><span class="s">"problems"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">d</span><span class="p">[</span><span class="s">"another key"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"something"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s">"another key"</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s">"problems"</span><span class="p">])</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">something</span>
+<span class="bp">None</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="creating-new-keysvalues">Creating New Keys/Values</h3>
+
+  <p><strong>So&#8230;. how do you create a new key/value pair in a dictionary?</strong></p>
+
+  <div class="incremental">
+
+    <ul>
+      <li>you can assign a new value to a new key simply by indexing into a key that doesn&#39;t exist!</li>
+      <li>this is different from reading from a key that doesn&#39;t exist (which gives us a KeyError)</li>
+      <li><strong>for example&#8230;</strong></li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">}</span>
+<span class="n">pizza</span><span class="p">[</span><span class="s">'sauce'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'tomato'</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="setting-a-new-key-or-incrementing-an-existing">Setting a New Key or Incrementing an Existing</h3>
+
+  <p>If you&#39;re storing numbers as key values, and you want to increment a value at key or initialize it to 1 if it doesn&#39;t exist&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">d</span><span class="p">[</span><span class="s">'a'</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="c">#  ...but I don't know if a exists</span></code></pre></figure>
+
+  <p>You can catch an exception, or use get</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">try</span><span class="p">:</span>
+	<span class="n">d</span><span class="p">[</span><span class="s">'a'</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">except</span> <span class="nb">KeyError</span><span class="p">:</span>
+	<span class="n">d</span><span class="p">[</span><span class="s">'a'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">d</span><span class="p">[</span><span class="s">'a'</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="dictionaries-and-mutability">Dictionaries and Mutability</h3>
+
+  <p><strong>Are dictionaries mutable or immutable?</strong></p>
+
+  <div class="incremental">
+    <p>Dictionaries are <strong>mutable</strong>!</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">d</span><span class="p">[</span><span class="s">"did not exist before"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"some value"</span>
+<span class="c">#  ok!</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="we-can-iterate-over-dictionaries">We Can Iterate Over Dictionaries</h3>
+
+  <p><strong>Let&#39;s run this code.  What would you expect this to print?  Does it match what actually happens?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">,</span> <span class="s">'size'</span><span class="p">:</span><span class="s">'large'</span><span class="p">,</span> <span class="s">'sauce'</span><span class="p">:</span><span class="s">'tomato'</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">topping</span> <span class="ow">in</span> <span class="n">pizza</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">topping</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">sauce</span>
+<span class="n">topping</span>
+<span class="n">crust</span>
+<span class="n">size</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="iterating-over-dictionaries-continued">Iterating Over Dictionaries Continued</h3>
+
+  <p><strong>What can we conclude about dictionaries and iteration bsed on the output from the previous slides?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>iterating over a dictionary yields <strong>keys only</strong></li>
+      <li>again, dictionaries are <strong>unordered</strong>!</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="iterating-over-every-key-and-value">Iterating Over Every Key and Value</h3>
+
+  <p>Another common way of iterating over a dictionary is to convert it to a list of tuples using the <strong>items</strong>() method.  It returns a list like object of tuples w/ the first element in each tuple the key, and the second, the value.  <strong>What does the code below output?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">}</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">pizza</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">(</span><span class="s">'topping'</span><span class="p">,</span> <span class="s">'mushrooms'</span><span class="p">)</span>
+<span class="p">(</span><span class="s">'crust'</span><span class="p">,</span> <span class="s">'thin'</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="iterating-over-dictionaries-continued-1">Iterating Over Dictionaries Continued</h3>
+
+  <p><strong>Of course, we can unpack that list of tuples.  How do we rewrite this using tuple unpacking?</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">}</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">pizza</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">}</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">pizza</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="order">Order!</h3>
+
+  <p><strong>Remember that the dictionaries are <em>unorderd</em>&#8230;</strong></p>
+
+  <p>That means that when you iterate over elements, order isn&#39;t guaranteed</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pizza</span> <span class="o">=</span> <span class="p">{</span><span class="s">"crust"</span><span class="p">:</span><span class="s">"thin"</span><span class="p">,</span> <span class="s">"topping"</span><span class="p">:</span><span class="s">"mushrooms"</span><span class="p">,</span> <span class="s">"sauce"</span><span class="p">:</span><span class="s">"tomato"</span><span class="p">}</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">pizza</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+<span class="n">sauce</span> <span class="n">tomato</span>
+<span class="n">topping</span> <span class="n">mushrooms</span>
+<span class="n">crust</span> <span class="n">thin</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="sorted">sorted</h3>
+
+  <p>One last thing (that&#39;s not unique to dictionaries)&#8230;</p>
+
+  <p>There&#39;s a built-in function called <strong>sorted</strong>:</p>
+
+  <ul>
+    <li>it takes an iterable as an argument (dictionary, list, string, tuple)</li>
+    <li>and it returns a sorted list version of the original argument</li>
+    <li>there&#39;s an optional second argument which is the <em>actual function</em> to use on each element for sorting</li>
+    <li>the second argument is passed in as a key value pair joined with an equals sign (these are called keyword arguments)</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">numbers</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">abs</span><span class="p">))</span>
+
+<span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="sorted-on-dictionary-values">sorted on Dictionary Values</h3>
+
+  <p>We can use <strong>sorted</strong> to iterate over a dictionary (which is inherently unordered) by value:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pg</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Ricky Rubio"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span> <span class="s">"Derrick Rose"</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span> <span class="s">"Steve Nash"</span><span class="p">:</span><span class="mi">15</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pg</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">pg</span><span class="o">.</span><span class="n">get</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pg</span><span class="p">[</span><span class="n">name</span><span class="p">])</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="summary-questions">Summary Questions</h3>
+
+  <ul>
+    <li>how do we construct a dictionary literal?</li>
+    <li>how do we create an empty dictionary?</li>
+    <li>are dictionaries mutable or immutable?</li>
+    <li>are dictionaries ordered or unordered</li>
+    <li>how do we access a value at a key&#8230; what happens if they key doesn&#39;t exist?</li>
+    <li>what&#39;s the exception to the above?</li>
+    <li>what&#39;s another way of accessing a value?</li>
+    <li>when we us a regular for loop with a dictionary, what value is in the for loop variable?</li>
+    <li>how do we get both keys and values when iterating?</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="summary-answers">Summary Answers</h3>
+
+  <ul>
+    <li>dictionaries are delimited by curly braces, key value pairs are separated by commas, with each key and value joined by a colon</li>
+    <li>{}</li>
+    <li>they&#39;re <strong>mutable</strong></li>
+    <li><strong>unordered</strong> - order cannot be guaranteed</li>
+    <li>d[&quot;some key&quot;], excepion</li>
+    <li>assignment</li>
+    <li>get method</li>
+    <li>the current key</li>
+    <li>convert to a list of tuples using <strong>items</strong>()</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="dictionaries-exercise">Dictionaries Exercise</h3>
+
+  <ul>
+    <li>write a program that asks the user for a word</li>
+    <li>the program should output the total number of times each character in the word appears in the word</li>
+    <li>example output:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;</span><span class="n">hello</span>
+<span class="n">h</span> <span class="mi">1</span>
+<span class="n">e</span> <span class="mi">1</span>
+<span class="n">l</span> <span class="mi">2</span>
+<span class="n">o</span> <span class="mi">1</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="counting-letters-version-1">Counting Letters Version 1</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter a word</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"</span><span class="p">:</span>
+	<span class="n">count</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="counting-letters-version-2">Counting Letters Version 2</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter a word</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+	<span class="k">try</span><span class="p">:</span>
+		<span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">except</span> <span class="nb">KeyError</span><span class="p">:</span>
+		<span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="counting-letters-version-3">Counting Letters Version 3</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter a word</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+	<span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></code></pre></figure>
+
+  <!--_-->
+</section>
+
+<section>
+  <h3 id="counting-dice-rolls">Counting Dice Rolls</h3>
+
+  <ul>
+    <li>roll two thee sided dice simultaneously 1000 times</li>
+    <li>count the frequency of the results&#8230; 2 through 6</li>
+    <li>pseudocode
+      <ul>
+        <li>generate two random numbers</li>
+        <li>do this 1000 times</li>
+        <li>keep track of the number of times a two is rolled&#8230; a three&#8230; up through six</li>
+        <li>use multiple assignment for initializing your counts!</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="dice-rolls-solution">Dice Rolls Solution</h3>
+
+  <p>We&#39;ve done this before; here&#39;s a solution that uses a different variable for each possible number:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">twos</span><span class="p">,</span> <span class="n">threes</span><span class="p">,</span> <span class="n">fours</span><span class="p">,</span> <span class="n">fives</span><span class="p">,</span> <span class="n">sixes</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+	<span class="n">roll</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="n">twos</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">threes</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+		<span class="n">fours</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+		<span class="n">fives</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+		<span class="n">sixes</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"twos: </span><span class="si">%</span><span class="s">s, threes: </span><span class="si">%</span><span class="s">s, fours: </span><span class="si">%</span><span class="s">s, fives: </span><span class="si">%</span><span class="s">s, sixes </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">twos</span><span class="p">,</span> <span class="n">threes</span><span class="p">,</span> <span class="n">fours</span><span class="p">,</span> <span class="n">fives</span><span class="p">,</span> <span class="n">sixes</span><span class="p">))</span> </code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="this-could-be-less-tedious">This Could be Less Tedious!</h3>
+
+  <p><strong>Try reimplementing our dice program so that it uses a dictionary to store the frequency of rolls (each roll as a key, each value as a count).</strong>  (hint: use the get method or use a try-except to deal with keys that don&#39;t exist).</p>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">freq_dice_rolls</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+	<span class="n">roll</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+	<span class="n">freq_dice_rolls</span><span class="p">[</span><span class="n">roll</span><span class="p">]</span> <span class="o">=</span> <span class="n">freq_dice_rolls</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">roll</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">freq_dice_rolls</span><span class="p">)</span></code></pre></figure>
+
+</div>
+</section>
+
+<section>
+  <h3 id="further-exercises">Further Exercises</h3>
+
+  <ul>
+    <li>keeping track of inventory</li>
+    <li>phone book</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="review"><a href="review.html">Review</a></h2>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

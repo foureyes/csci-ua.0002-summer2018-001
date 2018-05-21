@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Built-in Modules Review (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="modules-review">Modules Review</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="first-built-in-functions">First, Built-In Functions!</h3>
+
+  <p>Before we went into modules, we <em>briefly</em> looked at a few more built-in functions.  <strong>What were they &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>abs</strong>(x) - returns a number that is the absolute value of x</li>
+      <li><strong>len</strong>(s) - returns the length of a sequence type (such as a string) as an int</li>
+      <li><strong>round</strong>(x [,digits]) - round a number to a given precision in decimal digits (default 0 digits)</li>
+      <li><strong>dir</strong>([object]) - returns a list of names in a module or in the current namespace</li>
+      <li>more here: <a href="http://docs.python.org/py3k/library/functions.html">http://docs.python.org/py3k/library/functions.html</a></li>
+    </ul>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="modules">Modules</h3>
+  <aside>Even more functionality can be found in <em>modules</em></aside>
+
+  <p><strong>What&#39;s a module? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>just a file containing Python definitions and statements intended for use in other Python programs</li>
+      <li><strong>modules</strong>  <em>provide standardized solutions for many problems that occur in everyday programming</em></li>
+      <li>they help organize the standard library by grouping together related functionality (for example, all math related functions)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="the-modules-that-were-familiar-with">The Modules That We&#39;re Familiar With</h3>
+
+  <p><strong>We learned about three modules.  What are they, and what are some functions and constants that they contain? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>math</strong>: pi, sqrt(n), floor(n), ceil(n), sin(n), cos(n), tan(n)</li>
+      <li><strong>random</strong>: random(), randint(a, b)</li>
+      <li><strong>sys</strong>: version, exit()</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="using-functions-and-constants-in-modules">Using Functions and Constants in Modules</h3>
+
+  <p><strong>Let&#39;s write a program that:&#8594;</strong></p>
+
+  <ul>
+    <li>prints the squareroot of 18671041</li>
+    <li>generates and prints a random number between 1 and 100</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">18671041</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="import-and-the-dot-operator">Import and the Dot Operator</h3>
+
+  <p>We use the keyword, <strong>import</strong>, followed by the <strong>name of the module</strong> to bring in a module.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
+<span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="the-import-statement">The Import Statement</h3>
+
+  <p>When you use the import statement&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span></code></pre></figure>
+
+  <ul>
+    <li>all of the code in the module is executed</li>
+    <li>which makes all of the definitions (variables, functions, etc.) in the module available to you by using:
+      <ul>
+        <li>the <strong>module name</strong></li>
+        <li>followed by the <strong>dot operator</strong></li>
+        <li>followed by a <strong>function call</strong> or a <strong>variable name</strong></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="the-math-module">The math Module</h3>
+
+  <ul>
+    <li>math
+      <ul>
+        <li><strong>pi</strong> - a constant that contains the value of pi&#8594;</li>
+        <li><strong>floor</strong>(x) - returns the smallest integer less than or equal to x&#8594;</li>
+        <li><strong>ceil</strong>(x) - returns the smallest integer greater than or equal to x&#8594;</li>
+        <li><strong>sqrt</strong>(x) - returns the square root of x&#8594;</li>
+        <li><strong>cos</strong>(x) - returns the cosine of x radians &#8594;</li>
+        <li><strong>sin</strong>(x) - returns the sine of x radians &#8594;</li>
+        <li><strong>tan</strong>(x) - returns the tangent of x radians &#8594;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="the-random-and-sys-modules">The random and sys Modules</h3>
+  <ul>
+    <li>random
+      <ul>
+        <li><strong>random</strong>() - return a random float that&#39;s between 0 and 1</li>
+        <li><strong>randint</strong>(a, b) - returns a random int that&#39;s a &lt;= n &lt;= b</li>
+      </ul>
+    </li>
+    <li>sys
+      <ul>
+        <li><strong>exit</strong>([arg])_ - exits form python</li>
+        <li><strong>version</strong> - a constant that contains the version of Python</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="rationale-for-modules">Rationale for Modules</h3>
+
+  <p>Modules are used:</p>
+
+  <ul>
+    <li>to encourage code reuse (DRY - don&#39;t repeat yourself)</li>
+    <li>to provide &quot;namespacing&quot; to avoid naming collisions</li>
+    <li>to provide a way of organizing code</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="behind-the-scenes">Behind the Scenes</h3>
+  <aside>A Closer Look at Modules</aside>
+  <p>What happens when we import?</p>
+
+  <ul>
+    <li>the name of the module actually corresponds to a python file</li>
+    <li>Python looks in the current working folder (as well as several other locations) for a file named after the module your importing</li>
+    <li>imagine placing the contents of that file directly into the file you&#39;re working on (at the point of the import statement)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="an-example-module">An Example Module</h3>
+
+  <p>In fact, we can make our own modules!  We&#39;ll take a look at this later, but to illustrate how modules work, we can create two files in the same directory:</p>
+
+  <ul>
+    <li>my_awesome_module.py</li>
+    <li>hello.py</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span>
+<span class="c">#  my_awesome_module.py</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"inside my_awesome_module"</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">42</span>
+
+<span class="c">#  hello.py</span>
+<span class="kn">import</span> <span class="nn">my_awesome_module</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">my_awesome_module</span><span class="o">.</span><span class="n">x</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="an-example-module-continued">An Example Module Continued</h3>
+
+  <p><strong>What do you think will be output when we run hello.py? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">inside</span> <span class="n">my_awesome_module</span>
+<span class="n">hello</span>
+<span class="mi">42</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="um-so-where-are-all-of-those-other-modules">Um&#8230; So Where Are All of Those Other Modules?</h3>
+  <aside>
+    <p>They&#39;re Definitely <em>Not</em> in the Current Directory</p>
+  </aside>
+
+  <p>Where do sys, math, random, and other modules come from?  If modules are just files, we should just be able to find them!</p>
+
+  <ul>
+    <li>the current directory</li>
+    <li><em>or</em> a list of specified directories called the <strong>PYTHON_PATH</strong></li>
+    <li>location usually varies by system and version&#8230;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="where-was-that">Where Was That?</h3>
+
+  <p>For example, on <strong>OSX Mountain Lion</strong> and <strong>Python 3.3</strong>, you may be able to find modules in:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  for me, it's here:</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">Cellar</span><span class="o">/</span><span class="n">python3</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">Frameworks</span><span class="o">/</span><span class="n">Python</span><span class="o">.</span><span class="n">framework</span><span class="o">/</span><span class="n">Versions</span><span class="o">/</span><span class="mf">3.3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">3</span><span class="o">/</span>
+
+<span class="c">#  for you, maybe somewhere in....</span>
+<span class="o">/</span><span class="n">System</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Frameworks</span><span class="o">/</span><span class="n">Python</span><span class="o">.</span><span class="n">framework</span><span class="o">/</span><span class="n">Versions</span><span class="o">/</span> <span class="o">...</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="why-do-modules-exist">Why Do Modules Exist?</h3>
+
+  <p>That&#39;s great, but why bother with using and/or creating modules (aside, of course, from bringing in additional built-in functionality)?</p>
+
+  <ul>
+    <li>they encourage code reuse (DRY - don&#39;t repeat yourself)</li>
+    <li>they provide &quot;namespacing&quot; to avoid name collisions</li>
+    <li>they provide a way of organizing code</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="three-modules-out-of---halp">Three Modules Out of ??? / HALP!</h3>
+
+  <p>There are many more modules to explore.  Check out the <a href="http://docs.python.org/py3k/library/index.html">official documentation</a> for a more comprehensive list.  You&#39;ll find modules like:</p>
+
+  <ul>
+    <li>tkinter - for graphical user interfaces</li>
+    <li>turtle - a pen-plotter like drawing library</li>
+    <li>wave - for reading/writing WAVE (audio files)</li>
+    <li>http.server - a simple Python web server</li>
+    <li>and so on&#8230;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="halp">HALP!!!</h3>
+  <p>To find help on these modules:</p>
+
+  <ul>
+    <li>the first place to look is obvs the <a href="http://docs.python.org/py3k/library/index.html">official documentation</a></li>
+    <li>you can also check out the python docs in IDLE (go to Help&#8594;Python Docs)</li>
+    <li>you can fiddle around in the interactive shell
+      * dir()
+      * help()</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; help(abs)
+&gt;&gt;&gt; dir()
+['__builtins__', '__doc__', '__name__', '__package__']
+&gt;&gt;&gt; a = "foo"
+&gt;&gt;&gt; dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'a']
+&gt;&gt;&gt; import math
+&gt;&gt;&gt; dir(math)</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="how-about-a-practical-application-plz">How About a Practical Application, PLZ?</h3>
+
+  <p><strong>Rewrite our guess number game so that it uses a random number instead of a hardcoded one. It should display the correct answer after you guess.&#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">#  Run 1:
+Guess a number between 1 and 10!
+&gt; 5
+Nope, I was thinking of 10.
+
+#  Run 2:
+Guess a number between 1 and 10!
+&gt; 8
+You guessed right; I was thinking of 8.</code></pre></figure>
+
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

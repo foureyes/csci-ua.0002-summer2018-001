@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lists - Methods and Functions (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="lists---methods-and-functions">Lists - Methods and Functions</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="list-methods">List Methods</h3>
+
+  <p>These methods are called <em>on list objects</em>!</p>
+
+  <ul>
+    <li><strong>append</strong>(object) # appends value to end of list</li>
+    <li><strong>extend</strong>(iterable) # appends all items of one iterable (list, string, etc.) to the other&#8230;</li>
+    <li><strong>remove</strong>(value) # removes first occurrence of value</li>
+    <li><strong>pop</strong>() # returns and removes the last element</li>
+    <li><strong>sort</strong>() # sorts list in place</li>
+    <li><strong>insert</strong>(i, object) # adds an object to the list at index</li>
+    <li><strong>count</strong>(value) # returns number of occurrences of value in list</li>
+    <li><strong>index</strong>(object) # returns the index of the object supplied</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="adding-elements-to-a-list">Adding Elements to a List</h3>
+
+  <ul>
+    <li><strong>append</strong>(object) adds an object to the end of a list</li>
+    <li><strong>extend</strong>(iterable) adds all of the elements of an iterable object, such as a list or a string, to the end of a list.</li>
+    <li><strong>insert</strong>(i, object) adds object as an element before the index</li>
+    <li><strong>insert</strong>, <strong>append</strong>, and <strong>extend</strong> <strong>do not</strong> return a value; they change the list in place!</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="adding-elements-to-a-list-example">Adding Elements to a List Example</h3>
+
+  <p><strong>what does this code output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># The Stranger, Manufacturing Consent...</span>
+<span class="n">philosophers</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Camus'</span><span class="p">,</span> <span class="s">'Chomsky'</span><span class="p">]</span>
+<span class="c"># The Art of Computer Programming,  C</span>
+<span class="n">famous_computer_scientists</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Knuth'</span><span class="p">,</span> <span class="s">'Ritchie'</span><span class="p">]</span>
+<span class="c"># lambda calculus, turing machine</span>
+<span class="n">logicians</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Church'</span><span class="p">,</span> <span class="s">'Turing'</span><span class="p">]</span>
+<span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">]</span>
+
+<span class="n">result_append</span> <span class="o">=</span> <span class="n">famous_computer_scientists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">logicians</span><span class="p">)</span>
+<span class="n">result_extend</span> <span class="o">=</span> <span class="n">philosophers</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">logicians</span><span class="p">)</span>
+<span class="n">letters</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="s">"xyz"</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">philosophers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result_append</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result_extend</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="adding-elements-to-a-list-example---output">Adding Elements to a List Example - Output</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="s">'Knuth'</span><span class="p">,</span> <span class="s">'Ritchie'</span><span class="p">,</span> <span class="p">[</span><span class="s">'Church'</span><span class="p">,</span> <span class="s">'Turing'</span><span class="p">]]</span>
+<span class="p">[</span><span class="s">'Camus'</span><span class="p">,</span> <span class="s">'Chomsky'</span><span class="p">,</span> <span class="s">'Church'</span><span class="p">,</span> <span class="s">'Turing'</span><span class="p">]</span>
+<span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="s">'z'</span><span class="p">]</span>
+<span class="bp">None</span>
+<span class="bp">None</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="removing-elements-from-a-list">Removing Elements from a List</h3>
+
+  <ul>
+    <li><strong>remove</strong>(value) removes the first occurrence of the value from a list, but it causes an error if that value isn&#39;t in the list</li>
+    <li><strong>pop</strong>() # removes the last element of a list and returns it</li>
+  </ul>
+
+  <p><strong>remove</strong> vs <strong>pop</strong>: both remove and pop change values in place (that is, the original object will be modified).  However, <strong>remove</strong> does not return anything&#8230; while <strong>pop</strong> returns the removed element.</p>
+</section>
+
+<section>
+  <h3 id="removing-elements-from-a-list-example">Removing Elements From a List Example</h3>
+
+  <p><strong>what does this code output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">primes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">primes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">primes</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="n">primes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="removing-elements-from-a-list-example---output">Removing Elements From a List Example - Output</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="bp">None</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="mi">7</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"remove_and_pop.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">10</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">primes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+<span class="nb">ValueError</span><span class="p">:</span> <span class="nb">list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">list</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="count-and-sort">Count and Sort</h3>
+
+  <ul>
+    <li><strong>count</strong>(value) - returns the number of times a value is found in a list</li>
+    <li><strong>sort</strong>() - sorts a list in place (that is, the object that this method was called on is modified)</li>
+    <li><strong>index</strong>(object) - returns the index of the object supplied; causes an error if the object doesn’t exist</li>
+  </ul>
+
+  <p><strong>count</strong> returns an  int.  <strong>sort</strong> does not return a value; it acts on the original object.</p>
+
+</section>
+
+<section>
+  <h3 id="count-and-sort-example">Count and Sort Example</h3>
+
+  <p><strong>what does this code output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">number_of_fives</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">number_of_fives</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="bp">None</span>
+<span class="mi">2</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="built-in-functions-len">Built-in Functions: len()</h3>
+
+  <ul>
+    <li>len returns the length of a sequence type:</li>
+    <li>in the context of a string, it will give back the length of a string (the number of characters)</li>
+    <li>in the context of a list, it will give back the number of elements in a list</li>
+    <li>consequently, for both strings and lists, len(object) - 1 gives back the last index of a string or a list</li>
+    <li><strong>it&#39;s not a method!</strong>, it&#39;s just a built in function
+      <ul>
+        <li>you don&#39;t call it on an object</li>
+        <li>instead, you pass an argument as an object to it</li>
+        <li>why?  for consistency across built-in objects and custom objects</li>
+        <li>see <a href="http://lucumr.pocoo.org/2011/7/9/python-and-pola/">Principle of Least Astonishment</a></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="len">len()</h3>
+
+  <p><strong>what does this code output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">list_defunct_currency</span> <span class="o">=</span> <span class="p">[</span><span class="s">'lira'</span><span class="p">,</span> <span class="s">'mark'</span><span class="p">,</span> <span class="s">'franc'</span><span class="p">]</span>
+<span class="n">no_money</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">defunct_currency</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">no_money</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">defunct_currency</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">defunct_currency</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">defunct_currency</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">defunct_currency</span><span class="p">)])</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">3</span>
+<span class="mi">0</span>
+<span class="n">franc</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"len_function_example.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">6</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">defunct_currency</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">defunct_currency</span><span class="p">)])</span>
+<span class="nb">IndexError</span><span class="p">:</span> <span class="nb">list</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span></code></pre></figure>
+
+  </div>
+  <!-- no_print -->
+</section>
+
+<section>
+  <h3 id="built-in-statement-del">Built-in Statement: del</h3>
+
+  <p><strong>del</strong> is a statement removes an element or slice of elements from a list:</p>
+
+  <ul>
+    <li>it&#39;s neither a method or a function call; it&#39;s a statement (like return)</li>
+    <li>to use <strong>del</strong>, use the keyword, <strong>del</strong> followed by an indexed list or a sliced list</li>
+    <li>del removes the elements <em>in place</em> (that is, the original list is modified)</li>
+    <li>an error occurs if you delete something that&#39;s out of range</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="del-example">del Example</h3>
+
+  <p><strong>what does this code output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"del_statement_example.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">5</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="k">del</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">IndexError</span><span class="p">:</span> <span class="nb">list</span> <span class="n">assignment</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="del-vs-remove">del vs remove()</h3>
+
+  <p>Both <strong>del</strong> and <strong>remove</strong>() remove elements from a list, and they both do it in place.  However&#8230;</p>
+
+  <ul>
+    <li><strong>del</strong> removes by index</li>
+    <li><strong>remove</strong>() removes by value</li>
+    <li><strong>del</strong> is a statement while <strong>remove</strong> is a method</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="split-and-join">split and join</h3>
+
+  <p>There are two useful <strong>string methods</strong> that are often used with lists:</p>
+
+  <ul>
+    <li><strong>split</strong> turns a string into a list based on a separator string</li>
+    <li><strong>join</strong> turns a list into a string based on the string it&#39;s called on</li>
+    <li><strong>both are called on string objects!</strong></li>
+    <li><strong>what would the following code output? &#8594;</strong></li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">comics</span> <span class="o">=</span> <span class="s">"ranma,maison ikkoku,scott pilgrim"</span>
+<span class="n">awesome_comics_list</span> <span class="o">=</span> <span class="n">comics</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">","</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">awesome_comics_list</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">" and "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">awesome_comics_list</span><span class="p">))</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="s">'ranma'</span><span class="p">,</span> <span class="s">'maison ikkoku'</span><span class="p">,</span> <span class="s">'scott pilgrim'</span><span class="p">]</span>
+<span class="n">ranma</span> <span class="ow">and</span> <span class="n">maison</span> <span class="n">ikkoku</span> <span class="ow">and</span> <span class="n">scott</span> <span class="n">pilgrim</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="lengths-of-names">Lengths of Names</h3>
+
+  <p><strong>Implement a short program that: &#8594;</strong></p>
+
+  <ul>
+    <li>asks the user for a comma separated list of names</li>
+    <li>prints out length of each name entered</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">names</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'some names plz, separated by commas</span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">','</span><span class="p">):</span>
+	<span class="n">n</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">s has </span><span class="si">%</span><span class="s">s letters in it'</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="random---choice-shuffle">Random - Choice, Shuffle</h3>
+
+  <p>The random module offers some methods that can be used on lists:</p>
+
+  <ul>
+    <li><strong>choice</strong>(my_list): retrieves a random item from the supplied list</li>
+    <li><strong>shuffle</strong>(my_list): randomly changes the order of the elements in the list passed in (<em>in place</em>)</li>
+  </ul>
+
+  <p><strong>Let&#39;s try using a couple of these methods &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">numbers</span><span class="p">))</span>
+<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

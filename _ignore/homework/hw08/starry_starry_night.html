@@ -1,0 +1,146 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+		<title>Introduction to Computer Programming - CSCI-UA.0002 - Summer 2018 starry_starry_night.py</title> 
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	<!-- <link rel="stylesheet" type="text/css" href="resources/fonts/cmun-serif.css"> -->
+	<link rel="stylesheet" type="text/css" href="../../resources/css/screen.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<script src="resources/js/jquery-2.1.3.min.js"></script>
+	<script src="resources/js/persistent-nav.js"></script>
+
+</head>
+<body>
+<div id="hd">
+<h1> Introduction to Computer Programming - CSCI-UA.0002 - Summer 2018</h1>
+</div>
+<div id="bd">
+<div id="content">
+	<h1 id="starry_starry_nightpy-15-points">starry_starry_night.py (15 points)</h1>
+<p>Draw some stars!</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<h3 id="part-1">Part 1</h3>
+
+<ul>
+  <li>customize the colors of your drawing (choose whatever colors you like)
+    <ul>
+      <li>change the background color</li>
+      <li>set the pen color</li>
+    </ul>
+  </li>
+  <li>turn animation off (we&#39;re going to be drawing a lot of stars)</li>
+  <li>set the width and height to 800 width and 600 height</li>
+  <li>create a function called <strong>draw star</strong>
+    <ul>
+      <li>you can draw whatever star you like</li>
+      <li>the examples show a typical 5 pointed star</li>
+      <li>parameters: x, y and size</li>
+      <li>processing: it will draw a star at the x and y location specified, and the size of the star; you can take that to mean the size of a side (easier), or the entire star</li>
+      <li>return: does not return anything</li>
+      <li>don&#39;t forget to call update at the end of it</li>
+    </ul>
+  </li>
+  <li>call your function once to draw a star in the middle of the screen</li>
+</ul>
+
+<p><img src="http://foureyes.github.io/csci-ua.0002-fall2015-008/resources/img/turtle/starry_1.png" alt="star middle" /></p>
+
+<h3 id="part-2">Part 2</h3>
+
+<ul>
+  <li>comment out your function call for drawing a single star from the previous part</li>
+  <li>now, instead of drawing a single star, draw several stars using a for loop</li>
+  <li>they can be drawn in a straight line horizontally or vertically</li>
+  <li>or&#8230; if you want to get fancy, draw them in a curve</li>
+  <li>see the examples below:</li>
+</ul>
+
+<p><img src="http://foureyes.github.io/csci-ua.0002-fall2015-008/resources/img/turtle/starry_2.png" alt="stars in a row" /></p>
+
+<p><img src="http://foureyes.github.io/csci-ua.0002-fall2015-008/resources/img/turtle/starry_3.png" alt="stars curved" /></p>
+
+<h3 id="part-3">Part 3</h3>
+
+<ul>
+  <li>again, comment out your code for drawing several stars from the previous part</li>
+  <li>now, create another function called <strong>generate_star_data</strong>
+    <ul>
+      <li>this function will generate a list of lists that represents star data:
+        <ul>
+          <li>the first element in the sub list will represent an x value, the second represents a y value, and the last represents size</li>
+          <li>for example, [[0, 0, 10], [200, 200, 80]] represents 2 stars, one at the origin&#8230; and a larger star on the upper right hand corner</li>
+        </ul>
+      </li>
+      <li>parameters: an int that represents the number of elements in the list (the number stars / sub lists)</li>
+      <li>processing:
+        <ul>
+          <li>it will randomly generate x, y, and size values, put these values into a list&#8230;</li>
+          <li>and add this three element list to the star list (the list of lists)</li>
+          <li>the bounds of the random numbers that you generate can be hard coded based on the width and height of the window</li>
+        </ul>
+      </li>
+      <li>return: the list of lists representing stars</li>
+    </ul>
+  </li>
+  <li>example usage below:</li>
+</ul>
+
+<pre>
+star_data = generate_star_data(2)
+print(star_data)
+#  prints out: [[-250, 121, 49], [100, 0, 20]] 
+</pre>
+
+<h3 id="part-4">Part 4</h3>
+
+<ul>
+  <li>use the function from the previous part to generate a list of 40 stars (a list of 40 sub lists)</li>
+  <li>save the result of this into a global variable (that is, it should be a variable defined outside of all of your functions)</li>
+  <li>create a function called draw_sky:
+    <ul>
+      <li>within it, iterate through the global list you created</li>
+      <li>draw a star based on the data in the sub list (x, y and size)</li>
+    </ul>
+  </li>
+  <li>call you draw_sky function once&#8230;</li>
+  <li>it should look something like this:</li>
+</ul>
+
+<p><img src="http://foureyes.github.io/csci-ua.0002-fall2015-008/resources/img/turtle/starry_4.png" alt="lots of stars" /></p>
+
+<h2 id="extra-credit">Extra Credit</h2>
+<p>5 points</p>
+
+<ul>
+  <li>within your draw sky function, increment the x value of every sub list by 1 as you iterate through the sub lists to draw stars</li>
+  <li>instead of calling your draw_sky function once, use ontimer to have you draw_sky function call itself again in 30 ms
+    <ul>
+      <li>call ontimer at the end of your draw_sky function</li>
+      <li>with draw_sky as the first argument (no quotes), and 30 as the second</li>
+    </ul>
+  </li>
+  <li>you should see an animation!</li>
+  <li>now&#8230; change your generate_star_data function so that the sub list that creates also contains a 4th value
+    <ul>
+      <li>this value represents a velocity</li>
+      <li>it should be small (maybe between 1 and 5)</li>
+    </ul>
+  </li>
+  <li>in your draw_sky function, as you iterate through your list of star data, add the generated velocity (the value at index 3) to the x value (the value at index 0) rather than just increment by 1</li>
+</ul>
+
+<p><img src="http://foureyes.github.io/csci-ua.0002-fall2015-008/resources/img/turtle/starry_ec.gif" alt="animation" /></p>
+
+
+</div>
+</div>
+
+<div id="ft">
+	<p>CSCI-UA.0002 - Introduction to Computer Programming - Summer 2018</p>
+</div>
+</div>
+</body>
+</html>

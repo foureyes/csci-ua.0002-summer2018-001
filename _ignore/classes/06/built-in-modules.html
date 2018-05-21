@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Built-in Modules (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="built-in-modules">Built-In Modules</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="built-in-functions">Built-In Functions</h3>
+
+  <p>So&#8230; again, we learned a few built-in functions.  These are all available by default.</p>
+
+  <ul>
+    <li>print</li>
+    <li>type</li>
+    <li>int</li>
+    <li>str</li>
+    <li>float</li>
+    <li>bool</li>
+    <li>input</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="modules">Modules</h3>
+
+  <p><strong>module</strong> (as defined in THINKSCI):</p>
+
+  <ul>
+    <li>a file containing Python definitions and statements intended for use in other Python programs</li>
+    <li>the contents of a module are made available to the other program by using the import statement.</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="modules-continued">Modules Continued</h3>
+
+  <p>So&#8230; what does that actually mean?</p>
+
+  <ul>
+    <li>there are other functions that are not automatically loaded when you run python</li>
+    <li>these functions (and other definitions, such as variables and constants like pi) are grouped together in files called modules</li>
+    <li>you can bring them in to your program by using the <strong>import</strong> statement</li>
+    <li>simply use the keyword <strong>import</strong> followed by the module name (with no quotes)</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">random</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="so-what-can-these-modules-do">So&#8230; What Can These Modules Do?</h3>
+
+  <ul>
+    <li>math
+      <ul>
+        <li><strong>pi</strong> &#8594;</li>
+        <li><strong>floor</strong> &#8594;</li>
+        <li><strong>sqrt</strong> &#8594;</li>
+      </ul>
+    </li>
+    <li>random
+      <ul>
+        <li><strong>random</strong> &#8594;</li>
+        <li><strong>randint</strong> &#8594;</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="we-know-how-to-call-functions">We Know How to Call Functions</h3>
+  <aside>But How Do You Do It From Modules?</aside>
+
+  <p>Call or use these definitions by using the module name as the prefix and dot (<strong>.</strong>)&#8230; and then the function name</p>
+
+  <ul>
+    <li>math.pi()</li>
+    <li>math.sqrt(25)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="lets-see-math-and-random-in-use">Let&#39;s See math and random in Use</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-simulate-rolling-a-six-sided-die-twice">Let&#39;s Simulate Rolling a Six Sided Die Twice</h3>
+
+  <p><strong>Use random to &quot;roll&quot; dice; print out the two die rolls</strong>&#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">d1</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

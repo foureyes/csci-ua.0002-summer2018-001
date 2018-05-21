@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Formatting (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="formatting-output">Formatting Output</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="formatting-with-print-review">Formatting With Print (Review)</h3>
+
+  <p><strong>How can we format output with print (that is, control what gets printed out between separate arguments, and what gets printed out after the actual value)?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>We can use special arguments, called <strong>keyword arguments</strong>, to control output with print. <code>sep="separator"</code> and <code>end="ending"</code>.</p>
+  </div>
+
+  <p><strong>Let&#39;s check out some examples in the next slide.</strong> &#8594;</p>
+</section>
+
+<section>
+  <h3 id="formatting-with-print-examples">Formatting With Print Examples</h3>
+
+  <ul>
+    <li>note that there are <strong>no quotes</strong> around <code>sep</code> and <code>end</code></li>
+    <li>these <strong>keyword arguments</strong> go <strong>after regular arguments</strong></li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">//</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">using</span> <span class="n">space</span> <span class="n">to</span> <span class="n">separate</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">use</span> <span class="n">comma</span><span class="err">!</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="s">"baz"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">", "</span><span class="p">)</span>
+
+<span class="o">//</span> <span class="n">use</span> <span class="n">a</span> <span class="o">+</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">a</span> <span class="n">newline</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span><span class="err">!</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="s">"baz"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">"+"</span><span class="p">)</span>
+
+<span class="o">//</span> <span class="n">you</span> <span class="n">can</span> <span class="n">combine</span> <span class="n">both</span> <span class="n">sep</span> <span class="ow">and</span> <span class="n">end</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="s">"baz"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">", "</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">"+"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="the-format-function">The format() Function</h3>
+
+  <p>The <strong>format()</strong> function can be used to format a value <strong>before you use it elsewhere</strong> (for example, before you print out to the user)</p>
+
+  <ul>
+    <li>it takes two arguments
+      <ul>
+        <li>the thing (value) you want formatted (can be a string or numeric type)</li>
+        <li>some formatting pattern (expressed as a string)</li>
+      </ul>
+    </li>
+    <li>format() always <strong>returns a string</strong></li>
+    <li>the original value is not modified in any way!</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="padding-strings">Padding Strings</h3>
+
+  <p>You can use format to ensure that you string has some number of characters in it.</p>
+
+  <ul>
+    <li>to fill out the remaining characters, format will add spaces before or after your original string</li>
+    <li>this is specified by the format string</li>
+    <li>for example, <code>'&gt;20s'</code> and  <code>'&lt;20s'</code> add spaces to the beginning and end of a string&#8230;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">formatted</span> <span class="o">=</span> <span class="n">format</span><span class="p">(</span><span class="s">'hello'</span><span class="p">,</span> <span class="s">'&gt;20s'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">formatted</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="examples-of-formatting-floats">Examples of Formatting Floats</h3>
+
+  <p>Specifying places after decimal (. means decimal, number is the number of spaces, f means floating point format)</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="mf">1.333333</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">format</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">'.2f'</span><span class="p">)</span> <span class="c"># format as a float, 1.33</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">format</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">'.3f'</span><span class="p">)</span> <span class="c"># format as a float, 1.333</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">format</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">',.5f'</span><span class="p">)</span> <span class="c"># add a comma separator</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">format</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">'&gt;20,.2f'</span><span class="p">)</span> <span class="c"># pad it too!</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="examples-of-formatting-integers">Examples of Formatting Integers</h3>
+
+  <p>Specifying places after decimal (, means add comma, d means integer)</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">20000</span>
+<span class="k">print</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">',d'</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">'&gt;20,d'</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="the-formal-specification">The Formal Specification</h3>
+
+  <p>Ok&#8230; so if you want to know how <strong>format</strong> really works:</p>
+
+  <ul>
+    <li>the second argument is a string that represents a format</li>
+    <li>and it&#39;s written in a &quot;mini-language&quot; (yes, a language in a language!)</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">format_spec</span> <span class="p">::</span><span class="o">=</span>  <span class="p">[[</span><span class="n">fill</span><span class="p">]</span><span class="n">align</span><span class="p">][</span><span class="n">sign</span><span class="p">][</span><span class="c">#][0][width][,][.precision][type]</span>
+<span class="n">fill</span>        <span class="p">::</span><span class="o">=</span>  <span class="o">&lt;</span><span class="nb">any</span> <span class="n">character</span><span class="o">&gt;</span>
+<span class="n">align</span>       <span class="p">::</span><span class="o">=</span>  <span class="s">"&lt;"</span> <span class="o">|</span> <span class="s">"&gt;"</span> <span class="o">|</span> <span class="s">"="</span> <span class="o">|</span> <span class="s">"^"</span>
+<span class="n">sign</span>        <span class="p">::</span><span class="o">=</span>  <span class="s">"+"</span> <span class="o">|</span> <span class="s">"-"</span> <span class="o">|</span> <span class="s">" "</span>
+<span class="n">width</span>       <span class="p">::</span><span class="o">=</span>  <span class="n">integer</span>
+<span class="n">precision</span>   <span class="p">::</span><span class="o">=</span>  <span class="n">integer</span>
+<span class="nb">type</span>        <span class="p">::</span><span class="o">=</span>  <span class="s">"b"</span> <span class="o">|</span> <span class="s">"c"</span> <span class="o">|</span> <span class="s">"d"</span> <span class="o">|</span> <span class="s">"e"</span> <span class="o">|</span> <span class="s">"E"</span> <span class="o">|</span> <span class="s">"f"</span> <span class="o">|</span> <span class="s">"F"</span> <span class="o">|</span> <span class="s">"g"</span> <span class="o">|</span> 
+                 <span class="s">"G"</span> <span class="o">|</span> <span class="s">"n"</span> <span class="o">|</span> <span class="s">"o"</span> <span class="o">|</span> <span class="s">"s"</span> <span class="o">|</span> <span class="s">"x"</span> <span class="o">|</span> <span class="s">"X"</span> <span class="o">|</span> <span class="s">"</span><span class="si">%</span><span class="s">"</span></code></pre></figure>
+
+  <p>(taken from <a href="https://docs.python.org/3.6/library/string.html#formatspec">the official documentation</a>)</p>
+
+</section>
+
+<section>
+  <h2 id="additional-notes">Additional Notes</h2>
+
+  <p><strong>There are a few other minor details with format</strong> &#8594;</p>
+
+  <ul>
+    <li>you can leave out the type of you&#39;re not doing any specific formatting based on that type
+      <ul>
+        <li><code class="highlighter-rouge">format(1.2)</code></li>
+      </ul>
+    </li>
+    <li>if you use a type with an incompatible value, you&#39;ll get an error
+      <ul>
+        <li><code class="highlighter-rouge">format(1.2, 's')</code></li>
+      </ul>
+    </li>
+    <li>notice the other possible items that you can add to the format specifier?
+      <ul>
+        <li>you can try adding things like <code class="highlighter-rouge">fill</code>, <code class="highlighter-rouge">sign</code>, etc.</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h2 id="lets-try-this">Let&#39;s Try This&#8230;</h2>
+
+  <p><strong>What format string should we use to format the number 1000.32 so that it gives back a stirng composed of 20 characters:</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p><code class="highlighter-rouge">'---------1,000.32000'</code></p>
+  </div>
+
+  <div class="incremental">
+    <p><code class="highlighter-rouge">format(1000.32, '-&gt;20,.5f')</code></p>
+  </div>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

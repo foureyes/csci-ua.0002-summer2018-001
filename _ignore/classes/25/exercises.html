@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Exercises (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="exercises">Exercises</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="counting-letters">Counting Letters</h3>
+
+  <ul>
+    <li>write a program that asks the user for a word</li>
+    <li>the program should output the total number of times each character in the word appears in the word</li>
+    <li>example output:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;</span><span class="n">hello</span>
+<span class="n">h</span> <span class="mi">1</span>
+<span class="n">e</span> <span class="mi">1</span>
+<span class="n">l</span> <span class="mi">2</span>
+<span class="n">o</span> <span class="mi">1</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="counting-letters-version-1">Counting Letters Version 1</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter a word</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"</span><span class="p">:</span>
+	<span class="n">count</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="counting-letters-version-2">Counting Letters Version 2</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter a word</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+	<span class="k">try</span><span class="p">:</span>
+		<span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">except</span> <span class="nb">KeyError</span><span class="p">:</span>
+		<span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="counting-letters-version-3">Counting Letters Version 3</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter a word</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+	<span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></code></pre></figure>
+
+  <!--_-->
+</section>
+
+<section>
+  <h3 id="counting-dice-rolls">Counting Dice Rolls</h3>
+
+  <ul>
+    <li>roll two thee sided dice simultaneously 1000 times</li>
+    <li>count the frequency of the results&#8230; 2 through 6</li>
+    <li>pseudocode
+      <ul>
+        <li>generate two random numbers</li>
+        <li>do this 1000 times</li>
+        <li>keep track of the number of times a two is rolled&#8230; a three&#8230; up through six</li>
+        <li>use multiple assignment for initializing your counts!</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="an-implementation-using-dictionaries">An Implementation Using Dictionaries</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">freq_dice_rolls</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+	<span class="n">roll</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+	<span class="n">freq_dice_rolls</span><span class="p">[</span><span class="n">roll</span><span class="p">]</span> <span class="o">=</span> <span class="n">freq_dice_rolls</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">roll</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">freq_dice_rolls</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="dice-rolls-solution">Dice Rolls Solution</h3>
+
+  <p>Let&#39;s compare that to our previous solution without dictionaries!</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">twos</span><span class="p">,</span> <span class="n">threes</span><span class="p">,</span> <span class="n">fours</span><span class="p">,</span> <span class="n">fives</span><span class="p">,</span> <span class="n">sixes</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+	<span class="n">roll</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="n">twos</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">threes</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+		<span class="n">fours</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+		<span class="n">fives</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+		<span class="n">sixes</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"twos: </span><span class="si">%</span><span class="s">s, threes: </span><span class="si">%</span><span class="s">s, fours: </span><span class="si">%</span><span class="s">s, fives: </span><span class="si">%</span><span class="s">s, sixes </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">twos</span><span class="p">,</span> <span class="n">threes</span><span class="p">,</span> <span class="n">fours</span><span class="p">,</span> <span class="n">fives</span><span class="p">,</span> <span class="n">sixes</span><span class="p">))</span> </code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-list-of-contacts">A List of Contacts</h3>
+
+  <p><strong>Create a text-based contact list that allows you to store first name, last name and room #</strong> &#8594;</p>
+
+  <p>It should support the following functionality:</p>
+
+  <ul>
+    <li>(a)dd contact</li>
+    <li>(p)rint all contacts</li>
+    <li>(f)ind contact by first name</li>
+    <li>(q)uit</li>
+  </ul>
+
+  <p>The primary interface will be a prompt that will continually ask the user for a letter (a, p, f or q)&#8230;</p>
+</section>
+
+<section>
+  <h3 id="add-a-contact-example-interaction">Add a Contact Example Interaction</h3>
+
+  <ul>
+    <li>adding will ask for further input&#8230;</li>
+    <li>first, last and room #</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">(</span>a<span class="o">)</span>dd contact, <span class="o">(</span>p<span class="o">)</span>rint all contacts, <span class="o">(</span>f<span class="o">)</span>ind contact, <span class="o">(</span>q<span class="o">)</span>uit 
+&gt;a
+first name plz 
+&gt;tim
+last name plz 
+&gt;test
+room <span class="c"># plz </span>
+&gt;200</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="find-a-contact-example-interaction">Find a Contact Example Interaction</h3>
+
+  <p>Finding a contact:</p>
+
+  <ul>
+    <li>asks for more input - the first name of the person to find</li>
+    <li>and prints out the contact</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">(</span>a<span class="o">)</span>dd contact, <span class="o">(</span>p<span class="o">)</span>rint all contacts, <span class="o">(</span>f<span class="o">)</span>ind contact, <span class="o">(</span>q<span class="o">)</span>uit 
+&gt;f
+what<span class="s1">'s the firs name of the person you'</span>d like to find? 
+&gt;tim
+last name - <span class="nb">test
+</span>first name - tim
+room - 200</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="print-all-contacts-example-interaction">Print All Contacts Example Interaction</h3>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">(</span>a<span class="o">)</span>dd contact, <span class="o">(</span>p<span class="o">)</span>rint all contacts, <span class="o">(</span>f<span class="o">)</span>ind contact, <span class="o">(</span>q<span class="o">)</span>uit 
+&gt;p
+last name - <span class="nb">test
+</span>first name - tabitha
+room - 100
+
+last name - <span class="nb">test
+</span>first name - tim
+room - 200</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="before-diving-in">Before Diving In&#8230;</h3>
+
+  <ul>
+    <li>how do we want to represent the data?</li>
+    <li>can we break down the program into smaller chunks</li>
+    <li>diagram if necessary (flow charts, sequence diagrams, etc.)</li>
+    <li>write some pseudocode</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="one-possible-solution">One Possible Solution&#8230;</h2>
+</section>
+
+<section>
+  <h3 id="storage">Storage</h3>
+
+  <p>How about using a <strong>list of dictionaries</strong> to store contacts?</p>
+
+  <p>Here&#39;s an example with one contact:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[{</span><span class="s">'first name'</span><span class="p">:</span> <span class="s">'tabitha'</span><span class="p">,</span> <span class="s">'last name'</span><span class="p">:</span> <span class="s">'test'</span><span class="p">,</span> <span class="s">'room'</span><span class="p">:</span> <span class="mi">100</span><span class="p">}]</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="some-functions">Some Functions</h3>
+
+  <p>We can break down the code into smaller chunks of functionality:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">contact_as_string</span><span class="p">(</span><span class="n">contact</span><span class="p">):</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="s">''</span>
+	<span class="k">for</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">contact</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+		<span class="n">s</span> <span class="o">+=</span> <span class="s">'</span><span class="si">%</span><span class="s">s - </span><span class="si">%</span><span class="s">s</span><span class="se">\n</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">s</span>
+
+<span class="k">def</span> <span class="nf">print_all_contacts</span><span class="p">(</span><span class="n">contact_list</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">contact_list</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="n">contact_as_string</span><span class="p">(</span><span class="n">c</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="and-more-functions">And More Functions</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">find_contact</span><span class="p">(</span><span class="n">contact_list</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">contact_list</span><span class="p">:</span>	
+		<span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+			<span class="k">return</span> <span class="n">c</span>
+	<span class="k">return</span> <span class="bp">None</span>
+
+<span class="k">def</span> <span class="nf">find_contact_by_first</span><span class="p">(</span><span class="n">contact_list</span><span class="p">,</span> <span class="n">first</span><span class="p">):</span>
+	<span class="k">return</span> <span class="n">find_contact</span><span class="p">(</span><span class="n">contact_list</span><span class="p">,</span> <span class="s">'first name'</span><span class="p">,</span> <span class="n">first</span><span class="p">)</span></code></pre></figure>
+
+</section>
+<section>
+  <h3 id="the-main-loop">The Main Loop&#8230;</h3>
+
+  <p>We can use the previous functions in a while loop that drives the interaction with the user:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">contacts</span> <span class="o">=</span> <span class="p">[{</span><span class="s">'first name'</span><span class="p">:</span> <span class="s">'tabitha'</span><span class="p">,</span> <span class="s">'last name'</span><span class="p">:</span> <span class="s">'test'</span><span class="p">,</span> <span class="s">'room'</span><span class="p">:</span> <span class="mi">100</span><span class="p">}]</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+	<span class="n">command</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'(a)dd contact, (p)rint all contacts, (f)ind contact, (q)uit </span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">command</span> <span class="o">==</span> <span class="s">'a'</span><span class="p">:</span>
+		<span class="n">first</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'first name plz </span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">)</span>
+		<span class="n">last</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'last name plz </span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">)</span>
+		<span class="n">room</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'room # plz </span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">)</span>
+		<span class="n">contacts</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s">'first name'</span><span class="p">:</span> <span class="n">first</span><span class="p">,</span> <span class="s">'last name'</span><span class="p">:</span> <span class="n">last</span><span class="p">,</span> <span class="s">'room'</span><span class="p">:</span> <span class="n">room</span><span class="p">})</span>
+	<span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s">'p'</span><span class="p">:</span>
+		<span class="n">print_all_contacts</span><span class="p">(</span><span class="n">contacts</span><span class="p">)</span>
+	<span class="c"># continued in next slide...</span></code></pre></figure>
+
+</section>
+
+<h3 id="the-main-loop-continued">The Main Loop Continued</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">	<span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s">'f'</span><span class="p">:</span>
+		<span class="n">name_to_find</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'what</span><span class="se">\'</span><span class="s">s the firs name of the person you</span><span class="se">\'</span><span class="s">d like to find? </span><span class="se">\n</span><span class="s">&gt;'</span><span class="p">)</span>
+		<span class="n">c</span> <span class="o">=</span> <span class="n">find_contact_by_first</span><span class="p">(</span><span class="n">contacts</span><span class="p">,</span> <span class="n">name_to_find</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+			<span class="k">print</span><span class="p">(</span><span class="n">contact_as_string</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">print</span><span class="p">(</span><span class="s">'Contact not found'</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">command</span> <span class="o">==</span> <span class="s">'q'</span><span class="p">:</span>
+		<span class="k">break</span></code></pre></figure>
+
+<p>&lt;/section&gt;</p>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

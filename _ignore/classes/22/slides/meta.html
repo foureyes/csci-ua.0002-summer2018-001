@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>About Class (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="about-class-22">About Class #22</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="topics">Topics</h3>
+
+  <ul>
+    <li>review list methods, functions, references</li>
+    <li>addendum to lists</li>
+    <li>iterating over lists using indexes</li>
+    <li>nested loops and nested lists</li>
+    <li>nested lists</li>
+    <li>making modules</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="class-registration">Class Registration</h3>
+
+  <ul>
+    <li><a href="http://cs.nyu.edu/webapps/content/academic/undergrad/minors">CS Minors</a></li>
+    <li>Questions - Contact Deena Engel</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="exercises--additional-resources">Exercises / Additional Resources</h3>
+
+  <ul>
+    <li><a href="http://learnpythonthehardway.org/book/">Learn Python the Hard Way</a></li>
+    <li><a href="http://www.codecademy.com/tracks/python">Codecademy</a></li>
+    <li><a href="http://codingbat.com/python">Coding Bat</a></li>
+    <li><a href="http://www.khanacademy.org/cs">Khan Academy</a></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="extra-credit">Extra Credit</h3>
+
+</section>
+
+<section>
+  <h3 id="homework-8">Homework #8</h3>
+
+  <ul>
+    <li>extra credit
+      <ul>
+        <li>chained calls to replace</li>
+        <li>loop with replace and lists</li>
+      </ul>
+    </li>
+    <li>translate
+      <ul>
+        <li>expected use of function</li>
+        <li>longer solutions with indexes</li>
+      </ul>
+    </li>
+    <li>get first word
+      <ul>
+        <li>check for space first, get back a negative one
+          <ul>
+            <li>use conditional for -1</li>
+            <li>or&#8230; oddly, just use it as index (gets you the last word anyway)</li>
+          </ul>
+        </li>
+        <li>loop using index, break if you find space, otherwise you get to end of word</li>
+      </ul>
+    </li>
+    <li>palindrome
+      <ul>
+        <li>reverse slice</li>
+      </ul>
+    </li>
+    <li>pig latin
+      <ul>
+        <li>startswith</li>
+        <li>prefixes can be tuples</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="join-vs-split">join vs split</h3>
+</section>
+
+<section>
+  <h3 id="chr-vs-ord">chr vs ord</h3>
+</section>
+
+<section>
+  <h2 id="review"><a href="review.html">Review</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

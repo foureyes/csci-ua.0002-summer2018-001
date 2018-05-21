@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Review (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="values-types-variables-review">Values, Types, Variables Review</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="previously-on-">Previously on &#8230;</h2>
+
+  <aside>
+    <p><a href="../../resources/handouts/class03/types-variables-operators-comments.pdf">This handout</a> covers material from our last class (function calls, types, values, input, operators and variables).</p>
+  </aside>
+</section>
+
+<section>
+  <h3 id="values">Values</h3>
+
+  <p><strong>What&#39;s a value? &#8594;</strong></p>
+
+  <div class="incremental">
+    <p>A value is just data!</p>
+
+    <ol>
+      <li>it can be stored in a variable</li>
+      <li>it can be used an an expression</li>
+      <li>it can&#39;t be <em>evaluated</em> further (2 + 3 is not a value; it can be evaluated further)</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h3 id="types">Types</h3>
+
+  <p><strong>What&#39;s a type? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <p>A type is just a kind or category of values.  <strong>Name the types that we learned about. &#8594;</strong></p>
+
+    <ol>
+      <li>str (string)</li>
+      <li>int (integer)</li>
+      <li>float (floating point number)</li>
+      <li>complex</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h3 id="basic-data-types---strings">Basic Data Types - Strings</h3>
+
+  <p><strong>str</strong> - strings</p>
+
+  <p><strong>What&#39;s a string? How do we know a literal value is a string? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>ordered sequence of characters</li>
+      <li>examples: &#39;string&#39;, &quot;string&quot;, &quot;"&quot;string&quot;&quot;</li>
+      <li>escape special characters using backslash or alternate delimiter</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="string-operators">String Operators</h3>
+
+  <p><strong>Name two operators that can be used with strings</strong> &#8594;</p>
+
+  <ul>
+    <li>describe what they do</li>
+    <li>name the types of operands that they work with</li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>+</strong> - concatenation (addition)
+        <ul>
+          <li>joins strings together</li>
+          <li>both operands must be strings</li>
+        </ul>
+      </li>
+      <li><strong>*</strong> - multiplication or repetition
+        <ul>
+          <li>repeats a string</li>
+          <li>one operand must be a string, the other, an int</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="string-operators-continued">String Operators Continued</h3>
+
+  <p><strong>What do the following lines of code output (error is a possible answer)?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"three"</span> <span class="o">+</span> <span class="s">" blind"</span> <span class="o">+</span> <span class="s">" mice"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="s">" strikes"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="s">"ring "</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"hey"</span> <span class="o">*</span> <span class="s">"three"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">three</span> <span class="n">blind</span> <span class="n">mice</span>
+
+<span class="nb">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">+</span><span class="p">:</span> <span class="s">'int'</span> <span class="ow">and</span> <span class="s">'str'</span>
+
+<span class="n">ring</span> <span class="n">ring</span> <span class="n">ring</span>
+
+<span class="nb">TypeError</span><span class="p">:</span> <span class="n">can</span><span class="s">'t multiply sequence by non-int of type '</span><span class="nb">str</span><span class="s">'</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="basic-data-types---integers">Basic Data Types - Integers</h3>
+
+  <p><strong>int</strong> - integers</p>
+
+  <p><strong>What&#39;s an int? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>whole number - negative or positive</li>
+      <li>examples: 1751, -95</li>
+      <li>&quot;unlimited&quot;</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="basic-data-types---floating-point-numbers">Basic Data Types - Floating Point Numbers</h3>
+
+  <p><strong>float</strong>  - floating point numbers</p>
+
+  <p><strong>What&#39;s a float? How do we know a literal value is a float? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>real number - contains decimal point</li>
+      <li>10.00, 491.545532111</li>
+      <li>may overflow</li>
+      <li>small and large numbers expressed in scientific notation</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="operators-for-numeric-types">Operators for Numeric Types</h3>
+
+  <p><strong>Name 7 operators that can be used on floats and/or ints. &#8594;</strong></p>
+
+  <div class="incremental">
+    <ol>
+      <li>addition: <strong>+</strong></li>
+      <li>multiplication: <strong>*</strong></li>
+      <li>subtraction: <strong>-</strong></li>
+      <li>division: <strong>/</strong> (results in a float even if two integers - ex 10 / 2 &#8594; 5.0)</li>
+      <li>integer division: <strong>//</strong> (closest integer to the left - ex -23 // 3 &#8594; -8)</li>
+      <li>modulo: <strong>%</strong> (ex 10 % 7 &#8594; 3)</li>
+      <li>exponentiation: <strong>**</strong> (ex 2 ** 3 &#8594; 8)</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h3 id="operators-for-numeric-types-continued">Operators for Numeric Types Continued</h3>
+
+  <p><strong>The following block of code will cause a run time error.  Why?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="s">"20"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>A Type Error will occur&#8230; the operator, plus, doesn&#39;t support int and str.  <strong>What can be done to fix this?</strong> &#8594;</p>
+
+    <p>One fix is to convert the variable, <strong>a</strong>, into an integer using the <strong>int</strong> function:</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="s">"20"</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="type-conversions">Type Conversions</h3>
+
+  <p><strong>Name three functions that can be used to convert a value from one type to another.</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ol>
+      <li>int</li>
+      <li>float</li>
+      <li>str</li>
+    </ol>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="type-conversions-a-closer-look">Type Conversions: a Closer Look</h3>
+
+  <p>The following functions will attempt to convert the parameter(s) passed in into the type that the function is named after:</p>
+
+  <ul>
+    <li>int
+      <ul>
+        <li>converts &quot;int like&quot; parameters to ints</li>
+        <li>int(&quot;54&quot;) &#8594; 54</li>
+        <li>int(&quot;   54   &quot;) &#8594; 54</li>
+        <li>int(54.2) &#8594; 54</li>
+        <li>int(&quot;54.0&quot;) &#8594; results in ValueError</li>
+        <li>int(&quot;54.2&quot;) &#8594; results in ValueError</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="type-conversions-continued">Type Conversions Continued</h3>
+
+  <ul>
+    <li>float
+      <ul>
+        <li>float(&quot;54.2&quot;) &#8594; 54.2</li>
+        <li>float(54)	&#8594; 54.0</li>
+      </ul>
+    </li>
+    <li>str
+      <ul>
+        <li>str(54) &#8594; &quot;54&quot;</li>
+        <li>str(54.0) &#8594; &quot;54.0&quot;</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="variables">Variables</h3>
+
+  <p>Variables allow us to bind names to values so that the variable name can be used in place of the literal value.  <strong>In code, how would we assign the value 12 to a variable called n?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">n</span> <span class="o">=</span> <span class="mi">12</span></code></pre></figure>
+
+    <ul>
+      <li>use the assignment operator (just one equals sign): <strong>=</strong></li>
+      <li>name to the left, value to the right</li>
+    </ul>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="valid-variable-names">Valid Variable Names</h3>
+  <ul>
+    <li>names can only be alphanumeric (numbers and letters) and/or the underscore</li>
+    <li>the first character has to be a letter (uppercase or lowercase) <strong>or an underscore</strong></li>
+    <li>however, names are <strong>case sensitive</strong> - case matters</li>
+    <li>can&#39;t be a keyword or reserved word</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="ow">and</span>       <span class="k">del</span>       <span class="kn">from</span>      <span class="nn">not</span>       <span class="nn">while</span><span class="err">
+</span><span class="nn">as</span>        <span class="nn">elif</span>      <span class="nn">global</span>    <span class="nn">or</span>        <span class="nn">with</span><span class="err">
+</span><span class="nn">assert</span>    <span class="nn">else</span>      <span class="nn">if</span>        <span class="nn">pass</span>      <span class="nn">yield</span><span class="err">
+</span><span class="nn">break</span>     <span class="nn">except</span>    <span class="kn">import</span>    <span class="k">print</span>
+<span class="k">class</span>     <span class="nc">exec</span>      <span class="ow">in</span>        <span class="k">raise</span>
+<span class="k">continue</span>  <span class="k">finally</span>   <span class="ow">is</span>        <span class="k">return</span> 
+<span class="k">def</span>       <span class="nf">for</span>       <span class="k">lambda</span>    <span class="k">try</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="and-on-to-built-in-functions"><a href="function-calls.html">And on to Built-In Functions&#8230;</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

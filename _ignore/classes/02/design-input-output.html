@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Design, Input, Processing, and Output (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="design-input-processing-and-output">Design, Input, Processing, and Output</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="review-of-the-programming-workflow">Review of the Programming Workflow</h3>
+
+  <p><strong>What are steps involved in creating a program?</strong> &#8594;</p>
+
+  <p>(hint: it&#39;s not just <em>program something</em>!)</p>
+
+  <div class="incremental">
+    <ol>
+      <li>requirements</li>
+      <li>implementation</li>
+      <li>run the program</li>
+      <li>check the output</li>
+      <li>go back to step #2 (or possibly even #1!)</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h3 id="programming-workflow-continued">Programming Workflow Continued</h3>
+
+  <p>Note that Starting Out with Python mentions a very similar workflow (ehhh&#8230; they&#39;re pretty much say the same thing; I&#39;d accept either on an exam):</p>
+
+  <ol>
+    <li>design the program</li>
+    <li>write the code</li>
+    <li>correct syntax errors</li>
+    <li>test the program</li>
+    <li>correct logic errors
+(go back to step 1)</li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="some-steps-are-more-important-than-others">Some Steps are More Important Than Others</h3>
+
+  <p><strong>Which of these steps do you think is the most important?</strong> &#8594;</p>
+
+  <ol>
+    <li>design the program</li>
+    <li>write the code</li>
+    <li>correct syntax errors</li>
+    <li>test the program</li>
+    <li>correct logic errors</li>
+  </ol>
+
+</section>
+
+<section>
+  <h3 id="requirements-gathering--design">Requirements Gathering / Design</h3>
+
+  <p>It would seem like the most important part of programming is&#8230; well&#8230; <em>programming</em>.  However, <strong>determining what you&#39;re programming and how you&#39;re going to do it</strong> is arguably more important!  Before getting into code, you must:</p>
+
+  <ul>
+    <li>understand what your program is supposed to do
+      <ul>
+        <li>(through requirements gathering)</li>
+      </ul>
+    </li>
+    <li>&#8230;and design how your program will work
+      <ul>
+        <li>this is the foundation of your program!</li>
+        <li>can you break down your program into discrete tasks or components?</li>
+        <li>is there an algorithm involved?</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="some-tools-in-your-toolbox">Some Tools in Your Toolbox</h3>
+
+  <p>Starting Out with Python introduces two tools to help start thinking about program design:</p>
+
+  <ul>
+    <li>pseudocode</li>
+    <li>flow charts</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="pseudocode">Pseudocode</h3>
+
+  <p>Sometimes it&#39;s helpful to not have to deal with the syntax intricacies and implementation details with writing actual code.</p>
+
+  <ul>
+    <li>that&#39;s where <strong>pseudocode</strong> comes in!</li>
+    <li><strong>pseudocode</strong> is basically <em>fake</em> code</li>
+    <li>it&#39;s more like natural language!</li>
+    <li>used to sketch out actual code&#8230; for example, think of a thermostat program</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">measure</span> <span class="n">the</span> <span class="n">temperature</span> <span class="n">of</span> <span class="n">the</span> <span class="n">room</span>
+<span class="k">if</span> <span class="n">it</span><span class="s">'s over the temperature threshold</span><span class="err">
+</span><span class="s">	turn on the air conditioner</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="flow-charts">Flow Charts</h3>
+
+  <p>Flow charts help graphically depict the steps involved in a process or program.  Here are some  common elements in a flow chart:</p>
+
+  <div class="img-container">
+    <p><img src="../../resources/img/flow.png" alt="Flow Chart Elements" /></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="fortune-telling-program">Fortune Telling Program</h3>
+
+  <p>Imagine the following fortune telling program:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">What</span> <span class="ow">is</span> <span class="n">your</span> <span class="n">question</span><span class="err">?</span>
+<span class="o">&gt;</span> <span class="n">What</span><span class="s">'s the meaning of life?</span><span class="err">
+</span><span class="s">42</span></code></pre></figure>
+
+  <p>The corresponding flow chart may look like&#8230;</p>
+</section>
+
+<section>
+  <h3 id="fortune-telling-program-flow-chart">Fortune Telling Program Flow Chart</h3>
+
+  <p>Here&#39;s what the flow chart for the previous program might look like:</p>
+
+  <div class="img-container">
+    <p><img src="../../resources/img/fortune-flow.png" alt="Fortune Telling Program Flow Chart" /></p>
+  </div>
+</section>
+
+<section>
+  <h2 id="make-a-flow-chart-for-an-atm">Make a Flow Chart for an ATM</h2>
+
+  <aside>What do you think this would look like?</aside>
+</section>
+
+<section>
+  <h3 id="atm-flow-chart-example-1">ATM Flow Chart, Example 1</h3>
+
+  <div class="img-container">
+    <p><img src="../../resources/img/atm-flow.png" alt="ATM v1" /></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="atm-flow-chart-example-2">ATM Flow Chart, Example 2</h3>
+
+  <div class="img-container">
+    <p><img src="../../resources/img/atm-flow-2.png" alt="ATM v2" /></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="input-processing-and-output">Input, Processing, and Output</h3>
+
+  <p>The majority of the programs that we write in class will consist of:</p>
+
+  <ul>
+    <li>user driven input (usually via keyboard)</li>
+    <li>some sort of processing on the input data</li>
+    <li>&#8230; and finally output (usually via the Python console)</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="which-leads-me-to--homework-1-some-basic-inputoutput-and-processing">Which leads me to &#8230; <a href="../../schedule.html#homework1">Homework #1</a> (some basic input/output and processing)</h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

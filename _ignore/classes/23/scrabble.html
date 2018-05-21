@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Scrabble (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="scrabble">Scrabble</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="and-now-scrabble">And Now&#8230; Scrabble(?)</h3>
+
+  <p>Imagine that you&#39;re playing Scrabble (or&#8230; Words With Friends?).</p>
+
+  <p>What are some <em>valid</em> words can you create if you have the following letters left in your rack of tiles?</p>
+
+  <p><strong>t</strong>, <strong>r</strong>, <strong>c</strong>, <strong>a</strong></p>
+
+</section>
+
+<section>
+  <h3 id="whatever-list-we-came-up-with">Whatever List We Came Up With&#8230;</h3>
+
+  <p><em>It&#39;s probably not complete</em></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">act</span>
+<span class="n">ar</span>
+<span class="n">arc</span>
+<span class="n">art</span>
+<span class="n">at</span>
+<span class="n">car</span>
+<span class="n">cart</span>
+<span class="n">cat</span>
+<span class="n">rat</span>
+<span class="n">ta</span>
+<span class="n">tar</span></code></pre></figure>
+
+    <p><strong>So &#8230; who do you think would be <em>particularly</em> good at finding valid scrabble words from a set of letters?</strong></p>
+  </div>
+</section>
+
+<section>
+  <h2 id="as-always--lets-let-the-computer-do-this-for-us">As Always&#8230;  Let&#39;s let the computer do this for us</h2>
+
+</section>
+
+<section>
+  <h3 id="you-saw-this-coming">You Saw This Coming</h3>
+
+  <p>Let&#39;s write a program that asks for a set of letters, and determines all of the valid words that can be created by that set of letters.</p>
+
+  <p>It&#39;ll probably look like this:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Please</span> <span class="n">enter</span> <span class="n">some</span> <span class="n">letters</span>
+<span class="o">&gt;</span> <span class="n">trca</span>
+<span class="n">act</span>
+<span class="n">ar</span>
+<span class="n">arc</span>
+<span class="n">art</span>
+<span class="n">at</span>
+<span class="n">car</span>
+<span class="n">cart</span>
+<span class="n">cat</span>
+<span class="n">rat</span>
+<span class="n">ta</span>
+<span class="n">tar</span></code></pre></figure>
+
+  <p>(<strong>let&#39;s check out a demo</strong> &#8594;)</p>
+</section>
+
+<section>
+  <h3 id="scrabble-solver">Scrabble Solver</h3>
+
+  <ul>
+    <li>write a program that asks for input (a set of letters)</li>
+    <li>it should print out all of the combinations of letters that make valid words <em>in alphabetical order</em></li>
+    <li>don&#39;t worry about an empty string for now</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="some-questions-about-the-scrabble-solver">Some Questions About the Scrabble Solver&#8230;.</h3>
+
+  <p><strong>What data will we need?</strong>  <strong>Can we break this problem down into smaller parts?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>data&#8230;
+        <ul>
+          <li>a dictionary or list of valid words</li>
+          <li>the letters that the user entered</li>
+        </ul>
+      </li>
+      <li>implementation&#8230;
+        <ul>
+          <li>ask the user for input</li>
+          <li>find a list of valid words and load that list into the program</li>
+          <li>devise algorithm to determine if word can be formed from input</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="we-know-how-to-do-this-mostly">We Know How to Do This (Mostly)</h3>
+
+  <p>So&#8230;  finding a list of valid words and loading it is the only part that&#39;s new for us.</p>
+
+  <ul>
+    <li>first off&#8230; there are a <a href="http://www.puzzlers.org/dokuwiki/doku.php?id=solving%3awordlists%3aabout%3astart">bunch of freely available word lists online</a></li>
+    <li><a href="http://www.puzzlers.org/pub/wordlists/enable1.txt">This one (enable1.txt)</a> is pretty popular</li>
+    <li>but then, we&#39;ll have to learn how to get that list into our program</li>
+    <li>which is why we&#39;re going to talk about <strong>file input and output</strong> (or File I/O for short)</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="so-lets-look-at-file-input-and-output">So&#8230; Let&#39;s Look at <em>File Input and Output</em>!</h2>
+</section>
+
+<section>
+  <h2 id="aaaaaand-were-back">&#8230; Aaaaaand We&#39;re Back!</h2>
+</section>
+
+<section>
+  <h3 id="scrabble-solver-1">Scrabble Solver</h3>
+
+  <p>Write a program that&#8230;</p>
+
+  <ul>
+    <li>asks the user a set of letters</li>
+    <li>print out all of the combinations of letters that make valid words <em>in alphabetical order</em></li>
+    <li>don&#39;t worry about an empty string for now</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Please</span> <span class="n">enter</span> <span class="n">some</span> <span class="n">letters</span>
+<span class="o">&gt;</span> <span class="n">rhtu</span>
+<span class="n">hurt</span>
+<span class="n">hut</span>
+<span class="n">rut</span>
+<span class="n">ruth</span>
+<span class="n">thru</span>
+<span class="n">uh</span>
+<span class="n">ut</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-strategy">A Strategy&#8230;</h3>
+
+  <ul>
+    <li>create a function called find_words
+      <ul>
+        <li>it should take two arguments,
+          <ul>
+            <li>letters (the set of letters to choose from) and dictionary (the file name of the scrabble dictionary)</li>
+            <li>it should open the file</li>
+          </ul>
+        </li>
+        <li>&#8230;and find valid words from the set of letters</li>
+        <li>&#8230;and return a list of valid words</li>
+      </ul>
+    </li>
+    <li>get user input</li>
+    <li>use the function, find_words, to get valid words</li>
+    <li>print out result</li>
+    <li>remeber to <a href="http://www.puzzlers.org/pub/wordlists/enable1.txt">download a word list - enable1.txt</a></li>
+  </ul>
+</section>
+<section>
+  <h3 id="pseudocode-without-going-through-all-permutations">Pseudocode Without Going Through All Permutations</h3>
+
+  <p>We could try finding every permutation of letters in a word, including substrings&#8230; and checking for a substring.</p>
+
+  <p>However, there&#39;s a way to do this by going through every word in the list and seeing if the letters can form that word. <strong>How</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>for every word in the dictionary</li>
+      <li>check if each letter exists in a copy of your set of all letters</li>
+      <li>if it does, &quot;remove&quot; it from your copy (it&#39;s been exhausted)</li>
+      <li>if it doesn&#39;t, then your letters can&#39;t create the dictionary word</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="potential-solution-with-readline">Potential Solution With Readline</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">find_words</span><span class="p">(</span><span class="n">letters</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">):</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">temp_letters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+        <span class="n">letters_in_word</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">temp_letters</span><span class="p">:</span>
+                <span class="n">temp_letters</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">letters_in_word</span> <span class="o">=</span> <span class="bp">False</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="n">letters_in_word</span><span class="p">:</span>
+            <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">words</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="potential-solution-iterating-over-a-file-object">Potential Solution Iterating Over a File Object</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">find_words</span><span class="p">(</span><span class="n">letters</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">):</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">temp_letters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+        <span class="n">letters_in_word</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">temp_letters</span><span class="p">:</span>
+                <span class="n">temp_letters</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">letters_in_word</span> <span class="o">=</span> <span class="bp">False</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="n">letters_in_word</span><span class="p">:</span>
+            <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">words</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="main-function">Main Function</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">dictionary_file_name</span> <span class="o">=</span> <span class="s">'enable1.txt'</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Please enter some letters</span><span class="se">\n</span><span class="s">&gt; '</span><span class="p">)</span>
+    <span class="n">possible_words</span> <span class="o">=</span> <span class="n">find_words</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">dictionary_file_name</span><span class="p">)</span>
+    <span class="n">possible_words</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">possible_words</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+
+<span class="n">main</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="recursive-solution">Recursive Solution</h2>
+
+  <p><strong>If you wanted to use recursion to get all permutations&#8230;</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">find_perms</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">s</span><span class="p">]</span>
+    <span class="n">perms_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">found_perms</span> <span class="o">=</span> <span class="n">find_perms</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="k">for</span> <span class="n">perms</span> <span class="ow">in</span> <span class="n">found_perms</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">perms</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">perms_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">perms</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">perms</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span>
+    <span class="c"># include sliced off letter and found sub perms</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="n">perms_list</span> <span class="o">+</span> <span class="n">found_perms</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">find_perms</span><span class="p">(</span><span class="s">'ab'</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">find_perms</span><span class="p">(</span><span class="s">'abc'</span><span class="p">))</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="or-using-a-module">Or&#8230; Using a Module</h2>
+
+  <p>(But this just gives you permutations, doesn&#39;t include substrings).</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">find_perms</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">itertools</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">perm</span><span class="p">)</span> <span class="k">for</span> <span class="n">perm</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">permutations</span><span class="p">(</span><span class="n">l</span><span class="p">)]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">find_perms</span><span class="p">(</span><span class="s">'ab'</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">find_perms</span><span class="p">(</span><span class="s">'abc'</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

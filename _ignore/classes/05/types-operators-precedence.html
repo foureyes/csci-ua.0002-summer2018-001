@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Types and Operator Precedence (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="types-operators-and-precedence">Types, Operators, and Precedence</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="types">Types</h3>
+
+  <p><strong>We know about four or five types.  What are they?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>str</li>
+      <li>int</li>
+      <li>float</li>
+      <li>bool</li>
+      <li>(complex)</li>
+    </ul>
+  </div>
+  <div class="incremental"></div>
+</section>
+
+<section>
+  <h3 id="functions">Functions</h3>
+
+  <p><strong>What&#39;s a function?  We know about seven built-in functions.  What are they?  What values do they expect?  What do they return?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>print - doesn&#39;t return anything</li>
+      <li>type</li>
+      <li>int</li>
+      <li>str</li>
+      <li>float</li>
+      <li>bool</li>
+      <li>input - always returns a string!</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="types-and-operations">Types and Operations</h3>
+
+  <p><strong>What are some numeric operations that we&#39;ve used?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>+</strong></li>
+      <li><strong>-</strong></li>
+      <li><strong>/</strong></li>
+      <li><strong>//</strong></li>
+      <li><strong>**</strong></li>
+      <li><strong>%</strong></li>
+    </ul>
+
+    <p>(you can mix and match numeric types, <strong>but not other types</strong>)</p>
+  </div>
+</section>
+
+<section>
+  <h3 id="types-and-operations-continued">Types and Operations (Continued)</h3>
+
+  <p><strong>What are some string operations that we&#39;ve used?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>+</strong> - concatenation - only strings</li>
+      <li><strong>*</strong> - multiplication - string and int!</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-talk-about-comparison-operators">Let&#39;s Talk About Comparison Operators</h3>
+
+  <p><strong>What are the six comparison operators that we learned about, and how do they work with different types?</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>==</strong> - different types always return False</li>
+      <li><strong>!=</strong> - different types always return True</li>
+      <li><strong>&lt;</strong> - different non numeric types result in an error</li>
+      <li><strong>&gt;</strong> - different non numeric types result in an error</li>
+      <li><strong>&gt;=</strong> - different non numeric types result in an error</li>
+      <li><strong>&lt;=</strong> - different non numeric types result in an error</li>
+    </ul>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-talk-about-logical-operators">Let&#39;s Talk About Logical Operators</h3>
+
+  <p><strong>What are the three logical operators that we learned about?  Describe when each would return True.</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>and</strong> - evaluates to True if both operands are True</li>
+      <li><strong>or</strong> - evaluates to True if either operand is True</li>
+      <li><strong>not</strong> - evaluates to True if operand is False</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="what-order-do-all-of-these-operators-go-in">What Order Do All of These Operators Go In?</h3>
+
+  <p><strong>So.  With all of these <em>types</em> of operations, what order are they evaluated in?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ol>
+      <li>Parentheses</li>
+      <li>Numerical/String operators</li>
+      <li>Comparison operators</li>
+      <li>Logical operators
+        <ol>
+          <li>not</li>
+          <li>and</li>
+          <li>or</li>
+        </ol>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-try-a-few">Let&#39;s Try a Few&#8230;</h3>
+
+  <p><strong>What boolean value does the following expression evaluate to?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"five"</span> <span class="o">==</span> <span class="mi">5</span> <span class="ow">or</span>  <span class="mi">14</span> <span class="o">==</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">5</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">False</span></code></pre></figure>
+
+    <p><strong>Aaaaand&#8230; how about this one?</strong> &#8594;</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">False</span> <span class="ow">or</span> <span class="bp">True</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">False</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">True</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="logical-operators-and-their-operands">Logical Operators and Their Operands</h3>
+
+  <p><strong>How many operands does each logical operator take&#8230; what type is each operand?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>and</strong> - 2 operands - values are treated as boolean</li>
+      <li><strong>or</strong> - 2 operands - values are treated as boolean</li>
+      <li><strong>not</strong> - 1 operands - values is treated as boolean</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="watch-out-for-this">Watch Out for This!</h3>
+
+  <p><strong>Let&#39;s write a boolean expression that checks if the variable, <em>answer</em>, is equal to &quot;yes&quot; or &quot;yeah&quot;:</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">==</span> <span class="s">"yes"</span> <span class="ow">or</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">"yeah"</span></code></pre></figure>
+
+    <p>Note that the following <strong>won&#39;t work</strong>!</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  the logical operator, or, tries to treat "yeah" as a bool</span>
+<span class="n">answer</span> <span class="o">==</span> <span class="s">"yes"</span> <span class="ow">or</span> <span class="s">"yeah"</span></code></pre></figure>
+
+    <p><strong>let&#39;s try both versions with answer set as &quot;no&quot;</strong> &#8594;</p>
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; answer = "no"
+&gt;&gt;&gt; answer == "yes" or answer == "yeah"
+False
+&gt;&gt;&gt; answer == "yes" or "yeah"
+'yeah'</code></pre></figure>
+
+  </div>
+
+</section>
+
+<section>
+
+  <h3 id="conditionals">Conditionals</h3>
+
+  <ul>
+    <li>syntax - if, boolean expression, colon, indented body</li>
+    <li>note that the end result of comparisons&#8230; are essentially the same as bare literal</li>
+    <li>some example code I have takes the shortcut of putting in the bool literal</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span> <span class="ow">or</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"true"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="bp">True</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"true"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="how-to-uncomplicate-things-with-if-statements"><a href="if-statements-advanced.html">How to (Un)Complicate Things With If Statements</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

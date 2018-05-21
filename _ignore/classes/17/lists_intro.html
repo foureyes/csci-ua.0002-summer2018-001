@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="lists">Lists</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="types-of-types">Types of Types</h3>
+
+  <p>There are higher classifications of types - like types of types! For example, the following types are numeric:</p>
+
+  <ul>
+    <li>int</li>
+    <li>float</li>
+    <li>complex</li>
+  </ul>
+
+  <p>You can do similar operations on all of these types</p>
+
+</section>
+<section>
+<h3>Sequences</h3>
+
+There are a group of types called sequences.
+<ul>
+	<li>an ordered collection of "stuff"</li>
+	<li>index into (retrieve item from) sequences by using brackets [i], with <strong>initial index 0</strong></li>
+	<li>negative indexes start from the right, where -1 is the last character</li>
+	<li>a subset of a sequence from index n <em>up to</em> m can be sliced out using [m:n]</li>
+	<li>again... m - up to, but not including!</li>
+</ul>
+</section>
+
+<section>
+  <h3 id="weve-seen-this-before-in-strings">We&#39;ve Seen This Before in Strings</h3>
+
+  <p>Strings are a sequence type; they&#39;re an ordered set of characters.</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; "nerds"[0] #first element,  
+&gt;&gt;&gt; "nerds"[4] #last element (n - 1)
+&gt;&gt;&gt; "nerds"[5] #IndexError 
+&gt;&gt;&gt; "nerds"[-1] #from the right  
+&gt;&gt;&gt; "nerds"[-2] #again
+&gt;&gt;&gt; "nerds"[0:2] #slices
+&gt;&gt;&gt; "nerds"[3:1] #nothing to slice
+&gt;&gt;&gt; "nerds"[3:-1] #something to slice even though negative
+&gt;&gt;&gt; "nerds"[3:] #no end index,  &gt;&gt;&gt; "nerds"[:2] #no start index</code></pre></figure>
+
+</section>
+
+<section>
+<h3>Lists</h3>
+
+A list is another sequence type.  However, instead of characters, it's an ordered collection of _values_.  Any values!
+<ul>
+	<li>Delimited by brackets... []</li>
+	<li>[] is an empty list (what Boolean value does this evaluate to if used as an expression in a condition?)</li>
+	<li>Each value is separated by commas</li>
+	<li>A list of integers - [1, 2, 3, 4]</li>
+	<li>A list of strings - ['foo', 'bar', baz']</li>
+	<li>A list of integers, strings and other lists! - ['foo', 1, ['foo', 'bar', 'baz']]</li>
+</ul>
+</section>
+
+<section>
+<h3>len()</h3>
+
+You can still use the built-in function, len, on lists.
+
+
+<figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; print(len(["foo", "bar", "baz"])
+... 
+KeyboardInterrupt
+&gt;&gt;&gt; print(len(["foo", "bar", "baz"]))
+3
+&gt;&gt;&gt; print(len([]))
+0
+&gt;&gt;&gt; print(len(["foo", "bar", "baz", [1, 2, 3]]))
+4</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="iterating-over-a-list">Iterating Over a List</h3>
+
+  <p>Just like iterating over a sequence of charactersi&#8230;</p>
+
+  <ul>
+    <li>you can use a for loop to iterate over a sequence of values in a list</li>
+    <li>your loop variable contains the value of a list element</li>
+    <li>that changes to the next element after each iteration</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">junk</span> <span class="o">=</span> <span class="p">[</span><span class="s">"skittles"</span><span class="p">,</span> <span class="s">"snickers"</span><span class="p">,</span> <span class="s">"nerds"</span><span class="p">]</span>
+<span class="c">#  candy is our loop variable... it will represent each element of the list</span>
+<span class="k">for</span> <span class="n">candy</span> <span class="ow">in</span> <span class="n">junk</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"I &lt;3 {0}!"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">candy</span><span class="p">))</span> </code></pre></figure>
+
+</section>
+
+<section>
+<h3>Some functions that you can call on lists</h3>
+<ul>
+	<li>li.append(4) # appends element to end of list</li>
+	<li>li.remove(4) # removes first occurrence of...</li>
+	<li>li.pop() # Returns and removes the last element</li>
+	<li>li.extend([3, 4]) # appends all items of one list to the other...</li>
+	<li>li.sort() # sorts list in place</li>
+	<li>[1, 2, 4, 1, 5, 1].count(1) # returns number of occurrences of arg in list</li>
+</ul>
+</section>
+
+<section>
+<h3>Looking for something?</h3>
+<ul>
+	<li>['a', 'b', 'c'].index('c') # return index of item, or exception</li>
+	<li>'c' in ['a','b', 'c'] # returns boolean</li>
+</ul>
+</section>
+
+<section>
+<h3>Strings to Lists and Back</h3>
+<ul>
+	<li>"a,b,c".split(",")</li>
+	<li>",".join(['a', 'b', 'c'])</li>
+</ul>
+</section>
+
+<section>
+  <h3 id="excercises">Excercises</h3>
+
+  <ul>
+    <li>create a function called three_letter_words
+      <ul>
+        <li>it takes a list</li>
+        <li>it returns a list of 3 letters words from original list</li>
+      </ul>
+    </li>
+    <li>create a function called larger_than_five
+      <ul>
+        <li>it takes a list</li>
+        <li>it returns a list of numbers &gt; 5 from the original list</li>
+        <li>it returns a list, and that list only has numbers larger than 5</li>
+      </ul>
+    </li>
+    <li>create a function that returns a random list of numbers (1 through 10) that are &gt;= 21</li>
+    <li>hints:
+      <ul>
+        <li>use a for loop!</li>
+        <li>start with an empty list and append items</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

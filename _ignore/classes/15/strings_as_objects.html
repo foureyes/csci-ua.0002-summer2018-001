@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>String Objects, String Methods (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="string-objects-string-methods">String Objects, String Methods</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="objects-and-methods-again">Objects and Methods (Again!)</h3>
+
+  <p><strong>What&#39;s an object?  What&#39;s a method?  Give some examples. &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>object</strong> - a <em>thing</em> that a variable name can refer to, like a string or integer</li>
+      <li>for us that means attributes (data) and methods (functions)&#8230; all packed into one thing</li>
+      <li>a <strong>method</strong> is essentially a function that&#39;s associated with a particular object</li>
+      <li>a <strong>methods</strong> can be thought of as an action behavior that an object can perform</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="calling-methods">Calling Methods</h3>
+
+  <p>How do you call a method?  For example, if you had a string named food, that contains the value &quot;pizza&quot;, <strong>how would you call the upper method on it to tell it to give back an uppercase version of itself? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">food</span> <span class="o">=</span> <span class="s">"pizza"</span>
+<span class="c">#  tell food to give back an uppercase version of itself</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">leo</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="c">#  use the object name</span>
+<span class="c">#  followed by dot</span>
+<span class="c">#  and the method (from here, it's like a regular function)</span>
+<span class="c">#  notice that upper has no arguments</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="strings-methods">Strings Methods!</h3>
+
+  <p>Strings are objects. They have methods. Lots of &#39;em!</p>
+
+  <ol>
+    <li><strong>upper</strong>()</li>
+    <li><strong>lower</strong>()</li>
+    <li><strong>capitalize</strong>()</li>
+    <li><strong>title</strong>()</li>
+    <li><strong>isdigit</strong>()</li>
+    <li><strong>isnumeric</strong>()</li>
+    <li><strong>isalpha</strong>()</li>
+    <li><strong>isspace</strong>()</li>
+  </ol>
+
+  <p><strong>to be continued in next slide!</strong> &#8594;</p>
+</section>
+
+<section>
+  <h2 id="even-more-string-methods">Even More String Methods!</h2>
+
+  <ol>
+    <li><strong>find</strong>(sub[, start[, end]])</li>
+    <li><strong>format</strong>(&#8230;)</li>
+    <li><strong>strip</strong>([chars])</li>
+    <li><strong>isupper</strong>()</li>
+    <li><strong>islower</strong>()</li>
+    <li><strong>count</strong>(&#8230;)</li>
+    <li><strong>replace</strong>(&#8230;)</li>
+  </ol>
+
+  <p><br />
+In the interactive shell, you could use the <strong>dir</strong> with a string in parentheses to show all of the methods of an object:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">dir</span><span class="p">(</span><span class="s">"some string"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="casing-methods">Casing Methods</h3>
+
+  <p><strong>upper</strong>(), <strong>lower</strong>(), <strong>capitilize</strong>(), and <strong>title</strong>() return the string that the method was called on as all uppercase, all lowercase, first letter uppercase, and title-cased (first letter of every word uppercase).  <strong>What would the following print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"this should be uppercase"</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"THIS SHOULD BE LOWERCASE"</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"this should be uppercase"</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"this should be uppercase"</span><span class="o">.</span><span class="n">title</span><span class="p">())</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">THIS</span> <span class="n">SHOULD</span> <span class="n">BE</span> <span class="n">UPPERCASE</span>
+<span class="n">this</span> <span class="n">should</span> <span class="n">be</span> <span class="n">lowercase</span>
+<span class="n">This</span> <span class="n">should</span> <span class="n">be</span> <span class="n">uppercase</span>
+<span class="n">This</span> <span class="n">Should</span> <span class="n">Be</span> <span class="n">Uppercase</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="isdigit-isnumeric-and-isalpha">isdigit(), isnumeric() and isalpha()</h3>
+
+  <p><strong>isdigit</strong>(), <strong>isnumeric</strong>() and <strong>isalpha</strong>() test whether a string is <strong>only</strong> composed of all numbers or all letters (all three return False if empty string).  <strong>What would the following print out? &#8594;</strong></p>
+
+  <p>* <strong>isnumeric</strong>() also returns true for numeric characters other than 0-9, such as &#39;⅕&#39;.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"123"</span><span class="o">.</span><span class="n">isdigit</span><span class="p">())</span>            <span class="c"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"1.23"</span><span class="o">.</span><span class="n">isdigit</span><span class="p">())</span>           <span class="c"># False (. is not 0 - 9)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"one two three"</span><span class="o">.</span><span class="n">isdigit</span><span class="p">())</span>  <span class="c"># False (not 0 - 9)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"onetwothree"</span><span class="o">.</span><span class="n">isalpha</span><span class="p">())</span>    <span class="c"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"one two three"</span><span class="o">.</span><span class="n">isalpha</span><span class="p">())</span>  <span class="c"># False (has spaces)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"one!"</span><span class="o">.</span><span class="n">isalpha</span><span class="p">())</span>           <span class="c"># False (has !)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"1"</span><span class="o">.</span><span class="n">isalpha</span><span class="p">())</span>              <span class="c"># False (it's a digit)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"⅕"</span><span class="o">.</span><span class="n">isdigit</span><span class="p">())</span>              <span class="c"># False (not 0 - 9)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"⅕"</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">())</span>  <span class="c"># True (isnumeric allows other numeric chars)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="isspace">isspace()</h3>
+
+  <p><strong>isspace</strong>() gives back true if all of the characters in the string it&#39;s called on is white space - any kind of <em>white space</em>. <strong>What is the output of the following?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"             "</span><span class="o">.</span><span class="n">isspace</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="o">.</span><span class="n">isspace</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"some    space"</span><span class="o">.</span><span class="n">isspace</span><span class="p">())</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">True</span>
+<span class="bp">True</span>
+<span class="bp">False</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="find">find()</h3>
+
+  <p><strong>find</strong>() returns the first index where the argument (a character or substring) is found.  It returns -1 if the substring is not in the original string.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">"h"</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">"x"</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">"lo"</span><span class="p">))</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">0</span>
+<span class="o">-</span><span class="mi">1</span>
+<span class="mi">3</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="strip">strip()</h3>
+
+  <p><strong>strip</strong>() removes leading and trailing whitespace (it can also remove other leading and trailing characters).  What do you think this results</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"  spaces all around   "</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">spaces</span> <span class="nb">all</span> <span class="n">around</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="format">format()</h3>
+
+  <p>Format is like the string formatting operator, but possibly easier?!</p>
+
+  <ul>
+    <li>instead of %s, use curly braces and the number of the argument as a placeholder {0}, {1}</li>
+    <li>numer corrseponds to each argument in the call, 0 being the first</li>
+    <li><strong>What do you think the following returns? &#8594;</strong></li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"{0} elephants"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">"twenty"</span><span class="p">)</span>
+<span class="s">"{0} elephants"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="s">"{0} elephants"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="s">"{1} elephants"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="s">"{0} elephants and {1} peanuts"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="format-results">format() results</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">twenty</span> <span class="n">elephants</span>
+<span class="mi">20</span> <span class="n">elephants</span>
+<span class="mi">20</span> <span class="n">elephants</span>
+<span class="mi">100</span> <span class="n">elephants</span>
+<span class="mi">20</span> <span class="n">elephants</span> <span class="ow">and</span> <span class="mi">100</span> <span class="n">peanuts</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="isupper-and-islower">isupper() and islower()</h3>
+
+  <p><strong>isupper</strong>() and <strong>islower</strong>() return True if the string that is called on is the case specified.  <strong>What does the following output?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"this should be uppercase"</span><span class="o">.</span><span class="n">isupper</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"THIS SHOULD BE LOWERCASE"</span><span class="o">.</span><span class="n">isupper</span><span class="p">())</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">False</span>
+<span class="bp">True</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="count-replace">count(), replace()</h3>
+
+  <p><strong>count</strong>(s) &#8230;counts the number of times substring, s, occurs in the original string.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">'aardvark'</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">'a'</span><span class="p">)</span> <span class="c"># --&gt; 3</span></code></pre></figure>
+
+  <p><strong>replace</strong>(s, new_s) &#8230;replaces all occurrences of substring, s, with new_s. (note that this gives back a <strong>new string</strong>, and it does not change the original)</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">'aardvark'</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'42'</span><span class="p">)</span> <span class="c"># --&gt; 4242rdv42rk</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-couple-of-exercises">A Couple of Exercises:</h3>
+
+  <ul>
+    <li>use upper or lower to check for permutations for input
+      <ul>
+        <li>for example, loop forever</li>
+        <li>ask the user if they want the loop to stop</li>
+        <li>accept &quot;Yes&quot;, &quot;YES&quot;, &quot;yes&quot;, etc.</li>
+      </ul>
+    </li>
+    <li>rewrite get_first_word, but use <strong>find</strong>() instead of a loop</li>
+  </ul>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

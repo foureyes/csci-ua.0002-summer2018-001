@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Review and Assignments Slides (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section>
+  <h3 id="recap">Recap</h3>
+  <ul>
+    <li>what&#39;s programming and motivations for&#8230;</li>
+    <li>hardware, software, storing data and executing a program</li>
+    <li>programming languages</li>
+    <li>the tools that we&#39;re using and how to install them</li>
+    <li>typical programming work flow</li>
+  </ul>
+
+  <details>
+    <ul>
+      <li>QUESTION - what&#39;s programming?</li>
+      <li>QUESTION - what are some ways to describe / differentiate programming languages</li>
+      <li>QUESTION - what tools are we using? language? IDE?</li>
+      <li>QUESTION - interactive shell vs text editor?</li>
+    </ul>
+  </details>
+</section>
+
+<section>
+  <h3 id="readings-and-assignments">Readings and Assignments</h3>
+
+  <p>Check out the course schedule for your assignments and readings!</p>
+
+</section>
+
+<section>
+  <h3 id="some-reminders">Some Reminders</h3>
+
+  <ul>
+    <li>bring your laptop to class</li>
+    <li>try this stuff outside of class</li>
+    <li><strong>ask a lot of questions!</strong></li>
+  </ul>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

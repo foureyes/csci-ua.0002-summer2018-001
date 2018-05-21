@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>For Loops (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="while-loops-quick-review">While Loops, Quick Review</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="while-loop-syntax">While Loop Syntax</h3>
+
+  <p><strong>How does it go again? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+while &lt;some condition&gt;:
+    &lt;do stuff&gt;
+"""</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="sentinel-variables">Sentinel Variables</h3>
+
+  <p>We also talked about variables that hold state outside of the loop.  These variables can be used to control whether or not the condition is met.  We saw this sample last week.  <strong>What does this program output? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">keep_on_going</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">while</span> <span class="n">keep_on_going</span><span class="p">:</span>
+	<span class="k">print</span> <span class="s">"I'm going!"</span>
+	<span class="n">keep_on_going</span> <span class="o">=</span> <span class="bp">False</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">I</span><span class="s">'m going!</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="easy-right">EASY, right?</h2>
+
+</section>
+
+<section>
+  <h3 id="try-counting-the-digits-in-a-number">Try Counting the Digits in a Number</h3>
+
+  <aside>(this is in How to Think Like a Computer Scientist)</aside>
+
+  <p><strong>Write a program that prints out number of digits in a number: &#8594;</strong></p>
+
+  <ul>
+    <li>ask the user for a number</li>
+    <li>convert the input to an integer (don&#39;t just use len()!)</li>
+    <li>count the digits</li>
+    <li>print out the count</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="lets-see-what-this-does">Let&#39;s See What This Does!</h3>
+
+  <p>Example Output:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+please enter a number
+&gt; 5
+1
+
+please enter a number
+&gt; 5432
+4
+"""</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="what-about-some-pseudocode">What About Some Pseudocode?</h3>
+
+  <p><strong>Let&#39;s try designing our solution / writing some pseudocode before diving into actual coding.  &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+ask the user for a number
+while the number isn't 0 yet...
+    set the number equal to the number over 10
+    (this will be one place less)
+    keep track of the number of times we divide by 10     
+"""</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="a-solution-for-counting-digits">A Solution for Counting Digits</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"please enter a number</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+	<span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">10</span>
+	<span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="for"><a href="for.html">for</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

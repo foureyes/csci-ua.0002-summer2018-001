@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Reading and Writing Slides (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="using-idle-to-write-and-run-programs">Using IDLE to Write and Run Programs</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="reading-and-writing-python-files">Reading and Writing Python Files</h2>
+</section>
+
+<section>
+  <h3 id="about-idle">About IDLE</h3>
+
+  <p><strong>What are the two main ways that we can use IDLE? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ol>
+      <li>Create or open existing Python files in a text-editor view (and view the output of your program through the interactive Python shell)</li>
+      <li>Type and run commands line-by-line through the Python Shell</li>
+    </ol>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="again-you-can">Again, You Can&#8230;</h3>
+
+  <ul>
+    <li>run your program all at once (using Run &#8594; Run Module)</li>
+  </ul>
+
+  <aside>or</aside>
+
+  <ul>
+    <li>run commands one-step-at-a-time using the interactive Python shell</li>
+  </ul>
+
+  <p>Lastly, if your program ever outputs anything, it should show up in the interactive Python Shell</p>
+</section>
+
+<section>
+  <h3 id="starting-idle">Starting IDLE</h3>
+  <aside>IDLE is our IDE; we'll use it to read and write programs</aside>
+
+  <p>Just like what we did in the previous slides, to open IDLE:</p>
+
+  <ul>
+    <li>OSX - &#8984;-space &#8594; start typing idle &#8594; choose IDLE - Python 3.2</li>
+    <li>Windows - Start &#8594; All Programs &#8594; Python 3.2 &#8594; IDLE</li>
+  </ul>
+
+  <details>
+DEMO - opening IDLE
+</details>
+</section>
+
+<section>
+  <h3 id="starting-idle-continued">Starting IDLE Continued</h3>
+  <p>When you first open IDLE, you should see a window titled <strong>&quot;Python Shell&quot;</strong></p>
+
+  <ul>
+    <li>to reiterate, the <strong>Python Shell</strong> is for entering and running programs <strong>line-by-line</strong></li>
+    <li>sometimes the <strong>shell</strong> can be referred to as the <strong>Python interpreter</strong>, <strong>console</strong> or <strong>interactive shell</strong></li>
+    <li>you&#39;ll probably want to start out by creating a new file&#8230;</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="managing-files">Managing Files</h3>
+  <aside>Creating New Files, Opening Recent Files, Running Files</aside>
+
+  <p>All file management activities can be found in the File menu:</p>
+
+  <ul>
+    <li>Create a new file: File &#8594; New Window</li>
+    <li>Opening an existing file: File &#8594; Open</li>
+    <li>Running a file: Run &#8594; Run Module</li>
+  </ul>
+
+  <p>Shortcuts for creating, opening and running a file are &#8984;-n, &#8984;-o, and the F5 key respectively.</p>
+
+  <details>
+DEMO - new window, open and run module
+</details>
+</section>
+
+<section>
+  <h2 id="again-feel-free-to-follow-along">(Again, Feel Free to Follow Along!)</h2>
+</section>
+
+<section>
+  <h3 id="a-first-program">A First Program</h3>
+
+  <p><strong>&quot;Hello world!&quot;</strong> is traditionally the first program you write when learning a new language.  It simply outputs &quot;Hello world&quot; (yeah, that&#39;s all).  <strong>Follow these steps</strong>:</p>
+
+  <ul>
+    <li>create a new file</li>
+    <li>type in &#8230;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"Hello world!"</span><span class="p">)</span></code></pre></figure>
+
+  <ul>
+    <li>run your program
+      <ul>
+        <li>you may be prompted you to save your file</li>
+        <li>if you haven&#39;t saved it yet, you&#39;ll be prompted for a file name</li>
+      </ul>
+    </li>
+  </ul>
+
+  <details>
+</details>
+</section>
+
+<section>
+  <h3 id="modifying-your-program">Modifying Your Program</h3>
+  <aside>Most of the time, we're editing existing programs rather than creating entirely new ones</aside>
+
+  <p>Let&#39;s modify the program that we just wrote:</p>
+
+  <ul>
+    <li>if your file is closed, reopen it</li>
+    <li>add a second line:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"Hi again!"</span><span class="p">)</span></code></pre></figure>
+
+  <ul>
+    <li>run your program</li>
+  </ul>
+
+  <details>
+</details>
+</section>
+
+<section>
+  <h3 id="making-mistakes">Making Mistakes</h3>
+  <aside>Programs don't always work the way we expect them to!</aside>
+
+  <p>Let&#39;s purposely make a mistake, then fix it</p>
+
+  <ul>
+    <li>if your file is closed, reopen it</li>
+    <li>add a third line, but leave off the last parentheses:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"Hola"</span></code></pre></figure>
+
+  <ul>
+    <li>run your program</li>
+    <li>you should see a pop-up and a red highlight where your syntax error occurred</li>
+    <li>this occurs if your program is not syntactically correct</li>
+    <li>fix the mistake (how?)</li>
+  </ul>
+
+  <details>
+    <ul>
+      <li>DEMO - make a syntactic mistake, show where the error is</li>
+      <li>QUESTION - How do we fix this?</li>
+    </ul>
+  </details>
+</section>
+
+<section>
+  <h3 id="making-more-mistakes">Making More Mistakes</h3>
+  <aside>That was syntactic mistake; what about errors that occur when the program is actually running?</aside>
+
+  <p>Let&#39;s make a run-time error:</p>
+
+  <ul>
+    <li>if your file is closed, reopen it</li>
+    <li>add a fourth line:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"Howdy"</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span></code></pre></figure>
+
+  <ul>
+    <li>run your program</li>
+    <li>you should see the error in the console</li>
+    <li>let&#39;s read it and try to interpret it</li>
+    <li>fix the error</li>
+    <li>note that the current line number is on the lower-right-hand corner of the window (prefixed with &quot;Ln: &quot;)</li>
+  </ul>
+
+  <details>
+DEMO - make a run-time error
+QUESTION - what line number did the error happen on?
+DEMO - find the line
+</details>
+</section>
+
+<section>
+  <h3 id="errors">Errors</h3>
+
+  <p>Notice that we looked at two different <em>types</em> of errors:</p>
+
+  <ul>
+    <li><strong>syntax error</strong> - an error with the syntax/structure of the program; the program cannot run <em>at all</em></li>
+    <li><strong>runtime error</strong> - the program is syntactically correct, but some sort of error occurs while the program is running</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="a-quick-note-on-syntax-highlighting">A Quick Note on Syntax Highlighting</h3>
+
+  <ul>
+    <li>The different colors represent different syntactic elements</li>
+    <li>Some examples include
+      <ul>
+        <li><strong>strings</strong> - green</li>
+        <li><strong>built-in functions</strong> - purple</li>
+        <li><strong>keywords</strong> - orange</li>
+      </ul>
+    </li>
+    <li><strong>strings</strong> - a primitive type of data in Python; a sequence of characters</li>
+    <li><strong>keywords</strong> - (reserved words) words that have special meaning in Python</li>
+  </ul>
+
+  <details>
+DEMO - function and for loop for syntax highlighting
+</details>
+</section>
+
+<section>
+  <h2 id="the-output-window-and-interactive-shell">The Output Window and Interactive Shell</h2>
+</section>
+
+<section>
+  <h3 id="the-interactive-shell">The Interactive Shell</h3>
+  <ul>
+    <li>the output window can also be used to run Python code interactively</li>
+    <li>you can also go to Run &#8594; Python Shell to open an interactive session if it&#39;s closed</li>
+    <li>you can enter commands and have them return immediate feedback</li>
+    <li>the prompt,  &quot;&gt;&gt;&gt;&quot;, means the interactive shell is waiting for input</li>
+    <li>try re-typing our hello world in the interactive shell, one line at a time</li>
+  </ul>
+
+  <details>
+DEMO - hello world in interactive shell
+</details>
+</section>
+
+<section>
+  <h3 id="help">Help!</h3>
+
+  <p>Note that typing <strong>help</strong> in the interactive shell <em>actually</em> gives you help!  <strong>Let&#39;s try it!</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; help</code></pre></figure>
+
+  <p>You can use help on specific things&#8230; <strong>for example</strong>: &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; help(print)</code></pre></figure>
+
+  <p><strong>Additionally, you can check out the Python docs by going to Help &#8594; Python Docs in the menu.</strong> &#8594;</p>
+</section>
+
+<section>
+  <h2 id="lets-provide-some-structure-to-our-programming-process"><a href="programming-workflow.html">Let&#39;s Provide Some Structure to Our Programming Process</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

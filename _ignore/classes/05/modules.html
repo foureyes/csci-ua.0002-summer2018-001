@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Built-in Modules (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="built-in-modules">Built-In Modules</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="built-in-functions">Built-In Functions</h3>
+
+  <p>So&#8230; again, we learned a few built-in functions.  <strong>What are some of the functions that we know? &#8594;</strong>  These are all available by default:</p>
+
+  <div class="incremental">
+    <ul>
+      <li>print</li>
+      <li>type</li>
+      <li>int</li>
+      <li>str</li>
+      <li>float</li>
+      <li>bool</li>
+      <li>input</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="even-more-built-in-functions">Even More Built-In Functions!</h3>
+
+  <p>We&#39;ve only scratched the surface.  There are even more built-in functions!  There&#39;s a list in the official python documentation: <a href="http://docs.python.org/py3k/library/functions.html">http://docs.python.org/py3k/library/functions.html</a></p>
+
+  <p>For example:</p>
+
+  <ul>
+    <li><strong>abs</strong>(x) - returns a number that is the absolute value of x&#8594;</li>
+    <li><strong>len</strong>(s) - returns the length of a sequence type (such as a string) as an int&#8594;</li>
+    <li><strong>round</strong>(x [,digits]) - round a number to a given precision in decimal digits (default 0 digits)&#8594;</li>
+    <li><strong>dir</strong>([object]) - returns a list of names in a module or in the current namespace&#8594;</li>
+  </ul>
+
+  <p><strong>Let&#39;s try these out! &#8594;</strong></p>
+</section>
+
+<section>
+  <h3 id="more-functions-more-functions-more-functions">More Functions, More Functions, More Functions</h3>
+
+  <p>Python boasts that it comes with batteries included:</p>
+
+  <ul>
+    <li>it has a large and comprehensive <strong>standard library</strong></li>
+    <li>most likely, if you need it, Python has it built in!</li>
+    <li>everything from audio file processing to parsing html documents</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="modules">Modules</h3>
+  <aside>For Batteries Included, There Doesn't Seem to That Many Built-In Functions</aside>
+
+  <ul>
+    <li>that&#39;s because you can access this functionality through <strong>modules</strong>!</li>
+    <li>these <strong>modules</strong>  <em>provide standardized solutions for many problems that occur in everyday programming</em></li>
+    <li>they also help in organizing code / the standard library (related functionality is grouped together in the same module)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="whats-a-module">What&#39;s a Module?</h3>
+
+  <p>A <strong>module</strong> is <em>just</em> a file that contains Python code!</p>
+
+  <ul>
+    <li>a file containing Python definitions and statements intended for use in other Python programs</li>
+    <li>the contents of a module are made available to the other program by using the <strong>import</strong> statement.</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="no-really-whats-a-module">No, Really, What&#39;s a Module?</h3>
+
+  <p>So&#8230; what does that actually mean?</p>
+
+  <ul>
+    <li>there are functions (as well as other definitions) that are not automatically loaded when you run python</li>
+    <li>these functions (and other definitions, such as variables and constants like pi, classes, etc) are grouped together in files called modules</li>
+    <li>you can bring them in to your program by using the <strong>import</strong> statement</li>
+    <li>simply use the keyword <strong>import</strong> followed by the module name (with no quotes and no extension)</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">sys</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="so-what-can-these-modules-do">So&#8230; What Can These Modules Do?</h3>
+
+  <ul>
+    <li>math
+      <ul>
+        <li><strong>pi</strong> - a constant that contains the value of pi&#8594;</li>
+        <li><strong>floor</strong>(x) - returns the smallest integer less than or equal to x&#8594;</li>
+        <li><strong>ceil</strong>(x) - returns the smallest integer greater than or equal to x&#8594;</li>
+        <li><strong>sqrt</strong>(x) - returns the square root of x&#8594;</li>
+        <li><strong>cos</strong>(x) - returns the cosine of x radians &#8594;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="so-what-can-these-modules-do-continued">So&#8230; What Can These Modules Do (Continued)?</h3>
+  <ul>
+    <li>random
+      <ul>
+        <li><strong>random</strong>() - return a random float that&#39;s between 0 and 1&#8594;</li>
+        <li><strong>randint</strong>(a, b) - returns a random int that&#39;s a &lt;= n &lt;= b&#8594;</li>
+      </ul>
+    </li>
+    <li>sys
+      <ul>
+        <li><strong>exit</strong>([arg]) - exits from python&#8594;</li>
+        <li><strong>version</strong> - a constant that contains the version of Python&#8594;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="we-know-how-to-call-functions-right">We Know How to Call Functions, Right?</h3>
+
+  <p><strong>So, what&#39;s the exact syntax for calling a function?  Let&#39;s start with built-in ones, like print or str.</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <ul>
+      <li>the function name</li>
+      <li>open parentheses</li>
+      <li>optional arguments</li>
+      <li>close parentheses</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"foo"</span><span class="p">)</span>
+<span class="nb">str</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="calling-a-function-is-easy">Calling a Function is Easy</h3>
+  <aside>How Do We Call a Function That's in a Module?</aside>
+
+  <p>Call or use functions and other definitions in a module by:</p>
+
+  <ul>
+    <li>making sure you <strong>import</strong> the module first!</li>
+    <li>no, really: <strong>IMPORT FIRST</strong></li>
+    <li>using the module name as the prefix</li>
+    <li>a dot (<strong>.</strong>)</li>
+    <li>the function (or variable, class, etc) name</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span> <span class="c"># import first!</span>
+<span class="c">#  remember - the syntax is: module_name.function_name()</span>
+<span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-try-that-again">Let&#39;s Try That Again</h3>
+  <aside>Step-By-Step</aside>
+
+  <p><strong>How do I bring in the random module to call the randint function?  Write a short program that prints out a random number. &#8594;</strong></p>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span> 
+<span class="n">num</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span></code></pre></figure>
+
+</div>
+</section>
+
+<section>
+  <h3 id="the-math-module-in-use">The math Module In Use</h3>
+
+  <p><strong>Write a quick program to print out the cosine of 2pi and the squareroot of 225. &#8594;</strong></p>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">225</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+</div>
+</section>
+
+<section>
+  <h3 id="the-random-module-in-use">The random Module In Use</h3>
+
+  <p><strong>Write a quick program to print out two random numbers, one a floating point between 0 and 1, the other an int between 5 and 10. &#8594;</strong></p>
+
+  <div class="incremental">
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+</div>
+</section>
+
+<section>
+  <h3 id="lastly-lets-check-out-the-sys-module">Lastly, Let&#39;s Check Out the Sys Module</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+<span class="c">#  note that the following line causes what looks like error text to appear...</span>
+<span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">()</span> 
+<span class="k">print</span><span class="p">(</span><span class="s">"Is this really the end????"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Even before this!"</span><span class="p">)</span></code></pre></figure>
+
+  <p><strong>BTW, what do you think gets printed?&#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">3.2.3 (v3.2.3:3d0686d90f55, Apr 10 2012, 11:25:50) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)]</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="to-use-a-module-import-it-first">To Use a Module, IMPORT IT FIRST!</h3>
+
+  <p><strong>What do you think happens if your forget to import the file?   &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; math.sqrt(4)
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+NameError: name 'math' is not defined</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="to-call-a-function-in-a-module-use-the-modules-name-as-a-prefix">To Call a Function in a Module, Use The Module&#39;s Name as a Prefix</h3>
+
+  <p><strong>What if you don&#39;t use the module name as the prefix before calling your function? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; import math
+&gt;&gt;&gt; sqrt(4)
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+NameError: name 'sqrt' is not defined
+&gt;&gt;&gt; </code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="so-with-all-of-that-out-of-the-way-lets-simulate-rolling-a-six-sided-die-twice">So&#8230; With All of That Out of the Way Let&#39;s Simulate Rolling a Six Sided Die Twice</h3>
+
+  <p><strong>Use random to &quot;roll&quot; dice; print out the two die rolls</strong>&#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">d1</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="behind-the-scenes">Behind the Scenes</h3>
+  <aside>A Closer Look at Modules</aside>
+  <p>What happens when we import?</p>
+
+  <ul>
+    <li>the name of the module actually corresponds to a python file</li>
+    <li>Python looks in the current working folder (as well as several other locations) for a file named after the module your importing</li>
+    <li>imagine placing the contents of that file directly into the file you&#39;re working on (at the point of the import statement)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="an-example-module">An Example Module</h3>
+
+  <p>In fact, we can make our own modules!  We&#39;ll take a look at this later, but to illustrate how modules work, we can create two files in the same directory:</p>
+
+  <ul>
+    <li>foo.py (the module that we&#39;ll import)</li>
+    <li>hello.py</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  foo.py</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"called from inside the foo module"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"hi"</span><span class="p">)</span>
+
+<span class="c">#  hello.py</span>
+<span class="kn">import</span> <span class="nn">foo</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span>
+<span class="n">foo</span><span class="o">.</span><span class="n">greet</span><span class="p">()</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="an-example-module-continued">An Example Module Continued</h3>
+
+  <p><strong>What do you think will be output when we run hello.py? &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">inside</span> <span class="n">my_awesome_module</span>
+<span class="n">hello</span>
+<span class="mi">42</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="um-so-where-are-all-of-those-other-modules">Um&#8230; So Where Are All of Those Other Modules?</h3>
+  <aside>
+    <p>They&#39;re Definitely <em>Not</em> in the Current Directory</p>
+  </aside>
+
+  <p>Where do sys, math, random, and other modules come from?  If modules are just files, we should just be able to find them!</p>
+
+  <ul>
+    <li>the current directory</li>
+    <li><em>or</em> a list of specified directories called the <strong>PYTHON_PATH</strong></li>
+    <li>these usually vary by system, but</li>
+    <li>for example, on OSX (Mountain Lion) and Python 3.3, you may be able to find modules in:</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  for me</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">Cellar</span><span class="o">/</span><span class="n">python3</span><span class="o">/</span><span class="mf">3.3</span><span class="o">.</span><span class="mi">2</span><span class="o">/</span><span class="n">Frameworks</span><span class="o">/</span><span class="n">Python</span><span class="o">.</span><span class="n">framework</span><span class="o">/</span><span class="n">Versions</span><span class="o">/</span><span class="mf">3.3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">3</span><span class="o">/</span>
+
+<span class="c">#  for you...</span>
+<span class="o">/</span><span class="n">System</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Frameworks</span><span class="o">/</span><span class="n">Python</span><span class="o">.</span><span class="n">framework</span><span class="o">/</span><span class="n">Versions</span><span class="o">/</span> <span class="o">...</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="why-do-modules-exist">Why Do Modules Exist?</h3>
+
+  <p>That&#39;s great, but why bother with using and/or creating modules (aside, of course, from bringing in additional built-in functionality)?</p>
+
+  <ul>
+    <li>they encourage code reuse (DRY - don&#39;t repeat yourself)</li>
+    <li>they provide &quot;namespacing&quot; to avoid name collisions</li>
+    <li>they provide a way of organizing code</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="three-modules-out-of---halp">Three Modules Out of ??? / HALP!</h3>
+
+  <p>There are many more modules to explore.  Check out the <a href="http://docs.python.org/py3k/library/index.html">official documentation</a> for a more comprehensive list.  You&#39;ll find modules like:</p>
+
+  <ul>
+    <li>tkinter - for graphical user interfaces</li>
+    <li>turtle - a pen-plotter like drawing library</li>
+    <li>wave - for reading/writing WAVE (audio files)</li>
+    <li>http.server - a simple Python web server</li>
+    <li>and so on&#8230;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="halp">HALP!!!</h3>
+  <p>To find help on these modules:</p>
+
+  <ul>
+    <li>the first place to look is obvs the <a href="http://docs.python.org/py3k/library/index.html">official documentation</a></li>
+    <li>you can also check out the python docs in IDLE (go to Help&#8594;Python Docs)</li>
+    <li>you can fiddle around in the interactive shell
+      * dir()
+      * help()</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; import math
+&gt;&gt;&gt; help(math)
+&gt;&gt;&gt; dir(math)</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="how-about-a-practical-application-plz">How About a Practical Application, PLZ?</h3>
+
+  <p><strong>Rewrite our guess number game so that it uses a random number instead of a hardcoded one. It should display the correct answer after you guess.&#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">#  Run 1:
+Guess a number between 1 and 10!
+&gt; 5
+Nope, I was thinking of 10.
+
+#  Run 2:
+Guess a number between 1 and 10!
+&gt; 8
+You guessed right; I was thinking of 8.</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="lets-review">Let&#39;s Review</h3>
+
+  <ul>
+    <li>how do we import a module?</li>
+    <li>what are the modules that we looked at?</li>
+    <li>what are some functions in those modules?</li>
+    <li>how do we call a function from a module?</li>
+  </ul>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

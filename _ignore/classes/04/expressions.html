@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Statements, Expressions, Values (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="statements-expressions-values">Statements, Expressions, Values</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="now-that-weve-seen-some-code">Now That We&#39;ve Seen Some Code&#8230;</h2>
+  <aside>Let's revisit some terminology.</aside>
+</section>
+
+<section>
+  <h3 id="statements">Statements</h3>
+
+  <p>A <strong>statement</strong> is:</p>
+
+  <ul>
+    <li>an instruction that the interpreter can execute</li>
+    <li>think of a line of code</li>
+    <li>some examples of statements that we&#39;ve seen are:
+      <ul>
+        <li>assignment statement</li>
+        <li>if statement</li>
+      </ul>
+    </li>
+    <li>statements can contain <strong>expressions</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="expressions">Expressions</h3>
+
+  <p>An <strong>expression</strong> is:</p>
+
+  <ul>
+    <li>a combination of <strong>values</strong>, <strong>variables</strong>, <strong>operators</strong>, <strong>function calls</strong></li>
+    <li>when <strong>evaluated</strong>, produces a result (a <strong>value</strong>)</li>
+    <li>some examples of expressions:
+      <ul>
+        <li>5 + 5</li>
+        <li>int(&quot;24&quot;)</li>
+        <li>input(&quot;&gt;&quot;)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>When evaluated, what values do the above expressions produce?&#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash">10, 24, <span class="s2">"whatever string is typed in"</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="evaluating-expressions">Evaluating Expressions</h3>
+  <aside>Let's Take a Closer Look...</aside>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; # values can't be evaluated further, the value just produces the value!
+... 25
+25
+&gt;&gt;&gt; # values with operators produce values
+... 25 / 5
+5.0
+&gt;&gt;&gt; # some function calls produce (return) values
+... float("3")
+3.0</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="expressions-and-values">Expressions and Values</h3>
+
+  <p>Because expressions can be reduced to values, we can use expressions where we would require values.</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; # in an assignment statement
+... n = 2 ** 2
+'24 hours'
+&gt;&gt;&gt; # using a function call as an operand
+... str(24) + " hours"
+'24 hours'
+&gt;&gt;&gt; # nesting function calls
+... n = int(input("Please enter a number\n&gt;"))
+Please enter a number
+&gt;5
+&gt;&gt;&gt; # a variable by itself just produces its value
+... v = "a value"
+&gt;&gt;&gt; v
+'a value'</code></pre></figure>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

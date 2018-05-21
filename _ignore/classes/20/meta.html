@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>About Class (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="about-class-20">About Class #20</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="todays-topics">Today&#39;s Topics</h3>
+
+  <p>More Lists!!!!!! (YEAH!)</p>
+
+  <ul>
+    <li>review lists, built in list functions and operations, list methods</li>
+    <li>list exercises</li>
+    <li>(optional) mutability</li>
+    <li>(optional) strings, random&#8230; and lists</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="homework">Homework</h3>
+
+  <ul>
+    <li><strong>homework #6</strong> grades to be posted this weekend</li>
+    <li>selected solutions for homeworks will be posted Monday</li>
+    <li><strong>homework #9</strong> will be due before the Wednesday evening review (it&#39;s for more practice with lists)</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="midterm-2">Midterm #2</h3>
+
+  <p><strong>IT&#39;S NEXT WEEK</strong>:  Thursday, April 16th</p>
+
+  <ul>
+    <li>nested loops, turtle, functions, strings and lists</li>
+    <li>practice questions will be posted Thursday evening</li>
+    <li><strong>review on Tuesday during class</strong>
+      <ul>
+        <li>will go over homeworks</li>
+        <li>practice question solutions</li>
+        <li>requests? (dedications?)</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="review-sessions">Review Sessions</h3>
+
+  <p>Review #1:</p>
+
+  <ul>
+    <li>04/10/2015 (this Friday&#8230; focusing on material from the 1st midterm)</li>
+    <li>6:00PM- 7:00PM</li>
+    <li>in WWH 1314</li>
+  </ul>
+
+  <p>Review #2</p>
+
+  <ul>
+    <li>04/15/2015 (next Wednesday&#8230; focusing on strings, lists, etc.)</li>
+    <li>6:15PM- 7:15PM</li>
+    <li>in WWH 905 (this may change if I need to get a bigger room)</li>
+  </ul>
+
+</section>
+<section>
+  <h2 id="lists-review"><a href="lists_review.html">Lists Review</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tools Slides (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="tools">Tools</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="were-going-to-be-using">We&#39;re Going to Be Using&#8230;</h2>
+  <div class="img-container">
+    <p><img src="../../resources/img/python-logo-master-v3-TM.png" alt="Python Logo" /></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="about-python">About <a href="http://python.org/">Python</a></h3>
+  <aside>We're using Python because it:</aside>
+  <ul>
+    <li>is a <strong>friendly</strong> and <strong>readable</strong> <strong>high-level</strong> programming language</li>
+    <li>is an <strong>interpreted</strong> programming language (though there&#39;s <strong>compilation</strong> behind the scenes)
+      <ul>
+        <li>what&#39;s the difference between the two? &#8594;</li>
+        <li>why might it matter? &#8594;</li>
+      </ul>
+    </li>
+    <li>supports multiple <strong>programming paradigms</strong></li>
+    <li>well-known as a mainstream programming language</li>
+    <li>comes with <em>batteries included</em></li>
+  </ul>
+
+  <details open="">
+    <ul>
+      <li>QUESTION - what&#39;s the difference between compiled and interpreted again?</li>
+      <li>INFO - technically it&#39;s compiled to bytecode, much like Java or c#, but there&#39;s no explicit compilation step</li>
+      <li>QUESTION - what paradigm are we using again?</li>
+      <li>INFO - imperative / procedural, object oriented functional</li>
+      <li>INFO - comes with a lot of functionality &quot;out-of-the-box&quot;</li>
+    </ul>
+  </details>
+</section>
+
+<section>
+  <h3 id="where-youve-seen-it-before">Where You&#39;ve Seen It Before</h3>
+
+  <ul>
+    <li>web frameworks like:
+      <ul>
+        <li><a href="http://www.pylonsproject.org/">Pyramid</a> / Pylons (Dropbox, reddit, FreshBooks)</li>
+        <li><a href="https://www.djangoproject.com/">Django</a> (Instagram, Pinterest, Disqus)</li>
+        <li><a href="http://www.tornadoweb.org/">Tornado</a> (quora, FriendFeed)</li>
+        <li><a href="http://turbogears.org/">Turbogears</a> (SourceForge)</li>
+      </ul>
+    </li>
+    <li>EVE online</li>
+    <li>original Bittorent client</li>
+    <li>embedded scripting in Maya and Blender</li>
+  </ul>
+
+  <details open="">
+    <p>QUESTION - does anyone use any of these sites?</p>
+  </details>
+</section>
+
+<section>
+  <h3 id="some-python-history">Some Python History</h3>
+  <ul>
+    <li>yes, it was named after Monty Python</li>
+    <li>based on ABC</li>
+    <li>invented in 1991 by this bearded Dutch guy (Guido van Rossum):</li>
+  </ul>
+
+  <div class="img-container">
+    <p><img src="../../resources/img/guido.jpg" alt="Guido Van Rossum" /></p>
+  </div>
+
+  <details open="">
+    <ul>
+      <li>ABC - teaching / prototyping language meant to replace BASIC, Pascal, etc</li>
+      <li>Also known as Python&#39;s &quot;Benevolent Dictator for Life&quot;</li>
+    </ul>
+  </details>
+</section>
+
+<section>
+  <h3 id="where-its-going">Where It&#39;s Going</h3>
+  <aside>And how it's getting there</aside>
+
+  <ul>
+    <li>two active branches of Python: 2.x and 3.x</li>
+    <li>Python Enhancement Proposals (PEPs).</li>
+    <li>Python Software Foundation (PSF)</li>
+  </ul>
+
+  <details open="">
+    <ul>
+      <li>ABC - teaching / prototyping language meant to replace BASIC, Pascal, etc</li>
+      <li>3.x meant to remove duplicate features and perceived flaws with prior implementation</li>
+      <li>3.x is not backward compatible, but some features have been backported</li>
+      <li>PEPs provide structure for evolution and dev of Python; add language features as well as conventions</li>
+      <li>PyPy - Python in Python!, Jython - for the JVM, etc.</li>
+      <li>PSF - non-profit organization that provides organizational structure, governance and community building</li>
+    </ul>
+  </details>
+</section>
+
+<section>
+  <h3 id="so-which-version-of-python-exactly">So, Which Version of Python, Exactly?</h3>
+  <aside>We're using Python 3!</aside>
+  <p>All of the in-class examples, exercises and homework solutions will target <strong>3.x</strong>.  We&#39;re using Python 3 because it:</p>
+
+  <ul>
+    <li>is an excellent language for learning programming (readable, consistent, etc.)</li>
+    <li>smooths over many of the perceived flaws and inconsistencies in Python 2</li>
+    <li>is the future of Python</li>
+  </ul>
+
+  <p>Note, however, that Python 3 is not yet widely deployed in production systems.</p>
+</section>
+
+<section>
+  <h2 id="but-how-will-we-write-python-programs">But, How Will We Write Python Programs?</h2>
+  <aside>You can't use Microsoft Word!</aside>
+</section>
+
+<section>
+  <h3 id="python-programs-are-just-text">Python Programs Are Just Text</h3>
+  <p>A <strong>text file</strong> is simply a file that contains human readable text.</p>
+
+  <ul>
+    <li>some text files have .txt as its extension</li>
+    <li>you might have opened a text file in Notepad or TextEdit</li>
+    <li>Python programs are text files that (usually) end in <strong>.py</strong> (for example, hello.py)</li>
+  </ul>
+
+  <div class="img-container">
+    <p><img src="../../resources/img/text-x-python-icon.png" alt="Python file icon" /></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="why-cant-we-use-a-word-processor-like-microsoft-word-or-pages">Why can&#39;t We Use a Word Processor Like MicroSoft Word or Pages?</h3>
+  <aside>These programs don't work with text files</aside>
+  <ul>
+    <li>a .doc or .rtf file isn&#39;t actually just text</li>
+    <li>it has a bunch of other stuff in it that Pages or Word uses to render or display your file</li>
+    <li>consequently, you can&#39;t use a word processor to create plain text files</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="youll-need-a-text-editor-or-an-ide">You&#39;ll Need a Text Editor or an IDE</h3>
+  <ul>
+    <li>a <strong>text editor</strong> is specifically used for editing text files
+      <ul>
+        <li>Some text editors, such as Notepad or TextEdit are very simple</li>
+        <li>Others contain features that aid in programming</li>
+      </ul>
+    </li>
+    <li>an <strong>IDE</strong> is an application that is meant for reading and writing programs
+      <ul>
+        <li>It stands for Integrated Development Environment</li>
+        <li>Aside from editing text, it has many features that help programmers</li>
+      </ul>
+    </li>
+  </ul>
+
+  <details open="">
+
+    <p>an IDE is pretty much a text editor <strong>plus</strong> some other stuff</p>
+
+  </details>
+</section>
+
+<section>
+  <h3 id="whats-makes-a-good-ide">What&#39;s Makes a Good IDE?</h3>
+  <ul>
+    <li>a full featured <strong>text editor</strong> with:
+      <ul>
+        <li><strong>syntax highlighting</strong> - to make your program more readable</li>
+        <li><strong>syntax checking</strong> - to make sure your program&#39;s syntax is correct</li>
+        <li>inline documentation / help</li>
+        <li>code auto-completion</li>
+        <li>text editing tools - such as the ability to insert predefined chunks of code</li>
+      </ul>
+    </li>
+    <li>an integrated <strong>interactive shell</strong> - to easily experiment with your programming language</li>
+    <li>an integrated <strong>debugger</strong> - to step through your program</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="well-be-using-idle">We&#39;ll be Using IDLE</h3>
+  <aside>
+    <p>Sticking with the Monty Python theme, perhaps a reference to <a href="http://en.wikipedia.org/wiki/Eric_Idle">Eric Idle</a></p>
+  </aside>
+  <ul>
+    <li>IDLE is an IDE (written in Python!)</li>
+    <li>it&#39;s simple enough to not get in the way, but it has some very helpful features</li>
+    <li>it&#39;s usually bundled with Python, so it should be present when you install Python</li>
+    <li>as an IDE, it has two main functions:
+      <ul>
+        <li><strong>text editor</strong> &#8594;</li>
+        <li><strong>interactive Python shell</strong> &#8594;</li>
+      </ul>
+    </li>
+  </ul>
+
+  <details open="">
+    <ul>
+      <li>DEMO text editor</li>
+      <li>DEMO - interactive shell</li>
+      <li>Show:
+        <ul>
+          <li>syntax highlighting</li>
+          <li>syntax checking</li>
+          <li>auto-complete and integrated help</li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+</section>
+
+<section>
+  <h3 id="text-editor-vs-interactive-python-shell">Text Editor vs Interactive Python Shell</h3>
+  <aside>
+    <p>They look like they do the same thing, and that can be confusing!</p>
+  </aside>
+
+  <p>Again, IDLE comes with both:</p>
+
+  <ul>
+    <li>a text editor</li>
+    <li>an interactive Python shell</li>
+  </ul>
+
+  <p>Both allow you to write code!  <strong>So, what&#39;s the difference? &#8594;</strong></p>
+
+</section>
+
+<section>
+  <h3 id="text-editor">Text Editor</h3>
+
+  <aside>Generally, you'll be using a text editor to write your programs.</aside>
+
+  <p>The usual workflow is: &#8594;</p>
+
+  <ul>
+    <li>start writing a program or load an existing one</li>
+    <li>make changes to your program</li>
+    <li>save your changes</li>
+    <li>run your saved program</li>
+  </ul>
+
+  <p>It&#39;s similar to working on a regular document.</p>
+
+</section>
+
+<section>
+  <h3 id="interactive-python-shell">Interactive Python Shell</h3>
+
+  <aside>There's also an interactive shell for quick experimentation:</aside>
+
+  <ul>
+    <li>code is entered line-by-line</li>
+    <li>code is executed as <strong>each line is entered!</strong></li>
+    <li>you get immediate feedback</li>
+    <li>generally, you won&#39;t be able to save and re-run all of the code that you&#39;ve entered</li>
+    <li>&#8230;<strong>and</strong> any output from programs that you&#39;ve edited and run through the text editor will be placed here</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="now-that-we-know-what-tools-were-using-how-do-we-install-everything"><a href="installing-tools.html">Now That We Know What Tools We&#39;re Using, How Do We Install Everything?</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

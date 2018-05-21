@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Review (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="exercises">Exercises</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="dictionary-exercises">Dictionary Exercises</h3>
+
+  <p>First, check out some dictionary exercises from the <a href="../26/exercises.html">previous class</a>.</p>
+</section>
+
+<section>
+  <h2 id="state-abbreviations">State Abbreviations</h2>
+</section>
+
+<section>
+  <h3 id="state-abbreviations-1">State Abbreviations</h3>
+
+  <p>Create a program that quizzes the user on state abbreviations using the dictionary below:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">states</span> <span class="o">=</span> <span class="p">{</span><span class="s">'New York'</span><span class="p">:</span><span class="s">'NY'</span><span class="p">,</span> <span class="s">'New Jersey'</span><span class="p">:</span><span class="s">'NJ'</span><span class="p">,</span> <span class="s">'Connecticut'</span><span class="p">:</span><span class="s">'CT'</span><span class="p">}</span></code></pre></figure>
+
+  <p>Example output is:</p>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">What is the abbreviation <span class="k">for </span>New Jersey?
+&gt;NJ
+You<span class="s1">'re right!  NJ is the abbreviation for New Jersey
+-----
+What is the abbreviation for New York?
+&gt;NY
+You'</span>re right!  NY is the abbreviation <span class="k">for </span>New York
+-----
+What is the abbreviation <span class="k">for </span>Connecticut?
+&gt;CC
+Nope!  CT is the abbreviation <span class="k">for </span>Connecticut
+-----
+You got 2 right out of 3 questions!</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="state-abbreviations-2">State Abbreviations</h3>
+
+  <p>Starting with the following dictionary:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">states</span> <span class="o">=</span> <span class="p">{</span><span class="s">'New York'</span><span class="p">:</span><span class="s">'NY'</span><span class="p">,</span> <span class="s">'New Jersey'</span><span class="p">:</span><span class="s">'NJ'</span><span class="p">,</span> <span class="s">'Connecticut'</span><span class="p">:</span><span class="s">'CT'</span><span class="p">}</span></code></pre></figure>
+
+  <p>Write a program that:</p>
+
+  <ul>
+    <li>continuously asks for an abbreviation based on a state name (&#39;What&#39;s the abbreviation for New York?&#39;)</li>
+    <li>end when all of the states in the dictionary have been asked</li>
+    <li>display &#39;wrong&#39; or &#39;right&#39; depending on if user typed in the appropriate abbreviation</li>
+    <li>keep track of the number of right answers</li>
+    <li>at the end of the program, print out the number of right answers compared to the total</li>
+  </ul>
+</section>
+<section>
+  <h3 id="state-abbreviations-3">State Abbreviations</h3>
+
+  <p>Pseudocode:</p>
+
+  <ul>
+    <li>go through every name/value pair
+      <ul>
+        <li>ask the user for input</li>
+        <li>if the input matches the value,
+          <ul>
+            <li>increment # right</li>
+            <li>display &#39;right&#39; message</li>
+          </ul>
+        </li>
+        <li>otherwise, display &#39;wrong&#39; message</li>
+      </ul>
+    </li>
+    <li>print out the number right and the number total</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="state-abbreviations-4">State Abbreviations</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">states</span> <span class="o">=</span> <span class="p">{</span><span class="s">'New York'</span><span class="p">:</span><span class="s">'NY'</span><span class="p">,</span> <span class="s">'New Jersey'</span><span class="p">:</span><span class="s">'NJ'</span><span class="p">,</span> <span class="s">'Connecticut'</span><span class="p">:</span><span class="s">'CT'</span><span class="p">}</span>
+
+<span class="n">right</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">abbreviation</span> <span class="ow">in</span> <span class="n">states</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+	<span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'What is the abbreviation for </span><span class="si">%</span><span class="s">s?</span><span class="se">\n</span><span class="s">&gt;'</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="n">states</span><span class="p">[</span><span class="n">name</span><span class="p">]:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">'You</span><span class="se">\'</span><span class="s">re right!  </span><span class="si">%</span><span class="s">s is the abbreviation for </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">abbreviation</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+		<span class="n">right</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">'Nope!  </span><span class="si">%</span><span class="s">s is the abbreviation for </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">abbreviation</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">'-----'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'You got </span><span class="si">%</span><span class="s">s right out of </span><span class="si">%</span><span class="s">s questions!'</span> <span class="o">%</span> <span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">states</span><span class="p">)))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="run-length-decoding">Run Length Decoding</h2>
+</section>
+
+<section>
+  <h3 id="run-length-decoding-1">Run Length Decoding</h3>
+
+  <p>Imagine that you have a list of tuples&#8230;</p>
+
+  <ul>
+    <li>the list represents a word</li>
+    <li>each tuple in the list is two elements</li>
+    <li>the first element is a letter in the word</li>
+    <li>the second element is the number of times that letter appears consecutively</li>
+  </ul>
+
+  <p>For example:</p>
+
+  <ul>
+    <li>[(&#39;E&#39;, 4), (&#39;K&#39;, 1)] &#8594; &quot;EEEEK&quot;</li>
+    <li>[(&#39;V&#39;, 1), (&#39;O&#39;, 2), (&#39;D&#39;, 1), (&#39;O&#39;, 2)] &#8594; &quot;VOODOO&quot;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="run-length-decoding-2">Run Length Decoding</h3>
+
+  <p>Write a function called run_length_decode:</p>
+
+  <ul>
+    <li>it takes a <strong>list</strong> of two-element tuples as an argument</li>
+    <li>it gives back a string</li>
+  </ul>
+
+  <p>Example usage:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">compressed</span> <span class="o">=</span> <span class="p">[(</span><span class="s">'E'</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s">'K'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">run_length_decode</span><span class="p">(</span><span class="n">compressed</span><span class="p">))</span>
+<span class="c">#  prints out EEEEK</span>
+
+<span class="n">compressed</span> <span class="o">=</span> <span class="p">[(</span><span class="s">'V'</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">'O'</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s">'D'</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">'O'</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">run_length_decode</span><span class="p">(</span><span class="n">compressed</span><span class="p">))</span>
+<span class="c">#  prints out VOODOO</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="run-length-decoding-3">Run Length Decoding</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">run_length_decode</span><span class="p">(</span><span class="n">coded</span><span class="p">):</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="s">''</span>
+	<span class="k">for</span> <span class="n">letter</span><span class="p">,</span> <span class="n">frequency</span> <span class="ow">in</span> <span class="n">coded</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">+=</span> <span class="n">letter</span> <span class="o">*</span> <span class="n">frequency</span>
+	<span class="k">return</span> <span class="n">s</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="every-third">Every Third</h2>
+</section>
+
+<section>
+  <h3 id="every-third-1">Every Third</h3>
+
+  <p>Write a function called every_third_name:</p>
+
+  <ul>
+    <li>it should take a list of names as an argument</li>
+    <li>it will give back a new list composed of every third name in the original list</li>
+  </ul>
+
+  <p>For example:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Carol'</span><span class="p">,</span> <span class="s">'Dan'</span><span class="p">,</span> <span class="s">'Eve'</span><span class="p">,</span> <span class="s">'Frank'</span><span class="p">,</span> <span class="s">'Gus'</span><span class="p">,</span> <span class="s">'Heidi'</span><span class="p">,</span> <span class="s">'Ivan'</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">every_third_name</span><span class="p">(</span><span class="n">names</span><span class="p">))</span>
+<span class="c">#  prints out ['Carol', 'Frank', 'Ivan']</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="every-third-2">Every Third</h3>
+
+  <p>A few ways to approach this:</p>
+
+  <ul>
+    <li>use enumerate to get the index</li>
+    <li>use a count variable to keep track of index</li>
+    <li>use range to generate a series of indexes</li>
+    <li>use a list comprehension</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="every-third-3">Every Third</h3>
+
+  <p>With enumerate &#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Carol'</span><span class="p">,</span> <span class="s">'Dan'</span><span class="p">,</span> <span class="s">'Eve'</span><span class="p">,</span> <span class="s">'Frank'</span><span class="p">,</span> <span class="s">'Gus'</span><span class="p">,</span> <span class="s">'Heidi'</span><span class="p">,</span> <span class="s">'Ivan'</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">every_third_v1</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+	<span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+	<span class="k">return</span> <span class="n">new_list</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">every_third_v1</span><span class="p">(</span><span class="n">names</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="every-third-4">Every Third</h3>
+
+  <p>Incrementing a <em>counter</em> variable (called number) &#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Carol'</span><span class="p">,</span> <span class="s">'Dan'</span><span class="p">,</span> <span class="s">'Eve'</span><span class="p">,</span> <span class="s">'Frank'</span><span class="p">,</span> <span class="s">'Gus'</span><span class="p">,</span> <span class="s">'Heidi'</span><span class="p">,</span> <span class="s">'Ivan'</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">every_third_v2</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+	<span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="n">number</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+		<span class="n">number</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="k">return</span> <span class="n">new_list</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">every_third_v2</span><span class="p">(</span><span class="n">names</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="every-third-5">Every Third</h3>
+
+  <p>Using range &#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Carol'</span><span class="p">,</span> <span class="s">'Dan'</span><span class="p">,</span> <span class="s">'Eve'</span><span class="p">,</span> <span class="s">'Frank'</span><span class="p">,</span> <span class="s">'Gus'</span><span class="p">,</span> <span class="s">'Heidi'</span><span class="p">,</span> <span class="s">'Ivan'</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">every_third_v3</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+	<span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+	<span class="k">return</span> <span class="n">new_list</span>
+	
+<span class="k">print</span><span class="p">(</span><span class="n">every_third_v3</span><span class="p">(</span><span class="n">names</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="every-third-6">Every Third</h3>
+
+  <p>List comprehension &#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Bob'</span><span class="p">,</span> <span class="s">'Alice'</span><span class="p">,</span> <span class="s">'Carol'</span><span class="p">,</span> <span class="s">'Dan'</span><span class="p">,</span> <span class="s">'Eve'</span><span class="p">,</span> <span class="s">'Frank'</span><span class="p">,</span> <span class="s">'Gus'</span><span class="p">,</span> <span class="s">'Heidi'</span><span class="p">,</span> <span class="s">'Ivan'</span><span class="p">]</span>
+<span class="k">print</span><span class="p">([</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="synonyms">Synonyms</h2>
+</section>
+
+<section>
+  <h3 id="synonyms-1">Synonyms</h3>
+
+  <p>Write a program that:</p>
+
+  <ul>
+    <li>loads a <a href="synonyms.txt">text file</a> of words and synonyms
+      <ul>
+        <li>each line in the file will be word:synonym</li>
+        <li>tranquil:peaceful</li>
+      </ul>
+    </li>
+    <li>continually asks a user for a word</li>
+    <li>prints out that word&#39;s synonym if it exists</li>
+    <li>otherwise, prints out an appropriate &#39;does not exist&#39; message</li>
+    <li>lastly, pressing q stops the loop</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">Give me a word or <span class="o">(</span>q<span class="o">)</span>uit
+<span class="gp">&gt; </span>quick
+fast
+Give me a word or <span class="o">(</span>q<span class="o">)</span>uit
+<span class="gp">&gt; </span>slow
+No synonyms <span class="k">for </span>slow!
+Give me a word or <span class="o">(</span>q<span class="o">)</span>uit
+<span class="gp">&gt; </span>q</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="synonyms-2">Synonyms</h3>
+
+  <p>What are the main steps for this program?</p>
+
+  <div class="incremental">
+    <ul>
+      <li>load data from file
+        <ul>
+          <li>open a file</li>
+          <li>read its contents into some data structure</li>
+        </ul>
+      </li>
+      <li>continually ask the user for a word
+        <ul>
+          <li>display the synonym if the word exists</li>
+          <li>display a default message if the word doesn&#39;t exist</li>
+          <li>quit if the user typed in q</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="synonyms-3">Synonyms</h3>
+
+  <p>Let&#39;s start with part 1.</p>
+
+  <ul>
+    <li>download the file <a href="synonyms.txt">synonyms.txt</a></li>
+    <li>read it into a dictionary, with the original word as the key, and the synonym as the value</li>
+    <li>note that the format for each line is word:synonym</li>
+  </ul>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'synonyms.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+	<span class="n">line</span> 
+	<span class="n">parts</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">':'</span><span class="p">)</span>
+	<span class="n">d</span><span class="p">[</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+  </div>
+</section>
+<section>
+  <h3 id="synonyms-4">Synonyms</h3>
+
+  <p>Now that we&#39;ve built our dictionary, ask the user for a word, and print out the appropriate response:</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'synonyms.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+	<span class="n">line</span> 
+	<span class="n">parts</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">':'</span><span class="p">)</span>
+	<span class="n">d</span><span class="p">[</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+	<span class="n">word</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Give me a word or (q)uit</span><span class="se">\n</span><span class="s">&gt; '</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="s">'q'</span><span class="p">:</span>
+		<span class="k">break</span>
+	<span class="n">synonym</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="s">'No synonyms for </span><span class="si">%</span><span class="s">s!'</span> <span class="o">%</span> <span class="n">word</span><span class="p">)</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">synonym</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="half">Half</h2>
+</section>
+
+<section>
+  <h3 id="half-new-list">Half (New List)</h3>
+
+  <p>Write a function half_value_v1 that takes a list of numbers and returns a <strong>new list</strong> with all of the numbers halved.  Here&#39;s some example output:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">result</span> <span class="o">=</span> <span class="n">half_value_v1</span><span class="p">(</span><span class="n">my_numbers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Function returned </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">result</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'my_numbers is still </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">my_numbers</span><span class="p">))</span></code></pre></figure>
+
+  <p>Output:</p>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">Function returned <span class="o">[</span>5.0, 4.0, 3.0]
+my_numbers is still <span class="o">[</span>10, 8, 6]</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="half-new-list-1">Half (New List)</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">my_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">half_value_v1</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+	<span class="n">new_numbers</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+		<span class="n">new_numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">new_numbers</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">half_value_v1</span><span class="p">(</span><span class="n">my_numbers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Function returned </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">result</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'my_numbers is still </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">my_numbers</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="half-in-place">Half (In Place)</h3>
+
+  <p>Write a function half_value_v2 that takes a list of numbers and <strong>modifies the list passed in</strong>.  It should not return a value!</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">result</span> <span class="o">=</span> <span class="n">half_value_v1</span><span class="p">(</span><span class="n">my_numbers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Function returned </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">result</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'my_numbers is still </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">my_numbers</span><span class="p">))</span></code></pre></figure>
+
+  <p>Output:</p>
+
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">Function returned None
+my_numbers is now <span class="o">[</span>5.0, 4.0, 3.0]</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="half-in-place-1">Half (In Place)</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">my_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">half_value_v2</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+		<span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">half_value_v2</span><span class="p">(</span><span class="n">my_numbers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Function returned </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">result</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'my_numbers is now </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">my_numbers</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

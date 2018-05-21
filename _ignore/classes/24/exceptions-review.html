@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Exceptions Review (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="exceptions-review">Exceptions Review</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="exceptions">Exceptions!</h3>
+
+  <p><strong>What are some types/names of exceptions that we&#39;ve seen and what are examples of each?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>ValueError - type is correct, value is not: int(&quot;foo&quot;)</li>
+      <li>TypeError - operator or function doesn&#39;t support type: 5 + &quot;foo&quot;</li>
+      <li>IndexError  - index out of range: a = [1, 2] &#8230; a[3452]</li>
+      <li>ZeroDivisionError - divide by zero: 5/0</li>
+      <li>NameError - name (variable, function, etc) doesn&#39;t exist / not yet declared</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="exception-handling">Exception Handling</h3>
+
+  <p><strong>What construct do we use to handle exceptions.  What is its syntax?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">try</span><span class="p">:</span>
+  <span class="c"># do some stuff</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="c"># if there's an error, do stuff here</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="exception-handling-continued">Exception Handling Continued</h3>
+
+  <p><strong>What if your code could generate two errors - and you want to deal with them differently?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">try</span><span class="p">:</span>
+  <span class="c"># do some stuff</span>
+<span class="k">except</span> <span class="n">SomeError1</span><span class="p">:</span>
+  <span class="c"># if there's an error, do stuff here</span>
+<span class="k">except</span> <span class="n">SomeError2</span><span class="p">:</span>
+  <span class="c"># if there's another error, do other stuff here</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="revisiting-feet-to-inches">Revisiting Feet to Inches</h3>
+
+  <p>A program that calculates how many slices each person gets at a pizza party.</p>
+
+  <ul>
+    <li>ask for number of people</li>
+    <li>respond according to input, even input that is not valid (such as zero or non numeric strings)</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">people</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"how many people are eating pizza?</span><span class="se">\n</span><span class="s">&gt;"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Each person can have </span><span class="si">%</span><span class="s">s slices"</span> <span class="o">%</span> <span class="p">(</span><span class="mi">8</span><span class="o">/</span><span class="nb">int</span><span class="p">(</span><span class="n">people</span><span class="p">)))</span>
+<span class="k">except</span> <span class="nb">ZeroDivisionError</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"More for me!"</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"That's not a number!"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="files"><a href="files.html">Files</a></h2>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

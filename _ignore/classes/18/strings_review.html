@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Strings Review (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="strings---review">Strings - Review</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="indexing">Indexing</h3>
+
+  <p><strong>What is the output of the following code? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">""" +---+---+---+---+
+    | w | h | o | ? |
+    +---+---+---+---+ """</span>
+<span class="n">question</span> <span class="o">=</span> <span class="s">"who?"</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">print</span><span class="p">(</span><span class="n">question</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">question</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">question</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">question</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">question</span><span class="p">[</span><span class="n">idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">question</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c"># --&gt; w</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">question</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c"># --&gt; ?</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">question</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="c"># --&gt; o</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">question</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="c"># --&gt; error</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">question</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c"># --&gt; q</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="summary-for-indexing">Summary for Indexing</h3>
+
+  <ul>
+    <li>an <strong>index</strong> is the numeric position of an element within a collection of elements</li>
+    <li>the <strong>first character</strong> in a string is at <strong>index 0</strong></li>
+    <li>the <strong>last character</strong> is at index <strong>length - 1</strong> (len(s) - 1)</li>
+    <li>also, the <strong>last element</strong> is at index <strong>-1</strong></li>
+    <li>the <strong>second to last element</strong> is at index <strong>-2</strong></li>
+    <li>if the index doesn&#39;t exist, you will get an <strong>IndexError</strong></li>
+    <li>you can <strong>index into</strong> (retrieve a character) from a string using brackets - <strong>[]</strong>&#39;s.</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="mutability">Mutability</h3>
+
+  <p><strong>What is the output of the following code? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">word = "mile"
+word[1] = 'o'</code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>strings are <strong>not mutable</strong>; they cannot be changed</li>
+      <li>you can read values by indexing into a string</li>
+      <li>however, you can&#39;t change characters in a string</li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+TypeError: 'str' object does not support item assignment</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="strings-are-immutable">Strings are Immutable</h2>
+</section>
+
+<section>
+  <h3 id="looping-over-each-character">Looping Over Each Character</h3>
+
+  <p><strong>Write a function that takes a string and returns a new string with all of the spaces taken out.</strong> &#8594;</p>
+
+  <ul>
+    <li><strong>start with an empty string</strong> and build it out</li>
+    <li><strong>use a for loop</strong></li>
+    <li><strong>conditionally add</strong> characters based on whether or not the character is a space</li>
+    <li>write at least <strong>one assertion</strong> for this function</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="n">remove_all_spaces</span><span class="p">(</span><span class="s">"I want to go to there"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="c">#  should give back: </span>
+<span class="c">#  Iwanttogotothere</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="looping-over-each-character-continued">Looping Over Each Character Continued</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">remove_space</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+	<span class="n">result</span> <span class="o">=</span> <span class="s">""</span>
+	<span class="k">for</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">character</span> <span class="o">!=</span> <span class="s">" "</span><span class="p">:</span>
+			<span class="n">result</span> <span class="o">+=</span> <span class="n">character</span>
+	<span class="k">return</span> <span class="n">result</span>
+
+<span class="k">assert</span> <span class="s">"Iwanttogotothere"</span> <span class="o">==</span> <span class="n">remove_space</span><span class="p">(</span><span class="s">"I want to go to there"</span><span class="p">),</span> <span class="s">"test removal of spaces"</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="you-can-go-over-every-character-in-a-string-with-a-for-loop">You can go over every character in a string with a for loop!</h2>
+</section>
+
+<div class="incremental"></div>
+
+<section>
+  <h3 id="looping-over-strings-summary--syntax">Looping Over Strings Summary / Syntax</h3>
+
+  <ul>
+    <li><strong>for loops allow us to iterate over every character in a string</strong></li>
+    <li>it&#39;s similar to looping over a sequence of #&#39;s</li>
+    <li>the variable in the loop head represents the current character</li>
+    <li>the loop continues until there are no letters left</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="slicing">Slicing</h3>
+
+  <p>Write the slice to pick out the following substring from the original string:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">"chew"</span>
+<span class="c">#     0123</span></code></pre></figure>
+
+  <ol>
+    <li>hew (2 ways)</li>
+    <li>che (2 ways)</li>
+    <li>chew (2 ways)</li>
+  </ol>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">s</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span></code></pre></figure>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">s</span><span class="p">[:]</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="slicing-syntax">Slicing Syntax</h3>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">some_long_string[m:n]</code></pre></figure>
+
+  <ul>
+    <li><strong>m</strong> is the start index and <strong>n</strong> is the end index.</li>
+    <li>the resulting substring starts at <strong>m</strong>, and goes up to, but does <strong>not</strong> include <strong>n</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="slicing-shortcuts">Slicing Shortcuts</h3>
+
+  <ul>
+    <li>leaving out the first index (before the colon - m) starts at the beginning of the string</li>
+    <li>leaving out the second index (after the colon - n), ends at the end of the string</li>
+    <li>leaving out both gives back the whole string</li>
+    <li>if the second index, n is greater than the length of the string, up to the end is sliced</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"jam"</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="c">#ja</span>
+<span class="s">"jam"</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="c">#am</span>
+<span class="s">"jam"</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span> <span class="c">#am</span>
+<span class="s">"jam"</span><span class="p">[:]</span> <span class="c">#jam</span>
+<span class="s">"jam"</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span> <span class="c">#ham</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="in-and-not-in">In and Not In</h3>
+
+  <p><strong>What is the output of the following code?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="s">"ice cream"</span>
+<span class="n">letter</span> <span class="o">=</span> <span class="s">"a"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"cat"</span> <span class="ow">in</span> <span class="s">"vacation"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"cat"</span> <span class="ow">in</span> <span class="s">"work"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"cat"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s">"work"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">)</span>      <span class="c"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"cat"</span> <span class="ow">in</span> <span class="s">"vacation"</span><span class="p">)</span> <span class="c"># True</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"cat"</span> <span class="ow">in</span> <span class="s">"work"</span><span class="p">)</span>     <span class="c"># False</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"cat"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s">"work"</span><span class="p">)</span> <span class="c"># Tru</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="in--not-in">In / Not In</h3>
+
+  <p>Use the <strong>in</strong> operator!</p>
+
+  <ul>
+    <li><strong>in</strong> tests for membership</li>
+    <li>it takes two operands, one on each side</li>
+    <li>if the operand on the left is in the operand on the right, <strong>in</strong> returns True</li>
+    <li>in the case of strings, <strong>in</strong> tests if one string is a substring of the other</li>
+    <li>evaluation results in <strong>a boolean</strong>!</li>
+    <li><strong>not in</strong> is the logical opposite of the <strong>in</strong> operator</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="in--not-in-notes">In / Not In Notes</h3>
+
+  <p>Some other things to note:</p>
+
+  <p>A string is always a substring of itself.</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; "vacation" in "vacation"
+True</code></pre></figure>
+
+  <p>Empty string is always a substring of any other string.</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; "" in "vacation"
+True</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="functions-vs-methods">Functions vs Methods</h3>
+
+  <p><strong>What&#39;s the difference between a function and a method?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>a <strong>function</strong> is a named sequence of statements that can be called to perform some useful action</li>
+      <li>a <strong>method</strong> is a function called in the context of an object (it&#39;s an action that the object can perform)</li>
+      <li>&#8230;so, the difference is, a method must be called with an object</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="string-methods">String Methods</h3>
+
+  <p><strong>Name as many string methods as you can&#8230;</strong> &#8594;</p>
+
+  <ul>
+    <li>give the method&#39;s name</li>
+    <li>what the method does</li>
+    <li>parameters (if any)</li>
+    <li>return value (if any)</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="string-methods-1">String Methods</h3>
+
+  <ol>
+    <li><strong>upper</strong>()</li>
+    <li><strong>lower</strong>()</li>
+    <li><strong>isdigit</strong>()</li>
+    <li><strong>isalpha</strong>()</li>
+    <li><strong>find</strong>(sub[, start[, end]])</li>
+    <li><strong>format</strong>(&#8230;)</li>
+    <li><strong>strip</strong>([chars])</li>
+    <li><strong>isupper</strong>()</li>
+    <li><strong>islower</strong>()</li>
+  </ol>
+</section>
+
+<section>
+  <h3 id="upper-and-lower">upper() and lower()</h3>
+
+  <p><strong>upper</strong>() and <strong>lower</strong>() return the string that the method was called on in either all uppercase or all lowercase.  <strong>What would the following print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"this should be uppercase"</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"THIS SHOULD BE LOWERCASE"</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">THIS</span> <span class="n">SHOULD</span> <span class="n">BE</span> <span class="n">UPPERCASE</span>
+<span class="n">this</span> <span class="n">should</span> <span class="n">be</span> <span class="n">lowercase</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="isdigit-and-isalpha">isdigit() and isalpha()</h3>
+
+  <p><strong>isdigit</strong>() and <strong>isalpha</strong>() test whether a string is only numbers or letters (both return False if empty string).  <strong>What would the following print out? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"123"</span><span class="o">.</span><span class="n">isdigit</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"1.23"</span><span class="o">.</span><span class="n">isdigit</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"one two three"</span><span class="o">.</span><span class="n">isdigit</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"onetwothree"</span><span class="o">.</span><span class="n">isalpha</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"one two three"</span><span class="o">.</span><span class="n">isalpha</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"one!"</span><span class="o">.</span><span class="n">isalpha</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"1"</span><span class="o">.</span><span class="n">isalpha</span><span class="p">())</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">True</span>
+<span class="bp">False</span>
+<span class="bp">False</span>
+<span class="bp">True</span>
+<span class="bp">False</span>
+<span class="bp">False</span>
+<span class="bp">False</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="find">find()</h3>
+
+  <p><strong>find</strong>() returns the first index where the argument (a character or substring) is found.  It returns -1 if the substring is not in the original string.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">"h"</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">"x"</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"hello"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">"lo"</span><span class="p">))</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">0</span>
+<span class="o">-</span><span class="mi">1</span>
+<span class="mi">3</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="strip">strip()</h3>
+
+  <p><strong>strip</strong>() removes leading and trailing whitespace (it can also remove other leading and trailing characters).  What do you think this results</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"  spaces all around   "</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">spaces</span> <span class="nb">all</span> <span class="n">around</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="format">format()</h3>
+
+  <p>Format is like the string formatting operator, but possibly easier?!</p>
+
+  <ul>
+    <li>instead of %s, use curly braces and the number of the argument as a placeholder {0}, {1}</li>
+    <li>numer corrseponds to each argument in the call, 0 being the first</li>
+    <li><strong>What do you think the following returns? &#8594;</strong></li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"{0} elephants"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">"twenty"</span><span class="p">)</span>
+<span class="s">"{0} elephants"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="s">"{0} elephants"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="s">"{1} elephants"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="s">"{0} elephants and {1} peanuts"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="format-results">format() results</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">twenty</span> <span class="n">elephants</span>
+<span class="mi">20</span> <span class="n">elephants</span>
+<span class="mi">20</span> <span class="n">elephants</span>
+<span class="mi">100</span> <span class="n">elephants</span>
+<span class="mi">20</span> <span class="n">elephants</span> <span class="ow">and</span> <span class="mi">100</span> <span class="n">peanuts</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="isupper-and-islower">isupper() and islower()</h3>
+
+  <p><strong>isupper</strong>() and <strong>islower</strong>() return True if the string that is called on is the case specified.  <strong>What does the following output?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"this should be uppercase"</span><span class="o">.</span><span class="n">isupper</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"THIS SHOULD BE LOWERCASE"</span><span class="o">.</span><span class="n">isupper</span><span class="p">())</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">False</span>
+<span class="bp">True</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="more-about-mutability">More About Mutability&#8230;</h3>
+
+  <p>String methods can&#39;t change the string object that they&#39;re called on.  <strong>For example&#8230; what does the following print out?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">"beep"</span>
+<span class="n">new_s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">new_s</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">beep</span>
+<span class="n">BEEP</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="strings-are-immutable-1">Strings are Immutable!</h3>
+
+  <p><strong>String methods can&#39;t change the string object that they&#39;re called on.  Instead, they usually just give back a new string.</strong></p>
+</section>
+
+<section>
+  <h3 id="string-functions">String Functions</h3>
+
+  <p><strong>Name as many built-in string functions as you can.  What do they do, what are their parameters, and what do they return?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>len</strong>(s) - the length of a string (gives back an int)</li>
+      <li><strong>ord</strong>(s) - the <em>code point</em> of the character supplied (gives back an int)</li>
+      <li><strong>chr</strong>(i) - the character represented by the supplied <em>code point</em> (gives back a string)</li>
+    </ul>
+  </div>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

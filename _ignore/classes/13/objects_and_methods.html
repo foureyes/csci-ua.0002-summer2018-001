@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>String Objects, String Methods, Built-Ins (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="string-objects-string-methods-built-ins">String Objects, String Methods, Built-Ins</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="objects">Objects</h3>
+
+  <p>We&#39;re going to be talking about <strong>objects</strong> &#8230; <em>alot</em>. (And probably even more so, if you continue to 101, 102, etc.).</p>
+
+  <p>So, in the context of programming, an <strong>object</strong> is:</p>
+
+  <ul>
+    <li>a <em>thing</em> that a variable name can refer to, like a string, or a range of numbers</li>
+    <li>&#8230;in fact, all of the values in Python are things</li>
+    <li>&quot;hello&quot; is a str object, 42 is an int object</li>
+    <li>an <strong>object</strong> can have <strong>attributes</strong> &#8230;data associated with an object</li>
+    <li>an <strong>object</strong> can have <strong>methods</strong> &#8230;which are basically things that the object can do</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="methods">Methods</h3>
+
+  <ul>
+    <li>a <strong>method</strong> is essentially a function that&#39;s associated with a particular object</li>
+    <li>you can <em>call</em> a method just like a function&#8230; but you have to use the dot operator</li>
+    <li>object.method() - it&#39;s similar to using a method in a module!</li>
+    <li>for example: &quot;hello&quot;.upper()</li>
+    <li>&#8230;means I&#39;m calling the upper() function on a str object</li>
+    <li>in fact&#8230; we can see some methods on objects that we&#39;ve used before!</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">dir</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="strings-as-objects">Strings as Objects!</h3>
+
+  <p>So, strings have some methods.  <strong>Let&#39;s try them out! &#8594;</strong></p>
+
+  <p>(remember, you call methods on objects themselves)</p>
+
+  <ol>
+    <li>upper()</li>
+    <li>lower()</li>
+    <li>isdigit()</li>
+    <li>find(s)</li>
+    <li>others - use dir in interactive shell</li>
+  </ol>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">dir</span><span class="p">(</span><span class="s">"a string"</span><span class="p">)</span>
+<span class="n">help</span><span class="p">(</span><span class="s">"a string"</span><span class="o">.</span><span class="n">upper</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="the-len-method">The len() Method</h3>
+
+  <p>Returns the length of a sequence.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s">"cat"</span><span class="p">))</span>
+<span class="c">#  gives 3</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="string-exercises"><a href="exercises.html">String Exercises</a></h2>
+</section>
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

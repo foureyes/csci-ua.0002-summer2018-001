@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>List Methods (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="list-methods">List Methods</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h3 id="lists-are-mutable-objects">Lists are (Mutable) Objects</h3>
+
+  <p>Lists are <strong>objects</strong>, and they have a slew of <strong>methods</strong> that you can call on them:</p>
+
+  <ul>
+    <li>lists are <strong>mutable</strong> &#8230;</li>
+    <li>many methods actually <strong>change the list in place</strong>!  <strong>Let&#39;s see how this differs from strings</strong> &#8594;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s">'hello'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="s">'HELLO'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">hello</span></code></pre></figure>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">numbers</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="list-methods-continued">List Methods Continued</h3>
+
+  <p>So&#8230;. why does this matter?</p>
+
+  <ul>
+    <li>most list methods modify the list <strong>in place</strong></li>
+    <li>most list methods <strong>don&#39;t return a value</strong>!</li>
+    <li>that means&#8230;
+      <ul>
+        <li>if you&#39;re getting <strong>None</strong>&#8230;</li>
+        <li>you&#39;re probably assigning the return result of a list method to a variable</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="some-methods-that-you-can-call-on-lists">Some methods that you can call on lists</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">li</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span></code></pre></figure>
+
+  <ul>
+    <li>li.append(4) # appends element to end of list</li>
+    <li>li.extend([3, 4]) # appends all items of one list to the other&#8230;</li>
+    <li>li.insert(2, &quot;asdf&quot;) # insert object before index</li>
+    <li>li.remove(4) # removes first occurrence of&#8230;</li>
+    <li>li.pop() # returns and removes the last element</li>
+    <li>li.sort() # sorts list in place</li>
+    <li>li.count(1) # returns number of occurrences of arg in list</li>
+    <li>li.index(1) # returns the index of the element supplied</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="adding-elements">Adding Elements</h3>
+
+  <ul>
+    <li><strong>append</strong>(<em>object</em>) - append object to end of list, even another list!</li>
+    <li><strong>extend</strong>(<em>iterable</em>) - appends all items of one iterable (list, string, etc.) to the original list</li>
+    <li><strong>insert</strong>(<em>index</em>, <em>object</em>) - insert object before index</li>
+  </ul>
+
+  <p>Usage notes:</p>
+
+  <ul>
+    <li>use <strong>append</strong> when you want the whole object added to the end of a list &#8594;</li>
+    <li>use <strong>extend</strong> when you want every element in another list added as an individual element to the original &#8594;</li>
+    <li>use <strong>insert</strong> when you want to add an element to an arbitrary place in the original list &#8594;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="removing-elements">Removing Elements</h3>
+
+  <ul>
+    <li><strong>remove</strong>(object) - removes first occurrence of object in list</li>
+    <li><strong>pop</strong>() - <strong>returns and removes</strong> the last element, takes an optional argument to specify index</li>
+  </ul>
+
+  <p>Usage notes:</p>
+
+  <ul>
+    <li>use <strong>remove</strong>  for finding and removing an element &#8594;</li>
+    <li>use <strong>pop</strong> when you want to delete an element at a specific index (by default, the last element)&#8230; you also get the element removed as a return value! &#8594;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="miscellaneous-methods">Miscellaneous Methods</h3>
+
+  <ul>
+    <li><strong>sort</strong>() - sorts a list in place &#8594;</li>
+    <li><strong>count</strong>(object) - counts the number of occurrences of object in the original list &#8594;</li>
+    <li><strong>index</strong>(object) - returns the index of the object supplied; causes an error if the object doesn&#39;t exist &#8594;</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="some-exercises">Some Exercises</h3>
+
+  <ul>
+    <li>make the last element in a list the first element</li>
+    <li>filter a list of strings</li>
+    <li>average</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="make-the-first-element-last">Make the First Element Last</h3>
+
+  <ul>
+    <li>define a function called last_to_first</li>
+    <li>it should take a list as an argument</li>
+    <li>it should return a new list with the last element as the first element&#8230; and every element shifted up one
+      <ul>
+        <li>last_to_first([1, 2, 3, 4] &#8594;</li>
+      </ul>
+    </li>
+    <li>if there&#39;s one element or less in the list, return the list as is</li>
+    <li>use at least 3 assertions to test your last_to_first function</li>
+    <li>try with just slicing and addition</li>
+    <li>or try using pop and insert</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="make-the-first-element-last-solution-v1">Make the First Element Last Solution v1</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">last_to_first</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+	<span class="s">""" makes last element in list first, shifts every other element up one """</span>
+	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">items</span>
+	<span class="k">else</span><span class="p">:</span> 
+		<span class="k">return</span> <span class="p">[</span><span class="n">items</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">assert</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">last_to_first</span><span class="p">([</span><span class="mi">1</span><span class="p">]),</span> <span class="s">'test that one element returns same list'</span>
+<span class="k">assert</span> <span class="p">[]</span> <span class="o">==</span> <span class="n">last_to_first</span><span class="p">([]),</span> <span class="s">'test that empty list returns empty list'</span>
+<span class="k">assert</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">last_to_first</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]),</span> <span class="s">'test that all elements shifted by one'</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="make-the-first-element-last-solution-v2">Make the First Element Last Solution v2</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">last_to_first</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+	<span class="s">""" makes last element in list first, shifts every other element up one """</span>
+	<span class="n">new_items</span> <span class="o">=</span> <span class="n">items</span><span class="p">[:]</span>
+	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="n">new_items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_items</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+	<span class="k">return</span> <span class="n">new_items</span>
+
+
+<span class="k">assert</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">last_to_first</span><span class="p">([</span><span class="mi">1</span><span class="p">]),</span> <span class="s">'test that one element returns same list'</span>
+<span class="k">assert</span> <span class="p">[]</span> <span class="o">==</span> <span class="n">last_to_first</span><span class="p">([]),</span> <span class="s">'test that empty list returns empty list'</span>
+<span class="k">assert</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">last_to_first</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]),</span> <span class="s">'test that all elements shifted by one'</span></code></pre></figure>
+
+</section>
+
+<!--
+
+<section markdown="block">
+##  [Lists, Strings, and Random ](lists_strings_random.html)
+</section>
+
+-->
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>

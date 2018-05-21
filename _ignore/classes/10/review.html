@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Midterm (CSCI-UA.0002 - Summer 2018)</title>
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link media='print' rel="stylesheet" type="text/css" href="../../resources/css/print.css">
+    <link media='screen' rel="stylesheet" type="text/css" href="../../resources/css/slides.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/syntax.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<section class="title-slide">
+  <h1 id="midterm-1-review">Midterm #1 Review</h1>
+  <footer>Introduction to Computer Programming <br />CSCI-UA.0002-001</footer>
+
+</section>
+
+<section>
+  <h2 id="about-these-slides">About These Slides</h2>
+
+  <p>The first slides on formatting summarize the syntax of the format specifier and using print to format.</p>
+
+  <p>The remainder of the slides are just parts of all of the previous slides stitched together.</p>
+
+</section>
+
+<section>
+  <h3 id="formatting-with-print">Formatting With Print</h3>
+
+  <ul>
+    <li>use keyword <em>arguments</em> to define the separator between arguments and the character that gets printed at the end</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">'foo'</span><span class="p">,</span> <span class="s">'bar'</span><span class="p">,</span> <span class="s">'baz'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">","</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">"x"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="format-function">Format Function</h3>
+
+  <p>The format function takes 2 arguments:</p>
+
+  <ul>
+    <li>the value to be formatted</li>
+    <li>the format specifier (a string)</li>
+  </ul>
+
+  <p>The format function <strong>returns a string</strong></p>
+
+</section>
+
+<section>
+  <h3 id="format-function-contintued">Format Function contintued</h3>
+
+  <p>The syntax for the second argument, the format specifier is as follows:</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="n">flags</span><span class="p">][</span><span class="n">width</span><span class="p">][</span><span class="o">.</span><span class="n">precision</span><span class="p">]</span><span class="nb">type</span> </code></pre></figure>
+
+  <ul>
+    <li>some flags we used were &gt; and &lt; to specify where padding would be placed&#8230; and <strong>,</strong> to specify that a comma should be included</li>
+    <li>width is the total width (number of characters returned)</li>
+    <li><strong>.</strong> and precision for number of decimal places</li>
+    <li>type&#8230; which is the type of the value that we&#39;re expecting to format</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="types-for-formatting">Types for Formatting</h3>
+
+  <p>These are some of the possible types that we can use in our format specifier:</p>
+
+  <ul>
+    <li><strong>d</strong> - integer</li>
+    <li><strong>f</strong> - float</li>
+    <li><strong>s</strong> - string</li>
+    <li><strong>%</strong> - <em>percent</em></li>
+  </ul>
+
+  <p>If the type you specify does not match the type of the value of the first argument, you&#39;ll get an error.</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">format</span><span class="p">(</span><span class="s">"2"</span><span class="p">,</span> <span class="s">',d'</span><span class="p">)</span>
+<span class="c">#   ValueError: Unknown format code 'd' for object of type 'str'</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="format-examples">Format Examples</h3>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; format("2", '&gt;10s')
+'         2'
+&gt;&gt;&gt; format("hello", '&gt;10s')
+'     hello'
+&gt;&gt;&gt; format("hello", '&lt;10s')
+'hello     '
+&gt;&gt;&gt; format(2000.213, ',.1f')
+'2,000.2'
+&gt;&gt;&gt; format(2000.213, '&gt;20,.1f')
+'             2,000.2'
+&gt;&gt;&gt; format(.2199, '.2%')
+'21.99%'</code></pre></figure>
+
+</section>
+
+<section>
+  <h2 id="intro-to-programming">Intro to Programming</h2>
+
+</section>
+<section>
+  <h3 id="introductory-material">Introductory Material</h3>
+
+  <ul>
+    <li>mostly for short answer questions</li>
+    <li>read the slides from the first class</li>
+    <li>&#8230;as well as the first chapter</li>
+    <li>know the vocabulary (high level vs low level languages, etc.)</li>
+    <li>binary to decimal and back</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="programs-and-languages">Programs and Languages</h3>
+
+  <p><strong>Define: program</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <p>A sequence of instructions that specifies to a computer actions and computations to be performed</p>
+
+    <p><strong>List 3 differences between programming languages and natural languages?</strong></p>
+
+    <ol>
+      <li>natural languages evolved organically, programming languages are usually synthetic and intentional</li>
+      <li>programming languages are usually unambiguous in meaning, while there is usually room for interpretation in natural languages</li>
+      <li>programming languages are generally more dense; every character is meaningful</li>
+    </ol>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="binary-bits-and-bytes">Binary, Bits, and Bytes</h3>
+
+  <p><strong>What are the possible values that a bit can hold?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <p>0 and 1</p>
+
+    <p><strong>How many bits are in a byte?</strong> &#8594;</p>
+
+    <p>8</p>
+
+    <p><strong>What is 00001111 in decimal?</strong> &#8594;</p>
+
+    <p>15</p>
+
+    <p><strong>What is 2 in binary _ _ _ _ _ _ _ _ ?</strong> &#8594;</p>
+
+    <p>00000010</p>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="more-about-programming-languages">More About Programming Languages!</h3>
+
+  <p><strong>What does a compiler do?</strong></p>
+
+  <div class="incremental">
+
+    <p>It translates a high-level programming language into a low-level language that the computer can execute (our books call this object code)</p>
+
+    <p><strong>What&#39;s the difference between compiled and interpreted languages?</strong></p>
+
+    <p>Languages that have an explicit compilation step are generally thought of as compiled languages.  That is, the workflow for a compiled language is: write code, compile, execute&#8230; rather than just write code and then execute.</p>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="tools">Tools</h3>
+
+  <p><strong>What&#39;s the name of the language we&#39;re using?</strong></p>
+
+  <div class="incremental">
+
+    <p>Python</p>
+
+    <p><strong>What version of Python are we using?</strong></p>
+
+    <p>3</p>
+
+    <p><strong>Is python a high level or low level language?  Why?</strong></p>
+
+    <p>Python is a high-level programming language; it&#39;s meant to be easy to read and write for humans &#8230;</p>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="tools-continued">Tools Continued</h3>
+
+  <p><strong>What extension is used for Python source code files?</strong></p>
+
+  <div class="incremental">
+
+    <p>.py</p>
+
+    <p><strong>What is the name of the text editor / IDE that we use?</strong></p>
+
+    <p>We&#39;re using IDLE as our IDE</p>
+
+    <p><strong>In IDLE, what&#39;s the difference between using the text editor and the interactive shell to execute code?</strong></p>
+
+    <p>The interactive shell executes code as you enter each line; it give you immediate feedback.  For a text editor, you have to save your entire program first before you can run it.</p>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="values-and-types">Values and Types</h2>
+</section>
+
+<section>
+  <h3 id="what-are-values">What are Values?</h3>
+
+  <ul>
+    <li><strong>values</strong> are just data
+      <ul>
+        <li>it can be stored in a variable</li>
+        <li>it can be computed in an expression</li>
+        <li>it can&#39;t be <em>evaluated</em> further (2 + 3 is not a value, because it can be evaluated further)</li>
+      </ul>
+    </li>
+    <li>some examples of values:
+      <ul>
+        <li>-123456</li>
+        <li>&quot;a string is a value&quot;</li>
+        <li>1.00000001</li>
+        <li>True, False</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="literals">Literals</h3>
+
+  <p>The representation of a bare value in code is sometimes called a <strong>literal</strong>.</p>
+
+  <ul>
+    <li>&quot;a string &quot; a <strong>string literal</strong></li>
+    <li>254 - an <strong>integer literal</strong></li>
+    <li>False - a <strong>bool literal</strong></li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="values-can-be-classified-by-data-type">Values can be Classified by Data Type</h3>
+  <p>A <strong>data type</strong> is a set of values.  The type of a value determines how it can be used in expressions.  Sometimes <strong>data type</strong> is also referred to as just <strong>type</strong>&#8230; or <strong>class</strong>.  <strong>Name as many types as you can.</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ol>
+      <li><strong>str</strong> (string) - &quot;yup, a string&quot;</li>
+      <li><strong>bool</strong> (boolean value) - True</li>
+      <li><strong>int</strong> (integer) - 12</li>
+      <li><strong>float</strong> (floating point) - 12.121212</li>
+      <li><strong>complex</strong> (complex numbers) - 1j * 1j (just know that this exists; it won&#39;t be in the exam)</li>
+      <li><strong>range</strong> (an arithmetic sequence of numbers)</li>
+    </ol>
+  </div>
+
+</section>
+
+<section>
+  <h2 id="strings-integers-and-floating-point-numbers">Strings, Integers and Floating Point Numbers</h2>
+</section>
+
+<section>
+  <h3 id="strings">Strings</h3>
+  <ul>
+    <li>a <strong>string</strong> is a sequence of characters (any characters).</li>
+    <li>including spaces and punctuation
+      <ul>
+        <li>and by spaces, I mean spaces, tabs, newlines, etc</li>
+        <li>for example &quot; &quot; is a string!</li>
+        <li>so is &quot;&quot; (this, however, is an <em>empty</em> string)</li>
+      </ul>
+    </li>
+    <li>are <strong>delimited</strong> by quotation marks - must <strong>start and end</strong> with quotes!</li>
+    <li>(btw, a <strong>delimiter</strong> is just a character or characters that marks a boundary&#8230; or distinguishes a value from other values)</li>
+    <li>for example &quot;foo&quot;, &#39;bar&#39;, and &quot;"&quot;baz&quot;&quot;&quot; are all strings</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="unbalanced-quotes">Unbalanced Quotes</h3>
+  <p><strong>I&#39;m sure you know by now what happens if you have an extra quote or a missing quote. &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; "oops " I quoted again"
+SyntaxError: invalid syntax</code></pre></figure>
+
+    <ul>
+      <li>if you don&#39;t have matching start and end quotes (<strong>unbalanced quotes</strong>)</li>
+      <li>if you forget to close your quotes (you have a start quote, but no end)</li>
+      <li>&#8230; you&#39;ll also get a syntax error</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="there-are-three-ways-to-quote-strings">There Are Three Ways to Quote Strings</h3>
+
+  <p><strong>What are the three ways to quote strings?</strong></p>
+
+  <div class="incremental">
+    <ol>
+      <li>double quotes - &quot;</li>
+      <li>single quotes - &#39;</li>
+      <li>triple double quotes <strong>for multiline strings</strong> - &quot;&quot;&quot;</li>
+    </ol>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"double quoted string"</span>
+<span class="s">'single quoted string'</span>
+<span class="s">"""more than
+one line.  omg!"""</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="when-would-you-use-one-over-the-other">When Would You Use One Over the Other?</h3>
+
+  <ul>
+    <li>single or double quotes allow you to put in single or double quotes into a string without needing to <strong>escape</strong> them
+      <ul>
+        <li>&quot;I&#39;m&quot;</li>
+        <li>&#39;use a &quot; to delimit a string&#39;</li>
+      </ul>
+    </li>
+    <li>triple double quotes allow you to span multiple lines (you can&#39;t span multiple lines with single or double quotes)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="constructing-strings--string-operators">Constructing Strings / String Operators</h3>
+
+  <p><strong>So far, we&#39;ve seen a couple of methods of putting strings together.  What are they?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>string <strong>concatenation</strong> - adding two strings together using the <strong>+</strong> symbol
+        <ul>
+          <li><strong>concatenation</strong> gives back a string</li>
+        </ul>
+      </li>
+      <li>string <strong>formatting</strong> - creating a string with place holders where variables are plugged in</li>
+    </ul>
+  </div>
+
+</section>
+
+<section>
+  <h3 id="whats-string-concatenation">What&#39;s String Concatenation?</h3>
+
+  <p><strong>String concatenation works intuitively.  Describe what it is.</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>+</strong> adds two strings together</li>
+      <li>both arguments must be strings</li>
+      <li>if an operand is not a string, convert it to one using <strong>str</strong></li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#  syntax error</span>
+<span class="s">"lucky number "</span> <span class="o">+</span> <span class="mi">9</span>
+
+<span class="c">#  will work fine</span>
+<span class="s">"lucky number "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="string-formatting">String Formatting</h3>
+
+  <p><strong>What is string formatting?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p>Allowing placeholders in a string to accommodate variable / value substitution by using the % operator.</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">greeting</span> <span class="o">=</span> <span class="s">"Hi.  My name is </span><span class="si">%</span><span class="s">s and I have </span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s"</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">"Joe"</span>
+<span class="n">number_of_pets</span> <span class="o">=</span> <span class="mi">314</span>
+<span class="n">pet</span> <span class="o">=</span> <span class="s">"aardvarks"</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">greeting</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">number_of_pets</span><span class="p">,</span> <span class="n">pet</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="string-multiplication">String Multiplication</h3>
+
+  <p>You can also use the <strong>*</strong> operator to multiply a string by an int (note that this will give an error if you use a float instead of an int!)</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">"aardvark "</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="c">#  prints out: aardvark aardvark aardvark  </span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="string-operators-at-a-glance">String Operators at a Glance</h3>
+
+  <p>These are the string operators that we learned (note - they all return strings, but the types of arguments may vary depending on operator).  <strong>What were they again? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ol>
+      <li><strong>+</strong> - concatenation - takes two strings (error otherwise) &#8594; returns a string</li>
+      <li><strong>%</strong> - formatting - takes a string on the left and a comma separated list of values on the right</li>
+      <li><strong>*</strong> - multiplication - takes a string and int (error otherwise, even if it&#39;s another numeric type), repeats the string that number of times &#8594; returns a string</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h3 id="one-last-thing-regarding-strings-escape">One Last Thing Regarding Strings (Escape!)</h3>
+  <p><strong>What do we do if we need a character that has special meaning in a string, such as a single or double quote?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>we can use the backslash character before the special character</li>
+      <li>for quotes, we can use mixed quotes (embed single quotes in a double quoted string)!</li>
+      <li>we can also create newlines using <strong>\n</strong></li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">"escaping using </span><span class="se">\"</span><span class="s">backslash</span><span class="se">\"</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"single  quotes ''''"</span><span class="p">)</span> 
+<span class="k">print</span><span class="p">(</span><span class="s">"""some "double quotes"""")</span></code></pre></figure>
+
+  </div>
+
+</section>
+
+<section>
+  <h3 id="btw-does-anyone-remember-comments">BTW, Does Anyone Remember Comments?</h3>
+  <p><strong>What are the two ways that we can write in a comment?</strong></p>
+
+  <div class="incremental">
+
+    <ul>
+      <li>prefixed with the # token (either before code or on the same line after code</li>
+      <li><strong>or</strong> surrounded by triple double quotes as a bare string literal</li>
+    </ul>
+
+    <p>These are both comments: &#8594;</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">counter</span> <span class="o">=</span> <span class="mi">5</span>     <span class="c"># this is a comment that's on the same line as code</span>
+<span class="s">"""
+this one
+is a comment too
+"""</span></code></pre></figure>
+
+  </div>
+
+</section>
+
+<section>
+  <h3 id="ints-and-floats">ints and floats</h3>
+
+  <p>Integers and floating point numbers are both numeric types.</p>
+
+  <ul>
+    <li>ints and floats are just numbers</li>
+    <li>(no quotes needed&#8230; though a decimal point will automatically make a value into a float)</li>
+    <li><strong>however - Don&#39;t use commas!  They don&#39;t mean what you expect.</strong> &#8594;</li>
+    <li>sometimes ints and floats can be expressed with scientific notation (though we won&#39;t cover this in the exam)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="integers">Integers</h3>
+
+  <p><strong>int</strong> - integers</p>
+
+  <ul>
+    <li>whole number - negative or positive</li>
+    <li>examples: 1751, -95</li>
+    <li>&quot;unlimited&quot; (arbitrarily high)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="floating-point-numbers">Floating Point Numbers</h3>
+
+  <p><strong>float</strong>  - floating point numbers</p>
+
+  <ul>
+    <li>real number - contains decimal point</li>
+    <li>10.00, 491.545532111</li>
+    <li>may overflow</li>
+    <li>small and large numbers expressed in scientific notation (though we won&#39;t cover this in the exam)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="operators">Operators</h3>
+  <ul>
+    <li>addition, multiplication and subtraction: <strong>+</strong>, <strong>*</strong>, and <strong>-</strong></li>
+    <li>division: <strong>/</strong> (results in a float even if two integers - ex 10 / 2 &#8594; 5.0)</li>
+    <li>integer division: <strong>//</strong> (next integer to the left - ex -23 // 3 &#8594; -8)</li>
+    <li>modulo: <strong>%</strong> (ex 10 % 7 &#8594; 3)</li>
+    <li>exponentiation: <strong>**</strong> (ex 2 ** 3 &#8594; 8)</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="numeric-operator-precedence">Numeric Operator Precedence</h3>
+
+  <p><strong>What order are these numeric operators evaluated in? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>as you would expect - follows PEMDAS</li>
+      <li>(parentheses, exponentiation, multiplication, division, addition, subtraciton)</li>
+      <li><strong>what would (5 + 15) * 2 ** 2 + 20 result in? &#8594;</strong></li>
+    </ul>
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; (5 + 15) * 2 ** 2 + 20
+100</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="numeric-operators-and-type-compatibility">Numeric Operators and Type Compatibility</h3>
+
+  <ul>
+    <li>most of these numeric operators will only work with numeric types (float, int)</li>
+    <li>if you try to add, subtract, divide with an numeric type and a string, you will get an error</li>
+    <li>always use <strong>int()</strong> or <strong>float()</strong> to convert your string to a numeric type if you&#39;re going to do calculations</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="results-of-the-following-operations">Results of the Following Operations</h3>
+
+  <p><strong>What are the resulting values and types after evaluating the following expressions? &#8594;</strong></p>
+
+  <ul>
+    <li>28 / 7</li>
+    <li>28 // 10</li>
+    <li>28 % 10</li>
+    <li>28 / &quot;7&quot;</li>
+  </ul>
+
+  <div class="incremental">
+    <ul>
+      <li>4.0 - float</li>
+      <li>2 - int</li>
+      <li>8 - int</li>
+      <li>Error</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="implementing-a-formula">Implementing a Formula</h3>
+
+  <p>An obvious use case for these numeric operations is implementing a formula.</p>
+
+  <p>For example: <strong>find the hypotenuse of a right triangle using this formula&#8230; h = &#8730;(x&#178; + y&#178;), where x is 8 and y is 6 &#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span>
+<span class="c">#  you can also use (some value) ** 0.5</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="a-shortcut">A Shortcut</h3>
+
+  <p>There&#39;s a shortcut to add a value to an existing variable (the same exists for subtraction as well).  <strong>What is the syntactic sugar that we use to increment and decrement variables?</strong> &#8594;</p>
+
+  <div class="incremental">
+    <p><strong>-=</strong> and <strong>+=</strong> are shortcuts for decrementing or incrementing a variable&#8230;</p>
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c">#  increment a by some value, just set the variable, a, equal to a + 5</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">5</span>
+
+<span class="c">#  or... alternatively, use a shortcut +=:</span>
+<span class="n">a</span> <span class="o">+=</span> <span class="mi">5</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="bools-and-range-objects">Bools and Range Objects</h2>
+</section>
+
+<section>
+  <h3 id="the-bool-type">The bool Type</h3>
+  <p>Python has a <strong>bool</strong> type to represent Boolean values.  <strong>Tell me everything you know about the bool type.</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li>True or False</li>
+      <li>note the uppercase &#39;T&#39; and &#39;F&#39;</li>
+      <li>just like other values, can be assigned to variables</li>
+      <li>bools can be combined into expressions using <strong>logical operators</strong></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="range-objects">Range Objects</h3>
+  <p>One last type / class / kind of data that we&#39;ve encountered was a <strong>range</strong> object. <strong>Describe what a range object is.</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>range</strong> objects represent an arithmetic sequence.</li>
+      <li>they are <strong>iterable</strong> and can be used to drive a for loop</li>
+      <li>they are created using the <strong>range</strong> function</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="a-guessing-game">A Guessing Game</h3>
+  <aside>After evaluation, what type is it?</aside>
+
+  <ol>
+    <li><strong>1</strong></li>
+    <li><strong>1.0</strong></li>
+    <li><strong>&quot;1&quot;</strong></li>
+    <li><strong>&quot;"&quot;1.0&quot;"&quot;</strong></li>
+    <li><strong>1.111</strong></li>
+    <li><strong>&#39;1,111&#39;</strong></li>
+    <li><strong>True</strong></li>
+    <li><strong>range(5)</strong></li>
+    <li><strong>1 + 5</strong></li>
+    <li><strong>&quot;hello&quot; + &quot; my friends!!!&quot;</strong></li>
+  </ol>
+
+</section>
+
+<section>
+  <h3 id="a-guessing-game-answers">A Guessing Game (Answers)</h3>
+  <aside>After evaluation, what type is it?</aside>
+
+  <ol>
+    <li><strong>1</strong> - int</li>
+    <li><strong>1.0</strong> - float</li>
+    <li><strong>&quot;1&quot;</strong> - str</li>
+    <li><strong>&quot;"&quot;1.0&quot;"&quot;</strong> - str</li>
+    <li><strong>1.111</strong> - float</li>
+    <li><strong>&#39;1,111&#39;</strong> - str</li>
+    <li><strong>True</strong> - bool</li>
+    <li><strong>range(5)</strong> - range object</li>
+    <li><strong>1 + 5</strong> - int</li>
+    <li><strong>&quot;hello&quot; + &quot; my friends!!!&quot;</strong></li>
+  </ol>
+
+</section>
+
+<section>
+  <h2 id="built-in-functions">Built-in Functions</h2>
+</section>
+
+<section>
+  <h3 id="conversion-functions">Conversion Functions</h3>
+
+  <p>For each type that we learned, there&#39;s a function with the same name that will create a value of that type.  They <strong>always</strong> return their <em>associated type</em>!</p>
+
+  <ul>
+    <li><strong>int()</strong></li>
+    <li><strong>str()</strong></li>
+    <li><strong>float()</strong></li>
+    <li><strong>bool()</strong></li>
+  </ul>
+
+  <p><strong>range()</strong> is special in that it can take 1, 2 or 3 parameters to create a range object.</p>
+
+</section>
+
+<section>
+  <h3 id="conversion-functions-continued">Conversion Functions Continued</h3>
+
+  <ul>
+    <li>note that <strong>int()</strong> and <strong>float()</strong> will only accept int and float <em>&quot;like&quot;</em> values&#8230; &quot;5&quot; will be converted (even with spaces), but &quot;five&quot; will cause an error</li>
+    <li>these can be used to avoid errors when using numeric or string operators</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">num</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="s">" red balloons"</span><span class="p">)</span></code></pre></figure>
+
+  <ul>
+    <li>remember - you don&#39;t have to convert if your value is already the type you&#39;re converting to</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">num</span> <span class="o">=</span> <span class="s">"99"</span> <span class="c"># no need to convert</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num</span> <span class="o">+</span> <span class="s">" red balloons"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="other-built-in-functions">Other Built-In Functions</h3>
+
+  <p><strong>Name some built-in functions!</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>print</strong> - outputs value to screen; returns nothing</li>
+      <li><strong>input</strong> - prompts user for input; returns a str</li>
+      <li><strong>type</strong> - returns the type of the value passed in; returns a type object</li>
+      <li><strong>round</strong> - rounds a number; returns an int (when called with one argument) &#8230;(we used this in a homework)</li>
+      <li><strong>abs</strong> - absolute value; returns a numeric type</li>
+      <li>obv, all of the conversion functions</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="a-word-about-input">A Word About input</h3>
+
+  <ul>
+    <li>it takes <strong>one argument</strong>&#8230; which is what gets displayed to the user (the prompt)</li>
+    <li>the program will wait until the user provides input</li>
+    <li>input returns a string that represents the user&#39;s input</li>
+    <li>even if the input looks numeric (say 234)</li>
+    <li><strong>it still returns a string</strong> (in the previous case &quot;234&quot;)</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="variables-and-variable-naming">Variables and Variable Naming</h2>
+</section>
+
+<section>
+  <h3 id="variables">Variables</h3>
+
+  <ul>
+    <li><strong>variable</strong> - name that refers to a value</li>
+    <li>this terminology is important; very specific&#8230; <strong>name</strong> and <strong>value</strong></li>
+    <li>we can now use that name instead of the explicit value</li>
+    <li>the equals sign, <strong>=</strong> is the <strong>assignment token</strong> or <strong>assignment operator</strong> that we use to bind a name to a value
+      <ul>
+        <li>name on left</li>
+        <li>value on right</li>
+      </ul>
+    </li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">some_variable_name</span> <span class="o">=</span> <span class="s">"a value"</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="assignment-vs-equality">Assignment vs Equality</h3>
+
+  <p>Don&#39;t confuse the assignment operator with the equality operator! <strong>What&#39;s the difference between the two?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">#  one equal sign is assignment
+a = 1  
+
+#  two equal signs mean test for equality
+a == 1</code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="reassignment--rebinding">Reassignment / Rebinding</h3>
+
+  <ul>
+    <li>you can reassign or rebind</li>
+    <li><strong>let&#39;s see that in action</strong> &#8594;</li>
+  </ul>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; a = 23
+&gt;&gt;&gt; a
+23
+&gt;&gt;&gt; a = "foo"</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="while-were-on-the-subject-multiple-assignment">While We&#39;re on the Subject&#8230; Multiple Assignment</h3>
+
+  <p>You can assign multiple variables in one line.</p>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; a, b = 50, 60
+&gt;&gt;&gt; a
+50
+&gt;&gt;&gt; b
+60</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="naming-variables">Naming Variables</h3>
+  <ul>
+    <li>you can make them as long as you want&#8230; though I suppose it could crash your computer</li>
+    <li>names can only consist of numbers, letters and/or underscores</li>
+    <li>the first character has to be a letter or an underscore</li>
+    <li><strong>case sensitive</strong> - case matters</li>
+    <li>the name can&#39;t be a keyword or reserved word</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="am-i-a-valid-name">Am I a Valid Name?</h3>
+
+  <p><strong>Are these valid variable names? &#8594;</strong></p>
+
+  <ul>
+    <li>_foo</li>
+    <li>1_foo</li>
+    <li>foo</li>
+    <li>1foo</li>
+    <li>$foo</li>
+    <li>foo$</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="am-i-a-valid-name-answers">Am I a Valid Name (Answers)?</h3>
+
+  <p><strong>Are these valid variable names? &#8594;</strong></p>
+
+  <ul>
+    <li>_foo - yes</li>
+    <li>1_foo - no</li>
+    <li>foo - yes</li>
+    <li>1foo - no</li>
+    <li>$foo - no</li>
+    <li>foo$ - no</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="comparison-operators-boolean-operators">Comparison Operators, Boolean Operators</h2>
+</section>
+
+<section>
+  <h3 id="comparison-operators">Comparison Operators</h3>
+
+  <p><strong>Name six comparison operators?&#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li><strong>==</strong> - equals (can be called logical equivalence or equality operator)</li>
+      <li><strong>!=</strong> - not equal</li>
+      <li><strong>&gt;</strong> - greater than</li>
+      <li><strong>&lt;</strong> - less than</li>
+      <li><strong>&gt;=</strong> - greater than / equal</li>
+      <li><strong>&lt;=</strong> - less than / equal</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="comparison-operators-continued">Comparison Operators Continued</h3>
+  <ul>
+    <li>again - these operators always return a bool</li>
+    <li>these operators do what you would expect
+      <ul>
+        <li><strong>==</strong> - returns True if both sides are equal &#8594;</li>
+        <li><strong>!=</strong> - returns True if both sides are not equal &#8594;</li>
+        <li><strong>&gt;</strong>, <strong>&lt;</strong>, <strong>&gt;=</strong>, <strong>&lt;=</strong> - returns True if value on the left is greater than, less than, greater than / equal, or less than equal to the value on the right &#8594;</li>
+      </ul>
+    </li>
+    <li>remember that the equal sign is always second for these operators &gt;=, &lt;=</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="comparison-operators-and-different-types">Comparison Operators and Different Types</h3>
+  <ul>
+    <li>objects of different types, except different numeric types, are never equal
+      <ul>
+        <li>equals (<strong>==</strong>) will always return False for different types &#8594;</li>
+        <li>not equals (<strong>!=</strong>) will always return True for different types &#8594;</li>
+      </ul>
+    </li>
+    <li>the <strong>&lt;</strong>, <strong>&lt;=</strong>, <strong>&gt;</strong> and <strong>&gt;=</strong> operators&#8230;
+      <ul>
+        <li>will raise a TypeError if the objects are of different types that cannot be compared &#8594;</li>
+        <li>will happily compare numeric types (for example comparing floats and ints works as you&#39;d expect)! &#8594;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="what-are-logical-operators">What are Logical Operators?</h3>
+
+  <p><strong>Logical Operators are operators that combine Boolean values.</strong></p>
+
+  <ul>
+    <li>always return another Boolean value.</li>
+    <li>can be used to create more complex Boolean expressions.</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="three-logical-operators">Three Logical Operators:</h3>
+
+  <p><strong>Name 3 logical operators, how many operands they take, and what operands they need to return True.</strong> &#8594;</p>
+
+  <div class="incremental">
+    <ol>
+      <li><strong>and</strong> -
+        <ul>
+          <li>takes two operands, one on each side</li>
+          <li>to return True, both sides of the operator must evaluate to True &#8594;</li>
+        </ul>
+      </li>
+      <li><strong>or</strong> -
+        <ul>
+          <li>takes two operands, one on each side</li>
+          <li>to return True,at least one side of the operator must evaluate to True &#8594;</li>
+        </ul>
+      </li>
+      <li><strong>not</strong> -
+        <ul>
+          <li>only takes one operand to the right</li>
+          <li>to return True, the original value on the right must evaluate to False &#8594;</li>
+          <li>two nots cancel eachother out (fun!) &#8594;</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h3 id="logical-operators-in-action">Logical Operators <em>in Action</em></h3>
+
+  <figure class="highlight"><pre><code class="language-pycon" data-lang="pycon">&gt;&gt;&gt; True and False
+False
+&gt;&gt;&gt; True and True
+True
+&gt;&gt;&gt; True or False
+True
+&gt;&gt;&gt; not True
+False
+&gt;&gt;&gt; not not True
+True</code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="truth-table---and">Truth Table - AND</h3>
+
+  <p><strong>and</strong> takes two operands.  Each operand can be True or False (or will evaluate to True or False!).</p>
+
+  <p><strong>Can you guess how many possible combinations ther are for these two operands?</strong>  <strong>What will the Truth Table look like?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+(using p and q to represent the operands
+...and t and f for true and false)
+ p | q | p and q
+----------------
+ f | f | f
+ f | t | f
+ t | f | f
+ t | t | t
+"""</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="truth-table---or">Truth Table - OR</h3>
+
+  <p>Let&#39;s fill out a truth table for <strong>or</strong>! &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+(using p and q to represent the operands
+...and t and f for true and false)
+ p | q | p or q
+----------------
+ f | f | f
+ f | t | t
+ t | f | t
+ t | t | t
+"""</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="how-about-something-more-complicated">How About Something More Complicated?</h3>
+
+  <p>Let&#39;s fill out a truth table for <strong>p and not q and r</strong>! &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+(using p and q to represent the operands
+...and t and f for true and false)
+ p | q | r | p and not q and r
+-----------------------------
+ t | t | t | f
+ t | t | f | f
+ t | f | t | t
+ t | f | f | f
+ f | t | t | f
+ f | t | f | f
+ f | f | t | f
+ f | f | f | f
+"""</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-evaluate-some-simple-boolean-expressions">Let&#39;s Evaluate Some Simple Boolean Expressions</h3>
+
+  <ul>
+    <li>True and False &#8594;</li>
+    <li>True and not False &#8594;</li>
+    <li>True or False &#8594;</li>
+    <li>True or not False &#8594;</li>
+    <li>False or False &#8594;</li>
+    <li>not False and not False &#8594;</li>
+  </ul>
+
+</section>
+
+<section>
+  <h3 id="chaining-boolean-comparison-and-other-operators">Chaining Boolean, Comparison, and Other Operators</h3>
+  <p>You can chain together operators to make complex Boolean expressions!</p>
+
+  <ul>
+    <li>Boolean expressions can involve Boolean, comparison, and other operators</li>
+    <li>they can be arbitrarily complex!  (don&#39;t do that)</li>
+  </ul>
+
+  <p><strong>What do you think this evaluates to?</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">-</span><span class="mi">10</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">100</span> <span class="ow">or</span> <span class="s">"foo"</span> <span class="o">==</span> <span class="s">"bar"</span> <span class="ow">and</span> <span class="mi">100</span> <span class="o">&gt;=</span> <span class="mi">100</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="bp">True</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="order-of-operations--operator-precedence">Order of Operations / Operator Precedence</h3>
+
+  <p><a href="http://docs.python.org/py3k/reference/expressions.html#summary">A summary can be found in the official documentation for Python 3</a>, but here&#39;s the short version:</p>
+
+  <ul>
+    <li>parentheses are evaluated first (obv)</li>
+    <li>numeric / string operations (in turn, are also ordered)</li>
+    <li>comparison operations (==, !=, &gt;, &lt;, &gt;=, &gt;=)</li>
+    <li>not</li>
+    <li>and</li>
+    <li>or</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="conditionals">Conditionals</h2>
+</section>
+
+<section>
+  <h3 id="anatomy-of-an-if-statement">Anatomy of an If Statement</h3>
+
+  <p><strong>Write an if statement testing if a and b are <em>not</em> equal.  If they&#39;re not equal, print the value of a and b twice.</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span></code></pre></figure>
+
+  <div class="incremental">
+    <ul>
+      <li>begin with keyword <strong>if</strong></li>
+      <li>condition</li>
+      <li>colon - ends the condition / marks that a block of code is about to come up</li>
+      <li>if + condition + colon usually is considered the <em>if-statement header</em></li>
+      <li>body of if statement ends when indentation goes back one level</li>
+      <li>blank lines don&#39;t count as ending a block of code!</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-see-that-again">Let&#39;s See That Again</h3>
+  <aside>Now With More Blank Lines</aside>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">:</span>
+	<span class="c"># totally ok?  yes!</span>
+	<span class="c"># but why?</span>
+	<span class="c"># perhaps when done more reasonably, readability</span>
+	<span class="k">print</span> <span class="n">a</span>
+	<span class="k">print</span> <span class="n">a</span>
+
+
+	<span class="k">print</span> <span class="n">b</span>
+
+	<span class="k">print</span> <span class="n">b</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="oh-yeah-else-what">Oh Yeah, Else What?</h3>
+
+  <p>We can use <strong>else</strong> to execute code if the original condition was not met</p>
+
+  <ul>
+    <li>go back one level of indentation to mark that the previous code block has ended</li>
+    <li>keyword <strong>else</strong></li>
+    <li>body - indented, body ends when indentation goes back one level</li>
+    <li>not required, obvs</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="what-about-multiple-chained-conditions">What About Multiple Chained Conditions?</h3>
+  <p>What if <strong>else</strong> is not fine-grained enough?  For example, how about a program that asks for cake and handles a yes, no, or anything other than&#8230;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">"""
+Do you want cake?
+&gt; yes
+Here, have some cake.
+
+Do you want cake?
+&gt; no
+No cake for you.
+
+Do you want cake?
+&gt; blearghhh
+I do not understand.
+"""</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="consecutive-ifs">Consecutive Ifs</h3>
+  <p><strong>One way to do it is consecutive if statements&#8230;</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'yes'</span> <span class="ow">and</span> <span class="n">answer</span> <span class="o">!=</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="else-if-elif">Else If (elif)</h3>
+
+  <p>We can use <strong>elif</strong> to chain a series of conditions, where only one path of code will be executed</p>
+
+  <ul>
+    <li>if statement like usual</li>
+    <li>go back one level of indentation to mark that the previous code block has ended</li>
+    <li>keyword <strong>elif</strong></li>
+    <li>condition</li>
+    <li>colon</li>
+    <li>body - indented, body ends when indentation goes back one level</li>
+    <li>not required obv</li>
+    <li>even if more than one true, only the first true executes!</li>
+    <li>can add an else at the end</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="elif-example">elif Example</h3>
+  <aside>Let's have some more cake...</aside>
+  <p><strong>How would we redo the cake exercise with elif?</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="how-to-order-conditions">How to Order Conditions</h3>
+
+  <ul>
+    <li>if more than one condition in a series of elif&#39;s is true
+      <ul>
+        <li>only the first true condition is executed!</li>
+        <li>other are skipped, including else</li>
+      </ul>
+    </li>
+    <li>ordering conditions so that the broadest ones are evaluated last may help avoid this issue</li>
+    <li>be careful of conditions that never get evaluated
+      <ul>
+        <li>an above condition may already account for it</li>
+        <li>here&#39;s an example&#8230;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="how-to-order-conditions-continued">How to Order Conditions Continued!</h3>
+
+  <p>Here&#39;s a contrived exercise:</p>
+
+  <ul>
+    <li>determine whether a number is 101 or if it&#39;s greater than 100</li>
+    <li>if it&#39;s 101, it should only print out that it&#39;s &quot;exactly 101&quot; (it shouldn&#39;t print out greater than 100)</li>
+  </ul>
+
+  <p>Here&#39;s an implementation.  <strong>What gets printed if n = 200?  What gets printed if n = 101?</strong>   &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"more than 100"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">101</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"exactly 101"</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="ordering-and-fizz-buzz">Ordering and Fizz Buzz</h3>
+
+  <ul>
+    <li><a href="http://c2.com/cgi/wiki?FizzBuzzTest">fizz buzz</a></li>
+    <li>print out 1 to 100 &#8230;with the following exceptions:</li>
+    <li>for multiples of three, print out &quot;Fizz&quot; instead of the number</li>
+    <li>for multiples of five, print out &quot;Buzz&quot; instead of the number</li>
+    <li>for multiples of both three and five print “FizzBuzz”</li>
+    <li>example output, next slide, plz!</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="fizzbuzz-output">FizzBuzz Output</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="mi">1</span>
+<span class="mi">2</span>
+<span class="n">Fizz</span>
+<span class="mi">4</span>
+<span class="n">Buzz</span>
+<span class="n">Fizz</span>
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="mi">14</span>
+<span class="n">FizzBuzz</span>
+<span class="mi">16</span>
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="mi">98</span>
+<span class="n">Fizz</span>
+<span class="n">Buzz</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="fizzbuzz-solution">FizzBuzz Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"FizzBuzz"</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Fizz"</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"Buzz"</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="another-gotcha">Another Gotcha!</h3>
+  <aside>And Back to That Cake Thing</aside>
+
+  <p><strong>Will this code work??</strong> &#8594;</p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+    <p>It does something unexpected!  If the user enters yes, we get both &quot;Here, have some cake&quot; <strong>and</strong> &quot;I do not understand.&quot;  Be careful when using consecutive <strong>ifs</strong></p>
+  </div>
+</section>
+
+<section>
+  <h3 id="nesting-if-statements">Nesting If Statements</h3>
+
+  <ul>
+    <li>it behaves as you&#39;d expect</li>
+    <li>remember to get indentation right</li>
+    <li>if there are multiple elif&#39;s or else&#39;s,  you can use indentation to see which initial if statement they belong to</li>
+    <li>this works for any combination of if, elif and else</li>
+    <li>note that sometimes nested if statements are equivalent to and</li>
+    <li>best to simplify - that is, less nesting, better</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="nested-if-statements-and-and">Nested If Statements and And</h3>
+
+  <p><strong>How would you simplify this? &#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">:</span>
+		<span class="k">print</span><span class="p">(</span><span class="s">"I'm in here"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"We're out there"</span><span class="p">)</span></code></pre></figure>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">25</span> <span class="ow">and</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"I'm in here"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"We're out there"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="nested-if-statements-example">Nested If Statements Example</h3>
+
+  <p><strong>We could have impemented the cake exercise using nested if statements.</strong> &#8594;</p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want cake?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Here, have some cake."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'no'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"No cake for you."</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"I do not understand."</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h2 id="modules">Modules</h2>
+</section>
+
+<section>
+  <h3 id="we-looked-at-3-modules">We Looked at 3 Modules</h3>
+
+  <p><strong>What are some modules we&#39;ve used, and what do they do? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>math</li>
+      <li>random</li>
+      <li>sys (we didn&#39;t realize use sys that much, though&#8230;)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="so-what-can-these-modules-do">So&#8230; What Can These Modules Do?</h3>
+
+  <ul>
+    <li>math
+      <ul>
+        <li><strong>pi</strong> - a constant that contains the value of pi&#8594;</li>
+        <li><strong>floor</strong>(x) - returns the smallest integer less than or equal to x&#8594;</li>
+        <li><strong>ceil</strong>(x) - returns the smallest integer greater than or equal to x&#8594;</li>
+        <li><strong>sqrt</strong>(x) - returns the square root of x&#8594;</li>
+        <li><strong>cos</strong>(x) - returns the cosine of x radians &#8594;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="so-what-can-these-modules-do-continued">So&#8230; What Can These Modules Do (Continued)?</h3>
+  <ul>
+    <li>random
+      <ul>
+        <li><strong>random</strong>() - return a random float that&#39;s between 0 and 1&#8594;</li>
+        <li><strong>randint</strong>(a, b) - returns a random int that&#39;s a &lt;= n &lt;= b&#8594;</li>
+      </ul>
+    </li>
+    <li>sys
+      <ul>
+        <li><strong>exit</strong>([arg])_ - exits form python&#8594;</li>
+        <li><strong>version</strong> - a constant that contains the version of Python&#8594;</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="iteration">Iteration</h2>
+</section>
+
+<section>
+  <h3 id="sample-while-loop">Sample While Loop</h3>
+
+  <p><strong>Write a program that continually asks the user for numbers, and asks them if they&#39;d like to keep going.  In the end, it should output the average of all of the numbers entered&#8594;</strong></p>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">I</span><span class="s">'ll calculate the average for you!</span><span class="err">
+</span><span class="s">Current total: 0</span><span class="err">
+</span><span class="s">Numbers summed: 0</span><span class="err">
+</span><span class="s">Please enter a number to add</span><span class="err">
+</span><span class="s">&gt; 10</span><span class="err">
+</span><span class="s">Do you want to continue adding numbers (yes/no)?</span><span class="err">
+</span><span class="s">&gt; yes</span><span class="err">
+</span><span class="s">Current total: 10</span><span class="err">
+</span><span class="s">Numbers summed: 1</span><span class="err">
+</span><span class="s">Please enter a number to add</span><span class="err">
+</span><span class="s">&gt; 12</span><span class="err">
+</span><span class="s">Do you want to continue adding numbers (yes/no)?</span><span class="err">
+</span><span class="s">&gt; no</span><span class="err">
+</span><span class="s">The average is 11.0</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="a-potential-solution">A Potential Solution</h3>
+
+  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="s">'yes'</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"I'll calculate the average for you!"</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">'yes'</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Current total: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">total</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Numbers summed: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s">"Please enter a number to add</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">))</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Do you want to continue adding numbers (yes/no)?</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"The average is "</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">total</span> <span class="o">/</span> <span class="n">count</span><span class="p">))</span></code></pre></figure>
+
+</section>
+
+<section>
+  <h3 id="other-while-loop-exercises">Other While Loop Exercises</h3>
+
+  <ul>
+    <li>simulate a blackjack AI by continuing to <em>hit</em> until some threshold that&#39;s close to 21</li>
+    <li>a number guessing game</li>
+    <li>rock paper scissors until # of wins is greater than 0</li>
+    <li>simulate password protection</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="counting-dice-for-loop-example">Counting Dice (For Loop Example)</h3>
+
+  <p><strong>Roll a die 1000 times; count how many times a one is rolled!  Print out the result.  Use a for loop.&#8594;</strong></p>
+
+  <div class="incremental">
+
+    <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">ones</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">):</span>
+	<span class="n">roll</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">roll</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="n">ones</span> <span class="o">=</span> <span class="n">ones</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ones</span><span class="p">)</span> <span class="o">+</span> <span class="s">" of 1000 rolls were ones"</span><span class="p">)</span></code></pre></figure>
+
+  </div>
+</section>
+
+<section>
+  <h3 id="other-for-loop-exercises">Other For Loop Exercises</h3>
+
+  <ul>
+    <li>sing 99 bottles of beer!</li>
+    <li>number guessing game with limited number of guesses (use break for win!)</li>
+    <li>input that affects range&#8230; say hello x number of times&#8230;</li>
+  </ul>
+</section>
+
+<section>
+  <h3 id="for-loops">For Loops&#8230;</h3>
+
+  <p><strong>When should you use them? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>you know ahead of time how many iterations you&#39;ll have to go through</li>
+      <li>you have to go through every element in an <em>iterable</em> object
+        <ul>
+          <li>every number in a sequence of numbers</li>
+          <li>every <em>item</em> in a list</li>
+          <li>every character in a string</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="while-loops">While Loops</h3>
+
+  <p><strong>When should you use them? &#8594;</strong></p>
+
+  <div class="incremental">
+    <ul>
+      <li>when you don&#39;t know how many iterations you&#39;ll have to go through!</li>
+      <li>when you must repeat something until some condition is met</li>
+      <li>generally not a great option for counting (need to keep track of counter separately)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3 id="lets-try-using-both">Let&#39;s Try Using Both&#8230;</h3>
+
+  <ul>
+    <li>count to 0 to 25 by 5&#39;s
+      <ul>
+        <li>implement using while</li>
+        <li>implement using for</li>
+      </ul>
+    </li>
+    <li>print out a series of numbers, each randomly chosen from (1 through 10) that add up to 50 (you can go over)
+      <ul>
+        <li>implement using while</li>
+        <li>implement using for</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+
+<div id="progress-bar"></div>
+<script src="../../resources/js/slides.js"></script>
+<script src="../../resources/js/jquery-2.0.3.min.js"></script>
+<div id='slide-menu'>
+<!--<a href='#' id='css-switch'>Print Version</a> | <a href='#' id='css-switch'>Notes</a>-->
+</div>
+<script>
+jQuery.noConflict();
+
+function loadPrintStyles() {
+    jQuery("link[href^='../../resources/css/slides.css']").attr('href','../../resources/css/print.css');
+    var b = document.body;
+    var transform = 'scale(1)';
+    b.style.WebkitTransform = transform;
+    b.style.MozTransform = transform;
+    b.style.OTransform = transform;
+    b.style.msTransform = transform;
+    b.style.transform = transform;
+    return false;
+}
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=?([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return undefined;
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(window).load(function(event) {
+
+/*
+	jQuery('#css-switch').click(function (){
+		loadPrintStyles();
+	});
+*/
+
+	var printVersion = getParameterByName('print');
+	if(typeof(printVersion) != 'undefined' ) {
+		loadPrintStyles();
+	} else {
+		initSlides();
+	}
+
+})
+</script>
+</body>
+</html>
