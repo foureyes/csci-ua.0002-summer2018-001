@@ -92,7 +92,7 @@ Schedule & Notes
 * Errors
 * Debugging
 
-</article> {% comment %}{% include classes/class-03.markdown %}{% endcomment %} </div> </section> 
+</article> {% include classes/class-03.markdown %} </div> </section> 
 
 <a name="class4"></a><!---------- start --------------->
 
