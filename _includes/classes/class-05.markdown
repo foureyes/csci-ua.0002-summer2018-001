@@ -68,7 +68,7 @@ Warm-up
 ####  Assignments / Readings		
 
 
-Due Tomorrow, Before Class (5/31, 9am)
+Due Tomorrow, Before Class (5/30, 9am)
 
 * Complete the [Self Paced-Learning Module #4]({{ site.module4 }})
 * Take quiz #4 on NYU Classes
