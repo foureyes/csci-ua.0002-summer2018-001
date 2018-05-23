@@ -109,7 +109,7 @@ Schedule & Notes
 * Boolean Logic
 * Modules (math, random, sys)
 
-</article> {% comment %}{% include classes/class-04.markdown %}{% endcomment %} </div> </section> 
+</article> {% include classes/class-04.markdown %} </div> </section> 
 
 <a name="class5"></a><!---------- start --------------->
 
