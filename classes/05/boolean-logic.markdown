@@ -1,5 +1,4 @@
 ---
-* Tutoring
 layout: slides
 title: Boolean Logic 
 ---
