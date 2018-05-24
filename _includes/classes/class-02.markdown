@@ -40,7 +40,7 @@ Quiz #3 __Due Thursday, May 24th, 9AM__
 * Complete the [Self Paced-Learning Module #3]({{ site.module3 }})
 * Take quiz #3 on NYU Classes
 
-Homework #1 __Due Thursday, May 24th, at 11PM__ 
+Homework #1 __Due Thursday, May 24th, at 9AM__ 
 
 (Submit via NYU Classes)
 
