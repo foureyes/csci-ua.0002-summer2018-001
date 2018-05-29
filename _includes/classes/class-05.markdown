@@ -33,13 +33,11 @@ THUR
 ####  Slides
 
 * Homework Questions
-* Finish Conditionals from Previous Class
 * __In-class handout on if statements__
     * [handout](resources/handouts/in-class/input-types-if.pdf)
     * [solutions](resources/handouts/in-class/input-types-if-solutions.pdf)
+* Review Conditionals from Previous Class
 * Review Modules
-* Guessing Game Revisited?
-* String Formatting from Previous Class
 * [While Loops](classes/07/while.html) / [Alternative While Loop Slides](classes/07/while-revisited.html)
 
 {% comment %}
