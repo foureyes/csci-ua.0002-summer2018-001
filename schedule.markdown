@@ -96,8 +96,8 @@ Schedule & Notes
 
 <a name="class4"></a><!---------- start --------------->
 
-<section markdown="block">
-###  THU 5/24, Class #4
+<section markdown="block" class="workshop">
+###  THU 5/24, Class #4 (Programming Assignment)
 
 
 <div class="class-details">
@@ -128,8 +128,8 @@ Schedule & Notes
 
 <a name="class6"></a><!---------- start --------------->
 
-<section markdown="block">
-###  WED 5/30, Class #6 
+<section markdown="block" class="workshop">
+###  WED 5/30, Class #6 (Programming Assignment)
 
 <div class="class-details">
 <article class="topics" markdown="block">
@@ -137,21 +137,24 @@ Schedule & Notes
 
 * While Loops
 * Accumulator Variables
+* In-class programming assignment
+* Preview For Loops
 
 </article> {% include classes/class-06.markdown %}</div> </section> 
 
 
 <a name="class7"></a><!---------- start --------------->
 
-<section markdown="block" class="workshop">
-###  THU 5/31, Class #7 (Programming Assignment)
+<section markdown="block">
+###  THU 5/31, Class #7 
 
 <div class="class-details">
 <article class="topics" markdown="block">
 ####  Topics
 
-* In-class programming assignment
-* Preview For Loops
+* For Loops
+* While vs For
+* Functions
 
 </article> {% include classes/class-07.markdown %}</div> </section> 
 
@@ -164,9 +167,7 @@ Schedule & Notes
 <article class="topics" markdown="block">
 ####  Topics
 
-* For Loops
-* While vs For
-* Functions
+* Functions Continued
 
 </article> {% comment %}{% include classes/class-08.markdown %}{% endcomment %}</div> </section> 
 
@@ -174,14 +175,15 @@ Schedule & Notes
 
 <a name="class9"></a><!---------- start --------------->
 
-<section markdown="block">
-###  TUE 6/5, Class #9
+<section markdown="block" class="workshop">
+###  TUE 6/5, Class #9 (Programming Assignment)
 
 <div class="class-details">
 <article class="topics" markdown="block">
 ####  Topics
 
-* Functions Continued
+* Strings
+* In-class programming assignment
 
 </article> {% comment %}{% include classes/class-09.markdown %}{% endcomment %}</div> </section> 
 
@@ -194,7 +196,11 @@ Schedule & Notes
 <article class="topics" markdown="block">
 ####  Topics
 
+* Testing
+* Scope
 * Strings
+
+{% comment %}from 6/12{% endcomment%}
 
 </article> {% comment %}{% include classes/class-10.markdown %}{% endcomment %}</div> </section> 
 
@@ -226,23 +232,24 @@ Schedule & Notes
 <article class="topics" markdown="block">
 ####  Topics
 
-* Testing
-* Scope
-* Strings
+* Lists
 
 </article> {% comment %}{% include classes/class-13.markdown %}{% endcomment %} </div> </section> 
 
 <a name="class14"></a><!---------- start --------------->
 
 <section markdown="block" class="workshop">
-###  WED 6/13, Class #14 (Programming Assignment)
+###  WED 6/13, Class #14  (Programming Assignment)
 
 <div class="class-details">
 <article class="topics" markdown="block">
 
 ####  Topics
 
+* Lists Continued
 * In-class programming assignment
+
+
 </article> {% comment %}{% include classes/class-14.markdown %}{% endcomment %} </div> </section> 
 
 <a name="class15"></a><!---------- start --------------->
@@ -254,20 +261,23 @@ Schedule & Notes
 <article class="topics" markdown="block">
 ####  Topics
 
-* Lists
+* Turtle
 
 </article> {% comment %}{% include classes/class-15.markdown %}{% endcomment %} </div> </section> 
 
 <a name="class16"></a><!---------- start --------------->
 
-<section markdown="block">
-###  Mon 6/18, Class #16 
+<section markdown="block" class="workshop">
+###  Mon 6/18, Class #16 (Programming Assignment)
 
 <div class="class-details">
 <article class="topics" markdown="block">
 ####  Topics
 
-* Lists Continued
+* File I/O
+* Exceptions
+* In-class programming assignment
+
 </article> {% comment %}{% include classes/class-16.markdown %}{% endcomment %}</div> </section> 
 
 
@@ -280,55 +290,73 @@ Schedule & Notes
 <article class="topics" markdown="block">
 ####  Topics 
 
-* Turtle
+* Tuples
+* Dictionaries
+
 </article> {% comment %}{% include classes/class-17.markdown %}{% endcomment %} </div> </section> 
 
 
 <a name="class18"></a><!---------- start --------------->
 
-<section markdown="block" class="workshop">
-###  WED 6/20, Class #18 (Programming Assignment)
+<section markdown="block">
+###  WED 6/20, Class #18
 
 <div class="class-details">
 <article class="topics" markdown="block">
+
 ####  Topics
 
-* In-class programming assignment
-* File I/O
-* Exceptions
+* Dictionaries Continued
+* Object Oriented Programming
 
 </article> {% comment %}{% include classes/class-18.markdown %}{% endcomment %}</div> </section> 
 
 <a name="class19"></a><!---------- start --------------->
 
-<section markdown="block" class="review">
-###  THU 6/21, Class #19 
+<section markdown="block" class="workshop">
+###  THU 6/21, Class #19 (Programming Assignment) 
 
 <div class="class-details">
 <article class="topics" markdown="block">
 
-* Tuples
-* Dictionaries
+####  Topics
+
+* Object Oriented Programming Continued
+* In-class programming assignment
 
 </article> {% comment %}{% include classes/class-19.markdown %}{% endcomment %}</div> </section> 
 
 <a name="class20"></a><!---------- start --------------->
 
 <section markdown="block" class="review">
-###  THU 6/25, Class #20 
+###  MON 6/25, Class #20 
 
 <div class="class-details">
 <article class="topics" markdown="block">
 
-* Dictionaries Continued
+#### Topics
+
+* TBD (PIL, HOF?)
 
 </article> {% comment %}{% include classes/class-20.markdown %}{% endcomment %}</div> </section> 
 
+<a name="class21"></a><!---------- start --------------->
+
+<section markdown="block" class="review">
+###  TUE 6/26, Class #21 
+
+<div class="class-details">
+<article class="topics" markdown="block">
+
+#### Topics
+
+* TBD (PIL, HOF?)
+
+</article> {% comment %}{% include classes/class-21.markdown %}{% endcomment %}</div> </section> 
 ###  Upcoming Classes
 
-* 21: 6/26 - Tue
-* 22: 6/27 - Wed
-* {:markdown='block'} <span class="danger">23: 6/29 - Thu: Final Exam</span>
+* 22: 6/27 - Wed (Review)
+* {:markdown='block'} <span class="danger">23: 6/28 - Thu: Final Exam</span>
 
 
 

@@ -1,29 +1,3 @@
-{% comment %}
-mon 6/5
------
-due: loops quiz
-lecture: for loops, nested loops
-assignment: for loops and functions
-quiz: functions quiz
-workshop: do first for loop part of homework
-
-tues 6/6
------
-due: functions quiz
-lecture: functions, testing, etc.
-workshop: first functions homework
-
-wed 6/7
------
-review: functions
-lecture: start strings
-
-thu 6/8
------
-lecture: continue strings
-lecture: review
-{% endcomment %}
-
 <article class="due" markdown="block">
 ####  Due Today
 

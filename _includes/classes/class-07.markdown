@@ -9,41 +9,25 @@ Nothing due today!
 <article class="slides" markdown="block">
 ####  Slides
 
-
-Warm-up
-
-* review while loops:
-    * counting
-    * getting user input
-* simple input validation
-    * ask until they get it right! (keep on asking until name is given)
-    * set a default value (ask for name, blank gives default name)
-* break and continue
-    * break immediately
-    * break in conditional
-    * continue in conditional
-    * only necessary
-* while loop with a game
-    * maybe revisit number guessing game?
+* [For Loops](classes/08/for.html)
+* [While Loops vs For Loops](classes/09/vs.html)
+* [Loop Exercises](classes/09/loop-exercises.html)
+* [Nested Loops](classes/12/nested.html)
+* [Creating Functions](classes/12/returning_values.html)
+* [Approaching a Programming Problem](classes/12/dicewars.html)
 
 </article>
 
 <article class="assignments" markdown="block">
 ####  Assignments / Readings		
 
+Due Before Class on Monday 6/4 9AM
 
-Homework #3 __Due Monday, June 4th, at 9AM__ 
+* Complete the [Self Paced-Learning Module #6]({{ site.module6 }})
+* Take quiz #6 on NYU Classes
 
+Readings
 
-If Statements
-
-1. [grade.py](homework/hw03/grade.py)
-2. [adventure.py](homework/hw03/adventure.py)
-
-While Loops
-
-1. [many_words.py](homework/hw04/many_words.py)
-2. [odds_and_evens.py](homework/hw04/odds_and_evens.py)
-3. [average_word.py](homework/hw04/average_word.py)
+* {{ site.bookq }} - Chapter 5 (Functions and Modules)
 
 </article>
