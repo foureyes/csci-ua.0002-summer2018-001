@@ -32,7 +32,7 @@ Warm-up
 ####  Assignments / Readings		
 
 
-Homework #3 __Due Monday, 6/5, at 11PM__ 
+Homework #3 __Due Monday, June 4th, at 9AM__ 
 
 
 If Statements

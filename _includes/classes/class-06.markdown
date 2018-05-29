@@ -30,10 +30,6 @@
 <article class="assignments" markdown="block">
 ####  Assignments / Readings		
 
-Due Before Class on Monday 6/5 9am
-
-* Complete the [Self Paced-Learning Module #5]({{ site.module5 }})
-* Take quiz #5 on NYU Classes
 
 <!--
 Readings

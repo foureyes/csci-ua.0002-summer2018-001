@@ -138,7 +138,7 @@ Schedule & Notes
 * While Loops
 * Accumulator Variables
 
-</article> {% comment %}{% include classes/class-06.markdown %}{% endcomment %}</div> </section> 
+</article> {% include classes/class-06.markdown %}</div> </section> 
 
 
 <a name="class7"></a><!---------- start --------------->
@@ -153,7 +153,7 @@ Schedule & Notes
 * In-class programming assignment
 * Preview For Loops
 
-</article> {% comment %}{% include classes/class-07.markdown %}{% endcomment %}</div> </section> 
+</article> {% include classes/class-07.markdown %}</div> </section> 
 
 <a name="class8"></a><!---------- start --------------->
 
