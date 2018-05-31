@@ -1,8 +1,8 @@
 <article class="due" markdown="block">
 ####  Due Today
 
-* [Self Paced-Learning Module #5]({{ site.module5 }})
-* Quiz #5 on NYU Classes
+* [Self Paced-Learning Module #6]({{ site.module6 }})
+* Quiz #6 on NYU Classes
 * Homework #3
 
 <!--
@@ -14,20 +14,16 @@
 <article class="slides" markdown="block">
 ####  Slides
 
-Slides
-
-* [For Loops](classes/08/for.html)
-* [While Loops vs For Loops](classes/09/vs.html)
-* [Loop Exercises](classes/09/loop-exercises.html)
-* [Nested Loops](classes/12/nested.html)
-* [Creating Functions](classes/12/returning_values.html)
-* [Approaching a Programming Problem](classes/12/dicewars.html)
-
-Sample Questions for Midterm
-
-* [Sample Questions for Midterm](resources/handouts/midterm_1/midterm_1_practice.pdf)
-* [Sample Questions for Midterm Solutions](resources/handouts/midterm_1/midterm_1_practice_solutions.pdf)
-* __More sample questions to be posted on review day__ 
+* __In-class handout on for loops__
+    * [handout](resources/handouts/in-class/for-loops-nested-cond.pdf)
+    * solutions to be posted
+    {% comment %}
+    * [solutions](resources/handouts/in-class/for-loops-nested-cond-solutions.pdf)
+    {% endcomment %}
+* [Functions: Assertions and Testing](classes/13/functions_assertions_testing.html)
+* [Scope](classes/13/scope.html)
+* [IPO Charts and Exercises](classes/13/ipo_function_exercises.html)
+* [Recursion](classes/13/recursion.html)
 
 <!--
 * [Slides](classes/01/intro.html)
@@ -38,14 +34,24 @@ Sample Questions for Midterm
 <article class="assignments" markdown="block">
 ####  Assignments / Readings		
 
-Due Before Class on Tuesday 6/6 9AM
+To be posted!
 
-* Complete the [Self Paced-Learning Module #6]({{ site.module5 }})
-* Take quiz #6 on NYU Classes
+{% comment %}
+Due Before Class on Tuesday 6/13 9AM (after midterm)
+
+* [Self Paced-Learning Module #7]({{ site.module7 }})
+* Quiz #7 on NYU Classes
 
 Readings
 
-* {{ site.bookq }} - Chapter 5 (Functions and Modules)
+* {{ site.bookq }} - Chapter 8 (Strings)
 
+Homework #4 __Due Thursday, 6/8, at 11PM__ 
+
+1. [funcynum.py](homework/hw05/funcynum.py)
+2. [feeling_quizzy.py](homework/hw05/feeling_quizzy.py)
+3. [analyze_numbers.py](homework/hw05/analyze_numbers.py)
+4. [slashes.py](homework/hw05/slashes.py)
+{% endcomment %}
 </article>
 

@@ -169,7 +169,7 @@ Schedule & Notes
 
 * Functions Continued
 
-</article> {% comment %}{% include classes/class-08.markdown %}{% endcomment %}</div> </section> 
+</article> {% include classes/class-08.markdown %}</div> </section> 
 
 
 
