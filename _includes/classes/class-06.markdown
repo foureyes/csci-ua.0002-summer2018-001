@@ -60,7 +60,7 @@ While Loops
 
 (Optional While Loop Practice)
 
-1. [sticky.py](homework/hw04/sticky.py)
+1. [sticky.py](homework/sticky.py)
 
 
 </article>
