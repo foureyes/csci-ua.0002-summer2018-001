@@ -13,8 +13,6 @@ Nothing due today!
 * [While Loops vs For Loops](classes/09/vs.html)
 * [Loop Exercises](classes/09/loop-exercises.html)
 * [Nested Loops](classes/12/nested.html)
-* [Creating Functions](classes/12/returning_values.html)
-* [Approaching a Programming Problem](classes/12/dicewars.html)
 
 </article>
 

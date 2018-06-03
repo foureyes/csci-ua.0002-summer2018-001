@@ -1,7 +1,6 @@
 <article class="due" markdown="block">
 ####  Due Today
 
-* Quiz #6 (Functions)
 
 
 <!--
@@ -14,11 +13,6 @@
 ####  Slides
 
 
-Sample Questions for Midterm
-
-* [Sample Questions for Midterm](resources/handouts/midterm_1/midterm_1_practice.pdf)
-* [Sample Questions for Midterm Solutions](resources/handouts/midterm_1/midterm_1_practice_solutions.pdf)
-* __More sample questions to be posted on review day__ 
 
 {% comment %}
 * Workshop / Warm - Up (Maybe... or next class?)

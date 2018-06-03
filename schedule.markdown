@@ -154,7 +154,7 @@ Schedule & Notes
 
 * For Loops
 * While vs For
-* Functions
+* Nested Loops
 
 </article> {% include classes/class-07.markdown %}</div> </section> 
 
@@ -167,7 +167,7 @@ Schedule & Notes
 <article class="topics" markdown="block">
 ####  Topics
 
-* Functions Continued
+* Functions
 
 </article> {% include classes/class-08.markdown %}</div> </section> 
 
@@ -182,10 +182,12 @@ Schedule & Notes
 <article class="topics" markdown="block">
 ####  Topics
 
-* Strings
+* Functions Continued
+* Strings 
+* Scope
 * In-class programming assignment
 
-</article> {% comment %}{% include classes/class-09.markdown %}{% endcomment %}</div> </section> 
+</article> {% include classes/class-09.markdown %}</div> </section> 
 
 <a name="class10"></a><!---------- start --------------->
 
@@ -196,9 +198,8 @@ Schedule & Notes
 <article class="topics" markdown="block">
 ####  Topics
 
+* Strings Continued
 * Testing
-* Scope
-* Strings
 
 {% comment %}from 6/12{% endcomment%}
 
