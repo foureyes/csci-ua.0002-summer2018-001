@@ -51,7 +51,7 @@ Sample Questions for Midterm
 <article class="assignments" markdown="block">
 ####  Assignments / Readings		
 
-Due Before Class on Tuesday (tomorrow) 6/5 9AM
+Due Before Class on Wed 6/6 9AM
 
 * [Self Paced-Learning Module #7]({{ site.module7 }})
 * Quiz #7 on NYU Classes
