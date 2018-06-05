@@ -60,13 +60,5 @@ Readings
 
 * {{ site.bookq }} - Chapter 8 (Strings)
 
-{% comment %}
-Homework #4 __Due Thursday, 6/8, at 11PM__ 
-
-1. [funcynum.py](homework/hw05/funcynum.py)
-2. [feeling_quizzy.py](homework/hw05/feeling_quizzy.py)
-3. [analyze_numbers.py](homework/hw05/analyze_numbers.py)
-4. [slashes.py](homework/hw05/slashes.py)
-{% endcomment %}
 </article>
 

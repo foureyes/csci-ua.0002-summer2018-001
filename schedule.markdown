@@ -203,7 +203,7 @@ Schedule & Notes
 
 {% comment %}from 6/12{% endcomment%}
 
-</article> {% comment %}{% include classes/class-10.markdown %}{% endcomment %}</div> </section> 
+</article> {% include classes/class-10.markdown %} </div> </section> 
 
 <a name="class11"></a><!---------- start --------------->
 
