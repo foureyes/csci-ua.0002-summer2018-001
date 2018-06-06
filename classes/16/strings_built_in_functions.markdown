@@ -254,19 +254,19 @@ Bye!
 
 {% highlight python %}
 def shift_letters(shift, s):
-	uppercase_start, lowercase_start = 65, 97
-	alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-	translation = ''
-	for c in s:
-		letter_pos = alphabet.find(c.upper())
-		offset = (letter_pos + shift) % len(alphabet)
-		if c.isupper():
-			translation += chr(uppercase_start + offset)
-		elif c.islower():
-			translation += chr(lowercase_start + offset)
-		else:
-			translation += c
-	return translation
+    uppercase_start, lowercase_start = 65, 97
+    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    translation = ''
+    for c in s:
+        letter_pos = alphabet.find(c.upper())
+        offset = (letter_pos + shift) % len(alphabet)
+        if c.isupper():
+            translation += chr(uppercase_start + offset)
+        elif c.islower():
+            translation += chr(lowercase_start + offset)
+        else:
+            translation += c
+    return translation
 {% endhighlight %}
 </section>
 
