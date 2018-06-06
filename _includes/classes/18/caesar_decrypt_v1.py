@@ -1,16 +1,16 @@
 def caesar_decrypt(s):
-	"""decrypts a string that was encrypted by rotating each letter 23 places
-	 to the right"""
-	encrypted  = 'XYZABCDEFGHIJKLMNOPQRSTUVWxyzabcdefghijklmnopqrstuvw'
-	translated = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-	decrypted = ''
-	for c in s:
-		letter_index = encrypted.find(c)
-		if letter_index > -1:
-			decrypted += translated[letter_index]
-		else:
-			decrypted += c
-	return decrypted
+    """decrypts a string that was encrypted by rotating each letter 23 places
+     to the right"""
+    encrypted  = 'XYZABCDEFGHIJKLMNOPQRSTUVWxyzabcdefghijklmnopqrstuvw'
+    translated = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+    decrypted = ''
+    for c in s:
+        letter_index = encrypted.find(c)
+        if letter_index > -1:
+            decrypted += translated[letter_index]
+        else:
+            decrypted += c
+    return decrypted
 
 print(caesar_decrypt('Ebiil tloia! www'))
 print(caesar_decrypt('xyz uvw'))
