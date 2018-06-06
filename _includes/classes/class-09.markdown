@@ -46,7 +46,7 @@
 <article class="assignments" markdown="block">
 ####  Assignments / Readings		
 
-Homework #4 __Due Thursday, 6/7, at 9AM__ 
+Homework #4 __Due Friday, 6/8, at 9AM__ 
 
 1. [funcynum.py](homework/hw05/funcynum.py)
 2. [feeling_quizzy.py](homework/hw05/feeling_quizzy.py)
