@@ -23,6 +23,13 @@ Quiz #7
 1. [count_not_spaces.py](code/strings/count_not_spaces.py)
 2. [leet_speak.py](code/strings/leet_speak.py)
 
+#### More Exam Practice Questions
+
+* [Practice Questions for Functions and Loops](resources/handouts/midterm_1/midterm_functions_loops_practice.pdf)
+* [Practice Questions for Functions and Loops Solutions](resources/handouts/midterm_1/midterm_functions_loops_practice_solutions.pdf)
+* [Additional Sample Questions for Midterm](resources/handouts/midterm_1/midterm_1_additional_practice.pdf)
+* [Additional Sample Questions for Midterm Solutions](resources/handouts/midterm_1/midterm_1_additional_practice_solutions.pdf)
+
 <!--
 * [Slides](classes/01/intro.html)
 -->
