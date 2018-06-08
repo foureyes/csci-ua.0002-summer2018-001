@@ -29,6 +29,7 @@ Quiz #7
 * [Practice Questions for Functions and Loops Solutions](resources/handouts/midterm_1/midterm_functions_loops_practice_solutions.pdf)
 * [Additional Sample Questions for Midterm](resources/handouts/midterm_1/midterm_1_additional_practice.pdf)
 * [Additional Sample Questions for Midterm Solutions](resources/handouts/midterm_1/midterm_1_additional_practice_solutions.pdf)
+* [EVEN MORE PRACTICE!](resources/handouts/midterm_1/more_practice.pdf)
 
 <!--
 * [Slides](classes/01/intro.html)
