@@ -13,6 +13,16 @@ Quiz #6
 ####  Slides
 
 
+* [Lists Overview](classes/17/lists.html)
+* [List Methods](classes/17/list_methods.html)
+* [Iterating with Indexes](classes/17/iterating_with_indexes.html)
+* [List Comprehensions](classes/17/list_comprehensions.html)
+* [Exercises](classes/17/list_exercises.html)
+* [Mutability](classes/17/mutability.html)
+* [List, Strings and Random](classes/17/lists_strings_random.html)
+
+* [Review](classes/17/lists_review.html)
+
 {% comment %}
 * [About Class #14](classes/14/meta.html)
 * Midterm Solutions

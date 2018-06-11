@@ -12,15 +12,13 @@
 <article class="slides" markdown="block">
 ####  Slides
 
-From previous classes...
-
-* [Strings](classes/13/strings.html)
-* [As a list of chars](classes/13/strings_as_list.html)
-* [Strings as Objects, String Methods](classes/16/strings_as_objects.html)
-* [Built-in String Functions](classes/16/strings_built_in_functions.html)
-* __In-class handout on strings__
-    * [handout](resources/handouts/in-class/strings.pdf)
-    * solutions to be posted
+* [Lists Overview](classes/17/lists.html)
+* [List Methods](classes/17/list_methods.html)
+* [Iterating with Indexes](classes/17/iterating_with_indexes.html)
+* [List Comprehensions](classes/17/list_comprehensions.html)
+* [Exercises](classes/17/list_exercises.html)
+* [Mutability](classes/17/mutability.html)
+* [List, Strings and Random](classes/17/lists_strings_random.html)
 
 {% comment %}
     * [solutions](resources/handouts/in-class/strings-solutions.pdf)
@@ -35,14 +33,16 @@ From previous classes...
 <article class="assignments" markdown="block">
 ####  Assignments / Readings		
 
+Due Before Class on Wed 6/13 9AM
+
+* Quiz #8 on NYU Classes
+* [Self Paced-Learning Module #8](http://cs.nyu.edu/elearning/CSCI_UA_0002/module08.php)
+
 Readings
 
 * Read Starting Out with Python - Chapter 7 - Lists
 
-assignments
 
-* complete the self paced-learning module #8
-* take quiz #8 on nyu classes - module #8
 
 
 <!--

@@ -9,10 +9,20 @@
 
 Warm-up
 
-* indexing and slicing
-* review string methods, functions
-* unicode, chr, ord
-* substitution cipher?
+* Review / Warm-up:
+	* strings
+		* indexing and slicing
+		* review string methods, functions
+		* unicode, chr, ord
+	* lists
+		* iterating with indexes
+		* mutability and aliasing
+		* string functions
+		* list comprehensions
+* __In-class handout on lists__
+    * [handout](resources/handouts/in-class/lists.pdf)
+* [Sample List Exercises](classes/18/lists_warmup.html)
+* [Turtle](classes/21/turtle.html) (MAYBE!)
 
 </article>
 
@@ -20,12 +30,12 @@ Warm-up
 ####  Assignments / Readings		
 
 
+Homework #5 __Due Monday, June 18th, at 11PM__ 
 
-Homework #5 __Due Sunday, June 18th, at 11PM__ 
+(To be posted) 
 
-1. [encode_decode.py](homework/hw06/encode_decode.py)
-    * if you use chr and ord, [this table of code points to characters](http://www.utf8-chartable.de/unicode-utf8-table.pl?utf8=dec) may be handy!
-2. [barcode_utilities.py](homework/hw06/barcode_utilities.py)
+{% comment %}
+* [barcode_utilities.py](homework/hw06/barcode_utilities.py)
     * once you're done with barcode_utilties.py, download the files below
     * [upc.py](homework/hw06/upc.py)
     * [draw_barcode.py](homework/hw06/draw_barcode.py)
@@ -33,8 +43,12 @@ Homework #5 __Due Sunday, June 18th, at 11PM__
     * try running draw_barcode.py to generate a barcode
     * try this number: 075678164125
     * test with a barcode reading app on your phone!
-3. [pig_latin.py](homework/hw06/pig_latin.py)
-4. [translate_passage.py](homework/hw06/translate_passage.py)
+* [pig_latin.py](homework/hw06/pig_latin.py)
+* [translate_passage.py](homework/hw06/translate_passage.py)
+* [doubled_swapped.py](homework/hw08/doubled_swapped.py)
+* [vet.py](homework/hw07/vet.py)
+* [pawsome_pet_vet.py](homework/hw07/pawsome_pet_vet.py)
+{% endcomment %}
 
 
 </article>

@@ -235,7 +235,7 @@ Schedule & Notes
 
 * Lists
 
-</article> {% comment %}{% include classes/class-13.markdown %}{% endcomment %} </div> </section> 
+</article> {% include classes/class-13.markdown %} </div> </section> 
 
 <a name="class14"></a><!---------- start --------------->
 
@@ -251,7 +251,7 @@ Schedule & Notes
 * In-class programming assignment
 
 
-</article> {% comment %}{% include classes/class-14.markdown %}{% endcomment %} </div> </section> 
+</article> {% include classes/class-14.markdown %} </div> </section> 
 
 <a name="class15"></a><!---------- start --------------->
 
