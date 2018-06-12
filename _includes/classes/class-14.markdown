@@ -32,9 +32,6 @@ Warm-up
 
 Homework #5 __Due Monday, June 18th, at 11PM__ 
 
-(To be posted) 
-
-{% comment %}
 * [barcode_utilities.py](homework/hw06/barcode_utilities.py)
     * once you're done with barcode_utilties.py, download the files below
     * [upc.py](homework/hw06/upc.py)
@@ -48,7 +45,5 @@ Homework #5 __Due Monday, June 18th, at 11PM__
 * [doubled_swapped.py](homework/hw08/doubled_swapped.py)
 * [vet.py](homework/hw07/vet.py)
 * [pawsome_pet_vet.py](homework/hw07/pawsome_pet_vet.py)
-{% endcomment %}
-
 
 </article>
