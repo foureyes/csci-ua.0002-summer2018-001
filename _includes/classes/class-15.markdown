@@ -1,7 +1,7 @@
 <article class="due" markdown="block">
 ####  Due Today
 
-* Quiz / Module #8 (Lists)
+
 
 <!--
 * Homework
@@ -12,6 +12,20 @@
 <article class="slides" markdown="block">
 ####  Slides
 
+Exam
+
+* Results
+* Review Solutions
+
+Slides
+
+* [Turtle](classes/21/turtle.html)
+* [File I/O Part 1](classes/23/files.html) (Preview)
+
+Implementation of Barcode Modules
+
+* [upc.py](homework/hw06/upc.py)
+* [draw_barcode.py](homework/hw06/draw_barcode.py)
 
 <!--
 * [Slides](classes/01/intro.html)
@@ -32,6 +46,11 @@ Assignments
 
 1. [questions.py](homework/hw01/questions.py) - 9 points
 -->
+Due Before Class on Wed 6/18 9AM
+
+* Quiz #9 on NYU Classes
+* [Self Paced-Learning Module #9](http://cs.nyu.edu/elearning/CSCI_UA_0002/module09.php)
+
 </article>
 
 

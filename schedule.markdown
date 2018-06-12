@@ -264,7 +264,7 @@ Schedule & Notes
 
 * Turtle
 
-</article> {% comment %}{% include classes/class-15.markdown %}{% endcomment %} </div> </section> 
+</article> {% include classes/class-15.markdown %}</div> </section> 
 
 <a name="class16"></a><!---------- start --------------->
 

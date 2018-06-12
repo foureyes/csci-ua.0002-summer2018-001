@@ -1,12 +1,6 @@
 <article class="due" markdown="block">
 ####  Due Today
 
-* Quiz #7
-
-<!--
-* Homework
--->
-
 </article>
 
 <article class="slides" markdown="block">

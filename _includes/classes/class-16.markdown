@@ -10,12 +10,10 @@
 <article class="slides" markdown="block">
 ####  Slides
 
-* [Review](classes/17/lists_review.html)
-* Go over previous class slides on:
-	* iterating with indexes
-	* mutability and aliasing
-	* string functions
-	* list comprehensions
+* [Exceptions](classes/23/exceptions.html)
+* [File I/O Part 1](classes/23/files.html)
+* [File System and Paths](classes/23/paths.html)
+* [File I/O Part 2](classes/23/files-review.html)
 
 </article>
 

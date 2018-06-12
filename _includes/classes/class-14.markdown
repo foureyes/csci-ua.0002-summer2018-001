@@ -15,6 +15,7 @@ Warm-up
 		* review string methods, functions
 		* unicode, chr, ord
 	* lists
+        * [Review](classes/17/lists_review.html)
 		* iterating with indexes
 		* mutability and aliasing
 		* string functions
@@ -22,7 +23,6 @@ Warm-up
 * __In-class handout on lists__
     * [handout](resources/handouts/in-class/lists.pdf)
 * [Sample List Exercises](classes/18/lists_warmup.html)
-* [Turtle](classes/21/turtle.html) (MAYBE!)
 
 </article>
 
