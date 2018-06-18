@@ -268,33 +268,33 @@ Schedule & Notes
 
 <a name="class16"></a><!---------- start --------------->
 
-<section markdown="block" class="workshop">
-###  Mon 6/18, Class #16 (Programming Assignment)
+<section markdown="block">
+###  Mon 6/18, Class #16
 
 <div class="class-details">
 <article class="topics" markdown="block">
 ####  Topics
 
-* File I/O
-* Exceptions
-* In-class programming assignment
+* Strings Review
+* Lists Review
 
 </article> {% include classes/class-16.markdown %}</div> </section> 
 
 
 <a name="class17"></a><!---------- start --------------->
 
-<section markdown="block">
-###  TUE 6/19, Class #17 
+<section markdown="block" class="workshop">
+###  TUE 6/19, Class #17 (Programming Assignment) 
 
 <div class="class-details">
 <article class="topics" markdown="block">
 ####  Topics 
 
-* Tuples
-* Dictionaries
+* File I/O
+* Exceptions
+* Dictionaries Preview
 
-</article> {% comment %}{% include classes/class-17.markdown %}{% endcomment %} </div> </section> 
+</article> {% include classes/class-17.markdown %} </div> </section> 
 
 
 <a name="class18"></a><!---------- start --------------->
@@ -307,10 +307,11 @@ Schedule & Notes
 
 ####  Topics
 
-* Dictionaries Continued
+* Tuples
+* Dictionaries
 * Object Oriented Programming
 
-</article> {% comment %}{% include classes/class-18.markdown %}{% endcomment %}</div> </section> 
+</article> {% include classes/class-18.markdown %}</div> </section> 
 
 <a name="class19"></a><!---------- start --------------->
 

@@ -1,50 +1,43 @@
 <article class="due" markdown="block">
 ####  Due Today
 
-* Quiz / Module #8 (Lists)
+* Quiz / Module #9
 
 </article>
 
 <article class="slides" markdown="block">
 ####  Slides
 
-* Review:
-	* iterating with indexes
-	* mutability and aliasing
-	* string functions
-	* list comprehensions
-* __In-class handout on lists__
-    * [handout](resources/handouts/in-class/lists.pdf)
-    * solutions to be posted
-* [Sample List Exercises](classes/18/lists_warmup.html)
-* [Turtle](classes/21/turtle.html)
+* Turtle Animation
+* [Exceptions](classes/23/exceptions.html)
+* [File I/O Part 1](classes/23/files.html)
+* [File System and Paths](classes/23/paths.html)
+* [File I/O Part 2](classes/23/files-review.html)
+* Dictionary Preview
 
 </article>
 
 <article class="assignments" markdown="block">
 ####  Assignments / Readings		
 
-Homework #6 __Due Thursday, June 22nd, at 11PM__ 
+Due Thu, 6/21, at 9AM 
 
-* [doubled_swapped.py](homework/hw08/doubled_swapped.py)
-* [vet.py](homework/hw07/vet.py)
-* [pawsome_pet_vet.py](homework/hw07/pawsome_pet_vet.py)
-* [your_fancy_face instructions](homework/hw08/your_fancy_face.html)
-	* [your__fancy_face.py (file download)](homework/hw08/your_fancy_face.py)
-* Extra Credit: [starry_starry_night instructions](homework/hw08/starry_starry_night_ec.html)
-	* [starry_starry_night.py (file download)](homework/hw08/starry_starry_night_ec.py)
-	* Counted towards homework only (will make up for low scoring / missing assignments)
+1. [your_face instructions](homework/hw08/your_face.html)
+	* [your_face.py (file download)](homework/hw08/your_face.py)
+2. [starry_starry_night instructions](homework/hw08/starry_starry_night.html)
+	* [starry_starry_night.py (file download)](homework/hw08/starry_starry_night.py)
+3. [practice_mutability.py](homework/hw08/practice_mutability.py)
+4. [nba.py](homework/hw09/nba.py)
+	* basketball stats: [stats-clean.txt](homework/hw09/stats-clean.txt) (right-click, save as)
+5. [wordsy.py](homework/hw09/wordsy.py)
+	* dictionary: [enable1.txt](homework/hw09/enable1.txt) (right-click, save as)
 
-Quizzes __Due Monday, June 26th, at 9AM__
 
-* Complete the Self Paced-Learning Module #9
-* Take quiz #9 on NYU Classes - Module #9
-* Complete the Self Paced-Learning Module #10
-* Take quiz #10 on NYU Classes - Module #10
-* Quiz #08 is reopened
+Quizzes __Due Monday, June 25th, at 9AM__
 
-Readings
-
-* [Chapter 3 Hello, little turtles!](http://openbookproject.net/thinkcs/python/english3e/hello_little_turtles.html)
+* Quiz #10 on NYU Classes (Reassigned)
+* [Self Paced-Learning Module #10](http://cs.nyu.edu/elearning/CSCI_UA_0002/module10.php)
+* Quiz #11 on NYU Classes (Reassigned)
+* [Self Paced-Learning Module #11](http://cs.nyu.edu/elearning/CSCI_UA_0002/module11.php)
 
 </article>
