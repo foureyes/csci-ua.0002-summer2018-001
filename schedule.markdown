@@ -279,7 +279,7 @@ Schedule & Notes
 * Exceptions
 * In-class programming assignment
 
-</article> {% comment %}{% include classes/class-16.markdown %}{% endcomment %}</div> </section> 
+</article> {% include classes/class-16.markdown %}</div> </section> 
 
 
 <a name="class17"></a><!---------- start --------------->

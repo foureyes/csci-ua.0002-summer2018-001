@@ -46,7 +46,7 @@ Assignments
 
 1. [questions.py](homework/hw01/questions.py) - 9 points
 -->
-Due Before Class on Wed 6/18 9AM
+Due Before Class on Mon 6/18 9AM
 
 * Quiz #9 on NYU Classes
 * [Self Paced-Learning Module #9](http://cs.nyu.edu/elearning/CSCI_UA_0002/module09.php)
