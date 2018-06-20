@@ -307,9 +307,6 @@ Schedule & Notes
 
 ####  Topics
 
-* Tuples
-* Dictionaries
-* Object Oriented Programming
 
 </article> {% include classes/class-18.markdown %}</div> </section> 
 
@@ -323,10 +320,11 @@ Schedule & Notes
 
 ####  Topics
 
-* Object Oriented Programming Continued
+* Tuples
+* Dictionaries
 * In-class programming assignment
 
-</article> {% comment %}{% include classes/class-19.markdown %}{% endcomment %}</div> </section> 
+</article> {% include classes/class-19.markdown %}</div> </section> 
 
 <a name="class20"></a><!---------- start --------------->
 
@@ -338,7 +336,7 @@ Schedule & Notes
 
 #### Topics
 
-* TBD (PIL, HOF?)
+* Object Oriented Programming
 
 </article> {% comment %}{% include classes/class-20.markdown %}{% endcomment %}</div> </section> 
 
