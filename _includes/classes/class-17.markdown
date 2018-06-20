@@ -20,7 +20,7 @@
 <article class="assignments" markdown="block">
 ####  Assignments / Readings		
 
-Due Thu, 6/21, at 9AM 
+Due Fri, 6/22, at 9AM 
 
 1. [your_face instructions](homework/hw08/your_face.html)
 	* [your_face.py (file download)](homework/hw08/your_face.py)
