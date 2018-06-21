@@ -13,6 +13,8 @@
 	* dictionary: [enable1.txt](homework/hw09/enable1.txt) (right-click, save as)
 {% endcomment %}
 
+(From Previous Class)
+
 * [Tuples](classes/25/tuples.html) 
 * [Dictionaries](classes/25/dictionaries.html)
 * [Dictionaries Exercises](classes/25/exercises.html)
