@@ -19,6 +19,10 @@
 * [Dictionaries](classes/25/dictionaries.html)
 * [Dictionaries Exercises](classes/25/exercises.html)
 
+Today's Class
+
+* [Object Oriented Programming](classes/19/oop.html)
+
 __Final Exam Practice__
 
 * [Final Exam Practice Questions - Set 1](resources/handouts/final/final_practice_questions_set_1.pdf)
@@ -32,7 +36,6 @@ __Final Exam Practice__
 <article class="assignments" markdown="block">
 ####  Assignments / Readings		
 
-To be Posted
 
 
 
