@@ -1,7 +1,6 @@
 <article class="due" markdown="block">
 ####  Due Today
 
-* Homework #06
 
 </article>
 
