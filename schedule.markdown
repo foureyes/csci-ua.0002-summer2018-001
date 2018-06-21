@@ -326,7 +326,7 @@ Schedule & Notes
 * Object Oriented Programming Continued
 * In-class programming assignment
 
-</article> {% comment %}{% include classes/class-19.markdown %}{% endcomment %}</div> </section> 
+</article> {% include classes/class-19.markdown %}</div> </section> 
 
 <a name="class20"></a><!---------- start --------------->
 
