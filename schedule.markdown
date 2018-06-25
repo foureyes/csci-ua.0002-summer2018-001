@@ -323,14 +323,29 @@ Schedule & Notes
 
 * Tuples
 * Dictionaries
-* Object Oriented Programming
 
 </article> {% include classes/class-19.markdown %}</div> </section> 
 
 <a name="class20"></a><!---------- start --------------->
 
-<section markdown="block" class="workshop">
-###  MON 6/25, Class #20 (Programming Assignment) 
+<section markdown="block">
+###  MON 6/25, Class #20
+
+<div class="class-details">
+<article class="topics" markdown="block">
+
+#### Topics
+
+* Dictionaries Continued
+* Object Oriented Programming
+* Review
+
+</article> {% include classes/class-20.markdown %}</div> </section> 
+
+<a name="class21"></a><!---------- start --------------->
+
+<section markdown="block"  class="workshop">
+###  TUE 6/26, Class #21 (Programming Assignment)
 
 <div class="class-details">
 <article class="topics" markdown="block">
@@ -338,13 +353,14 @@ Schedule & Notes
 #### Topics
 
 * Object Oriented Programming Continued
+* Review
 
-</article> {% comment %}{% include classes/class-20.markdown %}{% endcomment %}</div> </section> 
+</article> {% comment %}{% include classes/class-21.markdown %}{% endcomment %}</div> </section> 
 
-<a name="class21"></a><!---------- start --------------->
+<a name="class22"></a><!---------- start --------------->
 
 <section markdown="block" class="review">
-###  TUE 6/26, Class #21 
+###  WED 6/27, Class #22 
 
 <div class="class-details">
 <article class="topics" markdown="block">
@@ -353,11 +369,21 @@ Schedule & Notes
 
 * TBD (PIL, HOF?)
 
-</article> {% comment %}{% include classes/class-21.markdown %}{% endcomment %}</div> </section> 
-###  Upcoming Classes
+</article> {% comment %}{% include classes/class-22.markdown %}{% endcomment %}</div></section> 
 
-* 22: 6/27 - Wed (Review)
-* {:markdown='block'} <span class="danger">23: 6/28 - Thu: Final Exam</span>
+<a name="class23"></a><!---------- start --------------->
+
+<section markdown="block" class="exam">
+###  WED 6/28, Class #23 
+
+<div class="class-details">
+<article class="topics" markdown="block">
+
+#### Topics
+
+* Exam
+
+</article> {% comment %}{% include classes/class-23.markdown %}{% endcomment %}</div></section> 
 
 
 

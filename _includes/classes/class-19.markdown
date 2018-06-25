@@ -19,9 +19,6 @@
 * [Dictionaries](classes/25/dictionaries.html)
 * [Dictionaries Exercises](classes/25/exercises.html)
 
-Today's Class
-
-* [Object Oriented Programming](classes/19/oop.html)
 
 __Final Exam Practice__
 
