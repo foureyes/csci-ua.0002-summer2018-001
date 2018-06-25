@@ -307,13 +307,14 @@ Schedule & Notes
 
 ####  Topics
 
+* File I/O Continued
 
 </article> {% include classes/class-18.markdown %}</div> </section> 
 
 <a name="class19"></a><!---------- start --------------->
 
-<section markdown="block" class="workshop">
-###  THU 6/21, Class #19 (Programming Assignment) 
+<section markdown="block">
+###  THU 6/21, Class #19 
 
 <div class="class-details">
 <article class="topics" markdown="block">
@@ -322,21 +323,21 @@ Schedule & Notes
 
 * Tuples
 * Dictionaries
-* In-class programming assignment
+* Object Oriented Programming
 
 </article> {% include classes/class-19.markdown %}</div> </section> 
 
 <a name="class20"></a><!---------- start --------------->
 
-<section markdown="block" class="review">
-###  MON 6/25, Class #20 
+<section markdown="block" class="workshop">
+###  MON 6/25, Class #20 (Programming Assignment) 
 
 <div class="class-details">
 <article class="topics" markdown="block">
 
 #### Topics
 
-* Object Oriented Programming
+* Object Oriented Programming Continued
 
 </article> {% comment %}{% include classes/class-20.markdown %}{% endcomment %}</div> </section> 
 

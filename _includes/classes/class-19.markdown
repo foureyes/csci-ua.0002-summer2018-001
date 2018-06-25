@@ -1,15 +1,14 @@
 <article class="due" markdown="block">
 ####  Due Today
 
-* Homework #06
 
 </article>
 
 <article class="slides" markdown="block">
 ####  Slides
 
-
 {% comment %}
+* go back to file i/o part 2 from previous class
 * [scrabble solver](homework/hw09/wordsy.py)
 	* dictionary: [enable1.txt](homework/hw09/enable1.txt) (right-click, save as)
 {% endcomment %}
@@ -20,6 +19,9 @@
 * [Dictionaries](classes/25/dictionaries.html)
 * [Dictionaries Exercises](classes/25/exercises.html)
 
+Today's Class
+
+* [Object Oriented Programming](classes/19/oop.html)
 
 __Final Exam Practice__
 
@@ -34,7 +36,6 @@ __Final Exam Practice__
 <article class="assignments" markdown="block">
 ####  Assignments / Readings		
 
-To be Posted
 
 
 
