@@ -355,7 +355,7 @@ Schedule & Notes
 * Object Oriented Programming Continued
 * Review
 
-</article> {% comment %}{% include classes/class-21.markdown %}{% endcomment %}</div> </section> 
+</article> {% include classes/class-21.markdown %}</div> </section> 
 
 <a name="class22"></a><!---------- start --------------->
 

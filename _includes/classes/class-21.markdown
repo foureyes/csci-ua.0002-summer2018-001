@@ -19,7 +19,7 @@ Quiz #10 and #11
 <article class="assignments" markdown="block">
 ####  Assignments / Readings		
 
-Homework #08, __In Class__  __Due Tuesday, June 26th, at 11PM__ 
+Homework #08, __In Class__  __Due Tuesday, June 26th, at 11pm__ 
 
 * [lousy_plasma instructions](homework/hw10/lousy-plasma.html)
 * [lousy_plasma.py download](homework/hw10/lousy_plasma.py)
